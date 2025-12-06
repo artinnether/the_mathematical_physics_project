@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Omar Corona — Data Science & Matemáticas</title>
+  <meta name="description" content="Curso práctico de Data Science y Matemáticas por Omar Corona.">
+  <!-- Tailwind Play CDN for quick prototyping -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen bg-gradient-to-b from-white to-gray-50 text-gray-900">
+  <header class="max-w-6xl mx-auto p-6 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-500 flex items-center justify-center text-white font-bold shadow-lg">
+        OC
+      </div>
+      <div>
+        <h1 class="text-lg font-semibold">Omar Corona</h1>
+        <p class="text-xs text-gray-500">Matemáticas • Data Science • Cursos</p>
+      </div>
+    </div>
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a href="#about" class="hover:underline">Acerca</a>
+      <a href="#course" class="hover:underline">Curso</a>
+      <a href="#contact" class="hover:underline">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6">
+    <section class="grid md:grid-cols-2 gap-10 items-center py-12">
+      <div class="space-y-6">
+        <p class="inline-block px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-xs font-medium">Nuevo curso • Mayo 1 — Julio 1</p>
+        <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">Diseña soluciones con Data Science y Matemáticas Modernas</h2>
+        <p class="text-gray-600 max-w-xl">Curso práctico y conciso donde mezclamos teoría matemática con programación aplicada. Proyectos, ejercicios y plantillas listos para usar.</p>
+
+        <div class="flex gap-4">
+          <a href="#course" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 text-white font-semibold shadow-md hover:opacity-95">Ver curso</a>
+          <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-200 text-sm">Contacto</a>
+        </div>
+
+        <div class="mt-4 flex gap-4 text-sm text-gray-500">
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" /></svg>
+            <span>100 ejercicios de Álgebra Lineal</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v4a1 1 0 001 1h3m10 0h3a1 1 0 001-1V7M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            <span>Proyectos reproducibles</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 bg-white rounded-2xl shadow-xl border border-gray-100">
+        <div class="rounded-lg overflow-hidden">
+          <div class="p-6">
+            <h3 class="font-semibold">Contenido del curso</h3>
+            <ul class="mt-3 space-y-2 text-gray-600 text-sm">
+              <li>• Álgebra lineal aplicada y ejercicios resueltos</li>
+              <li>• Cálculo multivariable y derivadas parciales</li>
+              <li>• Modelos probabilísticos y ajuste</li>
+              <li>• Proyectos en Python y visualización</li>
+            </ul>
+            <div class="mt-4 text-xs text-gray-400">Incluye material, notebooks y exámenes cortos.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-8">
+      <h3 class="text-2xl font-bold mb-4">¿Por qué este curso?</h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        <article class="p-5 bg-white rounded-2xl border border-gray-100 shadow-sm">
+          <h4 class="font-semibold">Enfoque práctico</h4>
+          <p class="text-gray-600 text-sm mt-2">Ejercicios diseñados para aprender haciendo — cada unidad termina con un mini-proyecto.</p>
+        </article>
+        <article class="p-5 bg-white rounded-2xl border border-gray-100 shadow-sm">
+          <h4 class="font-semibold">Rigor matemático</h4>
+          <p class="text-gray-600 text-sm mt-2">Fundamentos teóricos claros y concisos para quienes buscan profundidad.</p>
+        </article>
+        <article class="p-5 bg-white rounded-2xl border border-gray-100 shadow-sm">
+          <h4 class="font-semibold">Material reproducible</h4>
+          <p class="text-gray-600 text-sm mt-2">Notebooks, datasets pequeños y ejemplos listos para ejecutar.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="course" class="py-8">
+      <h3 class="text-2xl font-bold mb-4">Temario (resumen)</h3>
+      <div class="space-y-4">
+        <div class="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
+          <h4 class="font-semibold">Semana 1–3: Álgebra Lineal</h4>
+          <p class="text-sm text-gray-600 mt-2">Vectores, espacios, transformaciones lineales, valores propios y aplicaciones.</p>
+        </div>
+        <div class="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
+          <h4 class="font-semibold">Semana 4–6: Cálculo Multivariable</h4>
+          <p class="text-sm text-gray-600 mt-2">Derivadas parciales, gradiente, optimización y Lagrangianos.</p>
+        </div>
+        <div class="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
+          <h4 class="font-semibold">Semana 7–9: Modelos y Proyectos</h4>
+          <p class="text-sm text-gray-600 mt-2">Modelos probabilísticos, regresiones y proyecto final.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-8">
+      <h3 class="text-2xl font-bold mb-4">Contacto</h3>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
+          <h4 class="font-semibold">Escríbeme</h4>
+          <p class="text-sm text-gray-600 mt-2">¿Interesado en el curso o en una consultoría matemática? Deja tus datos.</p>
+
+          <form class="mt-4 space-y-3" action="mailto:tu-correo@ejemplo.com" method="post" enctype="text/plain">
+            <label class="block text-xs text-gray-600">Nombre</label>
+            <input name="Nombre" class="w-full p-3 rounded-lg border border-gray-200 text-sm" placeholder="Tu nombre" />
+            <label class="block text-xs text-gray-600">Email</label>
+            <input name="Email" class="w-full p-3 rounded-lg border border-gray-200 text-sm" placeholder="correo@ejemplo.com" />
+            <label class="block text-xs text-gray-600">Mensaje</label>
+            <textarea name="Mensaje" class="w-full p-3 rounded-lg border border-gray-200 text-sm" rows="4" placeholder="¿En qué puedo ayudarte?"></textarea>
+            <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 text-white font-medium">Enviar</button>
+          </form>
+        </div>
+
+        <div class="p-6 bg-gradient-to-br from-indigo-50 to-white rounded-2xl border border-gray-100">
+          <h4 class="font-semibold">Detalles</h4>
+          <ul class="mt-3 text-sm text-gray-600 space-y-2">
+            <li>📅 Duración: Mayo 1 — Julio 1</li>
+            <li>⏰ Modalidad: Online</li>
+            <li>💻 Material: Notebooks y recursos descargables</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-12 text-center text-sm text-gray-500">
+      © 2025 Omar Corona. Todos los derechos reservados.
+    </footer>
+  </main>
+</body>
+</html>

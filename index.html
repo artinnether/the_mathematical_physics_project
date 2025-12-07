@@ -7,13 +7,14 @@
 
    <style>
   body {
-    background-image: url('fondo.png'); /* ahora con extensión correcta */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh; /* cubrir toda la ventana */
+    background-image: url('fondo.png');
+    background-size: cover;          /* cubre toda la pantalla */
+    background-repeat: no-repeat;    /* no se repite */
+    background-position: center;     /* centrado */
+    background-attachment: fixed;    /* mantiene el fondo fijo al hacer scroll */
+    min-height: 100vh;               /* mínimo de altura pantalla */
     margin: 0;
-  }
+}
 </style>
 
   <!-- Google Analytics -->

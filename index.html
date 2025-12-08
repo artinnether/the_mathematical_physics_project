@@ -46,22 +46,49 @@
 <main class="max-w-6xl mx-auto px-6">
 
   <!-- Sección Principal -->
-  <section class="grid md:grid-cols-2 gap-10 items-start py-12">
-    <div class="p-6 rounded-2xl shadow-xl border border-gray-100 bg-white/70">
-      <h2 id="main-title" class="text-4xl md:text-5xl font-extrabold leading-tight" data-lang-es="The Mathematical Physics Project" data-lang-en="The Mathematical Physics Project">The Mathematical Physics Project</h2>
-      <p id="main-desc" class="text-gray-600 max-w-xl mt-3" data-lang-es="Esta colección meticulosamente seleccionada de materiales de física matemática comprende apuntes, notas, libros, ejercicios y recursos esenciales, diseñados para satisfacer las necesidades de estudiantes, docentes e investigadores. Accesible desde una única plataforma, esta colección se encuentra en constante expansión y actualización." data-lang-en="This carefully selected collection of mathematical physics materials includes notes, books, exercises, and essential resources, designed to meet the needs of students, teachers, and researchers. Accessible from a single platform, this collection is continuously expanding and updating.">Esta colección meticulosamente seleccionada de materiales de física matemática comprende apuntes, notas, libros, ejercicios y recursos esenciales, diseñados para satisfacer las necesidades de estudiantes, docentes e investigadores. Accesible desde una única plataforma, esta colección se encuentra en constante expansión y actualización.</p>
-    </div>
+  <!-- Sección Principal con logo + descripción + PDF’s -->
+<section class="py-12">
 
-    <div id="pdfs" class="p-6 rounded-2xl shadow-xl border border-gray-100 bg-white/70 self-start">
-      <h3 id="pdf-title" class="font-semibold" data-lang-es="PDF's" data-lang-en="PDF's">PDF's</h3>
-      <ul class="mt-3 space-y-2 text-gray-600 text-sm">
-        <li>• <a href="Libro.pdf" class="text-indigo-600 hover:underline" target="_blank" data-lang-es="Libro" data-lang-en="Book">Libro</a></li>
-        <li>• <a href="Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf" class="text-indigo-600 hover:underline" target="_blank" data-lang-es="Fijación Gauge y Determinante de Faddeev–Popov" data-lang-en="Gauge Fixing and Faddeev–Popov Determinant">Fijación Gauge y Determinante de Faddeev–Popov</a></li>
-        <li>• <a href="The Einbein.pdf" class="text-indigo-600 hover:underline" target="_blank" data-lang-es="The Einbein" data-lang-en="The Einbein">The Einbein</a></li>
-        <li>• <a href="Forma Heurística de la Ecuación de Dirac.pdf" class="text-indigo-600 hover:underline" target="_blank" data-lang-es="Forma Heurística de la Ecuación de Dirac" data-lang-en="Heuristic Form of the Dirac Equation">Forma Heurística de la Ecuación de Dirac</a></li>
-      </ul>
-    </div>
-  </section>
+  <!-- Logo centrado arriba del título -->
+  <div class="flex justify-center mb-6">
+    <img src="tmpp_logo.png" 
+         alt="TMMP Logo" 
+         class="w-48 h-48 rounded-3xl shadow-xl border border-gray-200 bg-white/70 p-3 backdrop-blur-md">
+  </div>
+
+  <!-- Descripción del proyecto -->
+  <div class="max-w-4xl mx-auto p-6 rounded-2xl shadow-xl border border-gray-100 bg-white/70 text-center">
+    <h2 id="main-title" 
+        class="text-4xl md:text-5xl font-extrabold leading-tight"
+        data-lang-es="The Mathematical Physics Project" 
+        data-lang-en="The Mathematical Physics Project">
+        The Mathematical Physics Project
+    </h2>
+
+    <p id="main-desc" 
+       class="text-gray-600 max-w-2xl mx-auto mt-3"
+       data-lang-es="Esta colección meticulosamente seleccionada de materiales de física matemática comprende apuntes, notas, libros, ejercicios y recursos esenciales, diseñados para satisfacer las necesidades de estudiantes, docentes e investigadores. Accesible desde una única plataforma, esta colección se encuentra en constante expansión y actualización." 
+       data-lang-en="This carefully selected collection of mathematical physics materials includes notes, books, exercises, and essential resources, designed to meet the needs of students, teachers, and researchers. Accessible from a single platform, this collection is continuously expanding and updating.">
+       Esta colección meticulosamente seleccionada de materiales de física matemática comprende apuntes, notas, libros, ejercicios y recursos esenciales, diseñados para satisfacer las necesidades de estudiantes, docentes e investigadores. Accesible desde una única plataforma, esta colección se encuentra en constante expansión y actualización.
+    </p>
+  </div>
+
+  <!-- Sección PDF’s (abajo de la descripción) -->
+  <div id="pdfs" 
+       class="max-w-4xl mx-auto p-6 mt-8 rounded-2xl shadow-xl border border-gray-100 bg-white/70">
+    
+    <h3 id="pdf-title" class="font-semibold" data-lang-es="PDF's" data-lang-en="PDF's">PDF's</h3>
+
+    <ul class="mt-3 space-y-2 text-gray-600 text-sm">
+      <li>• <a href="Libro.pdf" class="text-indigo-600 hover:underline" target="_blank">Libro</a></li>
+      <li>• <a href="Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf" class="text-indigo-600 hover:underline" target="_blank">Fijación Gauge y Determinante de Faddeev–Popov</a></li>
+      <li>• <a href="The Einbein.pdf" class="text-indigo-600 hover:underline" target="_blank">The Einbein</a></li>
+      <li>• <a href="Forma Heurística de la Ecuación de Dirac.pdf" class="text-indigo-600 hover:underline" target="_blank">Forma Heurística de la Ecuación de Dirac</a></li>
+    </ul>
+  </div>
+
+</section>
+
 
   <!-- Sobre mí -->
   <section id="about" class="py-20">

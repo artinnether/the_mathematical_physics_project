@@ -108,6 +108,46 @@
       background: white;
     }
 
+    .resource-list {
+      display: grid;
+      gap: 14px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .resource-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(219, 234, 254, 0.72));
+      border: 1px solid rgba(37, 99, 235, 0.14);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.08);
+    }
+
+    .resource-bullet {
+      flex: 0 0 auto;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+
+    .resource-link {
+      font-weight: 600;
+      color: #1d4ed8;
+      text-decoration: none;
+      line-height: 1.5;
+    }
+
+    .resource-link:hover {
+      text-decoration: underline;
+      color: #1e40af;
+    }
+
     @media (max-width: 768px) {
       .curriculum-frame {
         min-height: 500px;
@@ -181,19 +221,19 @@
     <section id="pdfs" class="py-8">
       <div class="glass-card max-w-4xl mx-auto p-8 rounded-[28px]">
         <h3 class="text-3xl font-bold text-center mb-6" data-lang-es="PDFs" data-lang-en="PDFs">PDFs</h3>
-        <ul class="space-y-3 text-sm md:text-base leading-relaxed">
-          <li><a href="Libro.pdf" target="_blank" data-lang-es="El Libro" data-lang-en="The Book">El Libro</a></li>
-          <li><a href="Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf" target="_blank" data-lang-es="Fijación Gauge y Determinante de Faddeev–Popov" data-lang-en="Gauge Fixing and Faddeev–Popov Determinant">Fijación Gauge y Determinante de Faddeev–Popov</a></li>
-          <li><a href="The Einbein.pdf" target="_blank" data-lang-es="The Einbein" data-lang-en="The Einbein">The Einbein</a></li>
-          <li><a href="Forma Heurística de la Ecuación de Dirac.pdf" target="_blank" data-lang-es="Forma Heurística de la Ecuación de Dirac" data-lang-en="Heuristic Form of the Dirac Equation">Forma Heurística de la Ecuación de Dirac</a></li>
-          <li><a href="El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf" target="_blank" data-lang-es="El grupo SU(2) como grupo de Lie y Visión Física" data-lang-en="The group SU(2) as a Lie group and Physical Perspective">El grupo SU(2) como grupo de Lie y Visión Física</a></li>
-          <li><a href="a.pdf" target="_blank" data-lang-es="Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica" data-lang-en="Acausally Disconnected Regions in Algebraic Quantum Field Theory">Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica</a></li>
-          <li><a href="On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf" target="_blank" data-lang-es="On the Functional Derivative of the Scalar Field Action and the Associated Global Functional" data-lang-en="On the Functional Derivative of the Scalar Field Action and the Associated Global Functional">On the Functional Derivative of the Scalar Field Action and the Associated Global Functional</a></li>
-          <li><a href="b.pdf" target="_blank" data-lang-es="The Lagrangian Formulation of the Simple Pendulum" data-lang-en="The Lagrangian Formulation of the Simple Pendulum">The Lagrangian Formulation of the Simple Pendulum</a></li>
-          <li><a href="Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf" target="_blank" data-lang-es="Sistemas Cuánticos Compuestos y sus Funciones de Onda" data-lang-en="Composite Quantum Systems and Their Wave Functions">Composite Quantum Systems and Their Wave Functions</a></li>
-          <li><a href="Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf" target="_blank" data-lang-es="Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac" data-lang-en="Mathematical Formulation of the Heisenberg, Schrödinger and Dirac Pictures">Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac</a></li>
-          <li><a href="epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf" target="_blank" data-lang-es="ε-Ecuaciones Hamiltonianas de ADM de la Relatividad General" data-lang-en="ε-Hamiltonian ADM Equations of General Relativity">ε-Ecuaciones Hamiltonianas de ADM de la Relatividad General</a></li>
-          <li><a href="The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf" target="_blank" data-lang-es="El Problema de la Braquistócrona: minimización del tiempo mediante cálculo de variaciones" data-lang-en="The Brachistochrone Problem: Time Minimization via Calculus of Variations">The Brachistochrone Problem: Time Minimization via Calculus of Variations</a></li>
+        <ul class="resource-list text-sm md:text-base leading-relaxed">
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="Libro.pdf" target="_blank" data-lang-es="El Libro" data-lang-en="The Book">El Libro</a></li>
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf" target="_blank" data-lang-es="Fijación Gauge y Determinante de Faddeev–Popov" data-lang-en="Gauge Fixing and Faddeev–Popov Determinant">Fijación Gauge y Determinante de Faddeev–Popov</a></li>
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="The Einbein.pdf" target="_blank" data-lang-es="The Einbein" data-lang-en="The Einbein">The Einbein</a></li>
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="Forma Heurística de la Ecuación de Dirac.pdf" target="_blank" data-lang-es="Forma Heurística de la Ecuación de Dirac" data-lang-en="Heuristic Form of the Dirac Equation">Forma Heurística de la Ecuación de Dirac</a></li>
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf" target="_blank" data-lang-es="El grupo SU(2) como grupo de Lie y Visión Física" data-lang-en="The group SU(2) as a Lie group and Physical Perspective">El grupo SU(2) como grupo de Lie y Visión Física</a></li>
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="a.pdf" target="_blank" data-lang-es="Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica" data-lang-en="Acausally Disconnected Regions in Algebraic Quantum Field Theory">Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica</a></li>
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf" target="_blank" data-lang-es="On the Functional Derivative of the Scalar Field Action and the Associated Global Functional" data-lang-en="On the Functional Derivative of the Scalar Field Action and the Associated Global Functional">On the Functional Derivative of the Scalar Field Action and the Associated Global Functional</a></li>
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="b.pdf" target="_blank" data-lang-es="The Lagrangian Formulation of the Simple Pendulum" data-lang-en="The Lagrangian Formulation of the Simple Pendulum">The Lagrangian Formulation of the Simple Pendulum</a></li>
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf" target="_blank" data-lang-es="Sistemas Cuánticos Compuestos y sus Funciones de Onda" data-lang-en="Composite Quantum Systems and Their Wave Functions">Composite Quantum Systems and Their Wave Functions</a></li>
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf" target="_blank" data-lang-es="Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac" data-lang-en="Mathematical Formulation of the Heisenberg, Schrödinger and Dirac Pictures">Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac</a></li>
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf" target="_blank" data-lang-es="ε-Ecuaciones Hamiltonianas de ADM de la Relatividad General" data-lang-en="ε-Hamiltonian ADM Equations of General Relativity">ε-Ecuaciones Hamiltonianas de ADM de la Relatividad General</a></li>
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf" target="_blank" data-lang-es="El Problema de la Braquistócrona: minimización del tiempo mediante cálculo de variaciones" data-lang-en="The Brachistochrone Problem: Time Minimization via Calculus of Variations">The Brachistochrone Problem: Time Minimization via Calculus of Variations</a></li>
         </ul>
       </div>
     </section>
@@ -201,10 +241,10 @@
     <section id="exercises" class="py-8">
       <div class="glass-card max-w-4xl mx-auto p-8 rounded-[28px]">
         <h3 class="text-3xl font-bold text-center mb-6" data-lang-es="Ejercicios" data-lang-en="Exercises">Ejercicios</h3>
-        <ul class="space-y-3 text-sm md:text-base leading-relaxed">
-          <li><a href="Calculus_excercises.pdf" target="_blank" data-lang-es="Ejercicios de Cálculo Multivariable" data-lang-en="Multivariable Calculus Exercises">Ejercicios de Cálculo Multivariable</a></li>
-          <li><a href="Linear_Algebra_Exercises.pdf" target="_blank" data-lang-es="Ejercicios de Álgebra Lineal" data-lang-en="Linear Algebra Exercises">Ejercicios de Álgebra Lineal</a></li>
-          <li><a href="Differential_Equations_Exercises.pdf" target="_blank" data-lang-es="Ejercicios de Ecuaciones Diferenciales" data-lang-en="Differential Equations Exercises">Ejercicios de Ecuaciones Diferenciales</a></li>
+        <ul class="resource-list text-sm md:text-base leading-relaxed">
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="Calculus_excercises.pdf" target="_blank" data-lang-es="Ejercicios de Cálculo Multivariable" data-lang-en="Multivariable Calculus Exercises">Ejercicios de Cálculo Multivariable</a></li>
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="Linear_Algebra_Exercises.pdf" target="_blank" data-lang-es="Ejercicios de Álgebra Lineal" data-lang-en="Linear Algebra Exercises">Ejercicios de Álgebra Lineal</a></li>
+          <li class="resource-item"><span class="resource-bullet"></span><a class="resource-link" href="Differential_Equations_Exercises.pdf" target="_blank" data-lang-es="Ejercicios de Ecuaciones Diferenciales" data-lang-en="Differential Equations Exercises">Ejercicios de Ecuaciones Diferenciales</a></li>
         </ul>
       </div>
     </section>

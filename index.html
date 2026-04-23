@@ -1,553 +1,419 @@
 <!doctype html>
 <html lang="es">
-  
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>The Mathematical Physics Project</title>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y31PJBLYDM"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y31PJBLYDM"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-Y31PJBLYDM');
   </script>
-  <style>
-    body {
-  background-color: white; /* Fondo blanco para todo excepto el encabezado */
-  min-height: 100vh;
-  margin: 0;
-}
-
-
-
-    /* Tarjetas estilo logo */
-    .card {
-      background: rgba(31, 42, 48, 0.55); /* oscuro con transparencia */
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(216, 194, 138, 0.25); /* dorado tenue */
-      color: #D8C28A;
-    }
-
-    /* Encabezados negros */
-     h2, h3, h4, h5 {
-      color: black;
-    }
-
-    /* Texto general */
-    p, li {
-      color: black;
-    }
-
-    /* Links turquesa */
-    a {
-      color: #7ECFC8;
-    }
-    a:hover {
-      text-decoration: underline;
-      opacity: 0.85;
-    }
-    /* Fondo desde PDF's hasta el final */
-  #fondo-secciones {
-    background-image: url('fondo.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed; /* fondo fijo al hacer scroll */
-    background-color: rgba(255, 255, 255, 0.6); /* capa blanca semitransparente */
-    backdrop-filter: blur(4px);
-  }
-  </style>
-
   <script src="https://cdn.tailwindcss.com"></script>
+  <meta property="og:title" content="The Mathematical Physics Project — Omar Corona Tejeda" />
+  <meta property="og:description" content="Research notes, PDFs, and mathematical physics insights by Omar Corona Tejeda." />
+  <meta property="og:image" content="https://artinnether.github.io/the_mathematical_physics_project/tmpp_logo.png" />
+  <meta property="og:url" content="https://artinnether.github.io/the_mathematical_physics_project/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    :root {
+      --ink: #111827;
+      --paper: rgba(255, 255, 255, 0.76);
+      --brand-dark: #1f2a30;
+      --brand-gold: #d8c28a;
+      --brand-link: #2563eb;
+    }
 
-  <!-- Open Graph / WhatsApp Preview -->
-<meta property="og:title" content="The Mathematical Physics Project — Omar Corona Tejeda" />
-<meta property="og:description" content="Research notes, PDFs, and mathematical physics insights by Omar Corona Tejeda." />
-<meta property="og:image" content="https://artinnether.github.io/the_mathematical_physics_project/tmpp_logo.png" />
-<meta property="og:url" content="https://artinnether.github.io/the_mathematical_physics_project/" />
-<meta property="og:type" content="website" />
+    html {
+      scroll-behavior: smooth;
+    }
 
-<meta name="twitter:card" content="summary_large_image">
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)),
+        url('fondo.png') center / cover fixed no-repeat;
+    }
 
-  
+    h1, h2, h3, h4, h5, p, li {
+      color: var(--ink);
+    }
+
+    a {
+      color: var(--brand-link);
+    }
+
+    .glass-card {
+      background: var(--paper);
+      border: 1px solid rgba(31, 42, 48, 0.12);
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-shell {
+      background:
+        radial-gradient(circle at top, rgba(216, 194, 138, 0.18), transparent 32%),
+        linear-gradient(180deg, rgba(31,42,48,0.98), rgba(31,42,48,0.88));
+    }
+
+    .lang-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(9, 14, 20, 0.72);
+      backdrop-filter: blur(8px);
+    }
+
+    .lang-overlay.hidden {
+      display: none;
+    }
+
+    .lang-card {
+      width: min(100%, 560px);
+      padding: 32px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+      text-align: center;
+    }
+
+    .lang-choice {
+      width: 100%;
+      border: 1px solid rgba(31, 42, 48, 0.12);
+      border-radius: 18px;
+      padding: 18px 20px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .lang-choice:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.12);
+    }
+
+    .curriculum-frame {
+      width: 100%;
+      min-height: 720px;
+      border: 1px solid rgba(31, 42, 48, 0.12);
+      border-radius: 18px;
+      background: white;
+    }
+
+    @media (max-width: 768px) {
+      .curriculum-frame {
+        min-height: 500px;
+      }
+    }
+  </style>
 </head>
+<body>
+  <div id="language-overlay" class="lang-overlay hidden" aria-modal="true" role="dialog">
+    <div class="lang-card">
+      <p class="text-sm uppercase tracking-[0.3em] text-slate-500 mb-4">The Mathematical Physics Project</p>
+      <h2 class="text-3xl font-bold mb-3">Choose your language</h2>
+      <p class="text-slate-600 mb-8">Elige el idioma en el que deseas explorar el sitio.</p>
+      <div class="grid gap-4">
+        <button class="lang-choice bg-slate-900 text-white" data-select-lang="en">English</button>
+        <button class="lang-choice bg-amber-100 text-slate-900" data-select-lang="es">Español</button>
+      </div>
+    </div>
+  </div>
 
-<body class="min-h-screen text-gray-100">
-
-<header class="w-full p-6 shadow-lg"
-        style="background:#1F2A30; border-bottom:1px solid #D8C28A;">
-  
-  <div class="max-w-6xl mx-auto flex items-center justify-between">
-    <!-- LOGO + TÍTULO -->
-    <div class="flex items-center gap-4">
-      <div class="w-14 h-14 rounded-full overflow-hidden shadow-xl border-2 border-white">
-        <img src="tmpp_logo.png" alt="TMPP Logo" class="w-full h-full object-cover">
+  <header class="hero-shell w-full p-6 shadow-lg border-b" style="border-color: rgba(216, 194, 138, 0.45);">
+    <div class="max-w-6xl mx-auto flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-full overflow-hidden shadow-xl border-2 border-white/80">
+          <img src="tmpp_logo.png" alt="TMPP Logo" class="w-full h-full object-cover">
+        </div>
+        <div class="text-white">
+          <h1 class="text-xl font-semibold text-white">The Mathematical Physics Project</h1>
+          <p class="text-sm text-white/80">Omar Corona Tejeda</p>
+        </div>
       </div>
 
-    <div style="color:#D8C28A;">
-  <h1 class="text-lg font-semibold">The Mathematical Physics Project</h1>
-  <p class="text-xs opacity-80" style="color:#D8C28A;">Omar Corona Tejeda</p>
-</div>
-
-
-
-    <!-- NAV -->
-    <nav class="flex flex-wrap gap-6 text-sm text-white font-medium">
-      <a href="#main-desc" class="hover:underline" data-lang-es="El Proyecto" data-lang-en="The Project">El Proyecto</a>
-      <a href="#pdfs" class="hover:underline" data-lang-es="PDF's" data-lang-en="PDF's">PDF's</a>
-      <a href="#about" class="hover:underline" data-lang-es="Acerca de mí" data-lang-en="About Me">Acerca de mí</a>
-      <a href="#donaciones" class="hover:underline" data-lang-es="Donaciones" data-lang-en="Donations">Donaciones</a>
-      <a href="#contacto" class="hover:underline" data-lang-es="Contacto" data-lang-en="Contact">Contacto</a>
-      <a href="#newsletter" class="hover:underline" data-lang-es="Suscríbete" data-lang-en="Subscribe">Suscríbete</a>
-      <a href="#contacto-redes" class="hover:underline" data-lang-es="Sígueme" data-lang-en="Follow Me">Sígueme</a>
-
-      <!-- BOTÓN IDIOMA -->
-      <button id="toggleLang"
-              class="px-4 py-2 bg-white/20 backdrop-blur-md text-white font-bold rounded-lg shadow-md hover:bg-white/30 transition">
-        Spanish / English
-      </button>
-    </nav>
-
-  </div>
-</header>
-
-
-
-<main class="max-w-6xl mx-auto px-6">
-
-<!-- Sección Principal con logo + descripción + PDF’s -->
-<section class="py-12">
-
-  <!-- Columna: LOGO -->
-  <div class="flex justify-center mb-8"> <!-- 👈 AQUI AGREGO ESPACIO -->
-    <img src="tmpp_logo.png" 
-         alt="TMPP Logo"
-         class="w-72 h-72 rounded-full shadow-xl border-4 border-white/80 object-cover" />
-  </div>
-
-  <!-- Descripción del proyecto -->
-  <div class="max-w-4xl mx-auto p-6 rounded-2xl shadow-xl border border-gray-100 bg-white/70 text-center">
-    <h2 id="main-title" 
-        class="text-4xl md:text-5xl font-extrabold leading-tight"
-        data-lang-es="The Mathematical Physics Project" 
-        data-lang-en="The Mathematical Physics Project">
-        The Mathematical Physics Project
-    </h2>
-
-    <p id="main-desc" 
-       class="text-gray-600 max-w-2xl mx-auto mt-3"
-       data-lang-es="Esta colección meticulosamente seleccionada de materiales de física matemática comprende apuntes, notas, libros, ejercicios y recursos esenciales, diseñados para satisfacer las necesidades de estudiantes, docentes e investigadores. Accesible desde una única plataforma, esta colección se encuentra en constante expansión y actualización." 
-       data-lang-en="This carefully selected collection of mathematical physics materials includes notes, books, exercises, and essential resources, designed to meet the needs of students, teachers, and researchers. Accessible from a single platform, this collection is continuously expanding and updating.">
-       Esta colección meticulosamente seleccionada de materiales de física matemática comprende apuntes, notas, libros, ejercicios y recursos esenciales, diseñados para satisfacer las necesidades de estudiantes, docentes e investigadores. Accesible desde una única plataforma, esta colección se encuentra en constante expansión y actualización.
-    </p>
-  </div>
-
-  <!-- Sección PDF’s (abajo de la descripción) -->
- 
-
-</section>
-
-  
-<div id="fondo-secciones">
-  <section id="pdfs" class="py-12 fondo-pdfs">
-    <div class="max-w-4xl mx-auto p-6 mt-8 rounded-2xl shadow-xl border border-gray-100 bg-white/60 backdrop-blur-sm">
-
-      <h3 class="font-semibold text-center" data-lang-es="PDFs" data-lang-en="PDFs">
-        PDFs
-      </h3>
-
-      <ul class="mt-3 space-y-2 text-gray-600 text-sm">
-        <li>
-          <a href="Libro.pdf" class="text-indigo-600 hover:underline break-words" target="_blank"
-             data-lang-es="El Libro" data-lang-en="The Book">
-            El Libro
-          </a>
-        </li>
-        <li>
-          <a href="Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf"
-             class="text-indigo-600 hover:underline break-words" target="_blank"
-             data-lang-es="Fijación Gauge y Determinante de Faddeev–Popov"
-             data-lang-en="Gauge Fixing and Faddeev–Popov Determinant">
-             Fijación Gauge y Determinante de Faddeev–Popov
-          </a>
-        </li>
-        <li>
-          <a href="The Einbein.pdf" class="text-indigo-600 hover:underline break-words" target="_blank"
-             data-lang-es="The Einbein" data-lang-en="The Einbein">
-             The Einbein
-          </a>
-        </li>
-        <li>
-          <a href="Forma Heurística de la Ecuación de Dirac.pdf" class="text-indigo-600 hover:underline break-words" target="_blank"
-             data-lang-es="Forma Heurística de la Ecuación de Dirac"
-             data-lang-en="Heuristic Form of the Dirac Equation">
-             Forma Heurística de la Ecuación de Dirac
-          </a>
-        </li>
-        <li>
-          <a href="El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf" class="text-indigo-600 hover:underline break-words" target="_blank"
-             data-lang-es="El grupo SU(2) como grupo de Lie y Visión Física"
-             data-lang-en="The group SU(2) as a Lie group and Physical Perspective">
-             El grupo SU(2) como grupo de Lie y Visión Física
-          </a>
-        </li>
-        <li>
-    <a href="a.pdf" 
-       class="text-indigo-600 hover:underline break-words" target="_blank"
-       data-lang-es="Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica"
-       data-lang-en="Acausally Disconnected Regions in Algebraic Quantum Field Theory">
-       Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica
-    </a>
-  </li>
-        <li>
-  <a href="On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf"
-     class="text-indigo-600 hover:underline break-words" target="_blank"
-     data-lang-es="On the Functional Derivative of the Scalar Field Action and the Associated Global Functional"
-     data-lang-en="On the Functional Derivative of the Scalar Field Action and the Associated Global Functional">
-     On the Functional Derivative of the Scalar Field Action and the Associated Global Functional
-  </a>
-</li>
-
-        <li class="mb-2">
-  <a href="b.pdf"
-     class="text-indigo-600 hover:underline break-words" target="_blank"
-     data-lang-es="The Lagrangian Formulation of the Simple Pendulum"
-     data-lang-en="The Lagrangian Formulation of the Simple Pendulum">
-     The Lagrangian Formulation of the Simple Pendulum
-  </a>
-</li>
-
-        <li class="mb-2">
-  <a href="Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf"
-     class="text-indigo-600 hover:underline break-words" target="_blank"
-     data-lang-es="Sistemas Cuánticos Compuestos y sus Funciones de Onda"
-     data-lang-en="Composite Quantum Systems and Their Wave Functions">
-     Composite Quantum Systems and Their Wave Functions
-  </a>
-</li>
-        <li class="mb-2">
-  <a href="Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf"
-     class="text-indigo-600 hover:underline break-words" target="_blank"
-     data-lang-es="Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac"
-     data-lang-en="Mathematical Formulation of the Heisenberg, Schrödinger and Dirac Pictures">
-     Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac
-  </a>
-</li>
-        <li class="mb-2">
-  <a href="epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf"
-     class="text-indigo-600 hover:underline break-words" target="_blank"
-     data-lang-es="$\epsilon$-Ecuaciones Hamiltonianas de ADM de la Relatividad General"
-     data-lang-en="$\epsilon$-Hamiltonian ADM Equations of General Relativity">
-     $\epsilon$-Ecuaciones Hamiltonianas de ADM de la Relatividad General
-  </a>
-</li>
-
-
-
-</li>
-      <li class="mb-2">
-  <a href="The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf"
-     class="text-indigo-600 hover:underline break-words" target="_blank"
-     data-lang-es="El Problema de la Braquistócrona: minimización del tiempo mediante cálculo de variaciones"
-     data-lang-en="The Brachistochrone Problem: Time Minimization via Calculus of Variations">
-     The Brachistochrone Problem: Time Minimization via Calculus of Variations
-  </a>
-</li>
-
+      <nav class="flex flex-wrap items-center gap-4 text-sm font-medium text-white">
+        <a href="#project" class="hover:underline" data-lang-es="El Proyecto" data-lang-en="The Project">El Proyecto</a>
+        <a href="#pdfs" class="hover:underline" data-lang-es="PDFs" data-lang-en="PDFs">PDFs</a>
+        <a href="#curriculum" class="hover:underline" data-lang-es="Currículum" data-lang-en="Curriculum">Currículum</a>
+        <a href="#about" class="hover:underline" data-lang-es="Acerca de mí" data-lang-en="About Me">Acerca de mí</a>
+        <a href="#sesiones-particulares" class="hover:underline" data-lang-es="Sesiones" data-lang-en="Sessions">Sesiones</a>
+        <a href="#donaciones" class="hover:underline" data-lang-es="Donaciones" data-lang-en="Donations">Donaciones</a>
+        <a href="#contacto" class="hover:underline" data-lang-es="Contacto" data-lang-en="Contact">Contacto</a>
+        <a href="#newsletter" class="hover:underline" data-lang-es="Suscríbete" data-lang-en="Subscribe">Suscríbete</a>
+        <a href="#contacto-redes" class="hover:underline" data-lang-es="Sígueme" data-lang-en="Follow Me">Sígueme</a>
+        <button id="toggleLang" class="px-4 py-2 rounded-lg bg-white/15 border border-white/20 text-white font-semibold hover:bg-white/25 transition">
+          ES / EN
+        </button>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  
+  <main class="max-w-6xl mx-auto px-6">
+    <section id="project" class="py-14">
+      <div class="flex justify-center mb-8">
+        <img src="tmpp_logo.png" alt="TMPP Logo" class="w-72 h-72 rounded-full shadow-xl border-4 border-white/80 object-cover" />
+      </div>
 
-<section id="exercises" class="py-12 fondo-pdfs">
-  <div class="max-w-4xl mx-auto p-6 mt-8 rounded-2xl shadow-xl border border-gray-100 bg-white/60 backdrop-blur-sm">
+      <div class="glass-card max-w-4xl mx-auto p-8 rounded-[28px] text-center">
+        <p class="text-xs font-semibold tracking-[0.35em] uppercase text-slate-500 mb-4" data-lang-es="Biblioteca digital en evolución" data-lang-en="A growing digital library">
+          Biblioteca digital en evolución
+        </p>
+        <h2 class="text-4xl md:text-5xl font-extrabold leading-tight" data-lang-es="The Mathematical Physics Project" data-lang-en="The Mathematical Physics Project">
+          The Mathematical Physics Project
+        </h2>
+        <p class="text-slate-600 max-w-3xl mx-auto mt-5 text-lg leading-relaxed"
+           data-lang-es="Esta colección meticulosamente seleccionada de materiales de física matemática comprende apuntes, notas, libros, ejercicios y recursos esenciales, diseñados para satisfacer las necesidades de estudiantes, docentes e investigadores. Accesible desde una única plataforma, esta colección se encuentra en constante expansión y actualización."
+           data-lang-en="This carefully selected collection of mathematical physics materials includes notes, books, exercises, and essential resources designed to meet the needs of students, teachers, and researchers. Accessible from a single platform, this collection is continuously expanding and updating.">
+          Esta colección meticulosamente seleccionada de materiales de física matemática comprende apuntes, notas, libros, ejercicios y recursos esenciales, diseñados para satisfacer las necesidades de estudiantes, docentes e investigadores. Accesible desde una única plataforma, esta colección se encuentra en constante expansión y actualización.
+        </p>
+      </div>
+    </section>
 
-    <h3 class="font-semibold text-center"
-        data-lang-es="Exercises"
-        data-lang-en="Exercises">
-        Exercises
-    </h3>
+    <section id="pdfs" class="py-8">
+      <div class="glass-card max-w-4xl mx-auto p-8 rounded-[28px]">
+        <h3 class="text-3xl font-bold text-center mb-6" data-lang-es="PDFs" data-lang-en="PDFs">PDFs</h3>
+        <ul class="space-y-3 text-sm md:text-base leading-relaxed">
+          <li><a href="Libro.pdf" target="_blank" data-lang-es="El Libro" data-lang-en="The Book">El Libro</a></li>
+          <li><a href="Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf" target="_blank" data-lang-es="Fijación Gauge y Determinante de Faddeev–Popov" data-lang-en="Gauge Fixing and Faddeev–Popov Determinant">Fijación Gauge y Determinante de Faddeev–Popov</a></li>
+          <li><a href="The Einbein.pdf" target="_blank" data-lang-es="The Einbein" data-lang-en="The Einbein">The Einbein</a></li>
+          <li><a href="Forma Heurística de la Ecuación de Dirac.pdf" target="_blank" data-lang-es="Forma Heurística de la Ecuación de Dirac" data-lang-en="Heuristic Form of the Dirac Equation">Forma Heurística de la Ecuación de Dirac</a></li>
+          <li><a href="El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf" target="_blank" data-lang-es="El grupo SU(2) como grupo de Lie y Visión Física" data-lang-en="The group SU(2) as a Lie group and Physical Perspective">El grupo SU(2) como grupo de Lie y Visión Física</a></li>
+          <li><a href="a.pdf" target="_blank" data-lang-es="Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica" data-lang-en="Acausally Disconnected Regions in Algebraic Quantum Field Theory">Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica</a></li>
+          <li><a href="On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf" target="_blank" data-lang-es="On the Functional Derivative of the Scalar Field Action and the Associated Global Functional" data-lang-en="On the Functional Derivative of the Scalar Field Action and the Associated Global Functional">On the Functional Derivative of the Scalar Field Action and the Associated Global Functional</a></li>
+          <li><a href="b.pdf" target="_blank" data-lang-es="The Lagrangian Formulation of the Simple Pendulum" data-lang-en="The Lagrangian Formulation of the Simple Pendulum">The Lagrangian Formulation of the Simple Pendulum</a></li>
+          <li><a href="Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf" target="_blank" data-lang-es="Sistemas Cuánticos Compuestos y sus Funciones de Onda" data-lang-en="Composite Quantum Systems and Their Wave Functions">Composite Quantum Systems and Their Wave Functions</a></li>
+          <li><a href="Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf" target="_blank" data-lang-es="Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac" data-lang-en="Mathematical Formulation of the Heisenberg, Schrödinger and Dirac Pictures">Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac</a></li>
+          <li><a href="epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf" target="_blank" data-lang-es="ε-Ecuaciones Hamiltonianas de ADM de la Relatividad General" data-lang-en="ε-Hamiltonian ADM Equations of General Relativity">ε-Ecuaciones Hamiltonianas de ADM de la Relatividad General</a></li>
+          <li><a href="The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf" target="_blank" data-lang-es="El Problema de la Braquistócrona: minimización del tiempo mediante cálculo de variaciones" data-lang-en="The Brachistochrone Problem: Time Minimization via Calculus of Variations">The Brachistochrone Problem: Time Minimization via Calculus of Variations</a></li>
+        </ul>
+      </div>
+    </section>
 
-    <ul class="mt-3 space-y-2 text-gray-600 text-sm">
+    <section id="exercises" class="py-8">
+      <div class="glass-card max-w-4xl mx-auto p-8 rounded-[28px]">
+        <h3 class="text-3xl font-bold text-center mb-6" data-lang-es="Ejercicios" data-lang-en="Exercises">Ejercicios</h3>
+        <ul class="space-y-3 text-sm md:text-base leading-relaxed">
+          <li><a href="Calculus_excercises.pdf" target="_blank" data-lang-es="Ejercicios de Cálculo Multivariable" data-lang-en="Multivariable Calculus Exercises">Ejercicios de Cálculo Multivariable</a></li>
+          <li><a href="Linear_Algebra_Exercises.pdf" target="_blank" data-lang-es="Ejercicios de Álgebra Lineal" data-lang-en="Linear Algebra Exercises">Ejercicios de Álgebra Lineal</a></li>
+          <li><a href="Differential_Equations_Exercises.pdf" target="_blank" data-lang-es="Ejercicios de Ecuaciones Diferenciales" data-lang-en="Differential Equations Exercises">Ejercicios de Ecuaciones Diferenciales</a></li>
+        </ul>
+      </div>
+    </section>
 
-      <li class="mb-2">
-        <a href="Calculus_excercises.pdf"
-           class="text-indigo-600 hover:underline break-words" target="_blank"
-           data-lang-es="Multivariable Calculus Exercises"
-           data-lang-en="Multivariable Calculus Exercises">
-           Multivariable Calculus Exercises
-        </a>
-      </li>
+    <section id="curriculum" class="py-8">
+      <div class="glass-card max-w-5xl mx-auto p-8 rounded-[28px]">
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-6">
+          <div>
+            <h3 class="text-3xl font-bold" data-lang-es="Currículum" data-lang-en="Curriculum">Currículum</h3>
+            <p class="text-slate-600 mt-2"
+               data-lang-es="Aquí puedes consultar mi currículum directamente en la página o abrirlo en una pestaña nueva."
+               data-lang-en="Here you can view my curriculum directly on the page or open it in a new tab.">
+              Aquí puedes consultar mi currículum directamente en la página o abrirlo en una pestaña nueva.
+            </p>
+          </div>
+          <div class="flex gap-3">
+            <a href="Omar_Corona_Tejeda_CV.pdf" target="_blank" class="px-5 py-3 rounded-xl bg-slate-900 text-white font-semibold no-underline"
+               data-lang-es="Abrir PDF" data-lang-en="Open PDF">Abrir PDF</a>
+            <a href="Omar_Corona_Tejeda_CV.pdf" download class="px-5 py-3 rounded-xl bg-amber-200 text-slate-900 font-semibold no-underline"
+               data-lang-es="Descargar" data-lang-en="Download">Descargar</a>
+          </div>
+        </div>
+        <iframe class="curriculum-frame" src="Omar_Corona_Tejeda_CV.pdf#view=FitH" title="Curriculum Vitae"></iframe>
+      </div>
+    </section>
 
-      <li class="mb-2">
-        <a href="Linear_Algebra_Exercises.pdf"
-           class="text-indigo-600 hover:underline break-words" target="_blank"
-           data-lang-es="Linear Algebra Exercises"
-           data-lang-en="Linear Algebra Exercises">
-           Linear Algebra Exercises
-        </a>
-      </li>
+    <section id="about" class="py-8">
+      <div class="glass-card max-w-4xl mx-auto p-8 rounded-[28px]">
+        <h3 class="text-3xl font-bold text-center mb-6" data-lang-es="Acerca de mí" data-lang-en="About Me">Acerca de mí</h3>
+        <p class="text-lg leading-relaxed mb-5 text-center"
+           data-lang-es="Con una sólida formación académica en Ciencias Matemáticas y Física, incluyendo una Licenciatura, Maestría y Doctorado en curso en el Instituto de Matemáticas de la UNAM, además de una Licenciatura en Física, cuento con amplia experiencia en docencia. He trabajado como instructor en diversas instituciones, incluyendo Tiffin University, Southern New Hampshire University y Saint Leo University en Estados Unidos, así como en la Facultad de Ciencias de la UNAM en México. También he asistido a seminarios de investigación en Harvard University y Göttingen University en temas relacionados con la Teoría Cuántica de Campos."
+           data-lang-en="With a strong academic background in Mathematical Sciences and Physics, including a Bachelor's degree, a Master's degree, and a Doctorate in progress at the Institute of Mathematics at UNAM, as well as a Bachelor's degree in Physics, I have extensive teaching experience. I have worked as an instructor at various institutions, including Tiffin University, Southern New Hampshire University, and Saint Leo University in the United States, as well as at the Faculty of Sciences at UNAM in Mexico. I have also attended research seminars at Harvard University and Göttingen University on topics related to Quantum Field Theory.">
+          Con una sólida formación académica en Ciencias Matemáticas y Física, incluyendo una Licenciatura, Maestría y Doctorado en curso en el Instituto de Matemáticas de la UNAM, además de una Licenciatura en Física, cuento con amplia experiencia en docencia. He trabajado como instructor en diversas instituciones, incluyendo Tiffin University, Southern New Hampshire University y Saint Leo University en Estados Unidos, así como en la Facultad de Ciencias de la UNAM en México. También he asistido a seminarios de investigación en Harvard University y Göttingen University en temas relacionados con la Teoría Cuántica de Campos.
+        </p>
+        <p class="text-lg leading-relaxed text-center"
+           data-lang-es="Además, he desempeñado el cargo de Profesor Adjunto en la Facultad de Ciencias de la UNAM. Mi trabajo como Entrenador de Inteligencia Artificial complementa mi experiencia académica e institucional, integrando conocimientos de matemáticas avanzadas, pedagogía y tecnología."
+           data-lang-en="I have also served as an Adjunct Professor at the Faculty of Sciences at UNAM. My work as an Artificial Intelligence Trainer complements my academic and instructional experience, integrating advanced mathematics, pedagogy, and technology.">
+          Además, he desempeñado el cargo de Profesor Adjunto en la Facultad de Ciencias de la UNAM. Mi trabajo como Entrenador de Inteligencia Artificial complementa mi experiencia académica e institucional, integrando conocimientos de matemáticas avanzadas, pedagogía y tecnología.
+        </p>
+      </div>
+    </section>
 
-      <li class="mb-2">
-        <a href="Differential_Equations_Exercises.pdf"
-           class="text-indigo-600 hover:underline break-words" target="_blank"
-           data-lang-es="Differential Equations Exercises"
-           data-lang-en="Differential Equations Exercises">
-           Differential Equations Exercises
-        </a>
-      </li>
+    <section id="sesiones-particulares" class="py-8">
+      <div class="glass-card max-w-4xl mx-auto p-8 rounded-[28px]">
+        <h3 class="text-3xl font-bold text-center mb-6" data-lang-es="Sesiones particulares" data-lang-en="Private Sessions">Sesiones particulares</h3>
+        <p class="text-lg leading-relaxed mb-6 text-center"
+           data-lang-es="Ofrezco sesiones particulares personalizadas, orientadas a fortalecer la comprensión conceptual y técnica de los temas, así como a resolver dudas específicas y desarrollar herramientas de trabajo sólidas."
+           data-lang-en="I offer personalized private sessions aimed at strengthening conceptual and technical understanding, resolving specific questions, and developing solid working tools.">
+          Ofrezco sesiones particulares personalizadas, orientadas a fortalecer la comprensión conceptual y técnica de los temas, así como a resolver dudas específicas y desarrollar herramientas de trabajo sólidas.
+        </p>
+        <ul class="max-w-2xl mx-auto space-y-3 text-lg">
+          <li><span data-lang-es="Matemáticas (cálculo, álgebra lineal, ecuaciones diferenciales)" data-lang-en="Mathematics (calculus, linear algebra, differential equations)">Matemáticas (cálculo, álgebra lineal, ecuaciones diferenciales)</span></li>
+          <li><span data-lang-es="Física y Matemáticas" data-lang-en="Physics and Mathematics">Física y Matemáticas</span></li>
+          <li><span data-lang-es="Apoyo en cursos universitarios y de posgrado" data-lang-en="Support for undergraduate and graduate courses">Apoyo en cursos universitarios y de posgrado</span></li>
+          <li><span data-lang-es="Preparación para exámenes y revisión de tareas o proyectos" data-lang-en="Exam preparation and review of assignments or projects">Preparación para exámenes y revisión de tareas o proyectos</span></li>
+          <li><span data-lang-es="Modalidad en línea" data-lang-en="Online sessions">Modalidad en línea</span></li>
+        </ul>
+        <p class="text-lg leading-relaxed text-center mt-6"
+           data-lang-es="Para más información sobre disponibilidad, horarios y costos, contáctame directamente."
+           data-lang-en="For more information about availability, schedules, and fees, please contact me directly.">
+          Para más información sobre disponibilidad, horarios y costos, contáctame directamente.
+        </p>
+      </div>
+    </section>
 
-    </ul>
+    <section id="contacto" class="py-8">
+      <div class="glass-card max-w-2xl mx-auto p-8 rounded-[28px]">
+        <h3 class="text-3xl font-bold mb-4 text-center" data-lang-es="Contacto" data-lang-en="Contact">Contacto</h3>
+        <p class="text-slate-600 mb-6 text-center"
+           data-lang-es="¿Tienes alguna duda, comentario o te gustaría trabajar conmigo? Envíame un mensaje y te responderé lo antes posible."
+           data-lang-en="Do you have any questions, comments, or would you like to work with me? Send me a message and I will reply as soon as possible.">
+          ¿Tienes alguna duda, comentario o te gustaría trabajar conmigo? Envíame un mensaje y te responderé lo antes posible.
+        </p>
+        <form id="contactForm" action="https://formspree.io/f/xjknoqwl" method="POST" class="grid gap-4">
+          <input type="text" name="name" placeholder="Tu nombre" class="p-3 rounded-lg border border-gray-300 text-gray-900" required data-placeholder-es="Tu nombre" data-placeholder-en="Your name">
+          <input type="email" name="email" placeholder="Tu correo" class="p-3 rounded-lg border border-gray-300 text-gray-900" required data-placeholder-es="Tu correo" data-placeholder-en="Your email">
+          <textarea name="message" placeholder="Escribe tu mensaje" class="p-3 rounded-lg border border-gray-300 text-gray-900 h-36" required data-placeholder-es="Escribe tu mensaje" data-placeholder-en="Write your message"></textarea>
+          <button type="submit" class="px-5 py-3 bg-indigo-600 text-white rounded-lg font-semibold shadow-md hover:opacity-90" data-lang-es="Enviar mensaje" data-lang-en="Send message">Enviar mensaje</button>
+        </form>
+        <p id="successMsg" class="text-green-600 mt-4 text-center hidden" data-lang-es="¡Gracias! Tu mensaje ha sido enviado." data-lang-en="Thank you! Your message has been sent.">¡Gracias! Tu mensaje ha sido enviado.</p>
+      </div>
+    </section>
 
-  </div>
-</section>
+    <section id="donaciones" class="py-8">
+      <div class="glass-card max-w-3xl mx-auto p-8 rounded-[28px]">
+        <h3 class="text-3xl font-bold mb-8 text-center" data-lang-es="Donaciones" data-lang-en="Donations">Donaciones</h3>
+        <p class="text-slate-600 text-center text-lg leading-relaxed"
+           data-lang-es="Si deseas apoyar el proyecto de Física-Matemáticas, puedes hacerlo mediante la siguiente opción."
+           data-lang-en="If you wish to support the Mathematical Physics Project, you can do so using the following option.">
+          Si deseas apoyar el proyecto de Física-Matemáticas, puedes hacerlo mediante la siguiente opción.
+        </p>
+        <div class="p-6 bg-white/60 rounded-2xl border border-gray-200 mt-6">
+          <h4 class="font-semibold mb-3 text-center" data-lang-es="QR" data-lang-en="QR">QR</h4>
+          <img src="qr-code.png" alt="QR de acceso" class="w-32 h-32 mx-auto rounded-lg shadow-sm"/>
+          <p class="text-xs text-gray-500 mt-2 text-center" data-lang-es="Escanéalo con tu teléfono" data-lang-en="Scan it with your phone">Escanéalo con tu teléfono</p>
+        </div>
+      </div>
+    </section>
 
+    <section id="newsletter" class="py-8">
+      <div class="glass-card max-w-3xl mx-auto p-8 rounded-[28px] text-center">
+        <h3 class="text-3xl font-bold mb-4" data-lang-es="Suscríbete a las noticias" data-lang-en="Subscribe for updates">Suscríbete a las noticias</h3>
+        <p class="text-slate-700 mb-6 text-lg"
+           data-lang-es="Recibe notificaciones cuando publique nuevos PDFs, notas o actualizaciones del proyecto."
+           data-lang-en="Get notified when I upload new PDFs, notes, or project updates.">
+          Recibe notificaciones cuando publique nuevos PDFs, notas o actualizaciones del proyecto.
+        </p>
+        <form id="newsletterForm" action="https://formspree.io/f/xdkqlrkn" method="POST" class="flex flex-col md:flex-row gap-4 justify-center">
+          <input type="email" name="email" placeholder="Tu correo electrónico" class="p-3 rounded-lg border border-gray-300 text-gray-900 w-full md:w-2/3" required data-placeholder-es="Tu correo electrónico" data-placeholder-en="Your email address">
+          <button type="submit" class="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md font-semibold hover:opacity-90 transition" data-lang-es="Suscribirme" data-lang-en="Subscribe">Suscribirme</button>
+        </form>
+        <p id="newsletter-success" class="text-green-600 mt-4 hidden" data-lang-es="¡Gracias! Te has suscrito correctamente." data-lang-en="Thank you! You are now subscribed.">¡Gracias! Te has suscrito correctamente.</p>
+      </div>
+    </section>
 
+    <section id="contacto-redes" class="py-8 pb-16">
+      <div class="glass-card max-w-3xl mx-auto p-8 rounded-[28px] text-center">
+        <h3 class="text-3xl font-bold mb-6" data-lang-es="Sígueme" data-lang-en="Follow Me">Sígueme</h3>
+        <p class="text-slate-600 mb-6" data-lang-es="Conéctate conmigo a través de estas plataformas:" data-lang-en="Connect with me through these platforms:">Conéctate conmigo a través de estas plataformas:</p>
+        <div class="flex justify-center gap-4 flex-wrap">
+          <a href="https://wa.me/522722839135" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-green-500 text-white rounded-xl shadow-md no-underline hover:opacity-90">WhatsApp</a>
+          <a href="https://www.facebook.com/fortin.corona" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-blue-600 text-white rounded-xl shadow-md no-underline hover:opacity-90">Facebook</a>
+          <a href="https://www.linkedin.com/in/omar-corona-tejeda-717b51284" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-blue-700 text-white rounded-xl shadow-md no-underline hover:opacity-90">LinkedIn</a>
+          <a href="https://www.instagram.com/fortin_omar/" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-pink-500 text-white rounded-xl shadow-md no-underline hover:opacity-90">Instagram</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer class="py-10 text-center text-sm text-slate-600">
+    <span data-lang-es="© 2025 Omar Corona Tejeda. Todos los derechos reservados." data-lang-en="© 2025 Omar Corona Tejeda. All rights reserved.">© 2025 Omar Corona Tejeda. Todos los derechos reservados.</span>
+  </footer>
 
+  <script>
+    const overlay = document.getElementById('language-overlay');
+    const toggleBtn = document.getElementById('toggleLang');
+    const storedLang = localStorage.getItem('tmpp-lang');
+    let currentLang = storedLang || null;
 
- <!-- Sobre mí -->
-<section id="about" class="py-20">
-  <div class="max-w-4xl mx-auto p-8 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-md">
-    <h2 id="about-title" class="text-4xl font-bold mb-6 text-center text-black" data-lang-es="Acerca de mí" data-lang-en="About Me">Acerca de mí</h2>
-    <p id="about-text-1" class="text-lg leading-relaxed mb-4 text-center text-black" data-lang-es=" Con una sólida formación académica en Ciencias Matemáticas y Física —incluyendo una Licenciatura, Maestría y Doctorado en curso en el Instituto de Matemáticas de la UNAM—, además de una Licenciatura en Física, cuento con amplia experiencia en docencia. He trabajado como instructor en diversas instituciones, incluyendo Tiffin University, Southern New Hampshire University y Saint Leo University en Estados Unidos, así como en la Facultad de Ciencias de la UNAM en México. También he asistido a seminarios de investigación en Harvard University y Göttingen University en temas relacionados con la Teoría Cuántica de Campos.
-" data-lang-en="With a strong academic background in Mathematical Sciences and Physics —including a Bachelor's, Master's, and a Doctorate in progress at the Institute of Mathematics at UNAM— as well as a Bachelor's in Physics, I have extensive teaching experience. I have worked as an instructor at various institutions, including Tiffin University, Southern New Hampshire University, and Saint Leo University in the United States, as well as at the Faculty of Sciences at UNAM in Mexico. I have also attended research seminars at Harvard University and Göttingen University on topics related to Quantum Field Theory.">
-      Con una sólida formación académica en Ciencias Matemáticas y Física —incluyendo una Licenciatura, Maestría y Doctorado en curso en el Instituto de Matemáticas de la UNAM—, además de una Licenciatura en Física, cuento con amplia experiencia en docencia. He trabajado como instructor en diversas instituciones, incluyendo Tiffin University, Southern New Hampshire University y Saint Leo University en Estados Unidos, así como en la Facultad de Ciencias de la UNAM en México. También he asistido a seminarios de investigación en Harvard University y Göttingen University en temas relacionados con la Teoría Cuántica de Campos.
-    </p>
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('tmpp-lang', lang);
+      document.documentElement.lang = lang;
 
-    <p id="about-text-2" class="text-lg leading-relaxed text-center text-black" data-lang-es="Además, he desempeñado el cargo de Profesor Adjunto en la Facultad de Ciencias de la UNAM. Mi trabajo como Entrenador de Inteligencia Artificial complementa mi experiencia académica e institucional, integrando conocimientos de matemáticas avanzadas, pedagogía y tecnología.
-" data-lang-en="I have also served as an Adjunct Professor at the Faculty of Sciences at UNAM. My work as an Artificial Intelligence Trainer complements my academic and instructional experience, integrating knowledge of advanced mathematics, pedagogy, and technology.">
-      Además, he desempeñado el cargo de Profesor Adjunto en la Facultad de Ciencias de la UNAM. Mi trabajo como Entrenador de Inteligencia Artificial complementa mi experiencia académica e instruccional, integrando conocimientos de matemáticas avanzadas, pedagogía y tecnología.
-    </p>
-  </div>
-</section>
+      document.querySelectorAll('[data-lang-es]').forEach((el) => {
+        el.textContent = lang === 'es' ? el.getAttribute('data-lang-es') : el.getAttribute('data-lang-en');
+      });
 
-  <!-- SESIONES PARTICULARES -->
-<section id="sesiones-particulares" class="py-20">
-  <div class="max-w-4xl mx-auto p-8 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-md">
+      document.querySelectorAll('[data-placeholder-es]').forEach((el) => {
+        el.placeholder = lang === 'es' ? el.getAttribute('data-placeholder-es') : el.getAttribute('data-placeholder-en');
+      });
 
-    <h2
-      class="text-4xl font-bold mb-6 text-center text-black"
-      data-lang-es="Sesiones particulares"
-      data-lang-en="Private Sessions">
-      Sesiones privadas
-    </h2>
+      toggleBtn.textContent = lang === 'es' ? 'ES / EN' : 'EN / ES';
+      overlay.classList.add('hidden');
+    }
 
-    <p
-      class="text-lg leading-relaxed mb-6 text-center text-black"
-      data-lang-es="Ofrezco sesiones particulares personalizadas, orientadas a fortalecer la comprensión conceptual y técnica de los temas, así como a resolver dudas específicas y desarrollar herramientas de trabajo sólidas."
-      data-lang-en="I offer personalized private sessions aimed at strengthening conceptual and technical understanding, addressing specific questions, and developing solid working tools.">
-      Ofrezco sesiones particulares personalizadas, orientadas a fortalecer la comprensión conceptual y técnica de los temas, así como a resolver dudas específicas y desarrollar herramientas de trabajo sólidas.
-    </p>
+    if (!currentLang) {
+      overlay.classList.remove('hidden');
+    } else {
+      setLanguage(currentLang);
+    }
 
-    <ul class="text-lg leading-relaxed mb-6 text-black max-w-2xl mx-auto">
-      <li class="mb-2">✔ <span
-        data-lang-es="Matemáticas (cálculo, álgebra lineal, ecuaciones diferenciales)"
-        data-lang-en="Mathematics (calculus, linear algebra, differential equations)">
-        Matemáticas (cálculo, álgebra lineal, ecuaciones diferenciales)
-      </span></li>
+    document.querySelectorAll('[data-select-lang]').forEach((button) => {
+      button.addEventListener('click', () => setLanguage(button.getAttribute('data-select-lang')));
+    });
 
-      <li class="mb-2">✔ <span
-        data-lang-es="Física y Matemáticas"
-        data-lang-en="Physics and Mathematics">
-        Física y Matemáticas
-      </span></li>
+    toggleBtn.addEventListener('click', () => {
+      if (!currentLang) {
+        overlay.classList.remove('hidden');
+        return;
+      }
+      setLanguage(currentLang === 'es' ? 'en' : 'es');
+    });
 
-      <li class="mb-2">✔ <span
-        data-lang-es="Apoyo en cursos universitarios y de posgrado"
-        data-lang-en="Support for undergraduate and graduate courses">
-        Apoyo en cursos universitarios y de posgrado
-      </span></li>
+    const contactForm = document.getElementById('contactForm');
+    const contactMsg = document.getElementById('successMsg');
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const response = await fetch(contactForm.action, {
+        method: contactForm.method,
+        body: new FormData(contactForm),
+        headers: { Accept: 'application/json' }
+      });
 
-      <li class="mb-2">✔ <span
-        data-lang-es="Preparación para exámenes y revisión de tareas o proyectos"
-        data-lang-en="Exam preparation and review of assignments or projects">
-        Preparación para exámenes y revisión de tareas o proyectos
-      </span></li>
-
-      <li>✔ <span
-        data-lang-es="Modalidad en línea"
-        data-lang-en="Online sessions">
-        Modalidad en línea
-      </span></li>
-    </ul>
-
-    <p
-      class="text-lg leading-relaxed text-center text-black"
-      data-lang-es="Para más información sobre disponibilidad, horarios y costos, contáctame directamente."
-      data-lang-en="For more information about availability, schedules, and fees, please contact me directly.">
-      Para más información sobre disponibilidad, horarios y costos, contáctame directamente.
-    </p>
-
-  </div>
-</section>
-
-
-  <!-- Contacto / Contact -->
-  <section id="contacto" class="py-16">
-    <div class="max-w-2xl mx-auto p-8 bg-white/70 rounded-2xl shadow-md border border-gray-100">
-      <h2 id="contact-title" class="text-2xl font-bold mb-4 text-center" data-lang-es="Contacto" data-lang-en="Contact">Contacto</h2>
-      <p id="contact-text" class="text-gray-600 mb-6 text-center" data-lang-es="¿Tienes alguna duda, comentario o te gustaría trabajar conmigo? Envíame un mensaje y te responderé lo antes posible." data-lang-en="Do you have any questions, comments, or would you like to work with me? Send me a message and I will reply as soon as possible.">¿Tienes alguna duda, comentario o te gustaría trabajar conmigo? Envíame un mensaje y te responderé lo antes posible.</p>
-      <form id="contactForm" action="https://formspree.io/f/xjknoqwl" method="POST" class="grid gap-4">
-        <input type="text" name="name" id="contact-name" placeholder="Tu nombre" class="p-3 rounded-lg border border-gray-300 text-gray-900" required data-placeholder-es="Tu nombre" data-placeholder-en="Your Name">
-        <input type="email" name="email" id="contact-email" placeholder="Tu correo" class="p-3 rounded-lg border border-gray-300 text-gray-900" required data-placeholder-es="Tu correo" data-placeholder-en="Your Email">
-        <textarea name="message" id="contact-message" placeholder="Escribe tu mensaje" class="p-3 rounded-lg border border-gray-300 text-gray-900 h-36" required data-placeholder-es="Escribe tu mensaje" data-placeholder-en="Write your message"></textarea>
-        <button type="submit" id="contact-button" class="px-5 py-3 bg-indigo-600 text-white rounded-lg font-semibold shadow-md hover:opacity-90" data-lang-es="Enviar mensaje" data-lang-en="Send Message">Enviar mensaje</button>
-      </form>
-      <p id="successMsg" class="text-green-600 mt-4 text-center hidden" data-lang-es="¡Gracias! Tu mensaje ha sido enviado." data-lang-en="Thank you! Your message has been sent.">¡Gracias! Tu mensaje ha sido enviado.</p>
-    </div>
-  </section>
-
-  <!-- Donaciones / Donations -->
-<section id="donaciones" class="py-16">
-  <div class="max-w-3xl mx-auto p-8 bg-white/70 rounded-2xl shadow-md border border-gray-100">
-    
-    <!-- Título ahora dentro del contenedor -->
-    <h3 id="donation-title" class="text-3xl font-bold mb-8 text-center" 
-        data-lang-es="Donaciones" data-lang-en="Donations">
-        Donaciones
-    </h3>
-
-    <p id="donation-text" class="text-gray-600 text-center text-lg leading-relaxed" 
-       data-lang-es="Si deseas apoyar el proyecto de Física-Matemáticas, puedes hacerlo mediante las siguientes opciones." 
-       data-lang-en="If you wish to support the Mathematical Physics Project, you can do so using the following options.">
-       Si deseas apoyar el proyecto de Física-Matemáticas, puedes hacerlo mediante las siguientes opciones.
-    </p>
-
-    <div class="p-6 bg-white/50 backdrop-blur-sm rounded-xl border border-gray-200 mt-6">
-      <h4 class="font-semibold mb-3 text-center" data-lang-es="QR" data-lang-en="QR">QR</h4>
-      <img src="qr-code.png" alt="QR de acceso" class="w-32 h-32 mx-auto rounded-lg shadow-sm"/>
-      <p class="text-xs text-gray-500 mt-2 text-center" data-lang-es="Escanéalo con tu teléfono" data-lang-en="Scan it with your phone">Escanéalo con tu teléfono</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- Suscripción / Newsletter -->
-<section id="newsletter" class="py-16">
-  <div class="max-w-3xl mx-auto p-8 bg-white/70 rounded-2xl shadow-md border border-gray-100 text-center backdrop-blur-sm">
-    
-    <h3 class="text-3xl font-bold mb-4 text-black"
-        data-lang-es="Suscríbete a las Noticias"
-        data-lang-en="Subscribe for Updates">
-        Suscríbete a las Noticias
-    </h3>
-
-    <p class="text-gray-700 mb-6 text-lg"
-       data-lang-es="Recibe notificaciones cuando publique nuevos PDFs, notas o actualizaciones del proyecto."
-       data-lang-en="Get notified when I upload new PDFs, notes, or project updates.">
-       Recibe notificaciones cuando publique nuevos PDFs, notas o actualizaciones del proyecto.
-    </p>
-
-    <!-- FORMULARIO -->
-    <form action="https://formspree.io/f/xdkqlrkn" method="POST" class="flex flex-col md:flex-row gap-4 justify-center">
-      <input 
-        type="email" 
-        name="email" 
-        placeholder="Tu correo electrónico"
-        class="p-3 rounded-lg border border-gray-300 text-gray-900 w-full md:w-2/3"
-        required
-        data-placeholder-es="Tu correo electrónico"
-        data-placeholder-en="Your email address"
-      >
-
-      <button 
-        type="submit"
-        class="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md font-semibold hover:opacity-90 transition"
-        data-lang-es="Suscribirme"
-        data-lang-en="Subscribe">
-        Suscribirme
-      </button>
-    </form>
-
-    <p id="newsletter-success" 
-       class="text-green-600 mt-4 hidden"
-       data-lang-es="¡Gracias! Te has suscrito correctamente."
-       data-lang-en="Thank you! You are now subscribed.">
-       ¡Gracias! Te has suscrito correctamente.
-    </p>
-
-  </div>
-</section>
-
-<script>
-  // Formulario Newsletter
-  const newsForm = document.querySelector('#newsletter form');
-  const newsMsg = document.getElementById('newsletter-success');
-
-  newsForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    fetch(newsForm.action, {
-      method: newsForm.method,
-      body: new FormData(newsForm),
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if(response.ok){
-        newsMsg.style.display = 'block';
-        newsForm.reset();
+      if (response.ok) {
+        contactMsg.classList.remove('hidden');
+        contactForm.reset();
       } else {
-        alert(isEs ? "Hubo un error, intenta de nuevo." : "Error occurred, please try again.");
+        alert(currentLang === 'en' ? 'An error occurred. Please try again.' : 'Hubo un error. Intenta de nuevo.');
       }
     });
-  });
-</script>
 
-  
+    const newsletterForm = document.getElementById('newsletterForm');
+    const newsletterMsg = document.getElementById('newsletter-success');
+    newsletterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const response = await fetch(newsletterForm.action, {
+        method: newsletterForm.method,
+        body: new FormData(newsletterForm),
+        headers: { Accept: 'application/json' }
+      });
 
-  <!-- Redes / Social Media -->
-  <section id="contacto-redes" class="py-16">
-    <div class="max-w-3xl mx-auto p-8 bg-white/70 rounded-2xl shadow-md border border-gray-100 text-center">
-      <h3 id="social-title" class="text-3xl font-bold mb-6" data-lang-es="Sígueme" data-lang-en="Follow Me">Sígueme</h3>
-      <p id="social-text" class="text-gray-600 mb-6" data-lang-es="Conéctate conmigo a través de estas plataformas:" data-lang-en="Connect with me through these platforms:">Conéctate conmigo a través de estas plataformas:</p>
-      <div class="flex justify-center gap-6 flex-wrap">
-        <a href="https://wa.me/522722839135" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-green-500 text-white rounded-xl shadow-md hover:opacity-90">WhatsApp</a>
-        <a href="https://www.facebook.com/fortin.corona" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-blue-600 text-white rounded-xl shadow-md hover:opacity-90">Facebook</a>
-        <a href="https://www.linkedin.com/in/omar-corona-tejeda-717b51284" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-blue-700 text-white rounded-xl shadow-md hover:opacity-90">LinkedIn</a>
-        <a href="https://www.instagram.com/fortin_omar/" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-pink-500 text-white rounded-xl shadow-md hover:opacity-90">Instagram</a>
-      </div>
-    </div>
-  </section>
-  </div>
-  </div>
-</main>
-</div> <!-- cierre del fondo -->
-<footer class="py-12 text-center text-sm text-gray-500">
-  © 2025 Omar Corona Tejeda. Todos los derechos reservados.
-</footer>
-
-<script>
-  // Alternar idioma
-  const toggleBtn = document.getElementById('toggleLang');
-  let isEs = true;
-  toggleBtn.addEventListener('click', () => {
-    document.querySelectorAll('[data-lang-es]').forEach(el => {
-      el.textContent = isEs ? el.getAttribute('data-lang-en') : el.getAttribute('data-lang-es');
+      if (response.ok) {
+        newsletterMsg.classList.remove('hidden');
+        newsletterForm.reset();
+      } else {
+        alert(currentLang === 'en' ? 'An error occurred. Please try again.' : 'Hubo un error. Intenta de nuevo.');
+      }
     });
-    document.querySelectorAll('[data-placeholder-es]').forEach(el => {
-      el.placeholder = isEs ? el.getAttribute('data-placeholder-en') : el.getAttribute('data-placeholder-es');
-    });
-    toggleBtn.textContent = isEs ? 'ES' : 'EN';
-    isEs = !isEs;
-  });
-
-  // Formulario
-  const form = document.getElementById('contactForm');
-  const msg = document.getElementById('successMsg');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    fetch(form.action, {
-      method: form.method,
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if(response.ok){
-        msg.style.display = 'block';
-        form.reset();
-      } else { alert(isEs ? "Hubo un error, intenta de nuevo." : "Error occurred, please try again."); }
-    });
-  });
-</script>
-
+  </script>
 </body>
 </html>

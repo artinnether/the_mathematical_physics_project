@@ -12,6 +12,7 @@
     gtag('config', 'G-Y31PJBLYDM');
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <meta property="og:title" content="The Mathematical Physics Project — Omar Corona Tejeda" />
   <meta property="og:description" content="Research notes, PDFs, and mathematical physics insights by Omar Corona Tejeda." />
   <meta property="og:image" content="https://artinnether.github.io/the_mathematical_physics_project/tmpp_logo.png" />
@@ -168,9 +169,87 @@
       color: rgba(17, 24, 39, 0.72);
     }
 
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .resource-card {
+      display: flex;
+      min-height: 210px;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px;
+      border: 1px solid rgba(31, 42, 48, 0.12);
+      border-left: 4px solid rgba(216, 194, 138, 0.95);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .resource-card[hidden] {
+      display: none;
+    }
+
+    .resource-pill {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      border-radius: 999px;
+      background: rgba(31, 42, 48, 0.08);
+      color: rgba(31, 42, 48, 0.82);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 5px 9px;
+      text-transform: uppercase;
+    }
+
+    .filter-button {
+      border: 1px solid rgba(31, 42, 48, 0.16);
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.72);
+      color: #1f2a30;
+      font-weight: 700;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .filter-button.active {
+      border-color: #1f2a30;
+      background: #1f2a30;
+      color: white;
+    }
+
+    .icon-link i,
+    .icon-button i {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2.4;
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
     @media (max-width: 768px) {
       .curriculum-frame {
         min-height: 500px;
+      }
+
+      .site-nav {
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .site-nav a,
+      .site-nav button {
+        font-size: 0.82rem;
+      }
+
+      .resource-card {
+        min-height: auto;
       }
     }
   </style>
@@ -200,12 +279,14 @@
         </div>
       </div>
 
-      <nav class="flex flex-wrap items-center gap-4 text-sm font-medium text-white">
+      <nav class="site-nav flex flex-wrap items-center gap-4 text-sm font-medium text-white">
         <a href="#project" class="hover:underline" data-lang-es="El Proyecto" data-lang-en="The Project">El Proyecto</a>
-        <a href="#pdfs" class="hover:underline" data-lang-es="PDFs" data-lang-en="PDFs">PDFs</a>
+        <a href="#latest" class="hover:underline" data-lang-es="Novedades" data-lang-en="Latest">Novedades</a>
+        <a href="#pdfs" class="hover:underline" data-lang-es="Biblioteca" data-lang-en="Library">Biblioteca</a>
         <a href="#curriculum" class="hover:underline" data-lang-es="Currículum" data-lang-en="Curriculum">Currículum</a>
         <a href="#about" class="hover:underline" data-lang-es="Acerca de mí" data-lang-en="About Me">Acerca de mí</a>
         <a href="#sesiones-particulares" class="hover:underline" data-lang-es="Sesiones" data-lang-en="Sessions">Sesiones</a>
+        <a href="#citation" class="hover:underline" data-lang-es="Citar" data-lang-en="Cite">Citar</a>
         <a href="#donaciones" class="hover:underline" data-lang-es="Donaciones" data-lang-en="Donations">Donaciones</a>
         <a href="#contacto" class="hover:underline" data-lang-es="Contacto" data-lang-en="Contact">Contacto</a>
         <a href="#newsletter" class="hover:underline" data-lang-es="Suscríbete" data-lang-en="Subscribe">Suscríbete</a>
@@ -235,40 +316,173 @@
            data-lang-en="This carefully selected collection of mathematical physics materials includes notes, books, exercises, and essential resources designed to meet the needs of students, teachers, and researchers. Accessible from a single platform, this collection is continuously expanding and updating.">
           Esta colección meticulosamente seleccionada de materiales de física matemática comprende apuntes, notas, libros, ejercicios y recursos esenciales, diseñados para satisfacer las necesidades de estudiantes, docentes e investigadores. Accesible desde una única plataforma, esta colección se encuentra en constante expansión y actualización.
         </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="#pdfs" class="icon-button inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900 text-white font-semibold no-underline hover:opacity-90">
+            <i data-lucide="library"></i>
+            <span data-lang-es="Explorar biblioteca" data-lang-en="Explore library">Explorar biblioteca</span>
+          </a>
+          <a href="https://www.youtube.com/@omarct1989" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-red-600 text-white font-semibold no-underline hover:opacity-90">
+            <i data-lucide="youtube"></i>
+            <span data-lang-es="Canal de YouTube" data-lang-en="YouTube channel">Canal de YouTube</span>
+          </a>
+          <a href="https://github.com/artinnether/the_mathematical_physics_project" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/80 text-slate-900 font-semibold no-underline hover:bg-white">
+            <i data-lucide="github"></i>
+            <span data-lang-es="Repositorio" data-lang-en="Repository">Repositorio</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="latest" class="py-8">
+      <div class="glass-card max-w-5xl mx-auto p-8 rounded-[28px]">
+        <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between mb-6">
+          <div>
+            <p class="text-xs font-semibold tracking-[0.28em] uppercase text-slate-500 mb-2" data-lang-es="Actualizaciones" data-lang-en="Updates">Actualizaciones</p>
+            <h3 class="text-3xl font-bold" data-lang-es="Últimas publicaciones" data-lang-en="Latest publications">Últimas publicaciones</h3>
+          </div>
+          <a href="#pdfs" class="icon-button inline-flex items-center gap-2 text-sm font-bold text-slate-800 no-underline hover:underline">
+            <i data-lucide="arrow-down-right"></i>
+            <span data-lang-es="Ver toda la biblioteca" data-lang-en="View full library">Ver toda la biblioteca</span>
+          </a>
+        </div>
+        <div class="resource-grid">
+          <article class="resource-card">
+            <div>
+              <span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación" data-lang-en="Free Vacuum, Interacting Vacuum, Dyson Series and Correlation Functions">Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación</h4>
+              <p class="resource-note mt-2" data-lang-es="Notas sobre vacío interactuante, serie de Dyson y cálculo perturbativo." data-lang-en="Notes on interacting vacua, the Dyson series, and perturbative computation.">Notas sobre vacío interactuante, serie de Dyson y cálculo perturbativo.</p>
+            </div>
+            <a href="Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Abrir PDF</span>
+            </a>
+          </article>
+          <article class="resource-card">
+            <div>
+              <span class="resource-pill" data-lang-es="Geometría" data-lang-en="Geometry">Geometría</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="Variaciones de campos en haces vectoriales con conexión" data-lang-en="Field Variations on Vector Bundles with Connection">Variaciones de campos en haces vectoriales con conexión</h4>
+              <p class="resource-note mt-2" data-lang-es="Interpretación activa y pasiva en una formulación geométrica unificada." data-lang-en="Active and passive interpretations in a unified geometric formulation.">Interpretación activa y pasiva en una formulación geométrica unificada.</p>
+            </div>
+            <a href="Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Abrir PDF</span>
+            </a>
+          </article>
+          <article class="resource-card">
+            <div>
+              <span class="resource-pill" data-lang-es="Relatividad" data-lang-en="Relativity">Relatividad</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="ε-Ecuaciones Hamiltonianas de ADM" data-lang-en="ε-Hamiltonian ADM Equations">ε-Ecuaciones Hamiltonianas de ADM</h4>
+              <p class="resource-note mt-2" data-lang-es="Apunte sobre la formulación hamiltoniana ADM de la relatividad general." data-lang-en="Note on the ADM Hamiltonian formulation of general relativity.">Apunte sobre la formulación hamiltoniana ADM de la relatividad general.</p>
+            </div>
+            <a href="epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Abrir PDF</span>
+            </a>
+          </article>
+        </div>
       </div>
     </section>
 
     <section id="pdfs" class="py-8">
-      <div class="glass-card max-w-4xl mx-auto p-8 rounded-[28px]">
-        <h3 class="text-3xl font-bold text-center mb-6" data-lang-es="PDFs" data-lang-en="PDFs">PDFs</h3>
-        <ul class="resource-list text-sm md:text-base leading-relaxed">
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="Libro.pdf" target="_blank" data-lang-es="El Libro" data-lang-en="The Book">El Libro</a><span class="resource-note" data-lang-es="Texto principal del proyecto con una presentación amplia del material." data-lang-en="Main project text with a broad presentation of the material.">Texto principal del proyecto con una presentación amplia del material.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf" target="_blank" data-lang-es="Fijación Gauge y Determinante de Faddeev–Popov" data-lang-en="Gauge Fixing and Faddeev–Popov Determinant">Fijación Gauge y Determinante de Faddeev–Popov</a><span class="resource-note" data-lang-es="Notas sobre fijación gauge en la integral de camino y su estructura matemática." data-lang-en="Notes on gauge fixing in the path integral and its mathematical structure.">Notas sobre fijación gauge en la integral de camino y su estructura matemática.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="The Einbein.pdf" target="_blank" data-lang-es="The Einbein" data-lang-en="The Einbein">The Einbein</a><span class="resource-note" data-lang-es="Apunte breve sobre el formalismo del einbein en sistemas relativistas." data-lang-en="Short note on the einbein formalism in relativistic systems.">Apunte breve sobre el formalismo del einbein en sistemas relativistas.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="Forma Heurística de la Ecuación de Dirac.pdf" target="_blank" data-lang-es="Forma Heurística de la Ecuación de Dirac" data-lang-en="Heuristic Form of the Dirac Equation">Forma Heurística de la Ecuación de Dirac</a><span class="resource-note" data-lang-es="Introducción intuitiva a la estructura física y algebraica de la ecuación de Dirac." data-lang-en="Intuitive introduction to the physical and algebraic structure of the Dirac equation.">Introducción intuitiva a la estructura física y algebraica de la ecuación de Dirac.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf" target="_blank" data-lang-es="El grupo SU(2) como grupo de Lie y Visión Física" data-lang-en="The group SU(2) as a Lie group and Physical Perspective">El grupo SU(2) como grupo de Lie y Visión Física</a><span class="resource-note" data-lang-es="Visión geométrica y física del grupo SU(2) y sus aplicaciones." data-lang-en="Geometric and physical view of the group SU(2) and its applications.">Visión geométrica y física del grupo SU(2) y sus aplicaciones.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="a.pdf" target="_blank" data-lang-es="Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica" data-lang-en="Acausally Disconnected Regions in Algebraic Quantum Field Theory">Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica</a><span class="resource-note" data-lang-es="Exploración conceptual de separación causal en teoría cuántica de campos algebraica." data-lang-en="Conceptual exploration of causal separation in algebraic quantum field theory.">Exploración conceptual de separación causal en teoría cuántica de campos algebraica.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf" target="_blank" data-lang-es="On the Functional Derivative of the Scalar Field Action and the Associated Global Functional" data-lang-en="On the Functional Derivative of the Scalar Field Action and the Associated Global Functional">On the Functional Derivative of the Scalar Field Action and the Associated Global Functional</a><span class="resource-note" data-lang-es="Nota técnica sobre derivadas funcionales en la acción de campos escalares." data-lang-en="Technical note on functional derivatives in the scalar field action.">Nota técnica sobre derivadas funcionales en la acción de campos escalares.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="b.pdf" target="_blank" data-lang-es="The Lagrangian Formulation of the Simple Pendulum" data-lang-en="The Lagrangian Formulation of the Simple Pendulum">The Lagrangian Formulation of the Simple Pendulum</a><span class="resource-note" data-lang-es="Ejemplo clásico del formalismo lagrangiano aplicado al péndulo simple." data-lang-en="Classical example of the Lagrangian formalism applied to the simple pendulum.">Ejemplo clásico del formalismo lagrangiano aplicado al péndulo simple.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf" target="_blank" data-lang-es="Sistemas Cuánticos Compuestos y sus Funciones de Onda" data-lang-en="Composite Quantum Systems and Their Wave Functions">Composite Quantum Systems and Their Wave Functions</a><span class="resource-note" data-lang-es="Discusión de estados compuestos y estructura tensorial en mecánica cuántica." data-lang-en="Discussion of composite states and tensor structure in quantum mechanics.">Discusión de estados compuestos y estructura tensorial en mecánica cuántica.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf" target="_blank" data-lang-es="Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac" data-lang-en="Mathematical Formulation of the Heisenberg, Schrödinger and Dirac Pictures">Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac</a><span class="resource-note" data-lang-es="Comparación matemática entre las distintas imágenes de la mecánica cuántica." data-lang-en="Mathematical comparison of the different pictures of quantum mechanics.">Comparación matemática entre las distintas imágenes de la mecánica cuántica.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf" target="_blank" data-lang-es="ε-Ecuaciones Hamiltonianas de ADM de la Relatividad General" data-lang-en="ε-Hamiltonian ADM Equations of General Relativity">ε-Ecuaciones Hamiltonianas de ADM de la Relatividad General</a><span class="resource-note" data-lang-es="Apunte sobre la formulación hamiltoniana ADM en relatividad general." data-lang-en="Note on the ADM Hamiltonian formulation in general relativity.">Apunte sobre la formulación hamiltoniana ADM en relatividad general.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf" target="_blank" data-lang-es="El Problema de la Braquistócrona: minimización del tiempo mediante cálculo de variaciones" data-lang-en="The Brachistochrone Problem: Time Minimization via Calculus of Variations">The Brachistochrone Problem: Time Minimization via Calculus of Variations</a><span class="resource-note" data-lang-es="Aplicación del cálculo de variaciones a uno de los problemas clásicos más famosos." data-lang-en="Application of the calculus of variations to one of the most famous classical problems.">Aplicación del cálculo de variaciones a uno de los problemas clásicos más famosos.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf" target="_blank" data-lang-es="Variaciones de Campos en Haces Vectoriales con Conexión: una interpretación unificada activa y pasiva" data-lang-en="Field Variations on Vector Bundles with Connection: A Unified Active and Passive Interpretation">Field Variations on Vector Bundles with Connection: A Unified Active and Passive Interpretation</a><span class="resource-note" data-lang-es="Estudio geométrico de variaciones de campos sobre haces vectoriales con conexión, incluyendo interpretaciones activas y pasivas." data-lang-en="Geometric study of field variations on vector bundles with connection, including active and passive interpretations.">Geometric study of field variations on vector bundles with connection, including active and passive interpretations.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf" target="_blank" data-lang-es="Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación" data-lang-en="Free Vacuum, Interacting Vacuum, Dyson Series and Correlation Functions">Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación</a><span class="resource-note" data-lang-es="Notas sobre la relación entre el vacío libre y el vacío interactuante, la serie de Dyson y el cálculo perturbativo de funciones de correlación." data-lang-en="Notes on the relation between the free and interacting vacua, the Dyson series, and the perturbative computation of correlation functions.">Notas sobre la relación entre el vacío libre y el vacío interactuante, la serie de Dyson y el cálculo perturbativo de funciones de correlación.</span></div></li>
-        </ul>
-      </div>
-    </section>
+      <div class="glass-card max-w-6xl mx-auto p-8 rounded-[28px]">
+        <div class="text-center max-w-3xl mx-auto mb-8">
+          <p class="text-xs font-semibold tracking-[0.28em] uppercase text-slate-500 mb-2" data-lang-es="Biblioteca académica" data-lang-en="Academic library">Biblioteca académica</p>
+          <h3 class="text-3xl font-bold mb-3" data-lang-es="Notas, libros y ejercicios" data-lang-en="Notes, books, and exercises">Notas, libros y ejercicios</h3>
+          <p class="text-slate-600" data-lang-es="Busca por título, tema o categoría. Cada tarjeta abre el PDF en una pestaña nueva y también permite descargarlo." data-lang-en="Search by title, topic, or category. Each card opens the PDF in a new tab and also lets you download it.">Busca por título, tema o categoría. Cada tarjeta abre el PDF en una pestaña nueva y también permite descargarlo.</p>
+        </div>
 
-    <section id="exercises" class="py-8">
-      <div class="glass-card max-w-4xl mx-auto p-8 rounded-[28px]">
-        <h3 class="text-3xl font-bold text-center mb-6" data-lang-es="Ejercicios" data-lang-en="Exercises">Ejercicios</h3>
-        <ul class="resource-list text-sm md:text-base leading-relaxed">
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="Calculus_excercises.pdf" target="_blank" data-lang-es="Ejercicios de Cálculo Multivariable" data-lang-en="Multivariable Calculus Exercises">Ejercicios de Cálculo Multivariable</a><span class="resource-note" data-lang-es="Colección de problemas para practicar cálculo en varias variables." data-lang-en="Problem collection for practicing multivariable calculus.">Colección de problemas para practicar cálculo en varias variables.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="Linear_Algebra_Exercises.pdf" target="_blank" data-lang-es="Ejercicios de Álgebra Lineal" data-lang-en="Linear Algebra Exercises">Ejercicios de Álgebra Lineal</a><span class="resource-note" data-lang-es="Serie de ejercicios sobre espacios vectoriales, matrices y transformaciones lineales." data-lang-en="Exercise set on vector spaces, matrices, and linear transformations.">Serie de ejercicios sobre espacios vectoriales, matrices y transformaciones lineales.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="Differential_Equations_Exercises.pdf" target="_blank" data-lang-es="Ejercicios de Ecuaciones Diferenciales" data-lang-en="Differential Equations Exercises">Ejercicios de Ecuaciones Diferenciales</a><span class="resource-note" data-lang-es="Problemas para reforzar métodos clásicos de ecuaciones diferenciales." data-lang-en="Problems to strengthen classical methods in differential equations.">Problemas para reforzar métodos clásicos de ecuaciones diferenciales.</span></div></li>
-          <li class="resource-item"><span class="resource-bullet"></span><div class="resource-copy"><a class="resource-link" href="Control_Theory_Excercises.pdf" target="_blank" data-lang-es="Ejercicios de Teoría de Control" data-lang-en="Control Theory Exercises">Ejercicios de Teoría de Control</a><span class="resource-note" data-lang-es="Colección de problemas sobre sistemas dinámicos, estabilidad, control clásico y control óptimo." data-lang-en="Problem collection on dynamical systems, stability, classical control, and optimal control.">Colección de problemas sobre sistemas dinámicos, estabilidad, control clásico y control óptimo.</span></div></li>
-        </ul>
+        <div class="grid gap-4 mb-6">
+          <div class="relative">
+            <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500"></i>
+            <input id="resourceSearch" type="search" class="w-full rounded-xl border border-slate-300 bg-white/80 py-3 pl-12 pr-4 text-slate-900" placeholder="Buscar por título o tema" data-placeholder-es="Buscar por título o tema" data-placeholder-en="Search by title or topic">
+          </div>
+          <div class="flex flex-wrap justify-center gap-2" aria-label="Filtros de biblioteca">
+            <button type="button" class="filter-button active" data-filter="all" data-lang-es="Todo" data-lang-en="All">Todo</button>
+            <button type="button" class="filter-button" data-filter="book" data-lang-es="Libro" data-lang-en="Book">Libro</button>
+            <button type="button" class="filter-button" data-filter="qft" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</button>
+            <button type="button" class="filter-button" data-filter="relativity" data-lang-es="Relatividad" data-lang-en="Relativity">Relatividad</button>
+            <button type="button" class="filter-button" data-filter="geometry" data-lang-es="Geometría" data-lang-en="Geometry">Geometría</button>
+            <button type="button" class="filter-button" data-filter="classical" data-lang-es="Mecánica clásica" data-lang-en="Classical mechanics">Mecánica clásica</button>
+            <button type="button" class="filter-button" data-filter="exercises" data-lang-es="Ejercicios" data-lang-en="Exercises">Ejercicios</button>
+          </div>
+        </div>
+
+        <p id="emptyResources" class="hidden text-center text-slate-600 py-8" data-lang-es="No encontré recursos con esa búsqueda." data-lang-en="No resources matched that search.">No encontré recursos con esa búsqueda.</p>
+
+        <div id="resourceGrid" class="resource-grid">
+          <article class="resource-card" data-category="book" data-search="libro book texto principal project">
+            <div><span class="resource-pill" data-lang-es="Libro" data-lang-en="Book">Libro</span><h4 class="text-xl font-bold mt-3" data-lang-es="El Libro" data-lang-en="The Book">El Libro</h4><p class="resource-note mt-2" data-lang-es="Texto principal del proyecto con una presentación amplia del material." data-lang-en="Main project text with a broad presentation of the material.">Texto principal del proyecto con una presentación amplia del material.</p></div>
+            <div class="flex gap-4"><a href="Libro.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Libro.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="gauge faddeev popov integral de camino quantum field theory">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span><h4 class="text-xl font-bold mt-3" data-lang-es="Fijación Gauge y Determinante de Faddeev-Popov" data-lang-en="Gauge Fixing and Faddeev-Popov Determinant">Fijación Gauge y Determinante de Faddeev-Popov</h4><p class="resource-note mt-2" data-lang-es="Notas sobre fijación gauge en la integral de camino y su estructura matemática." data-lang-en="Notes on gauge fixing in the path integral and its mathematical structure.">Notas sobre fijación gauge en la integral de camino y su estructura matemática.</p></div>
+            <div class="flex gap-4"><a href="Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="relativity" data-search="einbein sistemas relativistas relativity">
+            <div><span class="resource-pill" data-lang-es="Relatividad" data-lang-en="Relativity">Relatividad</span><h4 class="text-xl font-bold mt-3" data-lang-es="The Einbein" data-lang-en="The Einbein">The Einbein</h4><p class="resource-note mt-2" data-lang-es="Apunte breve sobre el formalismo del einbein en sistemas relativistas." data-lang-en="Short note on the einbein formalism in relativistic systems.">Apunte breve sobre el formalismo del einbein en sistemas relativistas.</p></div>
+            <div class="flex gap-4"><a href="The Einbein.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="The Einbein.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="dirac ecuacion heuristic quantum mechanics algebra">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span><h4 class="text-xl font-bold mt-3" data-lang-es="Forma Heurística de la Ecuación de Dirac" data-lang-en="Heuristic Form of the Dirac Equation">Forma Heurística de la Ecuación de Dirac</h4><p class="resource-note mt-2" data-lang-es="Introducción intuitiva a la estructura física y algebraica de la ecuación de Dirac." data-lang-en="Intuitive introduction to the physical and algebraic structure of the Dirac equation.">Introducción intuitiva a la estructura física y algebraica de la ecuación de Dirac.</p></div>
+            <div class="flex gap-4"><a href="Forma Heurística de la Ecuación de Dirac.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Forma Heurística de la Ecuación de Dirac.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="geometry" data-search="su2 lie group vision fisica geometry quantum">
+            <div><span class="resource-pill" data-lang-es="Geometría" data-lang-en="Geometry">Geometría</span><h4 class="text-xl font-bold mt-3" data-lang-es="El grupo SU(2) como grupo de Lie y Visión Física" data-lang-en="The group SU(2) as a Lie group and Physical Perspective">El grupo SU(2) como grupo de Lie y Visión Física</h4><p class="resource-note mt-2" data-lang-es="Visión geométrica y física del grupo SU(2) y sus aplicaciones." data-lang-en="Geometric and physical view of the group SU(2) and its applications.">Visión geométrica y física del grupo SU(2) y sus aplicaciones.</p></div>
+            <div class="flex gap-4"><a href="El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="algebraic quantum field theory regiones acausalmente desconectadas causal">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span><h4 class="text-xl font-bold mt-3" data-lang-es="Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica" data-lang-en="Acausally Disconnected Regions in Algebraic Quantum Field Theory">Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica</h4><p class="resource-note mt-2" data-lang-es="Exploración conceptual de separación causal en teoría cuántica de campos algebraica." data-lang-en="Conceptual exploration of causal separation in algebraic quantum field theory.">Exploración conceptual de separación causal en teoría cuántica de campos algebraica.</p></div>
+            <div class="flex gap-4"><a href="a.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="a.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="functional derivative scalar field action global functional">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span><h4 class="text-xl font-bold mt-3" data-lang-es="On the Functional Derivative of the Scalar Field Action" data-lang-en="On the Functional Derivative of the Scalar Field Action">On the Functional Derivative of the Scalar Field Action</h4><p class="resource-note mt-2" data-lang-es="Nota técnica sobre derivadas funcionales en la acción de campos escalares." data-lang-en="Technical note on functional derivatives in the scalar field action.">Nota técnica sobre derivadas funcionales en la acción de campos escalares.</p></div>
+            <div class="flex gap-4"><a href="On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="classical" data-search="lagrangian simple pendulum pendulo mecanica clasica">
+            <div><span class="resource-pill" data-lang-es="Mecánica clásica" data-lang-en="Classical mechanics">Mecánica clásica</span><h4 class="text-xl font-bold mt-3" data-lang-es="The Lagrangian Formulation of the Simple Pendulum" data-lang-en="The Lagrangian Formulation of the Simple Pendulum">The Lagrangian Formulation of the Simple Pendulum</h4><p class="resource-note mt-2" data-lang-es="Ejemplo clásico del formalismo lagrangiano aplicado al péndulo simple." data-lang-en="Classical example of the Lagrangian formalism applied to the simple pendulum.">Ejemplo clásico del formalismo lagrangiano aplicado al péndulo simple.</p></div>
+            <div class="flex gap-4"><a href="b.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="b.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="composite quantum systems wave functions tensorial mecanica cuantica">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span><h4 class="text-xl font-bold mt-3" data-lang-es="Sistemas Cuánticos Compuestos y sus Funciones de Onda" data-lang-en="Composite Quantum Systems and Their Wave Functions">Sistemas Cuánticos Compuestos y sus Funciones de Onda</h4><p class="resource-note mt-2" data-lang-es="Discusión de estados compuestos y estructura tensorial en mecánica cuántica." data-lang-en="Discussion of composite states and tensor structure in quantum mechanics.">Discusión de estados compuestos y estructura tensorial en mecánica cuántica.</p></div>
+            <div class="flex gap-4"><a href="Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="heisenberg schrodinger dirac pictures quantum mechanics">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span><h4 class="text-xl font-bold mt-3" data-lang-es="Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac" data-lang-en="Mathematical Formulation of the Heisenberg, Schrödinger and Dirac Pictures">Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac</h4><p class="resource-note mt-2" data-lang-es="Comparación matemática entre las distintas imágenes de la mecánica cuántica." data-lang-en="Mathematical comparison of the different pictures of quantum mechanics.">Comparación matemática entre las distintas imágenes de la mecánica cuántica.</p></div>
+            <div class="flex gap-4"><a href="Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="relativity" data-search="adm hamiltonian equations general relativity relatividad">
+            <div><span class="resource-pill" data-lang-es="Relatividad" data-lang-en="Relativity">Relatividad</span><h4 class="text-xl font-bold mt-3" data-lang-es="ε-Ecuaciones Hamiltonianas de ADM de la Relatividad General" data-lang-en="ε-Hamiltonian ADM Equations of General Relativity">ε-Ecuaciones Hamiltonianas de ADM de la Relatividad General</h4><p class="resource-note mt-2" data-lang-es="Apunte sobre la formulación hamiltoniana ADM en relatividad general." data-lang-en="Note on the ADM Hamiltonian formulation in general relativity.">Apunte sobre la formulación hamiltoniana ADM en relatividad general.</p></div>
+            <div class="flex gap-4"><a href="epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="classical" data-search="braquistocrona brachistochrone calculus of variations">
+            <div><span class="resource-pill" data-lang-es="Mecánica clásica" data-lang-en="Classical mechanics">Mecánica clásica</span><h4 class="text-xl font-bold mt-3" data-lang-es="El Problema de la Braquistócrona" data-lang-en="The Brachistochrone Problem">El Problema de la Braquistócrona</h4><p class="resource-note mt-2" data-lang-es="Aplicación del cálculo de variaciones a uno de los problemas clásicos más famosos." data-lang-en="Application of the calculus of variations to one of the most famous classical problems.">Aplicación del cálculo de variaciones a uno de los problemas clásicos más famosos.</p></div>
+            <div class="flex gap-4"><a href="The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="geometry" data-search="field variations vector bundles connection active passive geometry">
+            <div><span class="resource-pill" data-lang-es="Geometría" data-lang-en="Geometry">Geometría</span><h4 class="text-xl font-bold mt-3" data-lang-es="Variaciones de Campos en Haces Vectoriales con Conexión" data-lang-en="Field Variations on Vector Bundles with Connection">Variaciones de Campos en Haces Vectoriales con Conexión</h4><p class="resource-note mt-2" data-lang-es="Estudio geométrico de variaciones de campos sobre haces vectoriales con conexión." data-lang-en="Geometric study of field variations on vector bundles with connection.">Estudio geométrico de variaciones de campos sobre haces vectoriales con conexión.</p></div>
+            <div class="flex gap-4"><a href="Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="vacio libre interactuante serie dyson funciones correlacion">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span><h4 class="text-xl font-bold mt-3" data-lang-es="Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación" data-lang-en="Free Vacuum, Interacting Vacuum, Dyson Series and Correlation Functions">Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación</h4><p class="resource-note mt-2" data-lang-es="Notas sobre la relación entre el vacío libre y el vacío interactuante y el cálculo perturbativo." data-lang-en="Notes on free and interacting vacua and perturbative computation.">Notas sobre la relación entre el vacío libre y el vacío interactuante y el cálculo perturbativo.</p></div>
+            <div class="flex gap-4"><a href="Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="exercises" data-search="calculo multivariable ejercicios calculus exercises">
+            <div><span class="resource-pill" data-lang-es="Ejercicios" data-lang-en="Exercises">Ejercicios</span><h4 class="text-xl font-bold mt-3" data-lang-es="Ejercicios de Cálculo Multivariable" data-lang-en="Multivariable Calculus Exercises">Ejercicios de Cálculo Multivariable</h4><p class="resource-note mt-2" data-lang-es="Colección de problemas para practicar cálculo en varias variables." data-lang-en="Problem collection for practicing multivariable calculus.">Colección de problemas para practicar cálculo en varias variables.</p></div>
+            <div class="flex gap-4"><a href="Calculus_excercises.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Calculus_excercises.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="exercises" data-search="algebra lineal ejercicios linear algebra matrices">
+            <div><span class="resource-pill" data-lang-es="Ejercicios" data-lang-en="Exercises">Ejercicios</span><h4 class="text-xl font-bold mt-3" data-lang-es="Ejercicios de Álgebra Lineal" data-lang-en="Linear Algebra Exercises">Ejercicios de Álgebra Lineal</h4><p class="resource-note mt-2" data-lang-es="Serie de ejercicios sobre espacios vectoriales, matrices y transformaciones lineales." data-lang-en="Exercise set on vector spaces, matrices, and linear transformations.">Serie de ejercicios sobre espacios vectoriales, matrices y transformaciones lineales.</p></div>
+            <div class="flex gap-4"><a href="Linear_Algebra_Exercises.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Linear_Algebra_Exercises.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="exercises" data-search="ecuaciones diferenciales differential equations ejercicios">
+            <div><span class="resource-pill" data-lang-es="Ejercicios" data-lang-en="Exercises">Ejercicios</span><h4 class="text-xl font-bold mt-3" data-lang-es="Ejercicios de Ecuaciones Diferenciales" data-lang-en="Differential Equations Exercises">Ejercicios de Ecuaciones Diferenciales</h4><p class="resource-note mt-2" data-lang-es="Problemas para reforzar métodos clásicos de ecuaciones diferenciales." data-lang-en="Problems to strengthen classical methods in differential equations.">Problemas para reforzar métodos clásicos de ecuaciones diferenciales.</p></div>
+            <div class="flex gap-4"><a href="Differential_Equations_Exercises.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Differential_Equations_Exercises.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="exercises" data-search="teoria de control control theory ejercicios systems stability optimal">
+            <div><span class="resource-pill" data-lang-es="Ejercicios" data-lang-en="Exercises">Ejercicios</span><h4 class="text-xl font-bold mt-3" data-lang-es="Ejercicios de Teoría de Control" data-lang-en="Control Theory Exercises">Ejercicios de Teoría de Control</h4><p class="resource-note mt-2" data-lang-es="Colección de problemas sobre sistemas dinámicos, estabilidad, control clásico y control óptimo." data-lang-en="Problem collection on dynamical systems, stability, classical control, and optimal control.">Colección de problemas sobre sistemas dinámicos, estabilidad, control clásico y control óptimo.</p></div>
+            <div class="flex gap-4"><a href="Control_Theory_Excercises.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Control_Theory_Excercises.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -284,7 +498,7 @@
             </p>
           </div>
           <div class="flex gap-3">
-            <a href="Omar_Corona_Tejeda_CV.pdf" target="_blank" class="px-5 py-3 rounded-xl bg-slate-900 text-white font-semibold no-underline"
+            <a href="Omar_Corona_Tejeda_CV.pdf" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-slate-900 text-white font-semibold no-underline"
                data-lang-es="Abrir PDF" data-lang-en="Open PDF">Abrir PDF</a>
             <a href="Omar_Corona_Tejeda_CV.pdf" download class="curriculum-download px-5 py-3 rounded-xl font-semibold no-underline transition"
                data-lang-es="Descargar" data-lang-en="Download">Descargar</a>
@@ -330,6 +544,22 @@
            data-lang-en="For more information about availability, schedules, and fees, please contact me directly.">
           Para más información sobre disponibilidad, horarios y costos, contáctame directamente.
         </p>
+      </div>
+    </section>
+
+    <section id="citation" class="py-8">
+      <div class="glass-card max-w-4xl mx-auto p-8 rounded-[28px]">
+        <h3 class="text-3xl font-bold text-center mb-6" data-lang-es="Cómo citar y usar el material" data-lang-en="How to cite and use the material">Cómo citar y usar el material</h3>
+        <div class="grid gap-5 md:grid-cols-2">
+          <div class="p-5 rounded-lg bg-white/60 border border-slate-200">
+            <h4 class="font-bold mb-2" data-lang-es="Cita sugerida" data-lang-en="Suggested citation">Cita sugerida</h4>
+            <p class="text-slate-700 leading-relaxed" data-lang-es="Corona Tejeda, Omar. The Mathematical Physics Project. Biblioteca digital de notas y ejercicios de física matemática." data-lang-en="Corona Tejeda, Omar. The Mathematical Physics Project. Digital library of mathematical physics notes and exercises.">Corona Tejeda, Omar. The Mathematical Physics Project. Biblioteca digital de notas y ejercicios de física matemática.</p>
+          </div>
+          <div class="p-5 rounded-lg bg-white/60 border border-slate-200">
+            <h4 class="font-bold mb-2" data-lang-es="Uso académico" data-lang-en="Academic use">Uso académico</h4>
+            <p class="text-slate-700 leading-relaxed" data-lang-es="Puedes usar estos materiales como apoyo de estudio, docencia o investigación, citando el proyecto y el documento correspondiente." data-lang-en="You may use these materials for study, teaching, or research support by citing the project and the corresponding document.">Puedes usar estos materiales como apoyo de estudio, docencia o investigación, citando el proyecto y el documento correspondiente.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -388,25 +618,31 @@
         <h3 class="text-3xl font-bold mb-6" data-lang-es="Sígueme" data-lang-en="Follow Me">Sígueme</h3>
         <p class="text-slate-600 mb-6" data-lang-es="Conéctate conmigo a través de estas plataformas:" data-lang-en="Connect with me through these platforms:">Conéctate conmigo a través de estas plataformas:</p>
         <div class="flex justify-center gap-4 flex-wrap">
-          <a href="https://wa.me/522722839135" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-green-500 text-white rounded-xl shadow-md no-underline hover:opacity-90">WhatsApp</a>
-          <a href="https://www.facebook.com/fortin.corona" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-blue-600 text-white rounded-xl shadow-md no-underline hover:opacity-90">Facebook</a>
-          <a href="https://www.linkedin.com/in/omar-corona-tejeda-717b51284" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-blue-700 text-white rounded-xl shadow-md no-underline hover:opacity-90">LinkedIn</a>
-          <a href="https://www.instagram.com/fortin_omar/" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-pink-500 text-white rounded-xl shadow-md no-underline hover:opacity-90">Instagram</a>
-          <a href="https://www.youtube.com/@omarct1989" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-red-600 text-white rounded-xl shadow-md no-underline hover:opacity-90">YouTube</a>
+          <a href="https://wa.me/522722839135" target="_blank" rel="noopener noreferrer" class="icon-link flex items-center gap-2 px-5 py-3 bg-green-500 text-white rounded-xl shadow-md no-underline hover:opacity-90"><i data-lucide="message-circle"></i><span>WhatsApp</span></a>
+          <a href="https://www.facebook.com/fortin.corona" target="_blank" rel="noopener noreferrer" class="icon-link flex items-center gap-2 px-5 py-3 bg-blue-600 text-white rounded-xl shadow-md no-underline hover:opacity-90"><i data-lucide="facebook"></i><span>Facebook</span></a>
+          <a href="https://www.linkedin.com/in/omar-corona-tejeda-717b51284" target="_blank" rel="noopener noreferrer" class="icon-link flex items-center gap-2 px-5 py-3 bg-blue-700 text-white rounded-xl shadow-md no-underline hover:opacity-90"><i data-lucide="linkedin"></i><span>LinkedIn</span></a>
+          <a href="https://www.instagram.com/fortin_omar/" target="_blank" rel="noopener noreferrer" class="icon-link flex items-center gap-2 px-5 py-3 bg-pink-500 text-white rounded-xl shadow-md no-underline hover:opacity-90"><i data-lucide="instagram"></i><span>Instagram</span></a>
+          <a href="https://www.youtube.com/@omarct1989" target="_blank" rel="noopener noreferrer" class="icon-link flex items-center gap-2 px-5 py-3 bg-red-600 text-white rounded-xl shadow-md no-underline hover:opacity-90"><i data-lucide="youtube"></i><span data-lang-es="Canal de YouTube" data-lang-en="YouTube Channel">Canal de YouTube</span></a>
+          <a href="https://github.com/artinnether/the_mathematical_physics_project" target="_blank" rel="noopener noreferrer" class="icon-link flex items-center gap-2 px-5 py-3 bg-slate-900 text-white rounded-xl shadow-md no-underline hover:opacity-90"><i data-lucide="github"></i><span>GitHub</span></a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="py-10 text-center text-sm text-slate-600">
-    <span data-lang-es="© 2025 Omar Corona Tejeda. Todos los derechos reservados." data-lang-en="© 2025 Omar Corona Tejeda. All rights reserved.">© 2025 Omar Corona Tejeda. Todos los derechos reservados.</span>
+    <span data-lang-es="© 2026 Omar Corona Tejeda. Todos los derechos reservados." data-lang-en="© 2026 Omar Corona Tejeda. All rights reserved.">© 2026 Omar Corona Tejeda. Todos los derechos reservados.</span>
   </footer>
 
   <script>
     const overlay = document.getElementById('language-overlay');
     const toggleBtn = document.getElementById('toggleLang');
     const storedLang = localStorage.getItem('tmpp-lang');
+    const resourceSearch = document.getElementById('resourceSearch');
+    const resourceCards = Array.from(document.querySelectorAll('.resource-card[data-category]'));
+    const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
+    const emptyResources = document.getElementById('emptyResources');
     let currentLang = storedLang || null;
+    let activeFilter = 'all';
 
     function setLanguage(lang) {
       currentLang = lang;
@@ -423,6 +659,31 @@
 
       toggleBtn.textContent = lang === 'es' ? 'ES / EN' : 'EN / ES';
       overlay.classList.add('hidden');
+      renderResourceFilters();
+    }
+
+    function normalizeText(value) {
+      return value
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function renderResourceFilters() {
+      const query = normalizeText(resourceSearch.value.trim());
+      let visibleCount = 0;
+
+      resourceCards.forEach((card) => {
+        const matchesCategory = activeFilter === 'all' || card.dataset.category === activeFilter;
+        const searchableText = normalizeText(`${card.innerText} ${card.dataset.search || ''}`);
+        const matchesQuery = !query || searchableText.includes(query);
+        const isVisible = matchesCategory && matchesQuery;
+
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      });
+
+      emptyResources.classList.toggle('hidden', visibleCount > 0);
     }
 
     if (!currentLang) {
@@ -442,6 +703,21 @@
       }
       setLanguage(currentLang === 'es' ? 'en' : 'es');
     });
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeFilter = button.dataset.filter;
+        filterButtons.forEach((item) => item.classList.toggle('active', item === button));
+        renderResourceFilters();
+      });
+    });
+
+    resourceSearch.addEventListener('input', renderResourceFilters);
+    renderResourceFilters();
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
 
     const contactForm = document.getElementById('contactForm');
     const contactMsg = document.getElementById('successMsg');

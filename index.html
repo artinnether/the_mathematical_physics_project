@@ -328,6 +328,71 @@
         gap: 6px;
       }
     }
+
+    #pdfs #resourceGrid {
+      display: block !important;
+      list-style: disc;
+      padding-left: 24px;
+    }
+
+    #pdfs #resourceGrid .resource-card {
+      display: list-item !important;
+      list-style: disc;
+      margin: 0 0 12px;
+      padding: 0 0 0 2px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    #pdfs #resourceGrid .resource-card[hidden] {
+      display: none !important;
+    }
+
+    #pdfs #resourceGrid .resource-card::before {
+      display: none;
+    }
+
+    #pdfs #resourceGrid .resource-card > div:first-child,
+    #pdfs #resourceGrid .resource-card > div:last-child {
+      display: inline;
+    }
+
+    #pdfs #resourceGrid h4 {
+      display: inline;
+      color: #163a63;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    #pdfs #resourceGrid .resource-note {
+      display: block;
+      margin-top: 1px;
+    }
+
+    #pdfs #resourceGrid .resource-pill {
+      display: inline;
+      margin-right: 8px;
+      padding: 0;
+      background: transparent;
+      color: rgba(17, 24, 39, 0.56);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: none;
+    }
+
+    #pdfs #resourceGrid .resource-card > div:last-child::before {
+      content: " ";
+    }
+
+    #pdfs #resourceGrid .resource-card > div:last-child a {
+      display: inline;
+      margin-left: 10px;
+      font-size: 0.92rem;
+    }
   </style>
 </head>
 <body>

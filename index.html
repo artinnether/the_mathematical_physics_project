@@ -191,19 +191,34 @@
     #resourceGrid {
       display: grid;
       gap: 10px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
     #resourceGrid .resource-card {
+      position: relative;
       min-height: auto;
       flex-direction: row;
       align-items: flex-start;
-      gap: 18px;
-      padding: 14px 0 14px 14px;
+      gap: 16px;
+      padding: 8px 0 8px 28px;
       border: 0;
       border-left: 3px solid rgba(216, 194, 138, 0.95);
       border-radius: 0;
       background: transparent;
       box-shadow: none;
+    }
+
+    #resourceGrid .resource-card::before {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 20px;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #8b6f3d;
     }
 
     #resourceGrid .resource-card > div:first-child {
@@ -214,6 +229,34 @@
       flex: 0 0 auto;
       align-items: center;
       padding-top: 2px;
+    }
+
+    #resourceGrid .resource-pill {
+      margin-right: 8px;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      color: rgba(17, 24, 39, 0.58);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      text-transform: none;
+    }
+
+    #resourceGrid h4 {
+      display: inline;
+      margin: 0;
+      color: #163a63;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    #resourceGrid .resource-note {
+      margin-top: 2px;
+    }
+
+    #resourceGrid a {
+      font-size: 0.92rem;
     }
 
     .resource-card[hidden] {
@@ -282,7 +325,7 @@
 
       #resourceGrid .resource-card {
         flex-direction: column;
-        gap: 10px;
+        gap: 6px;
       }
     }
   </style>

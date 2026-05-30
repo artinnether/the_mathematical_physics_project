@@ -188,6 +188,34 @@
       background: rgba(255, 255, 255, 0.58);
     }
 
+    #resourceGrid {
+      display: grid;
+      gap: 10px;
+    }
+
+    #resourceGrid .resource-card {
+      min-height: auto;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 14px 0 14px 14px;
+      border: 0;
+      border-left: 3px solid rgba(216, 194, 138, 0.95);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    #resourceGrid .resource-card > div:first-child {
+      flex: 1 1 auto;
+    }
+
+    #resourceGrid .resource-card > div:last-child {
+      flex: 0 0 auto;
+      align-items: center;
+      padding-top: 2px;
+    }
+
     .resource-card[hidden] {
       display: none;
     }
@@ -250,6 +278,11 @@
 
       .resource-card {
         min-height: auto;
+      }
+
+      #resourceGrid .resource-card {
+        flex-direction: column;
+        gap: 10px;
       }
     }
   </style>
@@ -380,7 +413,7 @@
         <div class="text-center max-w-3xl mx-auto mb-8">
           <p class="text-xs font-semibold tracking-[0.28em] uppercase text-slate-500 mb-2" data-lang-es="Biblioteca académica" data-lang-en="Academic library">Biblioteca académica</p>
           <h3 class="text-3xl font-bold mb-3" data-lang-es="Notas, libros y ejercicios" data-lang-en="Notes, books, and exercises">Notas, libros y ejercicios</h3>
-          <p class="text-slate-600" data-lang-es="Busca por título, tema o categoría. Cada tarjeta abre el PDF en una pestaña nueva y también permite descargarlo." data-lang-en="Search by title, topic, or category. Each card opens the PDF in a new tab and also lets you download it.">Busca por título, tema o categoría. Cada tarjeta abre el PDF en una pestaña nueva y también permite descargarlo.</p>
+          <p class="text-slate-600" data-lang-es="Busca por título, tema o categoría. La lista se mantiene en orden cronológico y cada recurso se puede abrir o descargar." data-lang-en="Search by title, topic, or category. The list stays in chronological order and each resource can be opened or downloaded.">Busca por título, tema o categoría. La lista se mantiene en orden cronológico y cada recurso se puede abrir o descargar.</p>
         </div>
 
         <div class="grid gap-4 mb-6">
@@ -630,9 +663,30 @@
     const toggleBtn = document.getElementById('toggleLang');
     const storedLang = localStorage.getItem('tmpp-lang');
     const resourceSearch = document.getElementById('resourceSearch');
+    const resourceGrid = document.getElementById('resourceGrid');
     const resourceCards = Array.from(document.querySelectorAll('.resource-card[data-category]'));
     const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
     const emptyResources = document.getElementById('emptyResources');
+    const resourceDates = {
+      'Libro.pdf': '2026-05-27T21:26:00',
+      'Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf': '2026-05-27T21:17:00',
+      'Control_Theory_Excercises.pdf': '2026-05-09T10:10:00',
+      'Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf': '2026-05-09T10:10:00',
+      'epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf': '2026-04-23T09:53:00',
+      'b.pdf': '2026-04-23T09:53:00',
+      'a.pdf': '2026-04-23T09:53:00',
+      'The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf': '2026-04-23T09:53:00',
+      'The Einbein.pdf': '2026-04-23T09:53:00',
+      'On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf': '2026-04-23T09:53:00',
+      'Linear_Algebra_Exercises.pdf': '2026-04-23T09:53:00',
+      'Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf': '2026-04-23T09:53:00',
+      'Forma Heurística de la Ecuación de Dirac.pdf': '2026-04-23T09:53:00',
+      'Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf': '2026-04-23T09:53:00',
+      'El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf': '2026-04-23T09:53:00',
+      'Differential_Equations_Exercises.pdf': '2026-04-23T09:53:00',
+      'Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf': '2026-04-23T09:53:00',
+      'Calculus_excercises.pdf': '2026-04-23T09:53:00'
+    };
     let currentLang = storedLang || null;
     let activeFilter = 'all';
 
@@ -677,6 +731,19 @@
 
       emptyResources.classList.toggle('hidden', visibleCount > 0);
     }
+
+    function getResourceTimestamp(card) {
+      const href = card.querySelector('a[href]')?.getAttribute('href');
+      return new Date(resourceDates[href] || '1970-01-01T00:00:00').getTime();
+    }
+
+    function sortResourcesChronologically() {
+      resourceCards
+        .sort((a, b) => getResourceTimestamp(b) - getResourceTimestamp(a))
+        .forEach((card) => resourceGrid.appendChild(card));
+    }
+
+    sortResourcesChronologically();
 
     if (!currentLang) {
       overlay.classList.remove('hidden');

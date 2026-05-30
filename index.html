@@ -329,13 +329,23 @@
       }
     }
 
-    #pdfs #resourceGrid {
+    .resource-section-title {
+      margin: 28px 0 12px;
+      padding-top: 4px;
+      color: #1f2a30;
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    #pdfs #resourceGrid,
+    #pdfs #exerciseGrid {
       display: block !important;
       list-style: disc;
       padding-left: 24px;
     }
 
-    #pdfs #resourceGrid .resource-card {
+    #pdfs #resourceGrid .resource-card,
+    #pdfs #exerciseGrid .resource-card {
       display: list-item !important;
       list-style: disc;
       margin: 0 0 12px;
@@ -346,20 +356,25 @@
       box-shadow: none;
     }
 
-    #pdfs #resourceGrid .resource-card[hidden] {
+    #pdfs #resourceGrid .resource-card[hidden],
+    #pdfs #exerciseGrid .resource-card[hidden] {
       display: none !important;
     }
 
-    #pdfs #resourceGrid .resource-card::before {
+    #pdfs #resourceGrid .resource-card::before,
+    #pdfs #exerciseGrid .resource-card::before {
       display: none;
     }
 
     #pdfs #resourceGrid .resource-card > div:first-child,
-    #pdfs #resourceGrid .resource-card > div:last-child {
+    #pdfs #resourceGrid .resource-card > div:last-child,
+    #pdfs #exerciseGrid .resource-card > div:first-child,
+    #pdfs #exerciseGrid .resource-card > div:last-child {
       display: inline;
     }
 
-    #pdfs #resourceGrid h4 {
+    #pdfs #resourceGrid h4,
+    #pdfs #exerciseGrid h4 {
       display: inline;
       color: #163a63;
       font-size: 1rem;
@@ -367,12 +382,25 @@
       line-height: 1.45;
     }
 
-    #pdfs #resourceGrid .resource-note {
+    #pdfs #resourceGrid h4 a,
+    #pdfs #exerciseGrid h4 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    #pdfs #resourceGrid h4 a:hover,
+    #pdfs #exerciseGrid h4 a:hover {
+      text-decoration: underline;
+    }
+
+    #pdfs #resourceGrid .resource-note,
+    #pdfs #exerciseGrid .resource-note {
       display: block;
       margin-top: 1px;
     }
 
-    #pdfs #resourceGrid .resource-pill {
+    #pdfs #resourceGrid .resource-pill,
+    #pdfs #exerciseGrid .resource-pill {
       display: inline;
       margin-right: 8px;
       padding: 0;
@@ -384,11 +412,13 @@
       text-transform: none;
     }
 
-    #pdfs #resourceGrid .resource-card > div:last-child::before {
+    #pdfs #resourceGrid .resource-card > div:last-child::before,
+    #pdfs #exerciseGrid .resource-card > div:last-child::before {
       content: " ";
     }
 
-    #pdfs #resourceGrid .resource-card > div:last-child a {
+    #pdfs #resourceGrid .resource-card > div:last-child a,
+    #pdfs #exerciseGrid .resource-card > div:last-child a {
       display: inline;
       margin-left: 10px;
       font-size: 0.92rem;
@@ -542,6 +572,7 @@
 
         <p id="emptyResources" class="hidden text-center text-slate-600 py-8" data-lang-es="No encontré recursos con esa búsqueda." data-lang-en="No resources matched that search.">No encontré recursos con esa búsqueda.</p>
 
+        <h4 id="materialHeading" class="resource-section-title" data-lang-es="Material" data-lang-en="Material">Material</h4>
         <div id="resourceGrid" class="resource-grid">
           <article class="resource-card" data-category="book" data-search="libro book texto principal project">
             <div><span class="resource-pill" data-lang-es="Libro" data-lang-en="Book">Libro</span><h4 class="text-xl font-bold mt-3" data-lang-es="El Libro" data-lang-en="The Book">El Libro</h4><p class="resource-note mt-2" data-lang-es="Texto principal del proyecto con una presentación amplia del material." data-lang-en="Main project text with a broad presentation of the material.">Texto principal del proyecto con una presentación amplia del material.</p></div>
@@ -616,6 +647,9 @@
             <div class="flex gap-4"><a href="Control_Theory_Excercises.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Control_Theory_Excercises.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
           </article>
         </div>
+
+        <h4 id="exerciseHeading" class="resource-section-title" data-lang-es="Ejercicios" data-lang-en="Exercises">Ejercicios</h4>
+        <div id="exerciseGrid" class="resource-grid"></div>
       </div>
     </section>
 
@@ -772,6 +806,9 @@
     const storedLang = localStorage.getItem('tmpp-lang');
     const resourceSearch = document.getElementById('resourceSearch');
     const resourceGrid = document.getElementById('resourceGrid');
+    const exerciseGrid = document.getElementById('exerciseGrid');
+    const materialHeading = document.getElementById('materialHeading');
+    const exerciseHeading = document.getElementById('exerciseHeading');
     const resourceCards = Array.from(document.querySelectorAll('.resource-card[data-category]'));
     const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
     const emptyResources = document.getElementById('emptyResources');
@@ -813,6 +850,7 @@
 
       toggleBtn.textContent = lang === 'es' ? 'ES / EN' : 'EN / ES';
       overlay.classList.add('hidden');
+      makeResourceTitlesClickable();
       renderResourceFilters();
     }
 
@@ -826,6 +864,8 @@
     function renderResourceFilters() {
       const query = normalizeText(resourceSearch.value.trim());
       let visibleCount = 0;
+      let visibleMaterialCount = 0;
+      let visibleExerciseCount = 0;
 
       resourceCards.forEach((card) => {
         const matchesCategory = activeFilter === 'all' || card.dataset.category === activeFilter;
@@ -834,10 +874,19 @@
         const isVisible = matchesCategory && matchesQuery;
 
         card.hidden = !isVisible;
-        if (isVisible) visibleCount += 1;
+        if (isVisible) {
+          visibleCount += 1;
+          if (card.dataset.category === 'exercises') {
+            visibleExerciseCount += 1;
+          } else {
+            visibleMaterialCount += 1;
+          }
+        }
       });
 
       emptyResources.classList.toggle('hidden', visibleCount > 0);
+      materialHeading.hidden = visibleMaterialCount === 0;
+      exerciseHeading.hidden = visibleExerciseCount === 0;
     }
 
     function getResourceTimestamp(card) {
@@ -845,12 +894,35 @@
       return new Date(resourceDates[href] || '1970-01-01T00:00:00').getTime();
     }
 
+    function makeResourceTitlesClickable() {
+      resourceCards.forEach((card) => {
+        const title = card.querySelector('h4');
+        const openLink = card.querySelector('a[href]');
+
+        if (!title || !openLink || title.querySelector('a')) return;
+
+        const titleLink = document.createElement('a');
+        titleLink.href = openLink.getAttribute('href');
+        titleLink.target = '_blank';
+        titleLink.rel = 'noopener noreferrer';
+        titleLink.textContent = title.textContent;
+        titleLink.setAttribute('data-lang-es', title.getAttribute('data-lang-es'));
+        titleLink.setAttribute('data-lang-en', title.getAttribute('data-lang-en'));
+        title.textContent = '';
+        title.appendChild(titleLink);
+      });
+    }
+
     function sortResourcesChronologically() {
       resourceCards
         .sort((a, b) => getResourceTimestamp(b) - getResourceTimestamp(a))
-        .forEach((card) => resourceGrid.appendChild(card));
+        .forEach((card) => {
+          const targetGrid = card.dataset.category === 'exercises' ? exerciseGrid : resourceGrid;
+          targetGrid.appendChild(card);
+        });
     }
 
+    makeResourceTitlesClickable();
     sortResourcesChronologically();
 
     if (!currentLang) {

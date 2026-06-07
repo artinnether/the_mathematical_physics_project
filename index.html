@@ -530,6 +530,17 @@
           <article class="resource-card">
             <div>
               <span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="Invariancia de Lorentz del campo y la acción de Klein-Gordon" data-lang-en="Lorentz Invariance of the Klein-Gordon Field and Action">Invariancia de Lorentz del campo y la acción de Klein-Gordon</h4>
+              <p class="resource-note mt-2" data-lang-es="Derivación de la ecuación de Klein-Gordon, invariancia de Lorentz y formulación lagrangiana de la acción." data-lang-en="Derivation of the Klein-Gordon equation, Lorentz invariance, and the Lagrangian formulation of the action.">Derivación de la ecuación de Klein-Gordon, invariancia de Lorentz y formulación lagrangiana de la acción.</p>
+            </div>
+            <a href="Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Abrir PDF</span>
+            </a>
+          </article>
+          <article class="resource-card">
+            <div>
+              <span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span>
               <h4 class="text-xl font-bold mt-3" data-lang-es="Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación" data-lang-en="Free Vacuum, Interacting Vacuum, Dyson Series and Correlation Functions">Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación</h4>
               <p class="resource-note mt-2" data-lang-es="Notas sobre vacío interactuante, serie de Dyson y cálculo perturbativo." data-lang-en="Notes on interacting vacua, the Dyson series, and perturbative computation.">Notas sobre vacío interactuante, serie de Dyson y cálculo perturbativo.</p>
             </div>
@@ -591,6 +602,10 @@
 
         <h4 id="materialHeading" class="resource-section-title" data-lang-es="Material" data-lang-en="Material">Material</h4>
         <div id="resourceGrid" class="resource-grid">
+          <article class="resource-card" data-category="qft" data-search="klein gordon lorentz invariance action scalar field lagrangian d'alembertian relativistic quantum field theory">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span><h4 class="text-xl font-bold mt-3" data-lang-es="Invariancia de Lorentz del campo y la acción de Klein-Gordon" data-lang-en="Lorentz Invariance of the Klein-Gordon Field and Action">Invariancia de Lorentz del campo y la acción de Klein-Gordon</h4><p class="resource-note mt-2" data-lang-es="Nota sobre la ecuación de Klein-Gordon, la invariancia del d'Alembertiano y la acción lagrangiana de un campo escalar real." data-lang-en="Note on the Klein-Gordon equation, invariance of the d'Alembertian, and the Lagrangian action of a real scalar field.">Nota sobre la ecuación de Klein-Gordon, la invariancia del d'Alembertiano y la acción lagrangiana de un campo escalar real.</p></div>
+            <div class="flex gap-4"><a href="Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
           <article class="resource-card" data-category="book" data-search="libro book texto principal project">
             <div><span class="resource-pill" data-lang-es="Libro" data-lang-en="Book">Libro</span><h4 class="text-xl font-bold mt-3" data-lang-es="El Libro" data-lang-en="The Book">El Libro</h4><p class="resource-note mt-2" data-lang-es="Texto principal del proyecto con una presentación amplia del material." data-lang-en="Main project text with a broad presentation of the material.">Texto principal del proyecto con una presentación amplia del material.</p></div>
             <div class="flex gap-4"><a href="Libro.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Libro.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
@@ -840,6 +855,7 @@
     const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
     const emptyResources = document.getElementById('emptyResources');
     const resourceDates = {
+      'Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf': '2026-06-06T21:24:00',
       'Libro.pdf': '2026-05-27T21:26:00',
       'Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf': '2026-05-27T21:17:00',
       'Control_Theory_Excercises.pdf': '2026-05-09T10:10:00',

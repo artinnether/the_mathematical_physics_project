@@ -855,25 +855,25 @@
     const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
     const emptyResources = document.getElementById('emptyResources');
     const resourceDates = {
-      'Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf': '2026-06-06T21:24:00',
-      'Libro.pdf': '2026-05-27T21:26:00',
-      'Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf': '2026-05-27T21:17:00',
-      'Control_Theory_Excercises.pdf': '2026-05-09T10:10:00',
-      'Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf': '2026-05-09T10:10:00',
-      'epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf': '2026-04-23T09:53:00',
-      'b.pdf': '2026-04-23T09:53:00',
-      'a.pdf': '2026-04-23T09:53:00',
-      'The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf': '2026-04-23T09:53:00',
-      'The Einbein.pdf': '2026-04-23T09:53:00',
-      'On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf': '2026-04-23T09:53:00',
-      'Linear_Algebra_Exercises.pdf': '2026-04-23T09:53:00',
-      'Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf': '2026-04-23T09:53:00',
-      'Forma Heurística de la Ecuación de Dirac.pdf': '2026-04-23T09:53:00',
-      'Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf': '2026-04-23T09:53:00',
-      'El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf': '2026-04-23T09:53:00',
-      'Differential_Equations_Exercises.pdf': '2026-04-23T09:53:00',
-      'Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf': '2026-04-23T09:53:00',
-      'Calculus_excercises.pdf': '2026-04-23T09:53:00'
+      'Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf': '2026-06-06T21:32:35',
+      'Libro.pdf': '2026-05-09T10:10:27',
+      'Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf': '2026-05-27T21:06:31',
+      'Control_Theory_Excercises.pdf': '2026-05-09T10:10:27',
+      'Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf': '2026-05-09T10:10:27',
+      'epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf': '2026-04-23T09:53:33',
+      'b.pdf': '2026-04-23T09:53:33',
+      'a.pdf': '2026-04-23T09:53:33',
+      'The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf': '2026-04-23T09:53:33',
+      'The Einbein.pdf': '2026-04-23T09:53:33',
+      'On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf': '2026-04-23T09:53:33',
+      'Linear_Algebra_Exercises.pdf': '2026-04-23T09:53:33',
+      'Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf': '2026-04-23T09:53:33',
+      'Forma Heurística de la Ecuación de Dirac.pdf': '2026-04-23T09:53:33',
+      'Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf': '2026-04-23T09:53:33',
+      'El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf': '2026-04-23T09:53:33',
+      'Differential_Equations_Exercises.pdf': '2026-04-23T09:53:33',
+      'Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf': '2026-04-23T09:53:33',
+      'Calculus_excercises.pdf': '2026-04-23T09:53:33'
     };
     let currentLang = storedLang || null;
     let activeFilter = 'all';
@@ -938,6 +938,10 @@
       return new Date(resourceDates[href] || '1970-01-01T00:00:00').getTime();
     }
 
+    function getResourceHref(card) {
+      return card.querySelector('a[href]')?.getAttribute('href') || '';
+    }
+
     function makeResourceTitlesClickable() {
       resourceCards.forEach((card) => {
         const title = card.querySelector('h4');
@@ -959,7 +963,15 @@
 
     function sortResourcesChronologically() {
       resourceCards
-        .sort((a, b) => getResourceTimestamp(b) - getResourceTimestamp(a))
+        .sort((a, b) => {
+          const aIsBook = getResourceHref(a) === 'Libro.pdf';
+          const bIsBook = getResourceHref(b) === 'Libro.pdf';
+
+          if (aIsBook && !bIsBook) return -1;
+          if (!aIsBook && bIsBook) return 1;
+
+          return getResourceTimestamp(b) - getResourceTimestamp(a);
+        })
         .forEach((card) => {
           const targetGrid = card.dataset.category === 'exercises' ? exerciseGrid : resourceGrid;
           targetGrid.appendChild(card);

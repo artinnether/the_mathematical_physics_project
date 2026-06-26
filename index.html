@@ -188,6 +188,165 @@
       background: rgba(255, 255, 255, 0.58);
     }
 
+    #latest .resource-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    #latest .resource-card {
+      overflow: hidden;
+      padding: 16px;
+    }
+
+    .paper-thumb {
+      position: relative;
+      display: block;
+      aspect-ratio: 16 / 9;
+      margin: -4px -4px 16px;
+      overflow: hidden;
+      border: 1px solid rgba(31, 42, 48, 0.10);
+      border-radius: 8px;
+      background: #eef4f6;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.48);
+    }
+
+    .paper-thumb::before,
+    .paper-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .paper-thumb::before {
+      opacity: 0.92;
+    }
+
+    .paper-thumb::after {
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.42) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,0.32) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mix-blend-mode: soft-light;
+    }
+
+    .thumb-symbol,
+    .thumb-equation,
+    .thumb-lines {
+      position: absolute;
+      z-index: 1;
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.20);
+    }
+
+    .thumb-symbol {
+      right: 18px;
+      bottom: 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3.15rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .thumb-equation {
+      left: 18px;
+      top: 18px;
+      max-width: calc(100% - 36px);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.12rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .thumb-lines {
+      left: 18px;
+      right: 84px;
+      bottom: 20px;
+      display: grid;
+      gap: 7px;
+    }
+
+    .thumb-lines span {
+      display: block;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.70);
+    }
+
+    .thumb-lines span:nth-child(2) {
+      width: 76%;
+    }
+
+    .thumb-lines span:nth-child(3) {
+      width: 58%;
+    }
+
+    .paper-thumb--feynman {
+      background: linear-gradient(135deg, #243447, #58758c);
+    }
+
+    .paper-thumb--feynman::before {
+      background:
+        radial-gradient(circle at 76% 34%, rgba(216, 194, 138, 0.88), transparent 14%),
+        radial-gradient(circle at 42% 58%, rgba(126, 207, 200, 0.75), transparent 18%),
+        linear-gradient(135deg, transparent 0 44%, rgba(255,255,255,0.42) 45% 46%, transparent 47% 100%),
+        linear-gradient(30deg, transparent 0 48%, rgba(255,255,255,0.28) 49% 50%, transparent 51% 100%);
+    }
+
+    .paper-thumb--phi4 {
+      background: linear-gradient(135deg, #1f2a30, #7a5f94);
+    }
+
+    .paper-thumb--phi4::before {
+      background:
+        radial-gradient(circle at 24% 30%, rgba(216, 194, 138, 0.82), transparent 12%),
+        radial-gradient(circle at 68% 66%, rgba(126, 207, 200, 0.72), transparent 14%),
+        conic-gradient(from 45deg at 50% 52%, transparent 0 16%, rgba(255,255,255,0.32) 16% 18%, transparent 18% 50%, rgba(255,255,255,0.25) 50% 52%, transparent 52%);
+    }
+
+    .paper-thumb--klein {
+      background: linear-gradient(135deg, #163a63, #78a7b7);
+    }
+
+    .paper-thumb--klein::before {
+      background:
+        radial-gradient(ellipse at 50% 50%, transparent 0 36%, rgba(255,255,255,0.45) 37% 38%, transparent 39%),
+        linear-gradient(90deg, transparent 0 49%, rgba(216,194,138,0.78) 50%, transparent 51%),
+        linear-gradient(0deg, transparent 0 49%, rgba(216,194,138,0.78) 50%, transparent 51%);
+    }
+
+    .paper-thumb--dyson {
+      background: linear-gradient(135deg, #31422f, #8b6f3d);
+    }
+
+    .paper-thumb--dyson::before {
+      background:
+        repeating-radial-gradient(circle at 28% 42%, rgba(255,255,255,0.50) 0 2px, transparent 3px 16px),
+        linear-gradient(118deg, transparent 0 28%, rgba(126,207,200,0.50) 29% 31%, transparent 32% 100%),
+        linear-gradient(62deg, transparent 0 52%, rgba(216,194,138,0.48) 53% 55%, transparent 56% 100%);
+    }
+
+    .paper-thumb--bundle {
+      background: linear-gradient(135deg, #2d3a55, #7ecfc8);
+    }
+
+    .paper-thumb--bundle::before {
+      background:
+        radial-gradient(ellipse at 50% 66%, rgba(255,255,255,0.30), transparent 42%),
+        repeating-linear-gradient(112deg, transparent 0 18px, rgba(255,255,255,0.28) 19px 21px),
+        repeating-linear-gradient(24deg, transparent 0 24px, rgba(216,194,138,0.34) 25px 27px);
+    }
+
+    .paper-thumb--adm {
+      background: linear-gradient(135deg, #1e293b, #6b7280);
+    }
+
+    .paper-thumb--adm::before {
+      background:
+        radial-gradient(circle at 50% 44%, rgba(255,255,255,0.16), transparent 34%),
+        linear-gradient(90deg, transparent 0 31%, rgba(216,194,138,0.56) 32% 33%, transparent 34% 66%, rgba(216,194,138,0.56) 67% 68%, transparent 69%),
+        linear-gradient(0deg, transparent 0 31%, rgba(126,207,200,0.46) 32% 33%, transparent 34% 66%, rgba(126,207,200,0.46) 67% 68%, transparent 69%);
+    }
+
     #resourceGrid {
       display: grid;
       gap: 10px;
@@ -544,6 +703,11 @@
         <div class="resource-grid">
           <article class="resource-card">
             <div>
+              <a class="paper-thumb paper-thumb--feynman" href="Feynman_Prescription_Residues_and_Real_Poles_ES.pdf" data-pdf-es="Feynman_Prescription_Residues_and_Real_Poles_ES.pdf" data-pdf-en="Feynman_Prescription_Residues_and_Real_Poles_EN.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir Prescripción de Feynman, residuos y regularización de polos reales">
+                <span class="thumb-equation">PV ∫ f(x)/(x-a) dx</span>
+                <span class="thumb-symbol">+iε</span>
+                <span class="thumb-lines"><span></span><span></span><span></span></span>
+              </a>
               <span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span>
               <h4 class="text-xl font-bold mt-3" data-lang-es="Prescripción de Feynman, residuos y regularización de polos reales" data-lang-en="Feynman Prescription, Residues, and Regularization of Real Poles">Prescripción de Feynman, residuos y regularización de polos reales</h4>
               <p class="resource-note mt-2" data-lang-es="Notas autocontenidas sobre residuos, valor principal y la prescripción +iε." data-lang-en="Self-contained notes on residues, principal value, and the +iε prescription.">Notas autocontenidas sobre residuos, valor principal y la prescripción +iε.</p>
@@ -555,6 +719,11 @@
           </article>
           <article class="resource-card">
             <div>
+              <a class="paper-thumb paper-thumb--phi4" href="Expansion_Perturbativa_y_Diagramas_de_Feynman_en_el_Modelo_lambda_phi4_de_Dimension_Cero.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir Expansión Perturbativa y Diagramas de Feynman">
+                <span class="thumb-equation">Z = ∫ exp(-λϕ4) dϕ</span>
+                <span class="thumb-symbol">λϕ4</span>
+                <span class="thumb-lines"><span></span><span></span><span></span></span>
+              </a>
               <span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span>
               <h4 class="text-xl font-bold mt-3" data-lang-es="Expansión Perturbativa y Diagramas de Feynman en el Modelo λϕ4 de Dimensión Cero" data-lang-en="Perturbative Expansion and Feynman Diagrams in the Zero-Dimensional λϕ4 Model">Expansión Perturbativa y Diagramas de Feynman en el Modelo λϕ4 de Dimensión Cero</h4>
               <p class="resource-note mt-2" data-lang-es="Notas sobre el modelo λϕ4 de dimensión cero, expansión perturbativa y estructura diagramática." data-lang-en="Notes on the zero-dimensional λϕ4 model, perturbative expansion, and diagrammatic structure.">Notas sobre el modelo λϕ4 de dimensión cero, expansión perturbativa y estructura diagramática.</p>
@@ -566,6 +735,11 @@
           </article>
           <article class="resource-card">
             <div>
+              <a class="paper-thumb paper-thumb--klein" href="Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir Invariancia de Lorentz del campo y la acción de Klein-Gordon">
+                <span class="thumb-equation">(□ + m²)ϕ = 0</span>
+                <span class="thumb-symbol">Λ</span>
+                <span class="thumb-lines"><span></span><span></span><span></span></span>
+              </a>
               <span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span>
               <h4 class="text-xl font-bold mt-3" data-lang-es="Invariancia de Lorentz del campo y la acción de Klein-Gordon" data-lang-en="Lorentz Invariance of the Klein-Gordon Field and Action">Invariancia de Lorentz del campo y la acción de Klein-Gordon</h4>
               <p class="resource-note mt-2" data-lang-es="Derivación de la ecuación de Klein-Gordon, invariancia de Lorentz y formulación lagrangiana de la acción." data-lang-en="Derivation of the Klein-Gordon equation, Lorentz invariance, and the Lagrangian formulation of the action.">Derivación de la ecuación de Klein-Gordon, invariancia de Lorentz y formulación lagrangiana de la acción.</p>
@@ -577,6 +751,11 @@
           </article>
           <article class="resource-card">
             <div>
+              <a class="paper-thumb paper-thumb--dyson" href="Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación">
+                <span class="thumb-equation">T exp[-i∫Hᵢ(t)dt]</span>
+                <span class="thumb-symbol">Ω</span>
+                <span class="thumb-lines"><span></span><span></span><span></span></span>
+              </a>
               <span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Teoría cuántica</span>
               <h4 class="text-xl font-bold mt-3" data-lang-es="Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación" data-lang-en="Free Vacuum, Interacting Vacuum, Dyson Series and Correlation Functions">Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación</h4>
               <p class="resource-note mt-2" data-lang-es="Notas sobre vacío interactuante, serie de Dyson y cálculo perturbativo." data-lang-en="Notes on interacting vacua, the Dyson series, and perturbative computation.">Notas sobre vacío interactuante, serie de Dyson y cálculo perturbativo.</p>
@@ -588,6 +767,11 @@
           </article>
           <article class="resource-card">
             <div>
+              <a class="paper-thumb paper-thumb--bundle" href="Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir Variaciones de campos en haces vectoriales con conexión">
+                <span class="thumb-equation">∇s + δA</span>
+                <span class="thumb-symbol">π:E→M</span>
+                <span class="thumb-lines"><span></span><span></span><span></span></span>
+              </a>
               <span class="resource-pill" data-lang-es="Geometría" data-lang-en="Geometry">Geometría</span>
               <h4 class="text-xl font-bold mt-3" data-lang-es="Variaciones de campos en haces vectoriales con conexión" data-lang-en="Field Variations on Vector Bundles with Connection">Variaciones de campos en haces vectoriales con conexión</h4>
               <p class="resource-note mt-2" data-lang-es="Interpretación activa y pasiva en una formulación geométrica unificada." data-lang-en="Active and passive interpretations in a unified geometric formulation.">Interpretación activa y pasiva en una formulación geométrica unificada.</p>
@@ -599,6 +783,11 @@
           </article>
           <article class="resource-card">
             <div>
+              <a class="paper-thumb paper-thumb--adm" href="epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir ε-Ecuaciones Hamiltonianas de ADM">
+                <span class="thumb-equation">H = Nℋ + Nᵢℋⁱ</span>
+                <span class="thumb-symbol">εADM</span>
+                <span class="thumb-lines"><span></span><span></span><span></span></span>
+              </a>
               <span class="resource-pill" data-lang-es="Relatividad" data-lang-en="Relativity">Relatividad</span>
               <h4 class="text-xl font-bold mt-3" data-lang-es="ε-Ecuaciones Hamiltonianas de ADM" data-lang-en="ε-Hamiltonian ADM Equations">ε-Ecuaciones Hamiltonianas de ADM</h4>
               <p class="resource-note mt-2" data-lang-es="Apunte sobre la formulación hamiltoniana ADM de la relatividad general." data-lang-en="Note on the ADM Hamiltonian formulation of general relativity.">Apunte sobre la formulación hamiltoniana ADM de la relatividad general.</p>

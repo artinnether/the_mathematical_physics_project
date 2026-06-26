@@ -347,6 +347,39 @@
         linear-gradient(0deg, transparent 0 31%, rgba(126,207,200,0.46) 32% 33%, transparent 34% 66%, rgba(126,207,200,0.46) 67% 68%, transparent 69%);
     }
 
+    .paper-thumb--quantum {
+      background: linear-gradient(135deg, #20324a, #5e8b92);
+    }
+
+    .paper-thumb--quantum::before {
+      background:
+        radial-gradient(circle at 28% 34%, rgba(216, 194, 138, 0.76), transparent 13%),
+        radial-gradient(circle at 70% 60%, rgba(126, 207, 200, 0.70), transparent 16%),
+        repeating-linear-gradient(38deg, transparent 0 22px, rgba(255,255,255,0.25) 23px 25px);
+    }
+
+    .paper-thumb--geometry {
+      background: linear-gradient(135deg, #2f3c5f, #7ecfc8);
+    }
+
+    .paper-thumb--geometry::before {
+      background:
+        radial-gradient(ellipse at 50% 62%, rgba(255,255,255,0.26), transparent 42%),
+        repeating-linear-gradient(118deg, transparent 0 18px, rgba(255,255,255,0.28) 19px 21px),
+        repeating-linear-gradient(24deg, transparent 0 24px, rgba(216,194,138,0.34) 25px 27px);
+    }
+
+    .paper-thumb--relativity {
+      background: linear-gradient(135deg, #1e293b, #687988);
+    }
+
+    .paper-thumb--relativity::before {
+      background:
+        radial-gradient(circle at 50% 44%, rgba(255,255,255,0.17), transparent 35%),
+        linear-gradient(90deg, transparent 0 32%, rgba(216,194,138,0.54) 33% 34%, transparent 35% 65%, rgba(216,194,138,0.54) 66% 67%, transparent 68%),
+        linear-gradient(0deg, transparent 0 32%, rgba(126,207,200,0.44) 33% 34%, transparent 35% 65%, rgba(126,207,200,0.44) 66% 67%, transparent 68%);
+    }
+
     #resourceGrid {
       display: grid;
       gap: 10px;
@@ -1085,6 +1118,7 @@
     const materialHeading = document.getElementById('materialHeading');
     const exerciseHeading = document.getElementById('exerciseHeading');
     const exerciseSection = document.getElementById('exercises');
+    const latestCards = Array.from(document.querySelectorAll('#latest .resource-card'));
     const resourceCards = Array.from(document.querySelectorAll('.resource-card[data-category]'));
     const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
     const emptyResources = document.getElementById('emptyResources');
@@ -1114,6 +1148,71 @@
     };
     let currentLang = storedLang || null;
     let activeFilter = 'all';
+
+    function getLatestThumbPreset(card) {
+      const text = normalizeText(`${card.innerText} ${card.dataset.search || ''}`);
+      const category = normalizeText(card.querySelector('.resource-pill')?.textContent || '');
+
+      if (text.includes('feynman') || text.includes('residu') || text.includes('polo')) {
+        return { theme: 'feynman', equation: 'PV integral', symbol: '+iε' };
+      }
+
+      if (text.includes('phi4') || text.includes('lambda') || text.includes('diagram')) {
+        return { theme: 'phi4', equation: 'Z = integral exp(-S)', symbol: 'λϕ4' };
+      }
+
+      if (text.includes('klein') || text.includes('lorentz')) {
+        return { theme: 'klein', equation: '(box + m2)phi = 0', symbol: 'Λ' };
+      }
+
+      if (text.includes('dyson') || text.includes('vacio') || text.includes('correlacion')) {
+        return { theme: 'dyson', equation: 'T exp[-i integral H dt]', symbol: 'Ω' };
+      }
+
+      if (text.includes('haces') || text.includes('bundles') || category.includes('geometr')) {
+        return { theme: 'geometry', equation: 'nabla s + delta A', symbol: 'π:E→M' };
+      }
+
+      if (text.includes('adm') || category.includes('relativ')) {
+        return { theme: 'relativity', equation: 'H = N H + Ni Hi', symbol: 'ADM' };
+      }
+
+      return { theme: 'quantum', equation: 'notes / fields / symmetries', symbol: 'ψ' };
+    }
+
+    function generateLatestPaperThumbnails() {
+      latestCards.forEach((card) => {
+        if (card.querySelector('.paper-thumb')) return;
+
+        const content = card.querySelector('div');
+        const title = card.querySelector('h4');
+        const openLink = Array.from(card.querySelectorAll('a[href]')).find((link) => !link.classList.contains('paper-thumb'));
+
+        if (!content || !title || !openLink) return;
+
+        const preset = getLatestThumbPreset(card);
+        const thumb = document.createElement('a');
+        thumb.className = `paper-thumb paper-thumb--${preset.theme}`;
+        thumb.href = openLink.getAttribute('href');
+        thumb.target = '_blank';
+        thumb.rel = 'noopener noreferrer';
+        thumb.setAttribute('aria-label', `Abrir ${title.textContent.trim()}`);
+
+        if (openLink.dataset.pdfEs && openLink.dataset.pdfEn) {
+          thumb.setAttribute('data-pdf-es', openLink.dataset.pdfEs);
+          thumb.setAttribute('data-pdf-en', openLink.dataset.pdfEn);
+        }
+
+        thumb.innerHTML = `
+          <span class="thumb-equation"></span>
+          <span class="thumb-symbol"></span>
+          <span class="thumb-lines"><span></span><span></span><span></span></span>
+        `;
+        thumb.querySelector('.thumb-equation').textContent = preset.equation;
+        thumb.querySelector('.thumb-symbol').textContent = preset.symbol;
+        content.insertBefore(thumb, content.firstElementChild);
+      });
+    }
 
     function setLanguage(lang) {
       currentLang = lang;
@@ -1236,6 +1335,7 @@
         });
     }
 
+    generateLatestPaperThumbnails();
     updateLocalizedPdfLinks();
     makeResourceTitlesClickable();
     sortResourcesChronologically();

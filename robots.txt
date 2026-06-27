@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://artinnether.github.io/the_mathematical_physics_project/sitemap.xml

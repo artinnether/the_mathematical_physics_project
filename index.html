@@ -3,7 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>The Mathematical Physics Project</title>
+  <title>Mathematical Physics Notes, PDFs and Exercises | The Mathematical Physics Project</title>
+  <meta name="description" content="Free mathematical physics notes, PDFs, exercises, and research resources on quantum field theory, general relativity, differential geometry, calculus of variations, and advanced mathematics by Omar Corona Tejeda." />
+  <meta name="keywords" content="mathematical physics, physics notes, quantum field theory, general relativity, differential geometry, Feynman diagrams, calculus of variations, physics PDFs, mathematics exercises, Omar Corona Tejeda" />
+  <meta name="author" content="Omar Corona Tejeda" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://artinnether.github.io/the_mathematical_physics_project/" />
+  <link rel="alternate" hreflang="en" href="https://artinnether.github.io/the_mathematical_physics_project/" />
+  <link rel="alternate" hreflang="es" href="https://artinnether.github.io/the_mathematical_physics_project/" />
+  <link rel="alternate" hreflang="x-default" href="https://artinnether.github.io/the_mathematical_physics_project/" />
+  <meta name="theme-color" content="#1f2a30" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y31PJBLYDM"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -13,12 +22,73 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <meta property="og:title" content="The Mathematical Physics Project — Omar Corona Tejeda" />
-  <meta property="og:description" content="Research notes, PDFs, and mathematical physics insights by Omar Corona Tejeda." />
+  <meta property="og:site_name" content="The Mathematical Physics Project" />
+  <meta property="og:title" content="Mathematical Physics Notes, PDFs and Exercises" />
+  <meta property="og:description" content="A growing bilingual library of mathematical physics notes, exercises, and research resources by Omar Corona Tejeda." />
   <meta property="og:image" content="https://artinnether.github.io/the_mathematical_physics_project/tmpp_logo.png" />
+  <meta property="og:image:alt" content="The Mathematical Physics Project logo" />
   <meta property="og:url" content="https://artinnether.github.io/the_mathematical_physics_project/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mathematical Physics Notes, PDFs and Exercises" />
+  <meta name="twitter:description" content="Free bilingual resources on quantum field theory, general relativity, differential geometry, and advanced mathematics." />
+  <meta name="twitter:image" content="https://artinnether.github.io/the_mathematical_physics_project/tmpp_logo.png" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://artinnether.github.io/the_mathematical_physics_project/#omar-corona-tejeda",
+          "name": "Omar Corona Tejeda",
+          "url": "https://artinnether.github.io/the_mathematical_physics_project/",
+          "sameAs": [
+            "https://github.com/artinnether/the_mathematical_physics_project",
+            "https://www.youtube.com/@omarct1989",
+            "https://www.linkedin.com/in/omar-corona-tejeda-717b51284",
+            "https://www.instagram.com/fortin_omar/",
+            "https://www.facebook.com/fortin.corona"
+          ],
+          "knowsAbout": [
+            "Mathematical physics",
+            "Quantum field theory",
+            "General relativity",
+            "Differential geometry",
+            "Calculus of variations",
+            "Advanced mathematics"
+          ]
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": "https://artinnether.github.io/the_mathematical_physics_project/#website",
+          "name": "The Mathematical Physics Project",
+          "url": "https://artinnether.github.io/the_mathematical_physics_project/",
+          "description": "A bilingual digital library of mathematical physics notes, PDFs, exercises, and research resources.",
+          "inLanguage": ["es", "en"],
+          "creator": {
+            "@id": "https://artinnether.github.io/the_mathematical_physics_project/#omar-corona-tejeda"
+          },
+          "about": [
+            "Mathematical physics",
+            "Quantum field theory",
+            "General relativity",
+            "Feynman diagrams",
+            "Differential equations",
+            "Linear algebra"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://artinnether.github.io/the_mathematical_physics_project/#site",
+          "name": "The Mathematical Physics Project",
+          "url": "https://artinnether.github.io/the_mathematical_physics_project/",
+          "publisher": {
+            "@id": "https://artinnether.github.io/the_mathematical_physics_project/#omar-corona-tejeda"
+          }
+        }
+      ]
+    }
+  </script>
   <style>
     :root {
       --ink: #111827;
@@ -686,6 +756,7 @@
         <a href="#donaciones" class="hover:underline" data-lang-es="Donaciones" data-lang-en="Support">Donaciones</a>
         <a href="#contacto" class="hover:underline" data-lang-es="Contacto" data-lang-en="Contact">Contacto</a>
         <a href="#newsletter" class="hover:underline" data-lang-es="Suscríbete" data-lang-en="Subscribe">Suscríbete</a>
+        <a href="#share-project" class="hover:underline" data-lang-es="Compartir" data-lang-en="Share">Compartir</a>
         <a href="#contacto-redes" class="hover:underline" data-lang-es="Sígueme" data-lang-en="Follow Me">Sígueme</a>
         <button id="toggleLang" class="px-4 py-2 rounded-lg bg-white/15 border border-white/20 text-white font-semibold hover:bg-white/25 transition">
           ES / EN
@@ -716,6 +787,24 @@
           <a href="#pdfs" class="icon-button inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900 text-white font-semibold no-underline hover:opacity-90">
             <i data-lucide="library"></i>
             <span data-lang-es="Explorar biblioteca" data-lang-en="Explore library">Explorar biblioteca</span>
+          </a>
+        </div>
+        <div id="share-project" class="mt-6 flex flex-wrap justify-center gap-3">
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fartinnether.github.io%2Fthe_mathematical_physics_project%2F" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-blue-700 text-white font-semibold no-underline hover:opacity-90" data-share-network="linkedin">
+            <i data-lucide="linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fartinnether.github.io%2Fthe_mathematical_physics_project%2F&text=Free%20mathematical%20physics%20notes%2C%20PDFs%20and%20exercises" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-slate-900 text-white font-semibold no-underline hover:opacity-90" data-share-network="x">
+            <i data-lucide="send"></i>
+            <span>X</span>
+          </a>
+          <a href="https://api.whatsapp.com/send?text=The%20Mathematical%20Physics%20Project%3A%20https%3A%2F%2Fartinnether.github.io%2Fthe_mathematical_physics_project%2F" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-green-600 text-white font-semibold no-underline hover:opacity-90" data-share-network="whatsapp">
+            <img class="brand-icon" src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" aria-hidden="true">
+            <span>WhatsApp</span>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fartinnether.github.io%2Fthe_mathematical_physics_project%2F" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold no-underline hover:opacity-90" data-share-network="facebook">
+            <img class="brand-icon" src="https://cdn.simpleicons.org/facebook/ffffff" alt="" aria-hidden="true">
+            <span>Facebook</span>
           </a>
         </div>
       </div>
@@ -1372,6 +1461,18 @@
     if (window.lucide) {
       window.lucide.createIcons();
     }
+
+    document.querySelectorAll('[data-share-network]').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (typeof gtag === 'function') {
+          gtag('event', 'share_click', {
+            method: link.getAttribute('data-share-network'),
+            content_type: 'website',
+            item_id: 'the_mathematical_physics_project'
+          });
+        }
+      });
+    });
 
     const contactForm = document.getElementById('contactForm');
     const contactMsg = document.getElementById('successMsg');

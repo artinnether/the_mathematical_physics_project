@@ -1,26 +1,51 @@
-# Landing Page (Estática) — Omar Corona
+# The Mathematical Physics Project
 
-Archivos incluidos:
-- `index.html` — Página estática lista para abrir en el navegador.
-- `styles.css` — Pequeñas reglas CSS adicionales.
+A bilingual digital library of mathematical physics notes, PDFs, exercises, and research resources by Omar Corona Tejeda.
 
-Funciones actuales:
-- Selector de idioma Español/Inglés.
-- Biblioteca de PDFs con buscador, filtros por categoría y botones de abrir/descargar.
-- Secciones de novedades, currículum, sesiones particulares, donaciones, contacto, newsletter, cita académica y redes sociales.
-- Enlaces a YouTube y GitHub del proyecto.
+Website: https://artinnether.github.io/the_mathematical_physics_project/
 
-Cómo usar (opciones rápidas):
-1. **Abrir localmente**: Abre `index.html` en tu navegador (doble clic). Ideal para pruebas rápidas.
-2. **Subir a un hosting estático**: Sube los archivos a Netlify, Vercel (Static), GitHub Pages u otro hosting estático.
-3. **Convertir a proyecto React**: Si prefieres la versión React + Tailwind (con Framer Motion), puedo convertir estos archivos a un proyecto Vite y entregarte el ZIP.
+## What You Can Find Here
 
-Formulario de contacto:
-- Actualmente usa Formspree para contacto y newsletter. Si cambias de cuenta o formulario, actualiza los atributos `action` de `contactForm` y `newsletterForm` en `index.html`.
+- Mathematical physics notes and research-style PDFs.
+- Quantum field theory resources, including Feynman prescriptions, residues, real poles, perturbative expansions, and Feynman diagrams.
+- General relativity and ADM Hamiltonian formulation notes.
+- Differential geometry and vector bundle materials.
+- Linear algebra, calculus, differential equations, and control theory exercises.
+- Bilingual material in Spanish and English where available.
 
-¿Quieres que:
-- convierta esto a un proyecto Vite + React y te entregue ese ZIP,
-- modifique texto/fechas/colores,
-- o lo suba a algún hosting (te doy pasos detallados para Netlify/Vercel/GitHub Pages)?
+## Featured Topics
 
-Dime y lo hago en el siguiente paso.
+- Mathematical physics
+- Quantum field theory
+- Feynman diagrams
+- General relativity
+- Differential geometry
+- Calculus of variations
+- Functional derivatives
+- Linear algebra
+- Differential equations
+- Advanced undergraduate and graduate physics
+
+## Suggested Citation
+
+Corona Tejeda, Omar. *The Mathematical Physics Project*. Digital library of mathematical physics notes and exercises.
+https://artinnether.github.io/the_mathematical_physics_project/
+
+## Share
+
+If this project helps your study, teaching, or research, share the website with students, colleagues, and physics/math communities:
+
+https://artinnether.github.io/the_mathematical_physics_project/
+
+## Repository Notes
+
+This is a static GitHub Pages site. Main files:
+
+- `index.html`: public landing page and resource library.
+- `sitemap.xml`: search engine discovery map.
+- `robots.txt`: search engine crawl instructions.
+- `PROMOTION.md`: reusable launch and sharing checklist for new PDFs.
+
+## Contact
+
+Use the contact form on the website or the social links in the footer.

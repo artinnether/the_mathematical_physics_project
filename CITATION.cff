@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use The Mathematical Physics Project, please cite it as below."
+title: "The Mathematical Physics Project"
+type: website
+authors:
+  - family-names: "Corona Tejeda"
+    given-names: "Omar"
+url: "https://artinnether.github.io/the_mathematical_physics_project/"
+repository-code: "https://github.com/artinnether/the_mathematical_physics_project"
+date-released: "2026-06-27"
+keywords:
+  - mathematical physics
+  - quantum field theory
+  - general relativity
+  - differential geometry
+  - physics notes
+  - mathematics exercises

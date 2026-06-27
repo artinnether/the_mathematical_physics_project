@@ -758,7 +758,6 @@
         <a href="#donaciones" class="hover:underline" data-lang-es="Donaciones" data-lang-en="Support">Donaciones</a>
         <a href="#contacto" class="hover:underline" data-lang-es="Contacto" data-lang-en="Contact">Contacto</a>
         <a href="#newsletter" class="hover:underline" data-lang-es="Suscríbete" data-lang-en="Subscribe">Suscríbete</a>
-        <a href="#share-project" class="hover:underline" data-lang-es="Compartir" data-lang-en="Share">Compartir</a>
         <a href="#contacto-redes" class="hover:underline" data-lang-es="Sígueme" data-lang-en="Follow Me">Sígueme</a>
         <button id="toggleLang" class="px-4 py-2 rounded-lg bg-white/15 border border-white/20 text-white font-semibold hover:bg-white/25 transition">
           ES / EN
@@ -789,24 +788,6 @@
           <a href="#pdfs" class="icon-button inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900 text-white font-semibold no-underline hover:opacity-90">
             <i data-lucide="library"></i>
             <span data-lang-es="Explorar biblioteca" data-lang-en="Explore library">Explorar biblioteca</span>
-          </a>
-        </div>
-        <div id="share-project" class="mt-6 flex flex-wrap justify-center gap-3">
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fartinnether.github.io%2Fthe_mathematical_physics_project%2F" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-blue-700 text-white font-semibold no-underline hover:opacity-90" data-share-network="linkedin">
-            <i data-lucide="linkedin"></i>
-            <span>LinkedIn</span>
-          </a>
-          <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fartinnether.github.io%2Fthe_mathematical_physics_project%2F&text=Free%20mathematical%20physics%20notes%2C%20PDFs%20and%20exercises" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-slate-900 text-white font-semibold no-underline hover:opacity-90" data-share-network="x">
-            <i data-lucide="send"></i>
-            <span>X</span>
-          </a>
-          <a href="https://api.whatsapp.com/send?text=The%20Mathematical%20Physics%20Project%3A%20https%3A%2F%2Fartinnether.github.io%2Fthe_mathematical_physics_project%2F" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-green-600 text-white font-semibold no-underline hover:opacity-90" data-share-network="whatsapp">
-            <img class="brand-icon" src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" aria-hidden="true">
-            <span>WhatsApp</span>
-          </a>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fartinnether.github.io%2Fthe_mathematical_physics_project%2F" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold no-underline hover:opacity-90" data-share-network="facebook">
-            <img class="brand-icon" src="https://cdn.simpleicons.org/facebook/ffffff" alt="" aria-hidden="true">
-            <span>Facebook</span>
           </a>
         </div>
       </div>
@@ -1463,18 +1444,6 @@
     if (window.lucide) {
       window.lucide.createIcons();
     }
-
-    document.querySelectorAll('[data-share-network]').forEach((link) => {
-      link.addEventListener('click', () => {
-        if (typeof gtag === 'function') {
-          gtag('event', 'share_click', {
-            method: link.getAttribute('data-share-network'),
-            content_type: 'website',
-            item_id: 'the_mathematical_physics_project'
-          });
-        }
-      });
-    });
 
     const contactForm = document.getElementById('contactForm');
     const contactMsg = document.getElementById('successMsg');

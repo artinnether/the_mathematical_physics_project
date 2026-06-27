@@ -42,9 +42,11 @@ https://artinnether.github.io/the_mathematical_physics_project/
 This is a static GitHub Pages site. Main files:
 
 - `index.html`: public landing page and resource library.
+- `papers/`: topic landing pages for selected PDFs.
 - `sitemap.xml`: search engine discovery map.
 - `robots.txt`: search engine crawl instructions.
 - `PROMOTION.md`: reusable launch and sharing checklist for new PDFs.
+- `tools/generate_topic_pages.py`: generator for searchable paper pages and sitemap entries.
 
 ## Contact
 

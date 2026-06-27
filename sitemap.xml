@@ -7,6 +7,54 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/feynman-prescription-residues-real-poles.html</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/lambda-phi4-zero-dimensional-feynman-diagrams.html</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/lorentz-invariance-klein-gordon-field-action.html</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/dyson-series-vacuum-correlation-functions.html</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/adm-hamiltonian-equations-general-relativity.html</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/field-variations-vector-bundles-connection.html</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/brachistochrone-problem-calculus-of-variations.html</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/the-einbein-relativistic-systems.html</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://artinnether.github.io/the_mathematical_physics_project/Feynman_Prescription_Residues_and_Real_Poles_ES.pdf</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
@@ -31,7 +79,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://artinnether.github.io/the_mathematical_physics_project/Relacion%20entre%20el%20Vacio%20Libre,%20el%20Vacio%20Interactuante,%20Serie%20de%20Dyson%20y%20las%20Funciones%20de%20Correlacion.pdf</loc>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/Relacion%20entre%20el%20Vacio%20Libre%2C%20el%20Vacio%20Interactuante%2C%20Serie%20de%20Dyson%20y%20las%20Funciones%20de%20Correlacion.pdf</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -85,7 +133,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://artinnether.github.io/the_mathematical_physics_project/Formulacion%20Matematica%20de%20las%20Imagenes%20de%20Heisenberg,%20Schrodinger%20y%20Dirac.pdf</loc>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/Formulacion%20Matematica%20de%20las%20Imagenes%20de%20Heisenberg%2C%20Schrodinger%20y%20Dirac.pdf</loc>
     <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

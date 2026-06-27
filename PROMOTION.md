@@ -5,11 +5,13 @@ Use this checklist every time a new PDF, note, or exercise set is added.
 ## Publish Checklist
 
 1. Add the PDF to the site and make sure it appears in Latest publications.
-2. Add or update the file in `sitemap.xml`.
-3. Write a 2-3 sentence summary using searchable terms: topic, course level, and what problem it helps solve.
-4. Share the update on LinkedIn, Facebook, WhatsApp groups, Instagram stories, YouTube Community, and relevant academic circles.
-5. Ask one concrete question in the post to invite replies.
-6. Track which platform gets clicks through Google Analytics.
+2. Add a topic entry to `tools/generate_topic_pages.py`.
+3. Run `python3 tools/generate_topic_pages.py` so the topic page and `sitemap.xml` stay in sync.
+4. Link the new topic page from the homepage when the topic is important enough to promote.
+5. Write a 2-3 sentence summary using searchable terms: topic, course level, and what problem it helps solve.
+6. Share the update on LinkedIn, Facebook, WhatsApp groups, Instagram stories, YouTube Community, and relevant academic circles.
+7. Ask one concrete question in the post to invite replies.
+8. Track which platform gets clicks through Google Analytics.
 
 ## LinkedIn Template
 
@@ -59,6 +61,6 @@ Only share a link when it directly answers a question or helps a discussion. Lea
 ## Next Growth Ideas
 
 - Create one short explainer video per PDF.
-- Add individual HTML pages for the strongest PDFs so each topic can rank separately on Google.
+- Keep adding individual HTML pages for the strongest PDFs so each topic can rank separately on Google.
 - Add GitHub repository topics: `mathematical-physics`, `quantum-field-theory`, `general-relativity`, `physics-notes`, `feynman-diagrams`, `differential-geometry`.
 - Submit the site to Google Search Console and Bing Webmaster Tools.

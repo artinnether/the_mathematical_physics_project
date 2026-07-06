@@ -8,6 +8,17 @@ PAPERS_DIR = ROOT / "papers"
 
 PAPERS = [
     {
+        "slug": "homological-algebra-category-modules",
+        "title": "Homological Algebra in the Category of Modules",
+        "spanish_title": "Álgebra Homológica en la Categoría de Módulos",
+        "pdf": "Homological_Algebra_in_the_Category_of_Modules_EN.pdf",
+        "pdf_alt": "Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf",
+        "category": "Homological Algebra",
+        "description": "Notes on chain complexes, chain homotopy, projective and injective resolutions, derived functors, Ext, and Tor in the category of modules.",
+        "keywords": "homological algebra, category of modules, chain complexes, projective resolutions, injective resolutions, derived functors, Ext, Tor, algebra",
+        "lastmod": "2026-07-06",
+    },
+    {
         "slug": "feynman-prescription-residues-real-poles",
         "title": "Feynman Prescription, Residues, and Regularization of Real Poles",
         "spanish_title": "Prescripción de Feynman, residuos y regularización de polos reales",
@@ -83,6 +94,8 @@ PAPERS = [
 ]
 
 SITEMAP_PDFS = [
+    ("Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf", "2026-07-06", "0.8"),
+    ("Homological_Algebra_in_the_Category_of_Modules_EN.pdf", "2026-07-06", "0.8"),
     ("Feynman_Prescription_Residues_and_Real_Poles_ES.pdf", "2026-06-17", "0.8"),
     ("Feynman_Prescription_Residues_and_Real_Poles_EN.pdf", "2026-06-17", "0.8"),
     ("Expansion_Perturbativa_y_Diagramas_de_Feynman_en_el_Modelo_lambda_phi4_de_Dimension_Cero.pdf", "2026-06-09", "0.8"),
@@ -380,7 +393,7 @@ def write_sitemap():
     entries = [
         ("", "2026-06-27", "weekly", "1.0"),
     ]
-    entries += [(f"papers/{paper['slug']}.html", "2026-06-27", "monthly", "0.9") for paper in PAPERS]
+    entries += [(f"papers/{paper['slug']}.html", paper.get("lastmod", "2026-06-27"), "monthly", "0.9") for paper in PAPERS]
     entries += [(pdf, date, "monthly", priority) for pdf, date, priority in SITEMAP_PDFS]
     body = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for loc, lastmod, changefreq, priority in entries:

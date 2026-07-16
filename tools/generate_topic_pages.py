@@ -8,6 +8,17 @@ PAPERS_DIR = ROOT / "papers"
 
 PAPERS = [
     {
+        "slug": "c-star-algebras-dagger-notation",
+        "title": "On C*-Algebras and the Dagger Notation",
+        "spanish_title": "Sobre C*-álgebras y la notación daga",
+        "pdf": "C_star_Algebras_and_Dagger_Notation_EN.pdf",
+        "pdf_alt": "Algebras_C_estrella_y_Notacion_Daga_ES.pdf",
+        "category": "Operator Algebras",
+        "description": "Self-contained notes on C*-algebras, bounded operators, Hilbert adjoints, Dirac notation, Pauli matrices, the Bloch sphere, and unbounded operators.",
+        "keywords": "C-star algebra, C dagger algebra, bounded operators, Hilbert adjoint, operator norm, Dirac notation, Pauli matrices, Bloch sphere, unbounded operators, quantum mechanics",
+        "lastmod": "2026-07-16",
+    },
+    {
         "slug": "homological-algebra-category-modules",
         "title": "Homological Algebra in the Category of Modules",
         "spanish_title": "Álgebra Homológica en la Categoría de Módulos",
@@ -94,6 +105,8 @@ PAPERS = [
 ]
 
 SITEMAP_PDFS = [
+    ("Algebras_C_estrella_y_Notacion_Daga_ES.pdf", "2026-07-16", "0.9"),
+    ("C_star_Algebras_and_Dagger_Notation_EN.pdf", "2026-07-16", "0.9"),
     ("Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf", "2026-07-06", "0.8"),
     ("Homological_Algebra_in_the_Category_of_Modules_EN.pdf", "2026-07-06", "0.8"),
     ("Feynman_Prescription_Residues_and_Real_Poles_ES.pdf", "2026-06-17", "0.8"),

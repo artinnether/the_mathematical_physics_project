@@ -453,6 +453,19 @@
         repeating-linear-gradient(0deg, transparent 0 22px, rgba(255,255,255,0.18) 23px 25px);
     }
 
+    .paper-thumb--operator {
+      background: linear-gradient(135deg, #24113f, #1d4c73 48%, #6d58b8);
+    }
+
+    .paper-thumb--operator::before {
+      background:
+        radial-gradient(circle at 24% 30%, rgba(216,194,138,0.78), transparent 12%),
+        radial-gradient(circle at 74% 70%, rgba(126,207,200,0.70), transparent 16%),
+        linear-gradient(118deg, transparent 0 44%, rgba(255,255,255,0.32) 45% 47%, transparent 48% 100%),
+        linear-gradient(28deg, transparent 0 57%, rgba(216,194,138,0.34) 58% 60%, transparent 61% 100%),
+        repeating-radial-gradient(circle at 55% 50%, rgba(255,255,255,0.20) 0 1px, transparent 2px 18px);
+    }
+
     .paper-thumb--relativity {
       background: linear-gradient(135deg, #1e293b, #687988);
     }
@@ -820,9 +833,9 @@
         <div class="resource-grid">
           <article class="resource-card">
             <div>
-              <a class="paper-thumb paper-thumb--algebra" href="Algebras_C_estrella_y_Notacion_Daga_ES.pdf" data-pdf-es="Algebras_C_estrella_y_Notacion_Daga_ES.pdf" data-pdf-en="C_star_Algebras_and_Dagger_Notation_EN.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir C*-álgebras y notación daga">
-                <span class="thumb-equation">||a*a|| = ||a||²</span>
-                <span class="thumb-symbol">C*</span>
+              <a class="paper-thumb paper-thumb--operator" href="Algebras_C_estrella_y_Notacion_Daga_ES.pdf" data-pdf-es="Algebras_C_estrella_y_Notacion_Daga_ES.pdf" data-pdf-en="C_star_Algebras_and_Dagger_Notation_EN.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir C*-álgebras y notación daga">
+                <span class="thumb-equation">⟨y|T|x⟩* = ⟨x|T†|y⟩</span>
+                <span class="thumb-symbol">†</span>
                 <span class="thumb-lines"><span></span><span></span><span></span></span>
               </a>
               <span class="resource-pill" data-lang-es="Álgebras de operadores" data-lang-en="Operator algebras">Operator algebras</span>

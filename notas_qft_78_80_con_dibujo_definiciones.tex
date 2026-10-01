@@ -1171,19 +1171,75 @@ de Dyson, resultan $1/4$, $1/4$ y $1/6$.
 
 \section{Reglas de Feynman en espacio de posiciones}
 
-Las derivaciones anteriores conducen a tres reglas para la interacción
-$\lambda\phi^4/4!$:
-\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1.8em,itemsep=0.7em]
-  \item \textbf{Líneas.} Cada contracción entre los puntos $a$ y $b$
-  aporta el propagador $\Delta_F(a-b)$, como en \qftFreeDiagram.
-  \item \textbf{Vértices.} Cada vértice tiene cuatro extremos de líneas y
-  aporta $(-i\lambda)\int d^4z$. Su posición $z$ se integra; los puntos
-  externos $x,y$ permanecen fijos. Con $V$ vértices hay $V$ integraciones
-  independientes.
-  \item \textbf{Simetrías.} Se divide por el factor $S$, contando las
-  permutaciones que conservan el diagrama y fijan los puntos externos.
-  Por ejemplo, el \emph{tadpole} \qftTadpoleDiagram\ tiene $S=2$;
-  las tres topologías de segundo orden tienen $S=4,4,6$.
+El cálculo anterior se resume en las reglas:
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1.8em,itemsep=1.2em]
+  \item \textbf{Propagador por cada línea.}
+  Una línea que une los puntos $a$ y $b$ aporta $\Delta_F(a-b)$.
+  \begin{center}
+\begin{minipage}{\linewidth}
+\centering
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+      \draw[blue,very thick] (-1.5,0)--(1.5,0);
+      \fill[red] (-1.5,0) circle (2pt) node[below=3pt,text=black] {$a$};
+      \fill[red] (1.5,0) circle (2pt) node[below=3pt,text=black] {$b$};
+    \end{tikzpicture}
+    \diagramcaption{Propagador entre dos puntos. La línea representa la contracción
+    libre entre los campos situados en \(a\) y \(b\).}
+  \end{minipage}
+\end{center}
+  \begin{equation}
+    \Delta_F(a-b)=\mel{0}{T\{\phi_I(a)\phi_I(b)\}}{0}.
+  \end{equation}
+
+\item \textbf{Factor e integración por cada vértice.}
+  Cada vértice de la interacción $\lambda\phi^4/4!$ aporta un factor
+  $-i\lambda$, y su posición interna $z$ debe integrarse sobre todo el
+  espacio-tiempo.
+  \begin{center}
+\begin{minipage}{\linewidth}
+\centering
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+      \draw[blue,very thick] (-1.0,0)--(1.0,0);
+      \draw[blue,very thick] (0,-0.65)--(0,0.65);
+      \fill[red] (0,0) circle (2.5pt) node[above right=2pt,text=black] {$z$};
+    \end{tikzpicture}
+    \diagramcaption{Vértice de interacción. El punto \(z\) se integra sobre todo
+    el espacio-tiempo y aporta el factor \((-i\lambda)\int d^4z\).}
+  \end{minipage}
+\end{center}
+  \begin{equation}
+    \text{Un vértice:}\quad(-i\lambda)\int d^4z.
+  \end{equation}
+  Con dos vértices internos $z_1,z_2$ aparecen dos integrales,
+  \begin{equation}
+    (-i\lambda)^2\int d^4z_1\int d^4z_2.
+  \end{equation}
+
+\item \textbf{Factor de simetría.}
+  La contribución se divide por el factor de simetría $S$ del diagrama.
+  \begin{center}
+\begin{minipage}{\linewidth}
+\centering
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+      \draw[blue,very thick] (-1.8,0)--(1.8,0);
+      \draw[blue,very thick] (0,0) .. controls (-0.7,1.25) and (0.7,1.25) .. (0,0);
+      \fill[red] (0,0) circle (2.5pt) node[below=3pt,text=black] {$z$};
+      \node at (-1.8,-0.3) {$x$};
+      \node at (1.8,-0.3) {$y$};
+    \end{tikzpicture}
+    \diagramcaption{Ejemplo de factor de simetría. La contracción interna en el
+    mismo vértice produce el factor \(S=2\).}
+  \end{minipage}
+\end{center}
+  \begin{equation}
+    S=2,\qquad\frac{-i\lambda}{S}=\frac{-i\lambda}{2}.
+  \end{equation}
+  Por tanto, este diagrama \emph{tadpole} produce
+  \begin{equation}
+    -\frac{i\lambda}{2}\int d^4z\,
+    \Delta_F(x-z)\Delta_F(y-z)\Delta_F(z-z).
+  \end{equation}
+
 \end{enumerate}
 
 Para un diagrama con $V$ vértices, las tres reglas se resumen en
@@ -1192,6 +1248,84 @@ Para un diagrama con $V$ vértices, las tres reglas se resumen en
   \int\prod_{j=1}^{V}d^4z_j
   \prod_{\text{líneas }(ab)}\Delta_F(a-b).}
 \end{equation}
+
+\subsection{Cancelación de burbujas de vacío}
+
+Los diagramas desconectados sin patas externas se cancelan contra el
+  denominador de Gell-Mann--Low. A primer orden, el numerador contiene tres
+  clases de contribuciones: la propagación libre, esa misma línea acompañada
+  por una burbuja desconectada y el diagrama \emph{tadpole} conectado.
+
+\noindent\begin{minipage}{\linewidth}
+  \begin{equation}
+    \begin{tikzpicture}[scale=0.75,baseline=(current bounding box.center)]
+      % Numerador.
+      \node at (-6.1,2.0) {$N=$};
+      \draw[blue,very thick] (-5.45,2.0)--(-4.25,2.0);
+      \node[below=2pt] at (-5.45,2.0) {$x$};
+      \node[below=2pt] at (-4.25,2.0) {$y$};
+      \node at (-4.85,3.2) {\scriptsize libre};
+      \node at (-3.88,2.0) {$+$};
+
+      \draw[blue,very thick] (-3.5,2.0)--(-2.3,2.0);
+      \node[below=2pt] at (-3.5,2.0) {$x$};
+      \node[below=2pt] at (-2.3,2.0) {$y$};
+      \draw[blue,very thick] (-1.62,2.0)
+        .. controls (-2.05,2.55) and (-1.19,2.55) .. (-1.62,2.0);
+      \draw[blue,very thick] (-1.62,2.0)
+        .. controls (-2.05,1.45) and (-1.19,1.45) .. (-1.62,2.0);
+      \fill[red] (-1.62,2.0) circle (2.2pt);
+      \node at (-2.55,3.2) {\scriptsize desconectada};
+      \node at (-0.98,2.0) {$+$};
+
+      \draw[blue,very thick] (-0.58,2.0)--(0.92,2.0);
+      \draw[blue,very thick] (0.17,2.0)
+        .. controls (-0.28,3.05) and (0.62,3.05) .. (0.17,2.0);
+      \fill[red] (0.17,2.0) circle (2.2pt);
+      \node[below=2pt] at (-0.58,2.0) {$x$};
+      \node[below=2pt] at (0.92,2.0) {$y$};
+      \node at (0.17,3.2) {\scriptsize conectada};
+      \node at (1.35,2.0) {$+\cdots$};
+
+      % Denominador.
+      \node at (-6.1,0.35) {$D=$};
+      \node at (-5.35,0.35) {$1+$};
+      \draw[blue,very thick] (-4.35,0.35)
+        .. controls (-4.8,0.9) and (-3.9,0.9) .. (-4.35,0.35);
+      \draw[blue,very thick] (-4.35,0.35)
+        .. controls (-4.8,-0.2) and (-3.9,-0.2) .. (-4.35,0.35);
+      \fill[red] (-4.35,0.35) circle (2.2pt);
+      \node at (-3.72,0.35) {$+\cdots$};
+      \node at (-4.35,1.15) {\scriptsize vacío};
+
+      % Cociente: sólo sobreviven las piezas conectadas.
+      \node at (-6.0,-1.25) {$\dfrac ND=$};
+      \draw[blue,very thick] (-5.1,-1.25)--(-3.9,-1.25);
+      \node[below=2pt] at (-5.1,-1.25) {$x$};
+      \node[below=2pt] at (-3.9,-1.25) {$y$};
+      \node at (-3.5,-1.25) {$+$};
+      \draw[blue,very thick] (-3.05,-1.25)--(-1.55,-1.25);
+      \draw[blue,very thick] (-2.3,-1.25)
+        .. controls (-2.75,-0.2) and (-1.85,-0.2) .. (-2.3,-1.25);
+      \fill[red] (-2.3,-1.25) circle (2.2pt);
+      \node[below=2pt] at (-3.05,-1.25) {$x$};
+      \node[below=2pt] at (-1.55,-1.25) {$y$};
+      \node at (-1.1,-1.25) {$+\cdots$};
+      \node[blue] at (-3.45,-2.4) {\small sólo permanecen diagramas conectados};
+    \end{tikzpicture}
+  \end{equation}
+  \begin{center}
+\begin{minipage}{\linewidth}
+\centering
+    \diagramcaption{Cancelación de burbujas de vacío en el cociente \(N/D\).}
+  \end{minipage}
+\end{center}
+  \end{minipage}
+
+En $N$, la contribución de la burbuja desconectada multiplica al
+propagador externo; en $D$ aparece la misma contribución de vacío.
+Es este factor común, con sus coeficientes correspondientes, el que se
+cancela al formar el cociente.
 
 Para obtener el correlador normalizado, se suman los diagramas conectados
 al par externo $x,y$ al orden deseado, con esos puntos fijos. Las burbujas

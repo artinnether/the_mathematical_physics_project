@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PAPERS_DIR = ROOT / "papers"
 
 PAPERS = [
+    {'slug': 'phi4-feynman-rules-position-space', 'title': 'λφ⁴ Theory and Feynman Rules in Position Space', 'spanish_title': 'Teoría λφ⁴ y reglas de Feynman en espacio de posiciones', 'pdf': 'qft_notes_78_80_english.pdf', 'pdf_alt': 'notas_qft_78_80_con_dibujo_definiciones.pdf', 'category': 'Quantum Field Theory', 'description': 'Derivation of Feynman rules from dynamical pictures, Gell-Mann–Low, Dyson, and Wick. Includes the two-point correlator through second order, vacuum-bubble cancellation, and symmetry factors.', 'keywords': 'quantum field theory, lambda phi4, Feynman rules, position space, interaction picture, Dyson series, Wick theorem, vacuum bubbles, symmetry factors', 'lastmod': '2026-09-30'},
     {
         "slug": "lie-groups-universal-enveloping-algebra",
         "title": "From Lie Groups to the Universal Enveloping Algebra",
@@ -116,6 +117,8 @@ PAPERS = [
 ]
 
 SITEMAP_PDFS = [
+    ('qft_notes_78_80_english.pdf', "2026-09-30", "0.8"),
+    ('notas_qft_78_80_con_dibujo_definiciones.pdf', "2026-09-30", "0.8"),
     ("notas_algebras_lie_envolvente_universal.pdf", "2026-09-02", "0.9"),
     ("notes_lie_algebras_universal_enveloping_algebra.pdf", "2026-09-02", "0.9"),
     ("Algebras_C_estrella_y_Notacion_Daga_ES.pdf", "2026-07-16", "0.9"),
@@ -445,3 +448,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

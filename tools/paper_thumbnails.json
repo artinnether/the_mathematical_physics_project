@@ -1,5 +1,37 @@
 [
   {
+    "id": "field-evolution",
+    "selection": "Evolución del campo desde su perfil inicial",
+    "alt": {
+      "es": "Evolución del campo a partir de un perfil espacial inicial",
+      "en": "Field evolution from an initial spatial profile"
+    },
+    "variants": {
+      "es": {
+        "pdf": "notas_qft_78_80_con_dibujo_definiciones.pdf",
+        "page": 5,
+        "bbox": [
+          120,
+          415,
+          490,
+          670
+        ],
+        "image": "assets/field-evolution-es.png"
+      },
+      "en": {
+        "pdf": "qft_notes_78_80_english.pdf",
+        "page": 5,
+        "bbox": [
+          120,
+          415,
+          490,
+          670
+        ],
+        "image": "assets/field-evolution-en.png"
+      }
+    }
+  },
+  {
     "id": "lie-rotations",
     "selection": "Figura 1: rotaciones infinitesimales",
     "alt": {

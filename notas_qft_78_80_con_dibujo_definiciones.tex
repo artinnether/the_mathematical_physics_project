@@ -1,0 +1,1203 @@
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[spanish,es-noquoting]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{amsthm}
+\usepackage{physics}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\definecolor{diagramblue}{RGB}{0,142,190}
+\definecolor{diagramgreen}{RGB}{67,150,45}
+\definecolor{diagramred}{RGB}{210,40,30}
+\usetikzlibrary{arrows.meta,calc,positioning}
+\usepackage{hyperref}
+
+\hypersetup{
+  pdftitle={Teoría lambda phi4 y reglas de Feynman en espacio de posiciones},
+  pdfauthor={Omar Corona Tejeda},
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\geometry{margin=2.2cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\interfootnotelinepenalty=10000
+\raggedbottom
+\clubpenalty=10000
+\widowpenalty=10000
+\setlist[itemize]{leftmargin=1.3em}
+
+\theoremstyle{definition}
+\newtheorem{definicion}{Definición}
+\theoremstyle{definition}
+\newtheorem{observacion}{Observación}
+\newtheorem{ejemplo}{Ejemplo}
+\AddToHook{env/ejemplo/begin}{\pushQED{\qed}}
+\AddToHook{env/ejemplo/end}{\par\nobreak\vspace{0.35em}\noindent\popQED}
+\newcommand{\eqbox}[1]{\boxed{\displaystyle #1}}
+\newcounter{footnotequation}
+\newcommand{\fnEqTag}{\refstepcounter{footnotequation}\tag{\Roman{footnotequation}}}
+\newcounter{diagrama}
+\newcommand{\diagramcaption}[1]{%
+  \refstepcounter{diagrama}%
+  \par\vspace{0.7em}{\footnotesize\textbf{Figura \thediagrama.} #1}\par\vspace{0.4em}%
+}
+\newcommand{\qftFreeDiagram}{%
+  \begin{tikzpicture}[baseline=-0.5ex,scale=0.45]
+    \draw[blue,very thick] (-1,0)--(1,0);
+  \end{tikzpicture}%
+}
+\newcommand{\qftTadpoleDiagram}{%
+  \begin{tikzpicture}[baseline=-0.5ex,scale=0.45]
+    \draw[blue,very thick] (-1,0)--(1,0);
+    \draw[blue,very thick] (0,0)
+      .. controls (-0.6,1.1) and (0.6,1.1) .. (0,0);
+    \fill[red] (0,0) circle (2pt);
+  \end{tikzpicture}%
+}
+\newcommand{\qftVacuumDiagram}{%
+  \begin{tikzpicture}[baseline=-0.5ex,scale=0.35]
+    \draw[blue,very thick] (0,0)
+      .. controls (-0.7,1.3) and (0.7,1.3) .. (0,0);
+    \draw[blue,very thick] (0,0)
+      .. controls (-0.7,-1.3) and (0.7,-1.3) .. (0,0);
+    \fill[red] (0,0) circle (2pt);
+  \end{tikzpicture}%
+}
+\newcommand{\qftChainDiagram}{%
+  \begin{tikzpicture}[baseline=-0.5ex,scale=0.45]
+    \draw[blue,very thick] (-1.4,0)--(1.4,0);
+    \foreach \x in {-0.5,0.5} {
+      \draw[blue,very thick] (\x,0)
+        .. controls (\x-0.5,1.1) and (\x+0.5,1.1) .. (\x,0);
+      \fill[red] (\x,0) circle (2pt);
+    }
+  \end{tikzpicture}%
+}
+
+\title{Teoría $\lambda\phi^4$ y reglas de Feynman\\
+en espacio de posiciones}
+\author{Omar Corona Tejeda\\
+\href{mailto:omarct1989@ciencias.unam.mx}{omarct1989@ciencias.unam.mx}\\[0.2cm]
+\href{https://artinnether.github.io/the_mathematical_physics_project/}
+{The Mathematical Physics Project}}
+\date{30 de septiembre de 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Se desarrolla una derivación de las reglas de Feynman en espacio de
+posiciones para el correlador de dos puntos de la teoría escalar real
+$\lambda\phi^4$. Primero se precisan las imágenes de Schrödinger, Heisenberg
+e interacción, distinguiendo la evolución libre de la evolución completa.
+Mediante conmutadores anidados y la fórmula de Baker--Campbell--Hausdorff,
+se reconstruye la expansión modal del campo libre y se obtiene el
+Hamiltoniano de interacción.
+
+La fórmula de Gell-Mann--Low, la serie de Dyson y el teorema de Wick
+permiten traducir las contracciones en propagadores, vértices e integrales
+sobre el espacio-tiempo. Se explica la cancelación de las burbujas de vacío,
+se calculan las contribuciones de primer orden y se presentan las tres
+topologías conectadas de segundo orden con sus integrales y factores de
+simetría. Las figuras y los ejemplos conectan la evolución del campo con el cálculo
+operatorial y muestran cómo las reglas diagramáticas surgen de la
+combinatoria de contracciones. Las integrales de lazos se
+mantienen formales, sin desarrollar su regularización y renormalización.
+\end{abstract}
+
+\section{Introducción}
+
+El paso de la dinámica de un campo cuántico a sus reglas de Feynman exige
+articular varias estructuras: la evolución de estados y operadores, la
+elección del vacío, el ordenamiento temporal y la combinatoria de las
+contracciones. La sencillez de un diagrama es el resultado de ese trabajo.
+Comprender cómo se construye permite reconocer qué representa cada línea,
+qué operación introduce un vértice y de dónde proviene el coeficiente que
+acompaña a una contribución. Estas notas desarrollan esa construcción para
+el correlador de dos puntos de la teoría escalar real $\lambda\phi^4$ en
+espacio de posiciones.
+
+El primer problema es identificar los operadores con los que se calcula.
+Las imágenes de Schrödinger, Heisenberg e interacción comparten los datos
+iniciales, pero distribuyen de manera distinta la evolución temporal entre
+estados y operadores. Distinguir el Hamiltoniano libre del Hamiltoniano
+completo permite establecer el papel de $\phi_I$ y su relación con el campo
+interactuante $\phi_H$. La expansión modal se reconstruye mediante
+conmutadores anidados y la fórmula de Baker--Campbell--Hausdorff; así se
+verifica explícitamente la evolución libre que sustenta el desarrollo
+perturbativo y se construye el Hamiltoniano de interacción.
+
+El segundo problema es convertir esa estructura operatorial en un cálculo
+organizado. La fórmula de Gell-Mann--Low relaciona el correlador del vacío
+interactuante con valores esperados en el vacío libre; la serie de Dyson
+ordena las inserciones de la interacción y el teorema de Wick las reduce
+a productos de propagadores. Seguimos las contracciones hasta obtener las
+contribuciones de primer orden y las tres topologías conectadas de segundo
+orden, con sus integrales y factores de simetría. La normalización permite
+establecer qué piezas se cancelan: las burbujas de vacío desaparecen,
+mientras que los lazos ligados a los puntos externos permanecen.
+
+El resultado central es una justificación de las reglas de Feynman desde
+el formalismo canónico y el conteo de contracciones. Una vez establecida
+esta base, los cálculos posteriores pueden organizarse mediante diagramas,
+sin reconstruir en cada caso toda la expansión operatorial. Trabajamos con
+$\hbar=c=1$, métrica $(+,-,-,-)$ y una interacción sin orden normal,
+alrededor del vacío simétrico. Las integrales de lazos se mantienen formales;
+su evaluación, regularización y renormalización constituyen la siguiente
+etapa del análisis.
+
+\section{Teoría \texorpdfstring{$\lambda\phi^4$}{lambda phi4}}
+
+Consideramos un campo escalar real en el régimen perturbativo alrededor
+del vacío simétrico, con $m^2>0$ y $\lambda\geq0$. Su lagrangiano es
+\begin{equation}
+  \eqbox{\mathcal{L}
+  \coloneqq\frac{1}{2}\partial_\mu\phi\,\partial^\mu\phi
+  -\frac{m^2}{2}\phi^2
+  -\frac{\lambda}{4!}\phi^4.}
+\end{equation}
+El punto sobre el campo denota su derivada parcial respecto del tiempo,
+manteniendo fija la coordenada espacial:
+\begin{equation}
+  \dot\phi(t,\mathbf{x})
+  \coloneqq\partial_t\phi(t,\mathbf{x})
+  =\frac{\partial\phi(t,\mathbf{x})}{\partial t}
+  =\partial_0\phi(t,\mathbf{x}).
+\end{equation}
+Con la convención métrica $(+,-,-,-)$, el momento canónico conjugado al campo es
+\begin{equation}
+  \pi(t,\mathbf{x})
+  \coloneqq\frac{\partial\mathcal L}{\partial\dot\phi(t,\mathbf{x})}
+  =\dot\phi(t,\mathbf{x}).
+\end{equation}
+La densidad hamiltoniana es
+\begin{equation}
+  \eqbox{\mathcal{H}
+  \coloneqq\frac{1}{2}\pi^2
+  +\frac{1}{2}\abs{\grad\phi}^2
+  +\frac{m^2}{2}\phi^2
+  +\frac{\lambda}{4!}\phi^4.}
+\end{equation}
+
+Al integrar la densidad hamiltoniana sobre el espacio, separamos la parte libre
+de la interacción:
+\begin{equation}
+  \boxed{\begin{aligned}
+  H(t)
+  &\coloneqq\int d^3x\,\mathcal{H}(t,\mathbf{x})
+  \\
+  &=
+  \underbrace{\int d^3x\left[
+    \frac{1}{2}\pi^2(t,\mathbf{x})
+    +\frac{1}{2}\abs{\grad\phi(t,\mathbf{x})}^2
+    +\frac{m^2}{2}\phi^2(t,\mathbf{x})
+  \right]}_{\displaystyle H_0(t)\ \text{parte libre}}
+  +
+  \underbrace{\frac{\lambda}{4!}\int d^3x\,\phi^4(t,\mathbf{x})}
+  _{\displaystyle H'(t)\ \text{interacción}} .
+  \end{aligned}}
+\end{equation}
+Los argumentos temporales anteriores indican que se evalúan las variables
+dinámicas en un instante; no representan una dependencia temporal explícita
+del Hamiltoniano. Al pasar al formalismo de operadores, fijaremos la
+separación $H=H_0+H'_S$ mediante los operadores iniciales en $t=0$.
+
+\section{Imágenes dinámicas}
+
+Usamos $\hbar=c=1$ y tomamos $t_0=0$. Consideramos una teoría cuyo Hamiltoniano
+no depende explícitamente del tiempo.
+
+\subsection{Campos y generadores de evolución}
+
+\begin{definicion}[Campo y momento conjugado en la imagen de Schrödinger]
+Fijamos los operadores iniciales del campo y de su momento conjugado:
+\begin{equation}
+  \eqbox{\phi_S(\mathbf{x})\coloneqq\phi(0,\mathbf{x}),
+  \qquad
+  \pi_S(\mathbf{x})\coloneqq\pi(0,\mathbf{x}).}
+  \label{eq:phiSinitial}
+\end{equation}
+El subíndice $S$ indica la imagen de Schrödinger. Estos operadores no llevan
+argumento temporal; representan los datos iniciales de la teoría completa.
+Estas construcciones se usan en el formalismo canónico perturbativo;
+los productos de campos en un mismo punto requieren regularización.
+\end{definicion}
+
+
+\begin{definicion}[Hamiltonianos en la imagen de Schrödinger]
+Con estos operadores definimos la parte libre y el término de interacción:
+\begin{equation}
+  \eqbox{H_0\coloneqq\int d^3x\left[
+    \frac{1}{2}\pi_S^2(\mathbf{x})
+    +\frac{1}{2}\abs{\grad\phi_S(\mathbf{x})}^2
+    +\frac{m^2}{2}\phi_S^2(\mathbf{x})\right].}
+  \label{eq:H0Schrodinger}
+\end{equation}
+\begin{equation}
+  \eqbox{H'_S\coloneqq\frac{\lambda}{4!}\int d^3x\,\phi_S^4(\mathbf{x}),
+  \qquad H=H_0+H'_S.}
+  \label{eq:Hprime}
+\end{equation}
+Así, $H$, $H_0$ y $H'_S$ son operadores fijos de Schrödinger.
+\end{definicion}
+
+
+\begin{definicion}[Operadores de evolución temporal]
+Para los Hamiltonianos independientes del tiempo $H$ y $H_0$\footnote{\begin{minipage}[t]{\dimexpr\linewidth-1.8em\relax}
+Para un Hamiltoniano fijo, la ecuación de Schrödinger tiene la solución
+$\ket{\psi(t)}=e^{-iHt}\ket{\psi(0)}$. La condición $\partial H/\partial t=0$
+significa que el Hamiltoniano no depende explícitamente del tiempo.
+Esta idea ya aparece en ejemplos familiares de la mecánica clásica:
+\begin{equation*}
+\begin{aligned}
+ H_{\mathrm{libre}}(\mathbf x,\mathbf p)
+   &=\frac{\mathbf p^2}{2m}
+   &&\text{(partícula libre)},\\
+ H_{\mathrm{osc}}(x,p)
+   &=\frac{p^2}{2m}+\frac12 kx^2
+   &&\text{(oscilador armónico)},\\
+ H_{\mathrm{Coul}}(\mathbf x,\mathbf p)
+   &=\frac{\mathbf p^2}{2m}-\frac{\kappa}{r}
+   &&\text{(potencial de Coulomb)},\\
+ H_{\mathrm{grav}}(z,p_z)
+   &=\frac{p_z^2}{2m}+mgz
+   &&\text{(gravedad uniforme)},\\
+ H_{\mathrm{pend}}(\theta,p_\theta)
+   &=\frac{p_\theta^2}{2m\ell^2}+mg\ell(1-\cos\theta)
+   &&\text{(péndulo simple)}.
+\end{aligned}
+\fnEqTag
+\end{equation*}
+Aquí $m$ es la masa, $k>0$ la constante del resorte,
+$\kappa>0$ la intensidad de la atracción y $r=|\mathbf x|$.
+En gravedad uniforme, $g$ es la aceleración gravitatoria, $z$ la altura
+medida hacia arriba y $p_z$ su momento conjugado. Para el péndulo,
+$\ell$ es la longitud fija, $\theta$ el ángulo respecto de la vertical hacia
+abajo y $p_\theta=m\ell^2\dot\theta$ su momento conjugado; el punto de
+suspensión permanece fijo. Suponemos que no hay rozamiento.
+Con estos parámetros constantes, ninguno de los cinco Hamiltonianos contiene
+$t$ explícitamente, aunque la posición y el momento cambien durante el
+movimiento. En general, $H=\mathbf p^2/(2m)+V(\mathbf x)$ cumple esta
+condición para cualquier potencial estático. Por tanto, un Hamiltoniano
+independiente del tiempo puede describir movimiento e interacción.
+\end{minipage}}, definimos los
+operadores de evolución completa y libre, respectivamente, por
+\begin{equation}
+  U(t)\coloneqq e^{-iHt},
+  \qquad
+  U_0(t)\coloneqq e^{-iH_0t}.
+\end{equation}
+\end{definicion}
+
+\begin{definicion}[Campo en la imagen de Heisenberg]
+A partir del operador inicial $\phi_S(\mathbf{x})$, definimos el campo
+interactuante en la imagen de Heisenberg mediante el Hamiltoniano completo
+$H=H_0+H'_S$:
+\begin{equation}
+  \eqbox{\phi_H(t,\mathbf{x})\coloneqq
+    e^{iHt}\phi_S(\mathbf{x})e^{-iHt}.}
+  \label{eq:fieldHeisenberg}
+\end{equation}
+En la teoría $\lambda\phi^4$, este es el campo interactuante y describe la
+evolución de la teoría completa.
+\end{definicion}
+
+\begin{definicion}[Campo en la imagen de interacción]
+A partir del mismo operador inicial $\phi_S(\mathbf{x})$, definimos el campo
+en la imagen de interacción mediante la parte libre $H_0$:
+\begin{equation}
+  \eqbox{\phi_I(t,\mathbf{x})\coloneqq
+    e^{iH_0t}\phi_S(\mathbf{x})e^{-iH_0t}.}
+  \label{eq:fieldInteraction}
+\end{equation}
+El subíndice $I$ indica la imagen de interacción; este campo tiene evolución
+libre.\footnote{Seguimos la terminología de D. Tong,
+\emph{Lectures on Quantum Field Theory}, secciones 3.1 y 3.7, donde se
+distingue el campo en la imagen de Heisenberg de la teoría completa del campo
+en la imagen de interacción. Véase
+\href{https://www.damtp.cam.ac.uk/user/tong/qft/qfthtml/S3.html}{Interacting Fields}.}
+\end{definicion}
+
+\begin{observacion}
+La igualdad \(\phi_S(\mathbf{x})=\phi_H(0,\mathbf{x})\) no supone que el campo
+interactuante sea libre: \(\phi_H(0,\mathbf{x})\) es el campo completo de la
+teoría \(\lambda\phi^4\) evaluado en el tiempo inicial. En \(t=0\), las
+imágenes de Schrödinger, Heisenberg e interacción comparten el mismo operador de
+campo,
+\begin{equation}
+  \phi_S(\mathbf{x})=\phi_H(0,\mathbf{x})=\phi_I(0,\mathbf{x}).
+\end{equation}
+Si ese dato inicial se evoluciona con \(H_0\), obtenemos el campo libre
+\(\phi_I(t,\mathbf{x})\). Si se evoluciona con el Hamiltoniano completo
+\(H=H_0+H'_S\), obtenemos el campo completo \(\phi_H(t,\mathbf{x})\). Por eso, en
+general, \(\phi_H(t,\mathbf{x})\neq\phi_I(t,\mathbf{x})\) si \(t\neq0\).
+\end{observacion}
+
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[
+  >=Latex,
+  box/.style={draw,rounded corners=2pt,align=center,inner sep=6pt},
+  evolution/.style={->,very thick,blue}
+]
+  \node[box] (initial) at (0,0)
+    {$t=0$\\[2pt]
+    $\phi_S(\mathbf{x})=\phi_H(0,\mathbf{x})=\phi_I(0,\mathbf{x})$\\
+    dato inicial común};
+  \node[box] (heis) at (7.0,1.35)
+    {$\phi_H(t,\mathbf{x})=e^{iHt}\phi_S(\mathbf{x})e^{-iHt}$\\
+    evolución completa};
+  \node[box] (inter) at (7.0,-1.35)
+    {$\phi_I(t,\mathbf{x})=e^{iH_0t}\phi_S(\mathbf{x})e^{-iH_0t}$\\
+    evolución libre};
+  \draw[evolution] (initial.east) --
+    node[pos=0.68,above=3pt,sloped,fill=white,inner sep=1pt] {\scriptsize $H=H_0+H'_S$}
+    (heis.west);
+  \draw[evolution] (initial.east) --
+    node[pos=0.58,below=3pt,sloped,fill=white,inner sep=1pt] {\scriptsize $H_0$}
+    (inter.west);
+\end{tikzpicture}
+\diagramcaption{Resumen de \eqref{eq:fieldHeisenberg} y \eqref{eq:fieldInteraction}: el mismo
+dato inicial evoluciona con $H$ para dar $\phi_H$ y con $H_0$ para dar $\phi_I$.}
+\end{minipage}
+\end{center}
+
+\subsection{Estados y operadores en cada imagen}
+
+\begin{definicion}[Imagen de Schrödinger]
+Los estados evolucionan con el Hamiltoniano completo y los operadores sin dependencia
+temporal explícita permanecen fijos:
+\begin{equation}
+  \eqbox{\ket{\psi_S(t)}\coloneqq e^{-iHt}\ket{\psi_S(0)},
+  \qquad \frac{\partial A_S}{\partial t}=0.}
+\end{equation}
+Por tanto, el operador se denota $A_S$, sin argumento temporal; no se escribe $A_S(t)$.
+\end{definicion}
+
+\begin{definicion}[Imagen de Heisenberg]
+Los estados son constantes y los operadores evolucionan con el Hamiltoniano completo:
+\begin{equation}
+  \eqbox{\ket{\psi_H}\coloneqq\ket{\psi_S(0)},
+  \qquad
+  A_H(t)\coloneqq e^{iHt}A_Se^{-iHt}.}
+\end{equation}
+\end{definicion}
+
+\begin{definicion}[Imagen de interacción]
+Los operadores evolucionan con $H_0$:
+\begin{equation}
+  \eqbox{A_I(t)
+  \coloneqq e^{iH_0t}A_Se^{-iH_0t}.}
+  \label{eq:AI}
+\end{equation}
+
+De la definición de la imagen de Heisenberg,
+\begin{equation}
+  A_H(t)=e^{iHt}A_Se^{-iHt},
+\end{equation}
+se despeja
+\begin{equation}
+  A_S=e^{-iHt}A_H(t)e^{iHt}.
+\end{equation}
+Al sustituir este resultado en \eqref{eq:AI},
+\begin{equation}
+  \eqbox{A_I(t)
+  =e^{iH_0t}e^{-iHt}A_H(t)e^{iHt}e^{-iH_0t}.}
+  \label{eq:AIfromAHexplicit}
+\end{equation}
+\begin{equation}
+  \eqbox{A_I(t)=U_I(t)A_H(t)U_I^\dagger(t).}
+  \label{eq:AIfromAH}
+\end{equation}
+donde
+\begin{equation}
+  \eqbox{U_I(t)\coloneqq e^{iH_0t}e^{-iHt}.}
+  \label{eq:UI}
+\end{equation}
+Aplicada al campo, la relación \eqref{eq:AIfromAHexplicit} muestra que la
+transformación a la imagen de interacción cancela la evolución completa y deja
+sólo la evolución libre:
+\begin{align}
+  \phi_I(t,\mathbf{x})
+  &=e^{iH_0t}e^{-iHt}\phi_H(t,\mathbf{x})e^{iHt}e^{-iH_0t}
+  \notag\\
+  &=e^{iH_0t}e^{-iHt}
+    \left(e^{iHt}\phi_S(\mathbf{x})e^{-iHt}\right)
+    e^{iHt}e^{-iH_0t}
+  \notag\\
+  &=e^{iH_0t}\phi_S(\mathbf{x})e^{-iH_0t}.
+  \label{eq:phiIfromphiH}
+\end{align}
+Equivalentemente,
+\begin{equation}
+  \eqbox{A_H(t)=U_I^\dagger(t)A_I(t)U_I(t).}
+\end{equation}
+
+Los estados contienen la evolución restante:
+\begin{equation}
+  \ket{\psi_I(t)}\coloneqq e^{iH_0t}\ket{\psi_S(t)},
+  \qquad
+  i\frac{d}{dt}\ket{\psi_I(t)}=H'_I(t)\ket{\psi_I(t)},
+\end{equation}
+\end{definicion}
+
+
+
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+ width=12.5cm,height=8.9cm,view={-35}{27},
+ axis lines=none,ticks=none,
+ xmin=-3,xmax=3,ymin=0,ymax=4,zmin=0,zmax=1.35,
+ clip=false,z buffer=sort,
+ colormap={campo}{color(0cm)=(white);color(1cm)=(diagramblue!38!white)}]
+% x es posición, y es tiempo y z es valor de un perfil ilustrativo.
+\addplot3[surf,shader=faceted interp,faceted color=diagramblue!28,
+ domain=-3:3,y domain=0:4,samples=35,samples y=23]
+ {exp(-1.25*(x-.4*y+.8)^2)};
+% El perfil inicial queda destacado y es el borde de la superficie.
+\addplot3[diagramgreen,very thick,domain=-3:3,samples=100,samples y=1]
+ (x,0,{exp(-1.25*(x+.8)^2)});
+% Dos perfiles posteriores muestran cortes espaciales de la evolución.
+\addplot3[diagramblue,thick,domain=-3:3,samples=100,samples y=1]
+ (x,2,{exp(-1.25*x^2)});
+\addplot3[diagramblue,thick,domain=-3:3,samples=100,samples y=1]
+ (x,4,{exp(-1.25*(x-.8)^2)});
+% Los tres ejes tienen significados distintos.
+\draw[gray!65,->,>=stealth,thin] (axis cs:-3.25,0,0)--(axis cs:3.6,0,0)
+ node[below right,text=black] {$x$};
+\draw[diagramred,->,>=stealth,thick] (axis cs:3.3,0,0)--(axis cs:3.3,4.7,0)
+ node[above,text=diagramred] {$t$};
+\draw[gray!65,->,>=stealth,thin] (axis cs:-3.25,0,-.18)--(axis cs:-3.25,0,2.25)
+ node[above,text=black] {$\varphi$};
+\node[anchor=north,text=diagramgreen,font=\small,align=center]
+ at (axis cs:-.8,0,-.16) {perfil inicial\\$\varphi(0,x)$};
+\node[anchor=west,text=diagramblue,font=\small]
+ at (axis cs:1.3,4,1.18) {$\varphi(t,x)$};
+\draw[diagramblue!65,thin] (axis cs:1.3,4,1.15)--(axis cs:.8,4,1);
+\node[text=diagramred,font=\small,rotate=27]
+ at (axis cs:3.65,2,.06) {evolución};
+\node[text=gray!75,font=\footnotesize]
+ at (axis cs:-2.8,4,.08) {$t>0$};
+\end{axis}
+\end{tikzpicture}
+\diagramcaption{Del perfil espacial a su evolución temporal. La curva verde
+representa un perfil inicial en $t=0$; los cortes azules muestran perfiles
+posteriores. El eje rojo indica el tiempo y la altura indica el valor del
+campo. La superficie es un esquema de un perfil clásico, no una gráfica
+del operador cuántico ni una solución calculada de la teoría $\lambda\phi^4$.}
+\end{minipage}
+\end{center}
+
+La figura ilustra cómo un perfil espacial se extiende a lo largo del tiempo.
+En las definiciones operatoriales, ese mismo tiempo aparece tanto en $\phi_I$
+como en $\phi_H$; sus evoluciones se distinguen por el generador, $H_0$ o $H$.
+
+Un ejemplo concreto en una dimensión espacial es el modo libre
+\[
+ \varphi(t,x)=A\cos(kx-\omega_k t),\qquad
+ \omega_k=\sqrt{k^2+m^2}.
+\]
+En $t=0$ tenemos el perfil $A\cos(kx)$; a tiempos posteriores,
+la fase $-\omega_k t$ desplaza las crestas y los valles. Esta onda es
+un ejemplo analítico de evolución libre; la superficie del dibujo
+sólo ilustra la construcción geométrica de un perfil a lo largo del tiempo.
+
+\section{Hamiltoniano de interacción}
+
+Para expresar $H'_I(t)$ en términos de campos libres, comprobamos primero
+mediante la expansión modal la evolución con $H_0$ definida en
+\eqref{eq:fieldInteraction}.
+
+\subsection{Reconstrucción del campo libre}
+
+\begin{ejemplo}[Comprobación de la evolución libre]
+Escribimos el operador inicial común $\phi_S(\mathbf{x})=\phi_I(0,\mathbf{x})$
+en la expansión modal asociada al Hamiltoniano libre $H_0$:
+\begin{equation}
+  \phi_S(\mathbf{x})=
+  \int\frac{d^3k}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\mathbf{k}}}}
+  \left[
+    a_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{x}}
+    +a_{\mathbf{k}}^\dagger e^{-i\mathbf{k}\cdot\mathbf{x}}
+  \right].
+  \label{eq:freefield0}
+\end{equation}
+Aquí $\omega_{\mathbf{k}}\coloneqq\sqrt{\mathbf{k}^2+m^2}$.
+Los operadores $a_{\mathbf{k}}$ y $a_{\mathbf{k}}^\dagger$ se definen con
+respecto a esta parte libre, cuyo vacío satisface $a_{\mathbf{k}}\ket{0}=0$.
+Considere el Hamiltoniano libre, omitiendo la constante de energía de punto cero,
+\begin{equation}
+  H_0=\int\frac{d^3k}{(2\pi)^3}\,
+  \omega_{\mathbf{k}}a_{\mathbf{k}}^\dagger a_{\mathbf{k}},
+\end{equation}
+y las relaciones de conmutación
+\begin{equation}
+  [a_{\mathbf{k}},a_{\mathbf{p}}^\dagger]
+  =(2\pi)^3\delta^{(3)}(\mathbf{k}-\mathbf{p}),
+  \qquad
+  [a_{\mathbf{k}},a_{\mathbf{p}}]
+  =[a_{\mathbf{k}}^\dagger,a_{\mathbf{p}}^\dagger]=0.
+\end{equation}
+Demuestre, mediante los conmutadores anidados y la fórmula de
+Baker--Campbell--Hausdorff, que
+\begin{equation}
+  \boxed{\begin{aligned}
+  e^{iH_0t}\phi_S(\mathbf{x})e^{-iH_0t}
+  &={}\int\frac{d^3k}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\mathbf{k}}}}
+  \left[
+    a_{\mathbf{k}}e^{-i\omega_{\mathbf{k}}t+i\mathbf{k}\cdot\mathbf{x}}
+    +a_{\mathbf{k}}^\dagger e^{i\omega_{\mathbf{k}}t-i\mathbf{k}\cdot\mathbf{x}}
+  \right].
+  \end{aligned}}
+  \label{eq:freefield}
+\end{equation}
+Concluya que la evolución generada por $H_0$ reconstruye el campo libre de
+Klein--Gordon $\phi_{\mathrm{libre}}(t,\mathbf{x})$.
+
+\par\smallskip\noindent\textbf{Solución.}
+Según la definición de la imagen de interacción, calculamos
+\begin{equation}
+  \eqbox{\phi_I(t,\mathbf{x})
+  =e^{iH_0t}\phi_S(\mathbf{x})e^{-iH_0t}.}
+  \label{eq:fieldBCH}
+\end{equation}
+Primero obtenemos los conmutadores elementales\footnote{Usamos
+\([AB,C]=A[B,C]+[A,C]B\). Entonces
+\begin{align*}
+[H_0,a_{\mathbf{k}}]
+&=\int\frac{d^3p}{(2\pi)^3}\,
+\omega_{\mathbf{p}}
+[a_{\mathbf{p}}^\dagger a_{\mathbf{p}},a_{\mathbf{k}}] \\
+&=\int\frac{d^3p}{(2\pi)^3}\,
+\omega_{\mathbf{p}}
+\bigl(a_{\mathbf{p}}^\dagger[a_{\mathbf{p}},a_{\mathbf{k}}]
++[a_{\mathbf{p}}^\dagger,a_{\mathbf{k}}]a_{\mathbf{p}}\bigr) \\
+&=-\int\frac{d^3p}{(2\pi)^3}\,
+\omega_{\mathbf{p}}(2\pi)^3
+\delta^{(3)}(\mathbf{p}-\mathbf{k})a_{\mathbf{p}}
+=-\omega_{\mathbf{k}}a_{\mathbf{k}}.
+\fnEqTag
+\end{align*}
+y de manera análoga
+\begin{align*}
+[H_0,a_{\mathbf{k}}^\dagger]
+&=\int\frac{d^3p}{(2\pi)^3}\,
+\omega_{\mathbf{p}}
+[a_{\mathbf{p}}^\dagger a_{\mathbf{p}},a_{\mathbf{k}}^\dagger] \\
+&=\int\frac{d^3p}{(2\pi)^3}\,
+\omega_{\mathbf{p}}
+a_{\mathbf{p}}^\dagger[a_{\mathbf{p}},a_{\mathbf{k}}^\dagger]
+=\omega_{\mathbf{k}}a_{\mathbf{k}}^\dagger .
+\fnEqTag
+\end{align*}
+}
+\begin{equation}
+  [H_0,a_{\mathbf{k}}]=-\omega_{\mathbf{k}}a_{\mathbf{k}},
+  \qquad
+  [H_0,a_{\mathbf{k}}^\dagger]=\omega_{\mathbf{k}}a_{\mathbf{k}}^\dagger.
+  \label{eq:H0akcomm}
+\end{equation}
+
+Ahora aplicamos la fórmula de conjugación de Baker--Campbell--Hausdorff
+(también llamada lema de Hadamard) con
+$A=iH_0t$ y $B=\phi_S(\mathbf{x})=\phi_I(0,\mathbf{x})$:
+\begin{equation}
+  \boxed{\begin{gathered}\textstyle
+  e^{iH_0t}B e^{-iH_0t}
+  =
+  B+it[H_0,B]
+  +\frac{(it)^2}{2!}[H_0,[H_0,B]]
+  +\frac{(it)^3}{3!}[H_0,[H_0,[H_0,B]]]+\cdots .
+  \end{gathered}}
+  \label{eq:BCHfield}
+\end{equation}
+Calculemos entonces los conmutadores que aparecen en \eqref{eq:BCHfield}.
+Usando \eqref{eq:H0akcomm} en la expansión \eqref{eq:freefield0}, el primer
+conmutador es
+\begin{equation}
+  [H_0,\phi_S(\mathbf{x})]
+  =
+  \int\frac{d^3k}{(2\pi)^3}
+  \frac{1}{\sqrt{2\omega_{\mathbf{k}}}}
+  \left[
+    -\omega_{\mathbf{k}}a_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{x}}
+    +\omega_{\mathbf{k}}a_{\mathbf{k}}^\dagger e^{-i\mathbf{k}\cdot\mathbf{x}}
+  \right].
+  \label{eq:firstPhiComm}
+\end{equation}
+Al conmutar una vez más con \(H_0\),
+\begin{equation}
+  [H_0,[H_0,\phi_S(\mathbf{x})]]
+  =
+  \int\frac{d^3k}{(2\pi)^3}
+  \frac{1}{\sqrt{2\omega_{\mathbf{k}}}}
+  \left[
+    \omega_{\mathbf{k}}^2a_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{x}}
+    +\omega_{\mathbf{k}}^2a_{\mathbf{k}}^\dagger e^{-i\mathbf{k}\cdot\mathbf{x}}
+  \right].
+  \label{eq:secondPhiComm}
+\end{equation}
+El tercer conmutador ya deja ver la alternancia de signos:
+\begin{equation}
+  [H_0,[H_0,[H_0,\phi_S(\mathbf{x})]]]
+  =
+  \int\frac{d^3k}{(2\pi)^3}
+  \frac{1}{\sqrt{2\omega_{\mathbf{k}}}}
+  \left[
+    -\omega_{\mathbf{k}}^3a_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{x}}
+    +\omega_{\mathbf{k}}^3a_{\mathbf{k}}^\dagger e^{-i\mathbf{k}\cdot\mathbf{x}}
+  \right].
+  \label{eq:thirdPhiComm}
+\end{equation}
+Por tanto, para \(n\) conmutadores anidados,
+\begin{equation}
+  \underbrace{[H_0,[H_0,\cdots[H_0,\phi_S(\mathbf{x})]\cdots]]}_{n\ \text{veces}}
+  =
+  \int\frac{d^3k}{(2\pi)^3}
+  \frac{1}{\sqrt{2\omega_{\mathbf{k}}}}
+  \left[
+    (-\omega_{\mathbf{k}})^n
+    a_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{x}}
+    +\omega_{\mathbf{k}}^n
+    a_{\mathbf{k}}^\dagger e^{-i\mathbf{k}\cdot\mathbf{x}}
+  \right].
+  \label{eq:nestedPhiComm}
+\end{equation}
+Sustituyendo estos conmutadores en \eqref{eq:BCHfield},
+\begin{align}
+  \phi_I(t,\mathbf{x})
+  &\coloneqq e^{iH_0t}\phi_S(\mathbf{x})e^{-iH_0t}
+  \notag\\
+  &=
+  \int\frac{d^3k}{(2\pi)^3}
+  \frac{1}{\sqrt{2\omega_{\mathbf{k}}}}
+  \left[
+    a_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{x}}
+    \sum_{n=0}^{\infty}\frac{(-i\omega_{\mathbf{k}}t)^n}{n!}
+    +
+    a_{\mathbf{k}}^\dagger e^{-i\mathbf{k}\cdot\mathbf{x}}
+    \sum_{n=0}^{\infty}\frac{(i\omega_{\mathbf{k}}t)^n}{n!}
+  \right]
+  \notag\\
+  &=
+  \int\frac{d^3k}{(2\pi)^3}
+  \frac{1}{\sqrt{2\omega_{\mathbf{k}}}}
+  \left[
+    a_{\mathbf{k}}e^{-i\omega_{\mathbf{k}}t+i\mathbf{k}\cdot\mathbf{x}}
+    +
+    a_{\mathbf{k}}^\dagger
+    e^{i\omega_{\mathbf{k}}t-i\mathbf{k}\cdot\mathbf{x}}
+  \right]
+  \equiv\phi_{\mathrm{libre}}(t,\mathbf{x}).
+  \label{eq:BCHsubstitutionField}
+\end{align}
+La última igualdad define la notación $\phi_{\mathrm{libre}}(t,\mathbf{x})$
+para el campo libre de Klein--Gordon dado por esta expansión modal. Por tanto,
+\begin{equation}
+  \eqbox{\phi_I(t,\mathbf{x})=\phi_{\mathrm{libre}}(t,\mathbf{x}).}
+  \label{eq:BCHrecoversField}
+\end{equation}
+La suma de los conmutadores reconstruye las fases $e^{\mp i\omega_{\mathbf{k}}t}$
+y verifica la expansión modal del campo libre anunciada en el enunciado.
+\end{ejemplo}
+
+\begin{observacion}
+El campo $\phi_I$ no es una ``parte'' de $\phi_H$ en sentido aditivo.
+Es el campo libre con el que organizamos perturbativamente el efecto de
+$H'_I(t)$.
+\end{observacion}
+
+\subsection{Construcción de la interacción}
+
+Una vez calculado el campo $\phi_I$, transformamos un operador distinto:
+el término de interacción $H'_S$ definido en \eqref{eq:Hprime}. Recordemos que
+\begin{equation}
+  H'_S=\frac{\lambda}{4!}\int d^3z\,\phi_S^4(\mathbf{z}).
+\end{equation}
+Su expresión en la imagen de interacción es
+\begin{equation}
+  \eqbox{H'_I(t)\coloneqq e^{iH_0t}H'_Se^{-iH_0t}.}
+  \label{eq:HIdefinition}
+\end{equation}
+Usamos ahora el resultado del Ejemplo 1, \eqref{eq:BCHrecoversField}:
+$e^{iH_0t}\phi_S(\mathbf{z})e^{-iH_0t}=\phi_I(t,\mathbf{z})$.
+La conjugación conserva los productos: insertamos
+$e^{-iH_0t}e^{iH_0t}=1$ entre los cuatro factores de $\phi_S^4$ y aplicamos
+este resultado a cada factor. Sustituyendo \eqref{eq:Hprime},
+\begin{align}
+  e^{iH_0t}H'_Se^{-iH_0t}
+  &=\frac{\lambda}{4!}\int d^3z\,
+    e^{iH_0t}\phi_S^4(\mathbf{z})e^{-iH_0t}
+    \notag\\
+  &=\frac{\lambda}{4!}\int d^3z\,
+    \left(e^{iH_0t}\phi_S(\mathbf{z})e^{-iH_0t}\right)^4
+    \notag\\
+  &=\frac{\lambda}{4!}\int d^3z\,\phi_I^4(t,\mathbf{z}).
+  \label{eq:HSaHI}
+\end{align}
+Por tanto,
+\begin{equation}
+  \eqbox{H'_I(t)
+  =e^{iH_0t}H'_Se^{-iH_0t}
+  =\frac{\lambda}{4!}\int d^3z\,\phi_I^4(t,\mathbf{z}).}
+  \label{eq:HIphi4}
+\end{equation}
+
+Aquí aparece sólo el término de interacción porque partimos de $H'_S$.
+Al transformar el Hamiltoniano total, la parte libre también está presente:
+\begin{equation}
+  e^{iH_0t}He^{-iH_0t}=H_0+H'_I(t).
+  \label{eq:totalHamiltonianI}
+\end{equation}
+Para los estados, en cambio, el cambio de imagen absorbe la evolución libre.
+Al derivar $\ket{\psi_I(t)}=e^{iH_0t}\ket{\psi_S(t)}$, obtenemos
+\begin{align}
+  i\frac{d}{dt}\ket{\psi_I(t)}
+  &=\left[-H_0+e^{iH_0t}He^{-iH_0t}\right]\ket{\psi_I(t)}
+  \notag\\
+  &=H'_I(t)\ket{\psi_I(t)}.
+  \label{eq:interactionGenerator}
+\end{align}
+El término $-H_0$ procede de derivar $e^{iH_0t}$ y cancela la parte libre de
+\eqref{eq:totalHamiltonianI}. Por eso la serie de Dyson, que describe la
+evolución de estos estados, utiliza $H'_I(t)$.
+
+La interacción se usa sin orden normal: el término $\phi_I^4$ no se
+reemplaza por $:\!\phi_I^4\!:$, de modo que se conservan las contracciones
+locales que originan los lazos de los ejemplos.
+
+La integral de \eqref{eq:HIphi4} recorre todo el espacio a tiempo fijo. Por eso
+$H'_I(t)$ sigue dependiendo de $t$. El tiempo se integra posteriormente en la serie de
+Dyson:
+\begin{equation}
+  \eqbox{\int_{-\infty}^{\infty}dt\,H'_I(t)
+  =\frac{\lambda}{4!}\int d^4z\,\phi_I^4(z),
+  \qquad z\coloneqq(t,\mathbf{z}).}
+  \label{eq:intHI}
+\end{equation}
+
+\section{Punto de partida del cálculo perturbativo}
+
+Una vez construidos $\phi_I$ y $H'_I$, nuestros cálculos comienzan con la
+fórmula de Gell-Mann--Low\footnote{Murray Gell-Mann y Francis E. Low
+introdujeron este resultado en el contexto de la formulación perturbativa de
+teorías cuánticas de campos. En estas notas lo usamos como la regla que permite
+escribir valores esperados en el vacío interactuante $\ket{\Omega}$ como
+cocientes de valores esperados en el vacío libre $\ket{0}$.} para el correlador
+de dos puntos.
+De hecho, esta fórmula funciona precisamente porque reemplaza correladores del
+campo completo por correladores del campo libre de Klein--Gordon, junto con la
+inserción ordenada temporalmente de la interacción.
+\begin{equation}
+  \boxed{\displaystyle
+  \mel{\Omega}{T\{\phi(x)\phi(y)\}}{\Omega}
+  =
+  \frac{
+    \mel{0}{T\{\phi_I(x)\phi_I(y)
+    e^{-i\int_{-\infty}^{\infty}dt\,H'_I(t)}\}}{0}
+  }{
+    \mel{0}{T\{e^{-i\int_{-\infty}^{\infty}dt\,H'_I(t)}\}}{0}
+  }
+  \coloneqq\frac{N}{D}.}
+  \label{eq:GML}
+\end{equation}
+Aquí $\phi(x)$ denota $\phi_H(x)$, el campo completo en la imagen de
+Heisenberg; $\ket{\Omega}$ es el vacío interactuante y $\ket{0}$ el vacío
+libre, ambos normalizados. Los símbolos $N$ y $D$ denotan respectivamente
+el numerador y el denominador de \eqref{eq:GML}.
+La fórmula se utiliza perturbativamente, con la preparación del vacío y
+los límites temporales definidos mediante una prescripción de convergencia
+compatible con las condiciones de Feynman. Se supone que el vacío libre
+tiene solapamiento no nulo con el vacío interactuante en la teoría
+regularizada. El $i\epsilon$ fija la prescripción de los polos de los
+propagadores; no elimina las divergencias ultravioletas, que requieren
+regularización y renormalización.
+
+Sustituyendo \eqref{eq:HIphi4} en \eqref{eq:GML}, el operador de evolución
+contiene, por \eqref{eq:intHI}, la exponencial de
+$-i\frac{\lambda}{4!}\int d^4z\,\phi_I^4(z)$ bajo el ordenamiento temporal.
+Primero expandimos formalmente la exponencial en su serie de Taylor:
+\begin{equation}
+  \begin{aligned}
+  \exp\left[-i\frac{\lambda}{4!}\int d^4z\,\phi_I^4(z)\right]
+  &=1-i\frac{\lambda}{4!}\int d^4z\,\phi_I^4(z)
+  \\
+  &\quad+\frac{1}{2!}\left(-i\frac{\lambda}{4!}\right)^2
+  \left[\int d^4z\,\phi_I^4(z)\right]^2+\cdots .
+  \end{aligned}
+  \label{eq:DysonTaylor}
+\end{equation}
+En el término cuadrático, cada factor de la integral tiene su propia variable
+de integración. Como $z$ es una variable muda, podemos llamarlas $z_1$ y $z_2$:
+\begin{equation}
+  \begin{aligned}
+  \left[\int d^4z\,\phi_I^4(z)\right]^2
+  &=\left[\int d^4z_1\,\phi_I^4(z_1)\right]
+    \left[\int d^4z_2\,\phi_I^4(z_2)\right]
+  \\
+  &=\int d^4z_1\int d^4z_2\,
+    \phi_I^4(z_1)\phi_I^4(z_2).
+  \end{aligned}
+  \label{eq:DysonIndependentVariables}
+\end{equation}
+Los puntos $z_1$ y $z_2$ se integran independientemente; el cuadrado de la
+integral produce campos evaluados en ambos puntos, no ocho campos en un único
+punto. A orden $n$ aparecen $n$ variables $z_1,\ldots,z_n$, una por cada
+factor de la integral. Aplicamos ahora $T$ a los campos de cada término,
+ordenándolos según sus tiempos $z_j=(t_j,\mathbf{z}_j)$, y obtenemos
+\begin{equation}
+  \boxed{\begin{aligned}
+  T\left\{\exp\left[-i\frac{\lambda}{4!}
+  \int d^4z\,\phi_I^4(z)\right]\right\}
+  &=1-i\frac{\lambda}{4!}\int d^4z_1\,
+  T\{\phi_I^4(z_1)\}
+  \\
+  &\quad
+  +\frac{(-i\lambda)^2}{2!(4!)^2}
+  \int d^4z_1\int d^4z_2\,
+  T\{\phi_I^4(z_1)\phi_I^4(z_2)\}+\cdots .
+  \end{aligned}}
+  \label{eq:Dyson}
+\end{equation}
+
+Por tanto,
+\begin{align}
+  N
+  &=\mel{0}{T\{\phi_I(x)\phi_I(y)\}}{0}
+  -i\frac{\lambda}{4!}\int d^4z\,
+  \mel{0}{T\{\phi_I(x)\phi_I(y)\phi_I^4(z)\}}{0}
+  +O(\lambda^2),\\
+  D
+  &=1-i\frac{\lambda}{4!}\int d^4z\,
+  \mel{0}{T\{\phi_I^4(z)\}}{0}
+  +O(\lambda^2).
+\end{align}
+El denominador $D$ contiene las burbujas de vacío. Al formar el cociente
+$N/D$, esas piezas desconectadas se cancelan, de modo que finalmente quedan
+las contribuciones conectadas al par externo $x,y$.
+
+\section{Teorema de Wick a primer orden}
+
+La contracción básica es el propagador libre
+\begin{equation}
+  \Delta_F(a-b)
+  \coloneqq\mel{0}{T\{\phi_I(a)\phi_I(b)\}}{0}.
+\end{equation}
+Las contracciones del término con seis campos se agrupan como
+\begin{equation}
+  \boxed{\begin{aligned}
+  \mel{0}{T\{\phi_I(x)\phi_I(y)\phi_I^4(z)\}}{0}
+  &=3\,\Delta_F(x-y)\bigl[\Delta_F(z-z)\bigr]^2
+  \\
+  &\quad
+  +12\,\Delta_F(x-z)\Delta_F(y-z)\Delta_F(z-z).
+  \end{aligned}}
+  \label{eq:Wick6}
+\end{equation}
+El factor $3$ corresponde a las contracciones en las que $x$ se une con $y$; el factor
+$12$ corresponde a las contracciones en las que ambos puntos externos se unen al vértice.
+
+Para el denominador, Wick permite emparejar los cuatro campos en $z$ de tres
+maneras. Si etiquetamos provisionalmente los campos como $1,2,3,4$, los
+emparejamientos son $(12)(34)$, $(13)(24)$ y $(14)(23)$. Todos dan el mismo
+producto de dos propagadores:
+\begin{equation}
+  \mel{0}{T\{\phi_I^4(z)\}}{0}
+  =3\bigl[\Delta_F(z-z)\bigr]^2,
+  \qquad \frac{3}{4!}=\frac{1}{8}.
+  \label{eq:WickVacuumFour}
+\end{equation}
+De \eqref{eq:Wick6} y \eqref{eq:WickVacuumFour},
+\begin{align}
+  N
+  &=\Delta_F(x-y)
+  -i\lambda\int d^4z\left[
+    \frac{1}{8}\Delta_F(x-y)\bigl[\Delta_F(z-z)\bigr]^2
+  \right.
+  \notag\\
+  &\hspace{5.4cm}\left.
+    +\frac{1}{2}\Delta_F(x-z)\Delta_F(y-z)\Delta_F(z-z)
+  \right]+O(\lambda^2),\\
+  D
+  &=1-i\frac{\lambda}{8}\int d^4z\,
+  \bigl[\Delta_F(z-z)\bigr]^2+O(\lambda^2).
+\end{align}
+
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+  \begin{tikzpicture}[scale=0.65,baseline=(current bounding box.center)]
+    \draw[blue,very thick] (0,0)
+      .. controls (-1.1,1.8) and (1.1,1.8) .. (0,0);
+    \draw[blue,very thick] (0,0)
+      .. controls (-1.1,-1.8) and (1.1,-1.8) .. (0,0);
+    \fill[red] (0,0) circle (2.2pt);
+    \node[right=5pt,text=black] at (0,0) {$z$};
+    \draw[->,thick] (-0.48,1.75)
+      .. controls (-1.05,2.25) and (1.05,2.25) .. (0.48,1.75);
+    \node[above] at (0,2.1) {giro del lazo: $1/2$};
+    \draw[->,thick] (-0.48,-1.75)
+      .. controls (-1.05,-2.25) and (1.05,-2.25) .. (0.48,-1.75);
+    \node[below] at (0,-2.1) {giro del lazo: $1/2$};
+    \draw[<->,thick] (1.25,1.1)
+      .. controls (2.15,0.8) and (2.15,-0.8) .. (1.25,-1.1);
+    \node[right,align=left] at (2.05,0)
+      {intercambio\\de lazos: $1/2$};
+  \end{tikzpicture}
+  \diagramcaption{Burbuja de vacío en figura de ocho: dos lazos unidos en un vértice.}
+\end{minipage}
+\end{center}
+Su factor de simetría es $S=2\cdot2\cdot2=8$\footnote{Véase K.~Peeters y
+M.~Zamaklar, \textit{A guide to quantum field theory}, sección 4.3,
+discusión de la ecuación (4.34), pp.~31--32: se cuentan las inversiones de cada lazo y el intercambio de
+los dos lazos de la figura de ocho.
+\href{https://maths.dur.ac.uk/users/kasper.peeters/pdf/qft2.pdf}{Notas de Durham}.}:
+podemos intercambiar los dos
+extremos de cada lazo y también intercambiar los lazos entre sí, sin cambiar
+el diagrama. Cada una de estas simetrías de orden dos aporta un factor $1/2$:
+\begin{equation}
+  \frac{1}{S}=\frac{1}{2}\,\frac{1}{2}\,\frac{1}{2}=\frac{1}{8},
+  \qquad
+  \mathcal{A}_{\mathrm{vac}}^{(1)}
+  =\frac{-i\lambda}{8}\int d^4z\,\bigl[\Delta_F(z-z)\bigr]^2.
+\end{equation}
+El intercambio de los extremos de un lazo suele visualizarse como un giro
+del lazo; lo que se cuenta es esa permutación discreta, no cualquier rotación
+del dibujo. Se trata de una sola burbuja de vacío con dos lazos, no de dos
+burbujas independientes. El $1/8$ obtenido por Wick ya incluye estas
+simetrías: no se divide de nuevo por $8$.
+
+\subsection{Cancelación de las burbujas de vacío}
+La cancelación no ocurre únicamente a primer orden. Cada diagrama del
+numerador se separa en una parte ligada a los puntos externos $x,y$ y un
+conjunto de burbujas de vacío desconectadas de ellos. Estas burbujas forman
+exactamente el mismo factor que aparece en el denominador. Diagramáticamente,
+la normalización se escribe
+
+\begin{equation}
+  \boxed{\begin{aligned}
+  \frac{N}{D}
+  &=\frac{
+    \left[\qftFreeDiagram+\qftTadpoleDiagram+\qftChainDiagram+\cdots\right]
+    \exp\left(\qftVacuumDiagram+\cdots\right)
+  }{\exp\left(\qftVacuumDiagram+\cdots\right)}
+  \\[0.8em]
+  &=\qftFreeDiagram+\qftTadpoleDiagram+\qftChainDiagram+\cdots .
+  \end{aligned}}
+  \label{eq:VacuumDiagramCancellation}
+\end{equation}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+  \diagramcaption{Cancelación de las burbujas de vacío en el correlador normalizado.}
+\end{minipage}
+\end{center}
+
+Cada dibujo representa su contribución completa, con los propagadores,
+vértices, integrales y factores de simetría correspondientes. Los extremos
+de las líneas abiertas son $x,y$. La exponencial contiene la suma de
+burbujas de vacío conectadas; al expandirla, genera también conjuntos de
+burbujas independientes, con sus factores $1/n!$.
+
+Tras cancelar el factor común de burbujas de vacío en
+\eqref{eq:VacuumDiagramCancellation}, queda la suma de diagramas conectados
+al par externo $x,y$. Suponemos un vacío que conserva la simetría
+$\phi\mapsto-\phi$, por lo que los correladores de un solo campo se anulan.
+Los lazos unidos a los puntos externos, como el del \emph{tadpole},
+permanecen en esta suma.
+
+Para obtener el correlador hasta primer orden, conservamos únicamente
+los dos primeros diagramas: la propagación libre, de orden $\lambda^0$,
+y el \emph{tadpole}, de orden $\lambda$. La cadena y los demás términos
+de segundo orden o superior quedan incluidos en $O(\lambda^2)$:
+\begin{equation}
+  \eqbox{\frac{N}{D}
+  =\qftFreeDiagram+\qftTadpoleDiagram+O(\lambda^2).}
+  \label{eq:VacuumFactorCancellation}
+\end{equation}
+Escribiendo las contribuciones de estos dos diagramas en espacio de
+posiciones, obtenemos directamente
+\begin{equation}
+  \eqbox{\mel{\Omega}{T\{\phi(x)\phi(y)\}}{\Omega}
+  =\Delta_F(x-y)
+  -i\frac{\lambda}{2}\int d^4z\,
+  \Delta_F(x-z)\Delta_F(y-z)\Delta_F(z-z)
+  +O(\lambda^2).}
+  \label{eq:G2primerorden}
+\end{equation}
+El término de orden cero tiene $S=1$ y el \emph{tadpole} de primer orden,
+$S=2$. Las tres topologías de segundo orden se desarrollan en la sección
+siguiente.
+Aquí $\Delta_F(z-z)=\Delta_F(0)$ es formalmente divergente en el ultravioleta y debe
+regularizarse y renormalizarse.\footnote{\begin{minipage}[t]{\dimexpr\linewidth-1.8em\relax}
+Con nuestra convención,
+\begin{equation*}
+ \Delta_F(0)=\int\frac{d^3p}{(2\pi)^3}
+ \frac{1}{2\sqrt{\mathbf p^2+m^2}}.
+ \fnEqTag
+\end{equation*}
+Para momentos grandes, la medida radial convierte la integral en
+una expresión que crece como $\int p\,dp$: de ahí la divergencia ultravioleta,
+asociada a longitudes de onda pequeñas.
+Un corte $|\mathbf p|\leq\Lambda$ regulariza la integral:
+\begin{equation*}
+ \Delta_F^{(\Lambda)}(0)=\frac{1}{4\pi^2}
+ \int_0^\Lambda\frac{p^2\,dp}{\sqrt{p^2+m^2}}
+ \sim\frac{\Lambda^2}{8\pi^2},\qquad \Lambda\gg m.
+ \fnEqTag
+\end{equation*}
+La renormalización ajusta parámetros y contraterminos mediante condiciones
+físicas para obtener predicciones finitas al retirar el regulador.
+En este tadpole, la divergencia se absorbe en el contratermino de masa;
+no es una burbuja de vacío que se cancele ni cambia $S=2$.
+Véanse Peeters y Zamaklar,
+\href{https://maths.dur.ac.uk/users/kasper.peeters/pdf/qft2.pdf}
+{\textit{A guide to quantum field theory}}, secciones 7.1 y 7.2.\end{minipage}}
+Esta divergencia no modifica los factores combinatorios
+que se están obteniendo.
+
+\section{Contribuciones conectadas de segundo orden}
+
+Para la interacción $\lambda\phi^4/4!$ sin orden normal, las tres topologías
+conectadas del correlador de dos puntos a segundo orden son las siguientes:
+
+Dos diagramas \emph{tadpole} (renacuajos) en cadena:
+
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+  \begin{tikzpicture}[scale=0.9,baseline=(current bounding box.center)]
+    \draw[blue,very thick] (-2.5,0)--(2.5,0);
+    \draw[blue,very thick] (-0.85,0)
+      .. controls (-1.25,0.85) and (-0.45,0.85) .. (-0.85,0);
+    \draw[blue,very thick] (0.85,0)
+      .. controls (0.45,0.85) and (1.25,0.85) .. (0.85,0);
+    \fill[red] (-0.85,0) circle (2.2pt) node[below=3pt,text=black] {$z_1$};
+    \fill[red] (0.85,0) circle (2.2pt) node[below=3pt,text=black] {$z_2$};
+    \node[below=3pt] at (-2.5,0) {$x$};
+    \node[below=3pt] at (2.5,0) {$y$};
+  \end{tikzpicture}
+  \diagramcaption{Dos diagramas \emph{tadpole} en cadena.}
+\end{minipage}
+\end{center}
+\begin{align}
+  &\frac{(-i\lambda)^2}{4}
+  \int d^4z_1\int d^4z_2\,
+  \Delta_F(x-z_1)\Delta_F(z_1-z_1)
+  \notag\\[-0.2em]
+  &\hspace{3.2cm}\times
+  \Delta_F(z_1-z_2)\Delta_F(z_2-z_2)\Delta_F(z_2-y).
+  \label{eq:G2chainContribution}
+\end{align}
+
+
+Dos líneas entre vértices y un lazo local:
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+  \begin{tikzpicture}[scale=0.9,baseline=(current bounding box.center)]
+    \draw[blue,very thick] (-2.7,0.45)--(-0.7,0);
+    \draw[blue,very thick] (-2.7,-0.45)--(-0.7,0);
+    \draw[blue,very thick] (-0.7,0)
+      .. controls (0.0,0.45) and (0.8,0.45) .. (1.5,0);
+    \draw[blue,very thick] (-0.7,0)
+      .. controls (0.0,-0.45) and (0.8,-0.45) .. (1.5,0);
+    \draw[blue,very thick] (1.5,0)
+      .. controls (1.1,0.85) and (1.9,0.85) .. (1.5,0);
+    \fill[red] (-0.7,0) circle (2.2pt) node[below=3pt,text=black] {$z_1$};
+    \fill[red] (1.5,0) circle (2.2pt) node[below=3pt,text=black] {$z_2$};
+    \node[left=2pt] at (-2.7,0.45) {$x$};
+    \node[left=2pt] at (-2.7,-0.45) {$y$};
+  \end{tikzpicture}
+  \diagramcaption{Dos líneas entre vértices y un lazo local.}
+\end{minipage}
+\end{center}
+\begin{align}
+  &\frac{(-i\lambda)^2}{4}
+  \int d^4z_1\int d^4z_2\,
+  \Delta_F(x-z_1)\Delta_F(y-z_1)
+  \bigl[\Delta_F(z_1-z_2)\bigr]^2
+  \Delta_F(z_2-z_2).
+\end{align}
+
+Diagrama \emph{sunset}:
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+  \begin{tikzpicture}[scale=0.9,baseline=(current bounding box.center)]
+    \draw[blue,very thick] (-2.7,0)--(-1.0,0);
+    \draw[blue,very thick] (1.0,0)--(2.7,0);
+    \draw[blue,very thick] (-1.0,0)
+      .. controls (-0.45,0.75) and (0.45,0.75) .. (1.0,0);
+    \draw[blue,very thick] (-1.0,0)--(1.0,0);
+    \draw[blue,very thick] (-1.0,0)
+      .. controls (-0.45,-0.75) and (0.45,-0.75) .. (1.0,0);
+    \fill[red] (-1.0,0) circle (2.2pt) node[below=3pt,text=black] {$z_1$};
+    \fill[red] (1.0,0) circle (2.2pt) node[below=3pt,text=black] {$z_2$};
+    \node[below=3pt] at (-2.7,0) {$x$};
+    \node[below=3pt] at (2.7,0) {$y$};
+  \end{tikzpicture}
+  \diagramcaption{Diagrama \emph{sunset}.}
+\end{minipage}
+\end{center}
+\begin{equation}
+  \frac{(-i\lambda)^2}{6}
+  \int d^4z_1\int d^4z_2\,
+  \Delta_F(x-z_1)
+  \bigl[\Delta_F(z_1-z_2)\bigr]^3
+  \Delta_F(z_2-y).
+\end{equation}
+Los denominadores $4$, $4$ y $6$ son los factores de simetría de estas topologías,
+respectivamente. Se obtienen también contando las contracciones con los
+puntos externos $x,y$ fijos: hay $288$, $288$ y $192$ emparejamientos,
+respectivamente. Al dividir por el factor $2!(4!)^2=1152$ de la expansión
+de Dyson, resultan $1/4$, $1/4$ y $1/6$.
+
+\section{Reglas de Feynman en espacio de posiciones}
+
+Las derivaciones anteriores conducen a tres reglas para la interacción
+$\lambda\phi^4/4!$:
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1.8em,itemsep=0.7em]
+  \item \textbf{Líneas.} Cada contracción entre los puntos $a$ y $b$
+  aporta el propagador $\Delta_F(a-b)$, como en \qftFreeDiagram.
+  \item \textbf{Vértices.} Cada vértice tiene cuatro extremos de líneas y
+  aporta $(-i\lambda)\int d^4z$. Su posición $z$ se integra; los puntos
+  externos $x,y$ permanecen fijos. Con $V$ vértices hay $V$ integraciones
+  independientes.
+  \item \textbf{Simetrías.} Se divide por el factor $S$, contando las
+  permutaciones que conservan el diagrama y fijan los puntos externos.
+  Por ejemplo, el \emph{tadpole} \qftTadpoleDiagram\ tiene $S=2$;
+  las tres topologías de segundo orden tienen $S=4,4,6$.
+\end{enumerate}
+
+Para un diagrama con $V$ vértices, las tres reglas se resumen en
+\begin{equation}
+  \eqbox{\frac{1}{S}(-i\lambda)^V
+  \int\prod_{j=1}^{V}d^4z_j
+  \prod_{\text{líneas }(ab)}\Delta_F(a-b).}
+\end{equation}
+
+Para obtener el correlador normalizado, se suman los diagramas conectados
+al par externo $x,y$ al orden deseado, con esos puntos fijos. Las burbujas
+de vacío ya se han cancelado según \eqref{eq:VacuumDiagramCancellation};
+los lazos unidos a los puntos externos permanecen. El factor $1/S$ incluye
+las simetrías del diagrama y no debe aplicarse de nuevo si el coeficiente
+ya se obtuvo contando las contracciones de Wick.
+
+\end{document}

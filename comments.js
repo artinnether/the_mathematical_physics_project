@@ -25,5 +25,5 @@
  window.addEventListener('message',e=>{if(e.origin!=='https://giscus.app'||e.source!==host.querySelector('iframe')?.contentWindow)return;if(e.data?.giscus?.error&&!/discussion not found/i.test(e.data.giscus.error))document.getElementById('entry-comments-fallback').hidden=false;});
  new MutationObserver(()=>{sync();if(host.querySelector('iframe'))document.getElementById('entry-comments-fallback').hidden=true}).observe(host,{childList:true});
  new MutationObserver(sync).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme','lang']});
- window.addEventListener('hashchange',render);render();
+ window.addEventListener('hashchange',render);window.addEventListener('tmpp-entry-change',render);render();
 })();

@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Particle Box Simulation</title>
+    <style>
+      :root {
+        --bg-a: #e0f2fe;
+        --bg-b: #f8fafc;
+        --bg-c: #dbeafe;
+        --ink: #0f172a;
+        --muted: #475569;
+        --panel: rgba(255, 255, 255, 0.82);
+        --panel-soft: rgba(255, 255, 255, 0.74);
+        --accent: #0369a1;
+        --line: #cbd5e1;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        padding: 24px;
+        color: var(--ink);
+        font-family: "SF Pro Rounded", "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top left, var(--bg-a) 0%, var(--bg-b) 45%, var(--bg-c) 100%);
+      }
+
+      .layout {
+        max-width: 980px;
+        margin: 0 auto;
+        display: flex;
+        gap: 24px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .panel {
+        width: 320px;
+        padding: 22px;
+        border-radius: 24px;
+        background: var(--panel);
+        box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+        backdrop-filter: blur(16px);
+      }
+
+      .canvas-shell {
+        padding: 16px;
+        border-radius: 28px;
+        background: var(--panel-soft);
+        box-shadow: 0 24px 80px rgba(15, 23, 42, 0.16);
+      }
+
+      .eyebrow {
+        margin: 0;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 8px 0 10px;
+        font-size: 32px;
+        line-height: 1.05;
+      }
+
+      .intro {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .button-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+
+      button {
+        border-radius: 999px;
+        padding: 11px 18px;
+        font-weight: 700;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      .primary {
+        border: 0;
+        background: var(--ink);
+        color: white;
+      }
+
+      .secondary {
+        border: 1px solid var(--line);
+        background: white;
+        color: var(--ink);
+      }
+
+      .energy-card {
+        margin-bottom: 18px;
+        padding: 14px;
+        border-radius: 18px;
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+      }
+
+      .energy-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .energy-value {
+        font-size: 28px;
+        font-weight: 800;
+      }
+
+      .control {
+        display: grid;
+        gap: 6px;
+        margin-bottom: 14px;
+      }
+
+      .label-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        color: #334155;
+      }
+
+      input[type="range"] {
+        width: 100%;
+      }
+
+      .toggle {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+
+      canvas {
+        display: block;
+        width: 600px;
+        height: 600px;
+        max-width: 100%;
+        border-radius: 18px;
+      }
+
+      @media (max-width: 900px) {
+        .panel {
+          width: 100%;
+        }
+
+        .canvas-shell {
+          width: 100%;
+        }
+
+        canvas {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 1 / 1;
+        }
+      }
+    </style>
+  <link rel="stylesheet" href="../assets/fonts/computer-modern.css"></head>
+  <body><a href="../index.html#animations" style="position:absolute;top:10px;left:20px;color:#9bc7e9;z-index:10">← Volver a animaciones</a>
+    <div class="layout">
+      <section class="panel">
+        <p class="eyebrow">Simulation Lab</p>
+        <h1>Particle Box</h1>
+        <p class="intro">
+          A smoother particle demo with collisions, sharper rendering, and friendlier controls.
+        </p>
+
+        <div class="button-row">
+          <button id="toggleRunning" class="primary">Pause</button>
+          <button id="resetSimulation" class="secondary">Reset</button>
+        </div>
+
+        <div class="energy-card">
+          <div class="energy-label">Kinetic Energy</div>
+          <div id="energyValue" class="energy-value">0</div>
+        </div>
+
+        <div class="control">
+          <div class="label-row"><label for="count">Particles</label><span id="countValue">40</span></div>
+          <input id="count" type="range" min="5" max="150" value="40" />
+        </div>
+
+        <div class="control">
+          <div class="label-row"><label for="gravity">Gravity</label><span id="gravityValue">220</span></div>
+          <input id="gravity" type="range" min="0" max="1000" value="220" />
+        </div>
+
+        <div class="control">
+          <div class="label-row"><label for="energyLoss">Restitution deficit (1 − e)</label><span id="energyLossValue">0.08</span></div>
+          <input id="energyLoss" type="range" min="0" max="0.9" step="0.01" value="0.08" />
+        </div>
+
+        <div class="control">
+          <div class="label-row"><label for="wallElasticity">Wall Elasticity</label><span id="wallElasticityValue">0.90</span></div>
+          <input id="wallElasticity" type="range" min="0" max="1" step="0.01" value="0.9" />
+        </div>
+
+        <div class="control">
+          <div class="label-row"><label for="airDrag">Air Drag (factor per 1/60 time unit)</label><span id="airDragValue">0.9990</span></div>
+          <input id="airDrag" type="range" min="0.95" max="1" step="0.001" value="0.999" />
+        </div>
+
+        <div class="control">
+          <div class="label-row"><label for="speed">Speed</label><span id="speedValue">1.0x</span></div>
+          <input id="speed" type="range" min="0.1" max="3" step="0.1" value="1" />
+        </div>
+
+        <div class="control">
+          <div class="label-row"><label for="radius">Radius</label><span id="radiusValue">8</span></div>
+          <input id="radius" type="range" min="4" max="20" value="8" />
+        </div>
+
+        <label class="toggle">
+          <input id="perfectWalls" type="checkbox" />
+          Perfect walls
+        </label>
+
+        <label class="toggle">
+          <input id="showVectors" type="checkbox" />
+          Show vectors
+        </label>
+      </section>
+
+      <div class="canvas-shell">
+        <canvas id="simCanvas"></canvas>
+      </div>
+    </div>
+
+    <script>
+      const SIZE = 600;
+      const canvas = document.getElementById("simCanvas");
+      const ctx = canvas.getContext("2d");
+
+      const state = {
+        running: true,
+        perfectWalls: false,
+        showVectors: false,
+        count: 40,
+        gravity: 220,
+        energyLoss: 0.08,
+        wallElasticity: 0.9,
+        airDrag: 0.999,
+        radius: 8,
+        speed: 1,
+        energy: 0,
+      };
+
+      let particles = [];
+      let lastTime = 0;
+      let animationFrame = null;
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function randomBetween(min, max) {
+        return min + Math.random() * (max - min);
+      }
+
+      function setCanvasScale() {
+        const ratio = window.devicePixelRatio || 1;
+        canvas.width = SIZE * ratio;
+        canvas.height = SIZE * ratio;
+        canvas.style.width = `${SIZE}px`;
+        canvas.style.height = `${SIZE}px`;
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      }
+
+      function reset() {
+        particles = [];
+        const padding = state.radius + 4;
+
+        for (let i = 0; i < state.count; i += 1) {
+          particles.push({
+            x: randomBetween(padding, SIZE - padding),
+            y: randomBetween(padding, SIZE - padding),
+            vx: randomBetween(-180, 180),
+            vy: randomBetween(-140, 140),
+          });
+        }
+
+        lastTime = 0;
+      }
+
+      function updateReadout(id, value) {
+        document.getElementById(id).textContent = value;
+      }
+
+      function syncUI() {
+        updateReadout("countValue", state.count);
+        updateReadout("gravityValue", state.gravity);
+        updateReadout("energyLossValue", state.energyLoss.toFixed(2));
+        updateReadout("wallElasticityValue", state.wallElasticity.toFixed(2));
+        updateReadout("airDragValue", state.airDrag.toFixed(4));
+        updateReadout("speedValue", `${state.speed.toFixed(1)}x`);
+        updateReadout("radiusValue", state.radius);
+        updateReadout("energyValue", state.energy.toFixed(0));
+        document.getElementById("toggleRunning").textContent = state.running ? "Pause" : "Play";
+      }
+
+      function draw() {
+        const gradient = ctx.createLinearGradient(0, 0, SIZE, SIZE);
+        gradient.addColorStop(0, "#f8fafc");
+        gradient.addColorStop(1, "#dbeafe");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, SIZE, SIZE);
+
+        ctx.strokeStyle = "#0f172a";
+        ctx.lineWidth = 3;
+        ctx.strokeRect(1.5, 1.5, SIZE - 3, SIZE - 3);
+
+        for (const p of particles) {
+          const velocity = Math.hypot(p.vx, p.vy);
+          const hue = clamp(205 + velocity * 0.18, 190, 360);
+
+          ctx.fillStyle = `hsl(${hue}, 78%, 55%)`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, state.radius, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.strokeStyle = "rgba(15, 23, 42, 0.18)";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          if (state.showVectors) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p.x + p.vx * 0.08, p.y + p.vy * 0.08);
+            ctx.strokeStyle = "rgba(15, 23, 42, 0.65)";
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+          }
+        }
+      }
+
+      function step(time) {
+        if (!lastTime) {
+          lastTime = time;
+        }
+
+        const rawDt = (time - lastTime) / 1000;
+        const dt = Math.min(rawDt, 0.03) * state.speed;
+        lastTime = time;
+
+        if (state.running) {
+          const wallBounce = state.perfectWalls ? 1 : state.wallElasticity;
+          const collisionElasticity = 1 - state.energyLoss;
+          let totalEnergy = 0;
+
+          for (const p of particles) {
+            p.vy += state.gravity * dt;
+            const dragFactor = Math.pow(state.airDrag, dt * 60);
+            p.vx *= dragFactor;
+            p.vy *= dragFactor;
+            p.x += p.vx * dt;
+            p.y += p.vy * dt;
+
+            if (p.x - state.radius < 0) {
+              p.x = state.radius;
+              if (p.vx < 0) p.vx = -p.vx * wallBounce;
+            } else if (p.x + state.radius > SIZE) {
+              p.x = SIZE - state.radius;
+              if (p.vx > 0) p.vx = -p.vx * wallBounce;
+            }
+
+            if (p.y - state.radius < 0) {
+              p.y = state.radius;
+              if (p.vy < 0) p.vy = -p.vy * wallBounce;
+            } else if (p.y + state.radius > SIZE) {
+              p.y = SIZE - state.radius;
+              if (p.vy > 0) p.vy = -p.vy * wallBounce;
+            }
+          }
+
+          for (let i = 0; i < particles.length; i += 1) {
+            for (let j = i + 1; j < particles.length; j += 1) {
+              const a = particles[i];
+              const b = particles[j];
+              const dx = b.x - a.x;
+              const dy = b.y - a.y;
+              const distance = Math.hypot(dx, dy);
+              const minDistance = state.radius * 2;
+
+              if (distance === 0 || distance >= minDistance) {
+                continue;
+              }
+
+              const nx = dx / distance;
+              const ny = dy / distance;
+              const overlap = minDistance - distance;
+              const halfOverlap = overlap / 2;
+
+              a.x -= nx * halfOverlap;
+              a.y -= ny * halfOverlap;
+              b.x += nx * halfOverlap;
+              b.y += ny * halfOverlap;
+
+              const relativeVelocityX = b.vx - a.vx;
+              const relativeVelocityY = b.vy - a.vy;
+              const separatingVelocity = relativeVelocityX * nx + relativeVelocityY * ny;
+
+              if (separatingVelocity >= 0) {
+                continue;
+              }
+
+              const impulse = (-(1 + collisionElasticity) * separatingVelocity) / 2;
+              a.vx -= impulse * nx;
+              a.vy -= impulse * ny;
+              b.vx += impulse * nx;
+              b.vy += impulse * ny;
+            }
+          }
+
+          for (const p of particles) {
+            totalEnergy += 0.5 * (p.vx * p.vx + p.vy * p.vy);
+          }
+
+          state.energy = totalEnergy;
+          syncUI();
+        }
+
+        draw();
+        animationFrame = requestAnimationFrame(step);
+      }
+
+      function bindControl(id, parser, onChange) {
+        const element = document.getElementById(id);
+        element.addEventListener("input", (event) => {
+          onChange(parser(event.target.value));
+          syncUI();
+        });
+      }
+
+      bindControl("count", Number, (value) => {
+        state.count = value;
+        reset();
+      });
+
+      bindControl("gravity", Number, (value) => {
+        state.gravity = value;
+      });
+
+      bindControl("energyLoss", Number, (value) => {
+        state.energyLoss = value;
+      });
+
+      bindControl("wallElasticity", Number, (value) => {
+        state.wallElasticity = value;
+      });
+
+      bindControl("airDrag", Number, (value) => {
+        state.airDrag = value;
+      });
+
+      bindControl("speed", Number, (value) => {
+        state.speed = value;
+      });
+
+      bindControl("radius", Number, (value) => {
+        state.radius = value;
+        reset();
+      });
+
+      document.getElementById("perfectWalls").addEventListener("change", (event) => {
+        state.perfectWalls = event.target.checked;
+      });
+
+      document.getElementById("showVectors").addEventListener("change", (event) => {
+        state.showVectors = event.target.checked;
+      });
+
+      document.getElementById("toggleRunning").addEventListener("click", () => {
+        state.running = !state.running;
+        syncUI();
+      });
+
+      document.getElementById("resetSimulation").addEventListener("click", () => {
+        reset();
+      });
+
+      window.addEventListener("resize", setCanvasScale);
+
+      setCanvasScale();
+      reset();
+      syncUI();
+      animationFrame = requestAnimationFrame(step);
+
+      window.addEventListener("beforeunload", () => {
+        if (animationFrame !== null) {
+          cancelAnimationFrame(animationFrame);
+        }
+      });
+    </script>
+  </body>
+</html>

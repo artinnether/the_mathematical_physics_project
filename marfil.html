@@ -1,0 +1,1612 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mathematical Physics Notes, PDFs and Exercises | The Mathematical Physics Project</title>
+  <meta name="description" content="Free mathematical physics notes, PDFs, exercises, and research resources on quantum field theory, general relativity, differential geometry, calculus of variations, and advanced mathematics by Omar Corona Tejeda." />
+  <meta name="keywords" content="mathematical physics, physics notes, quantum field theory, general relativity, differential geometry, Feynman diagrams, calculus of variations, physics PDFs, mathematics exercises, Omar Corona Tejeda" />
+  <meta name="author" content="Omar Corona Tejeda" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://artinnether.github.io/the_mathematical_physics_project/" />
+  <link rel="alternate" hreflang="en" href="https://artinnether.github.io/the_mathematical_physics_project/" />
+  <link rel="alternate" hreflang="es" href="https://artinnether.github.io/the_mathematical_physics_project/" />
+  <link rel="alternate" hreflang="x-default" href="https://artinnether.github.io/the_mathematical_physics_project/" />
+  <link rel="icon" href="tmpp_logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="tmpp_logo.png" />
+  <meta name="theme-color" content="#1f2a30" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <meta property="og:site_name" content="The Mathematical Physics Project" />
+  <meta property="og:title" content="Mathematical Physics Notes, PDFs and Exercises" />
+  <meta property="og:description" content="A growing bilingual library of mathematical physics notes, exercises, and research resources by Omar Corona Tejeda." />
+  <meta property="og:image" content="https://artinnether.github.io/the_mathematical_physics_project/tmpp_logo.png" />
+  <meta property="og:image:alt" content="The Mathematical Physics Project logo" />
+  <meta property="og:url" content="https://artinnether.github.io/the_mathematical_physics_project/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mathematical Physics Notes, PDFs and Exercises" />
+  <meta name="twitter:description" content="Free bilingual resources on quantum field theory, general relativity, differential geometry, and advanced mathematics." />
+  <meta name="twitter:image" content="https://artinnether.github.io/the_mathematical_physics_project/tmpp_logo.png" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://artinnether.github.io/the_mathematical_physics_project/#omar-corona-tejeda",
+          "name": "Omar Corona Tejeda",
+          "url": "https://artinnether.github.io/the_mathematical_physics_project/",
+          "sameAs": [
+            "https://github.com/artinnether/the_mathematical_physics_project",
+            "https://www.youtube.com/@omarct1989",
+            "https://www.linkedin.com/in/omar-corona-tejeda-717b51284",
+            "https://www.instagram.com/fortin_omar/",
+            "https://www.facebook.com/fortin.corona"
+          ],
+          "knowsAbout": [
+            "Mathematical physics",
+            "Quantum field theory",
+            "General relativity",
+            "Differential geometry",
+            "Calculus of variations",
+            "Advanced mathematics"
+          ]
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": "https://artinnether.github.io/the_mathematical_physics_project/#website",
+          "name": "The Mathematical Physics Project",
+          "url": "https://artinnether.github.io/the_mathematical_physics_project/",
+          "description": "A bilingual digital library of mathematical physics notes, PDFs, exercises, and research resources.",
+          "inLanguage": ["es", "en"],
+          "creator": {
+            "@id": "https://artinnether.github.io/the_mathematical_physics_project/#omar-corona-tejeda"
+          },
+          "about": [
+            "Mathematical physics",
+            "Quantum field theory",
+            "General relativity",
+            "Feynman diagrams",
+            "Differential equations",
+            "Linear algebra"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://artinnether.github.io/the_mathematical_physics_project/#site",
+          "name": "The Mathematical Physics Project",
+          "url": "https://artinnether.github.io/the_mathematical_physics_project/",
+          "publisher": {
+            "@id": "https://artinnether.github.io/the_mathematical_physics_project/#omar-corona-tejeda"
+          }
+        }
+      ]
+    }
+  </script>
+  <style>
+    :root {
+      --ink: #111827;
+      --paper: rgba(255, 255, 255, 0.62);
+      --brand-dark: #1f2a30;
+      --brand-gold: #d8c28a;
+      --brand-link: #2563eb;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: url('fondo.png') center / cover fixed no-repeat;
+    }
+
+    h1, h2, h3, h4, h5, p, li {
+      color: var(--ink);
+    }
+
+    a {
+      color: var(--brand-link);
+    }
+
+    .glass-card {
+      background: var(--paper);
+      border: 1px solid rgba(31, 42, 48, 0.10);
+      box-shadow: 0 18px 42px rgba(15, 23, 42, 0.07);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-shell {
+      background:
+        radial-gradient(circle at top, rgba(216, 194, 138, 0.18), transparent 32%),
+        linear-gradient(180deg, rgba(31,42,48,0.98), rgba(31,42,48,0.88));
+    }
+
+    .lang-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(9, 14, 20, 0.72);
+      backdrop-filter: blur(8px);
+    }
+
+    .lang-overlay.hidden {
+      display: none;
+    }
+
+    .lang-card {
+      width: min(100%, 560px);
+      padding: 32px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+      text-align: center;
+    }
+
+    .lang-choice {
+      width: 100%;
+      border: 1px solid rgba(31, 42, 48, 0.12);
+      border-radius: 18px;
+      padding: 18px 20px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .lang-choice:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.12);
+    }
+
+    .curriculum-frame {
+      width: 100%;
+      min-height: 720px;
+      border: 1px solid rgba(31, 42, 48, 0.12);
+      border-radius: 18px;
+      background: white;
+    }
+
+    .mobile-curriculum-pages {
+      display: none;
+    }
+
+    .resource-list {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .resource-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 0 8px 14px;
+      border-left: 3px solid rgba(216, 194, 138, 0.95);
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .resource-bullet {
+      flex: 0 0 auto;
+      width: 7px;
+      height: 7px;
+      margin-top: 9px;
+      border-radius: 999px;
+      background: #8b6f3d;
+      box-shadow: none;
+    }
+
+    .resource-link {
+      font-weight: 500;
+      color: #163a63;
+      text-decoration: none;
+      line-height: 1.5;
+    }
+
+    .resource-link:hover {
+      text-decoration: underline;
+      color: #0f2c4d;
+    }
+
+    .curriculum-download {
+      background: #7ecfc8;
+      color: #10343a;
+    }
+
+    .curriculum-download:hover {
+      background: #6bbab3;
+    }
+
+    .resource-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .resource-note {
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: rgba(17, 24, 39, 0.72);
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .resource-card {
+      display: flex;
+      min-height: 210px;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px;
+      border: 1px solid rgba(31, 42, 48, 0.12);
+      border-left: 4px solid rgba(216, 194, 138, 0.95);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    #latest .resource-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    #latest .resource-card {
+      overflow: hidden;
+      padding: 16px;
+    }
+
+    .paper-thumb {
+      position: relative;
+      display: block;
+      aspect-ratio: 16 / 9;
+      margin: -4px -4px 16px;
+      overflow: hidden;
+      border: 1px solid rgba(31, 42, 48, 0.10);
+      border-radius: 8px;
+      background: #eef4f6;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.48);
+    }
+
+    .paper-thumb::before,
+    .paper-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .paper-thumb::before {
+      opacity: 0.92;
+    }
+
+    .paper-thumb::after {
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.42) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,0.32) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mix-blend-mode: soft-light;
+    }
+
+    .thumb-symbol,
+    .thumb-equation,
+    .thumb-lines {
+      position: absolute;
+      z-index: 1;
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.20);
+    }
+
+    .thumb-symbol {
+      right: 18px;
+      bottom: 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3.15rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .thumb-equation {
+      left: 18px;
+      top: 18px;
+      max-width: calc(100% - 36px);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.12rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .thumb-lines {
+      left: 18px;
+      right: 84px;
+      bottom: 20px;
+      display: grid;
+      gap: 7px;
+    }
+
+    .thumb-lines span {
+      display: block;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.70);
+    }
+
+    .thumb-lines span:nth-child(2) {
+      width: 76%;
+    }
+
+    .thumb-lines span:nth-child(3) {
+      width: 58%;
+    }
+
+    .paper-thumb--feynman {
+      background: linear-gradient(135deg, #243447, #58758c);
+    }
+
+    .paper-thumb--feynman::before {
+      background:
+        radial-gradient(circle at 76% 34%, rgba(216, 194, 138, 0.88), transparent 14%),
+        radial-gradient(circle at 42% 58%, rgba(126, 207, 200, 0.75), transparent 18%),
+        linear-gradient(135deg, transparent 0 44%, rgba(255,255,255,0.42) 45% 46%, transparent 47% 100%),
+        linear-gradient(30deg, transparent 0 48%, rgba(255,255,255,0.28) 49% 50%, transparent 51% 100%);
+    }
+
+    .paper-thumb--phi4 {
+      background: linear-gradient(135deg, #1f2a30, #7a5f94);
+    }
+
+    .paper-thumb--phi4::before {
+      background:
+        radial-gradient(circle at 24% 30%, rgba(216, 194, 138, 0.82), transparent 12%),
+        radial-gradient(circle at 68% 66%, rgba(126, 207, 200, 0.72), transparent 14%),
+        conic-gradient(from 45deg at 50% 52%, transparent 0 16%, rgba(255,255,255,0.32) 16% 18%, transparent 18% 50%, rgba(255,255,255,0.25) 50% 52%, transparent 52%);
+    }
+
+    .paper-thumb--klein {
+      background: linear-gradient(135deg, #163a63, #78a7b7);
+    }
+
+    .paper-thumb--klein::before {
+      background:
+        radial-gradient(ellipse at 50% 50%, transparent 0 36%, rgba(255,255,255,0.45) 37% 38%, transparent 39%),
+        linear-gradient(90deg, transparent 0 49%, rgba(216,194,138,0.78) 50%, transparent 51%),
+        linear-gradient(0deg, transparent 0 49%, rgba(216,194,138,0.78) 50%, transparent 51%);
+    }
+
+    .paper-thumb--dyson {
+      background: linear-gradient(135deg, #31422f, #8b6f3d);
+    }
+
+    .paper-thumb--dyson::before {
+      background:
+        repeating-radial-gradient(circle at 28% 42%, rgba(255,255,255,0.50) 0 2px, transparent 3px 16px),
+        linear-gradient(118deg, transparent 0 28%, rgba(126,207,200,0.50) 29% 31%, transparent 32% 100%),
+        linear-gradient(62deg, transparent 0 52%, rgba(216,194,138,0.48) 53% 55%, transparent 56% 100%);
+    }
+
+    .paper-thumb--bundle {
+      background: linear-gradient(135deg, #2d3a55, #7ecfc8);
+    }
+
+    .paper-thumb--bundle::before {
+      background:
+        radial-gradient(ellipse at 50% 66%, rgba(255,255,255,0.30), transparent 42%),
+        repeating-linear-gradient(112deg, transparent 0 18px, rgba(255,255,255,0.28) 19px 21px),
+        repeating-linear-gradient(24deg, transparent 0 24px, rgba(216,194,138,0.34) 25px 27px);
+    }
+
+    .paper-thumb--adm {
+      background: linear-gradient(135deg, #1e293b, #6b7280);
+    }
+
+    .paper-thumb--adm::before {
+      background:
+        radial-gradient(circle at 50% 44%, rgba(255,255,255,0.16), transparent 34%),
+        linear-gradient(90deg, transparent 0 31%, rgba(216,194,138,0.56) 32% 33%, transparent 34% 66%, rgba(216,194,138,0.56) 67% 68%, transparent 69%),
+        linear-gradient(0deg, transparent 0 31%, rgba(126,207,200,0.46) 32% 33%, transparent 34% 66%, rgba(126,207,200,0.46) 67% 68%, transparent 69%);
+    }
+
+    .paper-thumb--quantum {
+      background: linear-gradient(135deg, #20324a, #5e8b92);
+    }
+
+    .paper-thumb--quantum::before {
+      background:
+        radial-gradient(circle at 28% 34%, rgba(216, 194, 138, 0.76), transparent 13%),
+        radial-gradient(circle at 70% 60%, rgba(126, 207, 200, 0.70), transparent 16%),
+        repeating-linear-gradient(38deg, transparent 0 22px, rgba(255,255,255,0.25) 23px 25px);
+    }
+
+    .paper-thumb--geometry {
+      background: linear-gradient(135deg, #2f3c5f, #7ecfc8);
+    }
+
+    .paper-thumb--geometry::before {
+      background:
+        radial-gradient(ellipse at 50% 62%, rgba(255,255,255,0.26), transparent 42%),
+        repeating-linear-gradient(118deg, transparent 0 18px, rgba(255,255,255,0.28) 19px 21px),
+        repeating-linear-gradient(24deg, transparent 0 24px, rgba(216,194,138,0.34) 25px 27px);
+    }
+
+    .paper-thumb--algebra {
+      background: linear-gradient(135deg, #12343b, #5b8c85);
+    }
+
+    .paper-thumb--algebra::before {
+      background:
+        radial-gradient(circle at 30% 34%, rgba(216,194,138,0.74), transparent 13%),
+        radial-gradient(circle at 70% 64%, rgba(126,207,200,0.64), transparent 17%),
+        repeating-linear-gradient(90deg, transparent 0 22px, rgba(255,255,255,0.20) 23px 25px),
+        repeating-linear-gradient(0deg, transparent 0 22px, rgba(255,255,255,0.18) 23px 25px);
+    }
+
+    .paper-thumb--operator {
+      background: linear-gradient(135deg, #24113f, #1d4c73 48%, #6d58b8);
+    }
+
+    .paper-thumb--operator::before {
+      background:
+        radial-gradient(circle at 24% 30%, rgba(216,194,138,0.78), transparent 12%),
+        radial-gradient(circle at 74% 70%, rgba(126,207,200,0.70), transparent 16%),
+        linear-gradient(118deg, transparent 0 44%, rgba(255,255,255,0.32) 45% 47%, transparent 48% 100%),
+        linear-gradient(28deg, transparent 0 57%, rgba(216,194,138,0.34) 58% 60%, transparent 61% 100%),
+        repeating-radial-gradient(circle at 55% 50%, rgba(255,255,255,0.20) 0 1px, transparent 2px 18px);
+    }
+
+    .paper-thumb--figure {
+      background: #fff;
+    }
+
+    .paper-thumb--figure::before,
+    .paper-thumb--figure::after {
+      display: none;
+    }
+
+    .paper-thumb--figure img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 12px;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .paper-thumb--relativity {
+      background: linear-gradient(135deg, #1e293b, #687988);
+    }
+
+    .paper-thumb--relativity::before {
+      background:
+        radial-gradient(circle at 50% 44%, rgba(255,255,255,0.17), transparent 35%),
+        linear-gradient(90deg, transparent 0 32%, rgba(216,194,138,0.54) 33% 34%, transparent 35% 65%, rgba(216,194,138,0.54) 66% 67%, transparent 68%),
+        linear-gradient(0deg, transparent 0 32%, rgba(126,207,200,0.44) 33% 34%, transparent 35% 65%, rgba(126,207,200,0.44) 66% 67%, transparent 68%);
+    }
+
+    #resourceGrid {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #resourceGrid .resource-card {
+      position: relative;
+      min-height: auto;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 8px 0 8px 28px;
+      border: 0;
+      border-left: 3px solid rgba(216, 194, 138, 0.95);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    #resourceGrid .resource-card::before {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 20px;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #8b6f3d;
+    }
+
+    #resourceGrid .resource-card > div:first-child {
+      flex: 1 1 auto;
+    }
+
+    #resourceGrid .resource-card > div:last-child {
+      flex: 0 0 auto;
+      align-items: center;
+      padding-top: 2px;
+    }
+
+    #resourceGrid .resource-pill {
+      margin-right: 8px;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      color: rgba(17, 24, 39, 0.58);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      text-transform: none;
+    }
+
+    #resourceGrid h4 {
+      display: inline;
+      margin: 0;
+      color: #163a63;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    #resourceGrid .resource-note {
+      margin-top: 2px;
+    }
+
+    #resourceGrid a {
+      font-size: 0.92rem;
+    }
+
+    .resource-card[hidden] {
+      display: none;
+    }
+
+    .resource-pill {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      border-radius: 999px;
+      background: rgba(31, 42, 48, 0.08);
+      color: rgba(31, 42, 48, 0.82);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 5px 9px;
+      text-transform: uppercase;
+    }
+
+    .filter-button {
+      border: 1px solid rgba(31, 42, 48, 0.16);
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.72);
+      color: #1f2a30;
+      font-weight: 700;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .filter-button.active {
+      border-color: #1f2a30;
+      background: #1f2a30;
+      color: white;
+    }
+
+    .icon-link i,
+    .icon-button i {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2.4;
+    }
+
+    .brand-icon {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      display: inline-block;
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .curriculum-frame {
+        display: none;
+      }
+
+      .mobile-curriculum-pages {
+        display: grid;
+        gap: 16px;
+      }
+
+      .mobile-curriculum-pages a {
+        display: block;
+      }
+
+      .mobile-curriculum-pages img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid rgba(31, 42, 48, 0.12);
+        border-radius: 12px;
+        background: white;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.10);
+      }
+
+      .site-nav {
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .site-nav a,
+      .site-nav button {
+        font-size: 0.82rem;
+      }
+
+      .resource-card {
+        min-height: auto;
+      }
+
+      #resourceGrid .resource-card {
+        flex-direction: column;
+        gap: 6px;
+      }
+    }
+
+    .resource-section-title {
+      margin: 28px 0 12px;
+      padding-top: 4px;
+      color: #1f2a30;
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    #pdfs #resourceGrid,
+    #exercises #exerciseGrid {
+      display: block !important;
+      counter-reset: resource-counter;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #pdfs #resourceGrid .resource-card,
+    #exercises #exerciseGrid .resource-card {
+      counter-increment: resource-counter;
+      display: block !important;
+      list-style: none;
+      min-height: 0 !important;
+      margin: 0 0 12px;
+      padding: 0 0 0 34px;
+      position: relative;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    #pdfs #resourceGrid .resource-card[hidden],
+    #exercises #exerciseGrid .resource-card[hidden] {
+      display: none !important;
+    }
+
+    #pdfs #resourceGrid .resource-card::before,
+    #exercises #exerciseGrid .resource-card::before {
+      content: counter(resource-counter) ".";
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 24px;
+      height: auto;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      color: rgba(17, 24, 39, 0.62);
+      font-weight: 700;
+      text-align: right;
+    }
+
+    #pdfs #resourceGrid .resource-card > div:first-child,
+    #pdfs #resourceGrid .resource-card > div:last-child,
+    #exercises #exerciseGrid .resource-card > div:first-child,
+    #exercises #exerciseGrid .resource-card > div:last-child {
+      display: inline;
+    }
+
+    #pdfs #resourceGrid h4,
+    #exercises #exerciseGrid h4 {
+      display: inline;
+      color: #163a63;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    #pdfs #resourceGrid h4 a,
+    #exercises #exerciseGrid h4 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    #pdfs #resourceGrid h4 a:hover,
+    #exercises #exerciseGrid h4 a:hover {
+      text-decoration: underline;
+    }
+
+    #pdfs #resourceGrid .resource-note,
+    #exercises #exerciseGrid .resource-note {
+      display: block;
+      margin-top: 1px;
+    }
+
+    #pdfs #resourceGrid .resource-pill,
+    #exercises #exerciseGrid .resource-pill {
+      display: inline;
+      margin-right: 8px;
+      padding: 0;
+      background: transparent;
+      color: rgba(17, 24, 39, 0.56);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: none;
+    }
+
+    #pdfs #resourceGrid .resource-card > div:last-child::before,
+    #exercises #exerciseGrid .resource-card > div:last-child::before {
+      content: " ";
+    }
+
+    #pdfs #resourceGrid .resource-card > div:last-child a,
+    #exercises #exerciseGrid .resource-card > div:last-child a {
+      display: inline;
+      margin-left: 10px;
+      font-size: 0.92rem;
+    }
+
+    #exercises #exerciseGrid .resource-note,
+    #exercises #exerciseGrid .resource-card > div:last-child {
+      display: none;
+    }
+
+    #exercises #exerciseGrid .resource-card {
+      margin-bottom: 6px;
+      line-height: 1.45;
+    }
+  </style>
+<style>
+:root{--ink:#132038;--paper:#faf8f3;--brand-link:#8e432c}body{background:#faf8f3;color:#132038;font-family:Arial,sans-serif}h1,h2,h3,h4{font-family:Georgia,'Times New Roman',serif;font-weight:400!important;letter-spacing:-.025em}a{color:inherit}header.hero-shell{background:#faf8f3;border:0!important;box-shadow:none;padding:25px 0}header.hero-shell>div{max-width:1280px;margin:auto;border-bottom:1px solid #d8cdc0;padding:0 28px 22px}header h1{font-size:23px!important;color:#132038!important}header p{color:#6b655e!important;font-size:10px!important;letter-spacing:3px;text-transform:uppercase;margin-top:6px}header .text-white,header nav{color:#132038!important}header img{object-fit:contain}header .rounded-full{border:0;box-shadow:none;border-radius:0;width:48px;height:48px}.site-nav{display:flex;align-items:center;flex-wrap:wrap;gap:26px!important}.site-nav a{font-family:Georgia,serif;font-size:15px}.site-nav button{border:0;border-left:1px solid #d8cdc0;padding-left:22px;color:#8e432c;background:transparent}main{max-width:1280px!important;padding:0 34px!important}.editorial-hero{display:grid;grid-template-columns:1.22fr 1fr;gap:35px;align-items:center;padding:65px 0 45px}.eyebrow{font-size:10px;letter-spacing:3px;color:#8e432c;margin-bottom:22px}.editorial-hero h2{font-size:clamp(40px,4.5vw,69px);line-height:1.08}.hero-intro{font-family:Georgia,serif;font-size:22px;line-height:1.6;margin-top:22px;color:#555969}.hero-actions{display:flex;gap:16px;margin-top:28px;flex-wrap:wrap}.hero-actions a{padding:16px 24px;border-radius:4px;font-family:Georgia,serif;font-size:16px;border:1px solid #132038}.primary-action{background:#132038;color:#fff}.secondary-action{background:transparent}.hero-figure img{width:100%;height:auto}.hero-figure span{display:block;font-size:9px;text-align:center;letter-spacing:3px;color:#8e432c;margin-top:12px}.quick-explore{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding-bottom:34px;border-bottom:1px solid #d8cdc0}.quick-explore a{border:1px solid #d8cdc0;padding:20px;font:18px Georgia,serif;border-radius:4px;transition:background .2s}.quick-explore a:hover{background:#efe9df}.glass-card{background:transparent;box-shadow:none;backdrop-filter:none;border:0;border-radius:0!important;padding:30px 0!important;max-width:none!important}section{scroll-margin-top:20px}section:not(#project){border-bottom:1px solid #ded5ca}#latest{padding-top:5px}h3{font-size:32px!important}#latest .resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.resource-card{background:transparent!important;border:1px solid #d8cdc0!important;border-radius:5px!important;box-shadow:none!important;padding:20px!important;transition:transform .2s,border-color .2s}.resource-card:hover{transform:translateY(-3px);border-color:#986344!important}.resource-card h4{font-size:24px!important;line-height:1.2}.resource-note{font-size:13px;line-height:1.6;color:#606571}.resource-pill{background:transparent!important;color:#8e432c!important;font-size:9px!important;letter-spacing:1.5px;text-transform:uppercase;padding:0!important}.paper-thumb{background:#f3efe7!important;border:0!important;border-radius:2px!important;box-shadow:none!important}.paper-thumb img{mix-blend-mode:multiply;object-fit:contain!important}.filter-button{border-radius:4px!important}.filter-button.active{background:#132038!important}.resource-grid{gap:18px}#resourceSearch{background:transparent;border-color:#bfb5a7;border-radius:4px;font:17px Georgia,serif;padding-top:17px;padding-bottom:17px}#about img{border-radius:4px}footer{background:#efe9df}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #a95937;outline-offset:5px}@media(max-width:800px){header.hero-shell>div{padding:0 20px 20px}.site-nav{gap:15px!important}header h1{font-size:19px!important}main{padding:0 22px!important}.editorial-hero{grid-template-columns:1fr;padding:35px 0;gap:20px}.editorial-hero h2{font-size:44px}.hero-figure{max-width:430px;margin:auto}.hero-intro{font-size:19px}.quick-explore{grid-template-columns:repeat(2,1fr)}.quick-explore a{font-size:16px;padding:15px}#latest .resource-grid{grid-template-columns:1fr}.glass-card{padding:25px 0!important}}
+</style><style>.editorial-hero h2{font-size:clamp(39px,4.1vw,62px)}.hero-intro{font-size:19px}.lean-note{background:#f1eee7;border:1px solid #d8cdc0;border-radius:5px;margin:0 15px;padding:17px 20px;text-align:left}.lean-top{display:flex;justify-content:space-between;font-size:9px;letter-spacing:1.5px;color:#80604b}.lean-top span{margin:0;text-align:left;font-size:9px;letter-spacing:1px}.lean-note pre{font-size:12px;line-height:1.7;margin:13px 0;color:#233d54;white-space:pre-wrap}.lean-note b{color:#985338}.lean-note p{font-size:11px;color:#6a665f;line-height:1.5}.hero-figure img{max-height:300px}.computation-section{padding:45px 0}.computation-heading{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:27px}.computation-heading h3{font-size:39px!important}.computation-heading>p{font:20px/1.5 Georgia,serif;color:#62616a}.computation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.computation-grid article{border-top:2px solid #aa7255;padding-top:17px}.work-status{font:9px Arial,sans-serif;letter-spacing:1.2px;color:#8e432c}.work-status.future{color:#76746a}.computation-grid h4{font-size:25px;margin:12px 0}.computation-grid p{font-size:13px;line-height:1.8;color:#62616a}.computation-grid small{display:block;margin-top:20px;font-size:10px;letter-spacing:.6px;color:#4c5b61}@media(max-width:800px){.computation-heading,.computation-grid{grid-template-columns:1fr}.computation-heading{gap:17px}.computation-grid{gap:30px}.lean-note{margin:0}.hero-figure{width:100%}.editorial-hero h2{font-size:43px}}
+</style><style>.lab-demo{display:grid;grid-template-columns:.8fr 1.2fr;border:1px solid #d8cdc0;border-radius:5px;margin:36px 0 55px;background:#f4f1ea;overflow:hidden}.lab-controls{padding:30px}.lab-controls h4,.formal-lab h4,.lab-roadmap h4{font-size:29px;line-height:1.2;margin:15px 0}.lab-controls p,.formal-lab p,.lab-roadmap p{font-size:14px;line-height:1.8;color:#5c6269}.lab-controls label{display:flex;justify-content:space-between;margin-top:20px;font:18px Georgia,serif}.lab-controls input{width:100%;accent-color:#985338;margin-top:8px}.lab-controls small{display:block;font-size:10px;line-height:1.6;color:#78736c}.lab-chart{display:flex;flex-direction:column;justify-content:center;border-left:1px solid #d8cdc0;padding:22px;background:#faf8f3}.lab-chart svg{width:100%;height:auto;font:13px Georgia,serif;fill:#5c6269}.chart-caption{display:flex;justify-content:space-between;gap:15px;border-top:1px solid #ded5ca;padding-top:18px;font-size:10px;letter-spacing:1px;color:#8e432c}.formal-lab{display:grid;grid-template-columns:1fr 1fr;gap:45px;margin-bottom:45px}.proof-code{background:#172b37;color:#efece3;padding:28px;border-radius:5px;align-self:center}.proof-code .lean-top,.proof-code .lean-top span{color:#c4a78f}.proof-code pre{font:13px/1.9 monospace;white-space:pre-wrap;margin:22px 0}.proof-code code span{color:#e1ae86}.proof-code p{font-size:11px;color:#c0c9ca}.proof-steps{list-style:none;padding:0;margin-top:22px}.proof-steps li{display:flex;gap:20px;padding:12px 0;border-top:1px solid #d8cdc0;font-size:13px}.proof-steps b{font:15px Georgia,serif;color:#985338}.lab-roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;border-top:1px solid #d8cdc0;padding-top:28px}.lab-roadmap h4{font-size:23px}.lab-roadmap p{font-size:13px}@media(max-width:800px){.lab-demo,.formal-lab,.lab-roadmap{grid-template-columns:1fr}.lab-chart{border-left:0;border-top:1px solid #d8cdc0}.lab-controls{padding:22px}.formal-lab{gap:25px}.proof-code{padding:22px}}</style><style>.animation-section{padding:50px 0}.animation-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.animation-card{border:1px solid #d8cdc0;border-radius:5px;overflow:hidden;display:flex;flex-direction:column}.animation-art{position:relative;display:block;background:#f1eee7;border-bottom:1px solid #ded5ca}.animation-art img{display:block;width:100%;height:195px;object-fit:contain}.play-mark{position:absolute;right:15px;bottom:15px;display:grid;place-items:center;width:36px;height:36px;background:#132038;color:#fff;border-radius:50%;font-size:20px}.animation-card-body{padding:23px;display:flex;flex-direction:column;flex:1}.animation-card h4{font-size:27px;line-height:1.25;margin:12px 0}.animation-card p{font-size:13px;line-height:1.8;color:#62616a;flex:1}.animation-open{margin-top:22px;color:#8e432c;font-size:13px;font-weight:bold}.animation-card small{font-size:10px;color:#777;margin-top:12px}.animation-footnote{font-size:12px;color:#777;line-height:1.8;margin-top:24px}@media(max-width:800px){.animation-gallery{grid-template-columns:1fr}.animation-art img{height:220px}}</style><style>.about-profile{max-width:850px!important;margin:0 auto}.about-profile>h3{margin:12px 0 18px}.about-profile .about-name{font-size:19px;margin:0 0 22px;color:inherit}.about-profile>p:not(.eyebrow){font-size:15px;line-height:1.95;margin:0 0 22px;text-align:left}.about-links{display:flex;gap:18px;flex-wrap:wrap;padding-top:12px}.about-links a{font-size:12px;border-bottom:1px solid #73849a;padding-bottom:4px}</style><link rel="stylesheet" href="assets/fonts/computer-modern.css"><style>.about-profile>p.academic-background{font-size:14px!important;line-height:1.8;border-top:1px solid #7775;padding-top:20px;margin-top:30px;opacity:.85}</style></head>
+<body>
+  <div id="language-overlay" class="lang-overlay hidden" aria-modal="true" role="dialog">
+    <div class="lang-card">
+      <p class="text-sm uppercase tracking-[0.3em] text-slate-500 mb-4">The Mathematical Physics Project</p>
+      <h2 class="text-3xl font-bold mb-3">Choose your language</h2>
+      <p class="text-slate-600 mb-8">Elige el idioma en el que deseas explorar el sitio.</p>
+      <div class="grid gap-4">
+        <button class="lang-choice bg-slate-900 text-white" data-select-lang="en">English</button>
+        <button class="lang-choice bg-amber-100 text-slate-900" data-select-lang="es">Español</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero-shell w-full p-6 shadow-lg border-b" style="border-color: rgba(216, 194, 138, 0.45);">
+    <div class="max-w-6xl mx-auto flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-full overflow-hidden shadow-xl border-2 border-white/80">
+          <img src="tmpp_logo.png" alt="TMPP Logo" class="w-full h-full object-cover">
+        </div>
+        <div class="text-white">
+          <h1 class="text-xl font-semibold text-white">The Mathematical Physics Project</h1>
+          <p class="text-sm text-white/80">Omar Corona Tejeda</p>
+        </div>
+      </div>
+
+<nav class="site-nav"><a href="#pdfs" data-lang-es="Biblioteca" data-lang-en="Library">Biblioteca</a><a href="#about" data-lang-es="El proyecto" data-lang-en="The project">El proyecto</a><a href="#animations" data-lang-es="Animaciones" data-lang-en="Animations">Animaciones</a><a href="#computation" data-lang-es="Computación" data-lang-en="Computation">Computación</a><a href="#curriculum" data-lang-es="Currículum" data-lang-en="Curriculum">Currículum</a><a href="#contacto" data-lang-es="Contacto" data-lang-en="Contact">Contacto</a><button id="toggleLang">ES / EN</button>      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6">
+<section id="project" class="editorial-hero"><div class="hero-copy"><p class="eyebrow" data-lang-es="MATEMÁTICAS · FÍSICA · COMPUTACIÓN" data-lang-en="MATHEMATICS · PHYSICS · COMPUTATION">MATEMÁTICAS · FÍSICA · COMPUTACIÓN</p><h2 data-lang-es="De las estructuras matemáticas a su exploración computacional." data-lang-en="From mathematical structures to computational exploration.">De las estructuras matemáticas a su exploración computacional.</h2><p class="hero-intro" data-lang-es="Notas y problemas que conectan matemáticas y física. Una línea activa de formalización en Lean y exploración con código, en constante desarrollo." data-lang-en="Notes and problems connecting mathematics and physics. An active, evolving practice of Lean formalization and exploration through code.">Notas y problemas que conectan matemáticas y física. Una línea activa de formalización en Lean y exploración con código, en constante desarrollo.</p><div class="hero-actions"><a href="#pdfs" class="primary-action" data-lang-es="Explorar biblioteca →" data-lang-en="Explore library →">Explorar biblioteca →</a><a href="#computation" class="secondary-action" data-lang-es="Del papel al código" data-lang-en="From paper to code">Del papel al código</a></div></div><div class="hero-figure"><img src="assets/editorial-surface.svg" alt="Superficie matemática y diagrama de interacción"/><div class="lean-note"><div class="lean-top"><span>LEAN 4</span><span data-lang-es="Ejemplo ilustrativo" data-lang-en="Illustrative example">Ejemplo ilustrativo</span></div><pre><code><b>theorem</b> add_zero (n : ℕ) : n + 0 = n := <b>by</b>
+  simp</code></pre><p data-lang-es="Una afirmación matemática, una prueba que el sistema comprueba." data-lang-en="A mathematical statement, a proof checked by the system.">Una afirmación matemática, una prueba que el sistema comprueba.</p></div></div></section>
+<div class="quick-explore"><a href="#pdfs" data-topic="qft" data-lang-es="Teoría de campos ↗" data-lang-en="Field theory ↗">Teoría de campos ↗</a><a href="#pdfs" data-topic="geometry" data-lang-es="Geometría ↗" data-lang-en="Geometry ↗">Geometría ↗</a><a href="#pdfs" data-topic="algebra" data-lang-es="Álgebra ↗" data-lang-en="Algebra ↗">Álgebra ↗</a><a href="#pdfs" data-topic="classical" data-lang-es="Mecánica clásica ↗" data-lang-en="Classical mechanics ↗">Mecánica clásica ↗</a></div>
+<section id="animations" class="animation-section"><div class="computation-heading"><div><p class="eyebrow" data-lang-es="LA MATEMÁTICA EN MOVIMIENTO" data-lang-en="MATHEMATICS IN MOTION">LA MATEMÁTICA EN MOVIMIENTO</p><h3 data-lang-es="Animaciones y simulaciones." data-lang-en="Animations and simulations.">Animaciones y simulaciones.</h3></div><p data-lang-es="Una colección de exploraciones que hemos desarrollado: observar, detener el movimiento y cambiar de perspectiva para comprender una idea." data-lang-en="A collection of explorations we have developed: observe, pause the motion, and change perspective to understand an idea.">Una colección de exploraciones que hemos desarrollado: observar, detener el movimiento y cambiar de perspectiva para comprender una idea.</p></div><p style="margin:20px 0 28px"><a href="laboratorio.html" class="primary-action" style="display:inline-block;padding:12px 22px;border-radius:5px" data-lang-es="Abrir el laboratorio en modo estudio ↗" data-lang-en="Open the laboratory in study mode ↗">Abrir el laboratorio en modo estudio ↗</a></p><div class="animation-gallery"><article class="animation-card"><a href="animations/soliton-kdv.html?v=20261017-kdv2" class="animation-art" aria-label="El viaje de un solitón"><img src="assets/animation-soliton.svg" alt="El viaje de un solitón" loading="lazy"/><span class="play-mark">▷</span></a><div class="animation-card-body"><span class="work-status" data-lang-es="CAMPOS · ONDAS" data-lang-en="FIELDS · WAVES">CAMPOS · ONDAS</span><h4 data-lang-es="El viaje de un solitón" data-lang-en="A traveling soliton">El viaje de un solitón</h4><p data-lang-es="Un perfil que se desplaza sin cambiar de forma. Compara un punto fijo con el sistema que acompaña al pulso." data-lang-en="A profile traveling without changing shape. Compare a fixed point with a frame following the pulse.">Un perfil que se desplaza sin cambiar de forma. Compara un punto fijo con el sistema que acompaña al pulso.</p><a class="animation-open" href="animations/soliton-kdv.html?v=20261017-kdv2" data-lang-es="Abrir animación ↗" data-lang-en="Open animation ↗">Abrir animación ↗</a><small data-lang-es="Interactiva · controles propios · interfaz en español" data-lang-en="Interactive · individual controls · Spanish interface">Interactiva · controles propios · interfaz en español</small></div></article><article class="animation-card"><a href="animations/sphere.html" class="animation-art" aria-label="La esfera que se contrae"><img src="assets/animation-sphere.svg" alt="La esfera que se contrae" loading="lazy"/><span class="play-mark">▷</span></a><div class="animation-card-body"><span class="work-status" data-lang-es="GEOMETRÍA · FLUJOS" data-lang-en="GEOMETRY · FLOWS">GEOMETRÍA · FLUJOS</span><h4 data-lang-es="La esfera que se contrae" data-lang-en="The shrinking sphere">La esfera que se contrae</h4><p data-lang-es="Explora una solución autosemejante del flujo por curvatura media, desde su tamaño inicial hasta la extinción." data-lang-en="Explore a self-similar mean curvature flow solution, from its initial size to extinction.">Explora una solución autosemejante del flujo por curvatura media, desde su tamaño inicial hasta la extinción.</p><a class="animation-open" href="animations/sphere.html" data-lang-es="Abrir animación ↗" data-lang-en="Open animation ↗">Abrir animación ↗</a><small data-lang-es="Interactiva · controles propios · interfaz en español" data-lang-en="Interactive · individual controls · Spanish interface">Interactiva · controles propios · interfaz en español</small></div></article><article class="animation-card"><a href="animations/particles.html" class="animation-art" aria-label="Partículas en una caja"><img src="assets/animation-particles.svg" alt="Partículas en una caja" loading="lazy"/><span class="play-mark">▷</span></a><div class="animation-card-body"><span class="work-status" data-lang-es="MECÁNICA · SIMULACIÓN" data-lang-en="MECHANICS · SIMULATION">MECÁNICA · SIMULACIÓN</span><h4 data-lang-es="Partículas en una caja" data-lang-en="Particles in a box">Partículas en una caja</h4><p data-lang-es="Experimenta con gravedad, colisiones, disipación y velocidad de reproducción en una simulación bidimensional." data-lang-en="Experiment with gravity, collisions, dissipation, and playback speed in a two-dimensional simulation.">Experimenta con gravedad, colisiones, disipación y velocidad de reproducción en una simulación bidimensional.</p><a class="animation-open" href="animations/particles.html" data-lang-es="Abrir animación ↗" data-lang-en="Open animation ↗">Abrir animación ↗</a><small data-lang-es="Interactiva · controles propios · interfaz en inglés" data-lang-en="Interactive · individual controls · English interface">Interactiva · controles propios · interfaz en inglés</small></div></article></div><p class="animation-footnote" data-lang-es="Cada pieza se abre por separado para explorarla con sus controles. La colección crecerá con nuevas animaciones vinculadas a las notas." data-lang-en="Each piece opens separately with its own controls. The collection will grow with new animations connected to the notes.">Cada pieza se abre por separado para explorarla con sus controles. La colección crecerá con nuevas animaciones vinculadas a las notas.</p></section><section id="computation" class="computation-section"><div class="computation-heading"><div><p class="eyebrow" data-lang-es="FORMALIZACIÓN Y EXPLORACIÓN COMPUTACIONAL" data-lang-en="FORMALIZATION AND COMPUTATIONAL EXPLORATION">FORMALIZACIÓN Y EXPLORACIÓN COMPUTACIONAL</p><h3 data-lang-es="Un laboratorio entre la prueba y el cálculo." data-lang-en="A laboratory between proof and calculation.">Un laboratorio entre la prueba y el cálculo.</h3></div><p data-lang-es="El código también es una forma de hacer preguntas. Aquí conectamos el argumento matemático, la verificación formal y la exploración de modelos." data-lang-en="Code is another way to ask questions. Here we connect mathematical arguments, formal verification, and the exploration of models.">El código también es una forma de hacer preguntas. Aquí conectamos el argumento matemático, la verificación formal y la exploración de modelos.</p></div>
+<div class="lab-demo"><div class="lab-controls"><span class="work-status" data-lang-es="EXPERIMENTO INTERACTIVO · DISPONIBLE AQUÍ" data-lang-en="INTERACTIVE EXPERIMENT · AVAILABLE HERE">EXPERIMENTO INTERACTIVO · DISPONIBLE AQUÍ</span><h4 data-lang-es="Un potencial, distintos mínimos." data-lang-en="One potential, different minima.">Un potencial, distintos mínimos.</h4><p data-lang-es="Explora V(φ) = aφ²/2 + λφ⁴/4. Cambia el signo de a y observa cómo un mínimo se convierte en dos." data-lang-en="Explore V(φ) = aφ²/2 + λφ⁴/4. Change the sign of a and watch one minimum become two.">Explora V(φ) = aφ²/2 + λφ⁴/4. Cambia el signo de a y observa cómo un mínimo se convierte en dos.</p><label for="potential-a">a <output id="a-value">−1.0</output></label><input id="potential-a" type="range" min="-2" max="2" step="0.1" value="-1"/><label for="potential-lambda">λ <output id="lambda-value">1.0</output></label><input id="potential-lambda" type="range" min="0.5" max="2" step="0.1" value="1"/><p id="potential-description" aria-live="polite"></p><small data-lang-es="Ejemplo didáctico: forma del potencial clásico; no representa una simulación cuántica." data-lang-en="Teaching example: the classical potential shape, not a quantum simulation.">Ejemplo didáctico: forma del potencial clásico; no representa una simulación cuántica.</small></div><div class="lab-chart"><svg id="potential-plot" viewBox="0 0 600 370" role="img" aria-label="Gráfica interactiva del potencial cuártico"><defs><clipPath id="plot-clip"><rect x="45" y="20" width="530" height="300"/></clipPath></defs><g id="potential-grid"></g><g clip-path="url(#plot-clip)"><path id="potential-curve" fill="none" stroke="#985338" stroke-width="3"/><g id="potential-minima"></g></g><text x="557" y="350">φ</text><text x="20" y="24">V(φ)</text></svg><div class="chart-caption"><span data-lang-es="GEOMETRÍA DEL POTENCIAL" data-lang-en="GEOMETRY OF THE POTENTIAL">GEOMETRÍA DEL POTENCIAL</span><span>V(φ) = ½aφ² + ¼λφ⁴</span></div></div></div>
+<div class="formal-lab"><div><span class="work-status" data-lang-es="LÍNEA DE TRABAJO ACTIVA" data-lang-en="ACTIVE WORKSTREAM">LÍNEA DE TRABAJO ACTIVA</span><h4 data-lang-es="De un argumento a una prueba verificable." data-lang-en="From an argument to a checkable proof.">De un argumento a una prueba verificable.</h4><p data-lang-es="La formalización obliga a hacer explícitos los objetos, las hipótesis y cada dependencia de una demostración. Trabajamos con Lean 4 y Mathlib para construir y revisar pruebas, además de su exposición habitual en LaTeX." data-lang-en="Formalization makes objects, assumptions, and every proof dependency explicit. We work with Lean 4 and Mathlib to build and review proofs alongside their usual LaTeX exposition.">La formalización obliga a hacer explícitos los objetos, las hipótesis y cada dependencia de una demostración. Trabajamos con Lean 4 y Mathlib para construir y revisar pruebas, además de su exposición habitual en LaTeX.</p><ol class="proof-steps"><li><b>01</b><span data-lang-es="Precisar el enunciado y sus hipótesis" data-lang-en="Specify the statement and its assumptions">Precisar el enunciado y sus hipótesis</span></li><li><b>02</b><span data-lang-es="Formalizar definiciones y demostraciones" data-lang-en="Formalize definitions and proofs">Formalizar definiciones y demostraciones</span></li><li><b>03</b><span data-lang-es="Compilar y revisar las dependencias" data-lang-en="Compile and inspect dependencies">Compilar y revisar las dependencias</span></li></ol></div><div class="proof-code"><div class="lean-top"><span>LEAN 4 + MATHLIB</span><span data-lang-es="Ejemplo didáctico" data-lang-en="Teaching example">Ejemplo didáctico</span></div><pre><code><span>import</span> Mathlib
+
+<span>theorem</span> square_nonnegative (x : ℝ) :
+    0 ≤ x ^ 2 := <span>by</span>
+  positivity
+
+<span>#print</span> axioms square_nonnegative</code></pre><p data-lang-es="Una afirmación sencilla para mostrar la estructura: enunciado, prueba y consulta de axiomas. Los desarrollos de análisis requieren muchos pasos adicionales." data-lang-en="A simple statement showing the structure: statement, proof, and axiom inspection. Developments in analysis require many additional steps.">Una afirmación sencilla para mostrar la estructura: enunciado, prueba y consulta de axiomas. Los desarrollos de análisis requieren muchos pasos adicionales.</p></div></div>
+<div class="lab-roadmap"><div><span class="work-status" data-lang-es="YA EN ESTA PROPUESTA" data-lang-en="IN THIS PREVIEW">YA EN ESTA PROPUESTA</span><h4 data-lang-es="Exploración interactiva" data-lang-en="Interactive exploration">Exploración interactiva</h4><p data-lang-es="Un primer experimento para explorar parámetros y relacionar una ecuación con su geometría." data-lang-en="A first experiment connecting parameters, equations, and geometry.">Un primer experimento para explorar parámetros y relacionar una ecuación con su geometría.</p></div><div><span class="work-status" data-lang-es="EN DESARROLLO" data-lang-en="IN DEVELOPMENT">EN DESARROLLO</span><h4 data-lang-es="Formalización y código" data-lang-en="Formalization and code">Formalización y código</h4><p data-lang-es="Trabajo con Lean, scripts y figuras. La selección de ejemplos propios para publicación abierta está en preparación." data-lang-en="Work with Lean, scripts, and figures. A selection of original examples for open publication is being prepared.">Trabajo con Lean, scripts y figuras. La selección de ejemplos propios para publicación abierta está en preparación.</p></div><div><span class="work-status future" data-lang-es="SIGUIENTE PASO" data-lang-en="NEXT STEP">SIGUIENTE PASO</span><h4 data-lang-es="Notas reproducibles" data-lang-en="Reproducible notes">Notas reproducibles</h4><p data-lang-es="Vincular una nota con su código, instrucciones de ejecución y resultados verificables, según estén disponibles." data-lang-en="Link each note to its code, execution instructions, and checkable results as they become available.">Vincular una nota con su código, instrucciones de ejecución y resultados verificables, según estén disponibles.</p></div></div></section>
+    <section id="latest" class="py-8">
+      <div class="glass-card max-w-6xl mx-auto p-8 rounded-[28px]">
+        <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between mb-6">
+          <div>
+            <p class="text-xs font-semibold tracking-[0.28em] uppercase text-slate-500 mb-2" data-lang-es="Actualizaciones" data-lang-en="Updates">Updates</p>
+            <h3 class="text-3xl font-bold" data-lang-es="Últimas publicaciones" data-lang-en="Latest publications">Latest publications</h3>
+          </div>
+          <a href="#pdfs" class="icon-button inline-flex items-center gap-2 text-sm font-bold text-slate-800 no-underline hover:underline">
+            <i data-lucide="arrow-down-right"></i>
+            <span data-lang-es="Ver toda la biblioteca" data-lang-en="View full library">View full library</span>
+          </a>
+        </div>
+        <div class="resource-grid">
+<article class="resource-card"><a class="paper-thumb paper-thumb--figure" href="qft_notes_78_80_english.pdf" data-pdf-es="notas_qft_78_80_con_dibujo_definiciones.pdf" data-pdf-en="qft_notes_78_80_english.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF: Field evolution" data-aria-label-es="Abrir PDF: Evolución del campo" data-aria-label-en="Open PDF: Field evolution"><img src="assets/field-evolution-en.png" data-src-es="assets/field-evolution-es.png" data-src-en="assets/field-evolution-en.png" alt="Field evolution from an initial spatial profile" data-alt-es="Evolución del campo a partir de un perfil espacial inicial" data-alt-en="Field evolution from an initial spatial profile" loading="lazy" decoding="async" /></a><div><span class="resource-pill" data-lang-es="Teoría cuántica de campos" data-lang-en="Quantum field theory">Quantum field theory</span><h4 class="text-xl font-bold mt-3" data-lang-es="Teoría λφ⁴ y reglas de Feynman en espacio de posiciones" data-lang-en="λφ⁴ Theory and Feynman Rules in Position Space">λφ⁴ Theory and Feynman Rules in Position Space</h4><p class="resource-note mt-2" data-lang-es="Derivación de las reglas de Feynman desde las imágenes dinámicas, Gell-Mann–Low, Dyson y Wick. Incluye el correlador de dos puntos hasta segundo orden, cancelación de burbujas de vacío y factores de simetría." data-lang-en="Derivation of Feynman rules from dynamical pictures, Gell-Mann–Low, Dyson, and Wick. Includes the two-point correlator through second order, vacuum-bubble cancellation, and symmetry factors.">Derivation of Feynman rules from dynamical pictures, Gell-Mann–Low, Dyson, and Wick. Includes the two-point correlator through second order, vacuum-bubble cancellation, and symmetry factors.</p></div><div class="flex gap-4"><a href="qft_notes_78_80_english.pdf" data-pdf-es="notas_qft_78_80_con_dibujo_definiciones.pdf" data-pdf-en="qft_notes_78_80_english.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="qft_notes_78_80_english.pdf" data-pdf-es="notas_qft_78_80_con_dibujo_definiciones.pdf" data-pdf-en="qft_notes_78_80_english.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div></article>
+
+          <article class="resource-card">
+            <div>
+              <a class="paper-thumb paper-thumb--figure" href="notas_algebras_lie_envolvente_universal.pdf" data-pdf-es="notas_algebras_lie_envolvente_universal.pdf" data-pdf-en="notes_lie_algebras_universal_enveloping_algebra.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF: Small rotations accumulating into a finite rotation" data-aria-label-es="Abrir PDF: Giros pequeños que se acumulan en una rotación finita" data-aria-label-en="Open PDF: Small rotations accumulating into a finite rotation">
+                <img src="assets/lie-rotations-en.png" data-src-es="assets/lie-rotations-es.png" data-src-en="assets/lie-rotations-en.png" alt="Small rotations accumulating into a finite rotation" data-alt-es="Giros pequeños que se acumulan en una rotación finita" data-alt-en="Small rotations accumulating into a finite rotation" loading="lazy" decoding="async" />
+              </a>
+              <span class="resource-pill" data-lang-es="Álgebras de Lie" data-lang-en="Lie algebras">Lie algebras</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="De grupos de Lie al álgebra envolvente universal" data-lang-en="From Lie Groups to the Universal Enveloping Algebra">From Lie Groups to the Universal Enveloping Algebra</h4>
+              <p class="resource-note mt-2" data-lang-es="Notas sobre rotaciones infinitesimales, el álgebra de Lie asociada y la construcción del álgebra envolvente universal." data-lang-en="Notes on infinitesimal rotations, the associated Lie algebra, and the construction of the universal enveloping algebra.">Notes on infinitesimal rotations, the associated Lie algebra, and the construction of the universal enveloping algebra.</p>
+            </div>
+            <a href="notas_algebras_lie_envolvente_universal.pdf" data-pdf-es="notas_algebras_lie_envolvente_universal.pdf" data-pdf-en="notes_lie_algebras_universal_enveloping_algebra.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Open PDF</span>
+            </a>
+          </article>
+          <article class="resource-card">
+            <div>
+              <a class="paper-thumb paper-thumb--figure" href="Algebras_C_estrella_y_Notacion_Daga_ES.pdf" data-pdf-es="Algebras_C_estrella_y_Notacion_Daga_ES.pdf" data-pdf-en="C_star_Algebras_and_Dagger_Notation_EN.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF: Map of a Banach algebra, the involution, and the C* identity" data-aria-label-es="Abrir PDF: Mapa de un álgebra de Banach, la involución y la identidad C*" data-aria-label-en="Open PDF: Map of a Banach algebra, the involution, and the C* identity">
+                <img src="assets/c-star-map-en.png" data-src-es="assets/c-star-map-es.png" data-src-en="assets/c-star-map-en.png" alt="Map of a Banach algebra, the involution, and the C* identity" data-alt-es="Mapa de un álgebra de Banach, la involución y la identidad C*" data-alt-en="Map of a Banach algebra, the involution, and the C* identity" loading="lazy" decoding="async" />
+              </a>
+              <span class="resource-pill" data-lang-es="Álgebras de operadores" data-lang-en="Operator algebras">Operator algebras</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="C*-álgebras y notación daga" data-lang-en="C*-Algebras and Dagger Notation">C*-Algebras and Dagger Notation</h4>
+              <p class="resource-note mt-2" data-lang-es="Notas autocontenidas sobre C*-álgebras, operadores acotados, adjuntos de Hilbert, notación de Dirac, matrices de Pauli, esfera de Bloch y operadores no acotados." data-lang-en="Self-contained notes on C*-algebras, bounded operators, Hilbert adjoints, Dirac notation, Pauli matrices, the Bloch sphere, and unbounded operators.">Self-contained notes on C*-algebras, bounded operators, Hilbert adjoints, Dirac notation, Pauli matrices, the Bloch sphere, and unbounded operators.</p>
+            </div>
+            <a href="Algebras_C_estrella_y_Notacion_Daga_ES.pdf" data-pdf-es="Algebras_C_estrella_y_Notacion_Daga_ES.pdf" data-pdf-en="C_star_Algebras_and_Dagger_Notation_EN.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Open PDF</span>
+            </a>
+          </article>
+          <article class="resource-card">
+            <div>
+              <a class="paper-thumb paper-thumb--figure" href="Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf" data-pdf-es="Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf" data-pdf-en="Homological_Algebra_in_the_Category_of_Modules_EN.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF: Commutative diagram of an exact sequence of chain complexes" data-aria-label-es="Abrir PDF: Diagrama conmutativo de una sucesión exacta de complejos de cadenas" data-aria-label-en="Open PDF: Commutative diagram of an exact sequence of chain complexes">
+                <img src="assets/homological-diagram-en.png" data-src-es="assets/homological-diagram-es.png" data-src-en="assets/homological-diagram-en.png" alt="Commutative diagram of an exact sequence of chain complexes" data-alt-es="Diagrama conmutativo de una sucesión exacta de complejos de cadenas" data-alt-en="Commutative diagram of an exact sequence of chain complexes" loading="lazy" decoding="async" />
+              </a>
+              <span class="resource-pill" data-lang-es="Álgebra" data-lang-en="Algebra">Algebra</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="Álgebra Homológica en la Categoría de Módulos" data-lang-en="Homological Algebra in the Category of Modules">Homological Algebra in the Category of Modules</h4>
+              <p class="resource-note mt-2" data-lang-es="Notas sobre complejos de cadenas, homotopía, resoluciones proyectivas e inyectivas, funtores derivados, Ext y Tor." data-lang-en="Notes on chain complexes, homotopy, projective and injective resolutions, derived functors, Ext, and Tor.">Notes on chain complexes, homotopy, projective and injective resolutions, derived functors, Ext, and Tor.</p>
+            </div>
+            <a href="Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf" data-pdf-es="Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf" data-pdf-en="Homological_Algebra_in_the_Category_of_Modules_EN.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Open PDF</span>
+            </a>
+          </article>
+          <article class="resource-card">
+            <div>
+              <a class="paper-thumb paper-thumb--figure" href="Transformaciones_Gauge_Globales_y_Locales_ES.pdf" data-pdf-es="Transformaciones_Gauge_Globales_y_Locales_ES.pdf" data-pdf-en="Global_and_Local_Gauge_Transformations_EN.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF: Global and local U(1) transformations extracted from the document" data-aria-label-es="Abrir PDF: Transformaciones U(1) globales y locales extraídas del documento" data-aria-label-en="Open PDF: Global and local U(1) transformations extracted from the document">
+                <img src="assets/gauge-transformations-en.png" data-src-es="assets/gauge-transformations-es.png" data-src-en="assets/gauge-transformations-en.png" alt="Global and local U(1) transformations extracted from the document" data-alt-es="Transformaciones U(1) globales y locales extraídas del documento" data-alt-en="Global and local U(1) transformations extracted from the document" loading="lazy" decoding="async" />
+              </a>
+              <span class="resource-pill" data-lang-es="Teoría gauge" data-lang-en="Gauge theory">Teoría gauge</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="Transformaciones gauge globales y locales" data-lang-en="Global and Local Gauge Transformations">Transformaciones gauge globales y locales</h4>
+              <p class="resource-note mt-2" data-lang-es="Notas sobre la diferencia matemática entre simetrías globales y simetrías gauge locales, con el caso U(1)." data-lang-en="Notes on the mathematical difference between global symmetries and local gauge symmetries, with the U(1) case.">Notas sobre la diferencia matemática entre simetrías globales y simetrías gauge locales, con el caso U(1).</p>
+            </div>
+            <a href="Transformaciones_Gauge_Globales_y_Locales_ES.pdf" data-pdf-es="Transformaciones_Gauge_Globales_y_Locales_ES.pdf" data-pdf-en="Global_and_Local_Gauge_Transformations_EN.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Abrir PDF</span>
+            </a>
+          </article>
+          <article class="resource-card">
+            <div>
+              <a class="paper-thumb paper-thumb--figure" href="Feynman_Prescription_Residues_and_Real_Poles_ES.pdf" data-pdf-es="Feynman_Prescription_Residues_and_Real_Poles_ES.pdf" data-pdf-en="Feynman_Prescription_Residues_and_Real_Poles_EN.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF: Displacement of the poles in the Feynman prescription" data-aria-label-es="Abrir PDF: Desplazamiento de los polos en la prescripción de Feynman" data-aria-label-en="Open PDF: Displacement of the poles in the Feynman prescription">
+                <img src="assets/feynman-poles-en.png" data-src-es="assets/feynman-poles-es.png" data-src-en="assets/feynman-poles-en.png" alt="Displacement of the poles in the Feynman prescription" data-alt-es="Desplazamiento de los polos en la prescripción de Feynman" data-alt-en="Displacement of the poles in the Feynman prescription" loading="lazy" decoding="async" />
+              </a>
+              <span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="Prescripción de Feynman, residuos y regularización de polos reales" data-lang-en="Feynman Prescription, Residues, and Regularization of Real Poles">Feynman Prescription, Residues, and Regularization of Real Poles</h4>
+              <p class="resource-note mt-2" data-lang-es="Notas autocontenidas sobre residuos, valor principal y la prescripción +iε." data-lang-en="Self-contained notes on residues, principal value, and the +iε prescription.">Self-contained notes on residues, principal value, and the +iε prescription.</p>
+            </div>
+            <a href="Feynman_Prescription_Residues_and_Real_Poles_ES.pdf" data-pdf-es="Feynman_Prescription_Residues_and_Real_Poles_ES.pdf" data-pdf-en="Feynman_Prescription_Residues_and_Real_Poles_EN.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Open PDF</span>
+            </a>
+          </article>
+          <article class="resource-card">
+            <div>
+              <a class="paper-thumb paper-thumb--figure" href="Expansion_Perturbativa_y_Diagramas_de_Feynman_en_el_Modelo_lambda_phi4_de_Dimension_Cero.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF: Feynman diagrams and their factors in the zero-dimensional model" data-aria-label-es="Abrir PDF: Diagramas de Feynman y sus factores en el modelo de dimensión cero" data-aria-label-en="Open PDF: Feynman diagrams and their factors in the zero-dimensional model">
+                <img src="assets/phi4-diagrams-shared.png" data-src-es="assets/phi4-diagrams-shared.png" data-src-en="assets/phi4-diagrams-shared.png" alt="Feynman diagrams and their factors in the zero-dimensional model" data-alt-es="Diagramas de Feynman y sus factores en el modelo de dimensión cero" data-alt-en="Feynman diagrams and their factors in the zero-dimensional model" loading="lazy" decoding="async" />
+              </a>
+              <span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="Expansión Perturbativa y Diagramas de Feynman en el Modelo λϕ4 de Dimensión Cero" data-lang-en="Perturbative Expansion and Feynman Diagrams in the Zero-Dimensional λϕ4 Model">Perturbative Expansion and Feynman Diagrams in the Zero-Dimensional λϕ4 Model</h4>
+              <p class="resource-note mt-2" data-lang-es="Notas sobre el modelo λϕ4 de dimensión cero, expansión perturbativa y estructura diagramática." data-lang-en="Notes on the zero-dimensional λϕ4 model, perturbative expansion, and diagrammatic structure.">Notes on the zero-dimensional λϕ4 model, perturbative expansion, and diagrammatic structure.</p>
+            </div>
+            <a href="Expansion_Perturbativa_y_Diagramas_de_Feynman_en_el_Modelo_lambda_phi4_de_Dimension_Cero.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Open PDF</span>
+            </a>
+          </article>
+          <article class="resource-card">
+            <div>
+              <a class="paper-thumb paper-thumb--figure" href="Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF: Klein-Gordon equation for the scalar field" data-aria-label-es="Abrir PDF: Ecuación de Klein-Gordon para el campo escalar" data-aria-label-en="Open PDF: Klein-Gordon equation for the scalar field">
+                <img src="assets/klein-gordon-equation-shared.png" data-src-es="assets/klein-gordon-equation-shared.png" data-src-en="assets/klein-gordon-equation-shared.png" alt="Klein-Gordon equation for the scalar field" data-alt-es="Ecuación de Klein-Gordon para el campo escalar" data-alt-en="Klein-Gordon equation for the scalar field" loading="lazy" decoding="async" />
+              </a>
+              <span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="Invariancia de Lorentz del campo y la acción de Klein-Gordon" data-lang-en="Lorentz Invariance of the Klein-Gordon Field and Action">Lorentz Invariance of the Klein-Gordon Field and Action</h4>
+              <p class="resource-note mt-2" data-lang-es="Derivación de la ecuación de Klein-Gordon, invariancia de Lorentz y formulación lagrangiana de la acción." data-lang-en="Derivation of the Klein-Gordon equation, Lorentz invariance, and the Lagrangian formulation of the action.">Derivation of the Klein-Gordon equation, Lorentz invariance, and the Lagrangian formulation of the action.</p>
+            </div>
+            <a href="Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Open PDF</span>
+            </a>
+          </article>
+          <article class="resource-card">
+            <div>
+              <a class="paper-thumb paper-thumb--figure" href="Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF: Integration region for two time-ordered operators" data-aria-label-es="Abrir PDF: Región de integración para dos operadores ordenados temporalmente" data-aria-label-en="Open PDF: Integration region for two time-ordered operators">
+                <img src="assets/dyson-ordering-shared.png" data-src-es="assets/dyson-ordering-shared.png" data-src-en="assets/dyson-ordering-shared.png" alt="Integration region for two time-ordered operators" data-alt-es="Región de integración para dos operadores ordenados temporalmente" data-alt-en="Integration region for two time-ordered operators" loading="lazy" decoding="async" />
+              </a>
+              <span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación" data-lang-en="Free Vacuum, Interacting Vacuum, Dyson Series and Correlation Functions">Free Vacuum, Interacting Vacuum, Dyson Series and Correlation Functions</h4>
+              <p class="resource-note mt-2" data-lang-es="Notas sobre vacío interactuante, serie de Dyson y cálculo perturbativo." data-lang-en="Notes on interacting vacua, the Dyson series, and perturbative computation.">Notes on interacting vacua, the Dyson series, and perturbative computation.</p>
+            </div>
+            <a href="Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Open PDF</span>
+            </a>
+          </article>
+          <article class="resource-card">
+            <div>
+              <a class="paper-thumb paper-thumb--figure" href="Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF: Surface of the Lagrangian density of a field" data-aria-label-es="Abrir PDF: Superficie de la densidad lagrangiana de un campo" data-aria-label-en="Open PDF: Surface of the Lagrangian density of a field">
+                <img src="assets/field-lagrangian-shared.png" data-src-es="assets/field-lagrangian-shared.png" data-src-en="assets/field-lagrangian-shared.png" alt="Surface of the Lagrangian density of a field" data-alt-es="Superficie de la densidad lagrangiana de un campo" data-alt-en="Surface of the Lagrangian density of a field" loading="lazy" decoding="async" />
+              </a>
+              <span class="resource-pill" data-lang-es="Geometría" data-lang-en="Geometry">Geometry</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="Variaciones de campos en haces vectoriales con conexión" data-lang-en="Field Variations on Vector Bundles with Connection">Field Variations on Vector Bundles with Connection</h4>
+              <p class="resource-note mt-2" data-lang-es="Interpretación activa y pasiva en una formulación geométrica unificada." data-lang-en="Active and passive interpretations in a unified geometric formulation.">Active and passive interpretations in a unified geometric formulation.</p>
+            </div>
+            <a href="Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Open PDF</span>
+            </a>
+          </article>
+          <article class="resource-card">
+            <div>
+              <a class="paper-thumb paper-thumb--figure" href="epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open PDF: Line-element decomposition between spacetime hypersurfaces" data-aria-label-es="Abrir PDF: Descomposición del elemento de línea entre hipersuperficies del espacio-tiempo" data-aria-label-en="Open PDF: Line-element decomposition between spacetime hypersurfaces">
+                <img src="assets/adm-foliation-shared.png" data-src-es="assets/adm-foliation-shared.png" data-src-en="assets/adm-foliation-shared.png" alt="Line-element decomposition between spacetime hypersurfaces" data-alt-es="Descomposición del elemento de línea entre hipersuperficies del espacio-tiempo" data-alt-en="Line-element decomposition between spacetime hypersurfaces" loading="lazy" decoding="async" />
+              </a>
+              <span class="resource-pill" data-lang-es="Relatividad" data-lang-en="Relativity">Relativity</span>
+              <h4 class="text-xl font-bold mt-3" data-lang-es="ε-Ecuaciones Hamiltonianas de ADM" data-lang-en="ε-Hamiltonian ADM Equations">ε-Hamiltonian ADM Equations</h4>
+              <p class="resource-note mt-2" data-lang-es="Apunte sobre la formulación hamiltoniana ADM de la relatividad general." data-lang-en="Note on the ADM Hamiltonian formulation of general relativity.">Note on the ADM Hamiltonian formulation of general relativity.</p>
+            </div>
+            <a href="epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf" target="_blank" rel="noopener noreferrer" class="icon-button inline-flex items-center gap-2 font-bold no-underline text-blue-700">
+              <i data-lucide="file-text"></i>
+              <span data-lang-es="Abrir PDF" data-lang-en="Open PDF">Open PDF</span>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pdfs" class="py-8">
+      <div class="glass-card max-w-6xl mx-auto p-8 rounded-[28px]">
+        <div class="text-center max-w-3xl mx-auto mb-8">
+          <p class="text-xs font-semibold tracking-[0.28em] uppercase text-slate-500 mb-2" data-lang-es="Biblioteca académica" data-lang-en="Academic library">Academic library</p>
+          <h3 class="text-3xl font-bold mb-3" data-lang-es="Notas, libros y ejercicios" data-lang-en="Notes, books, and exercises">Notes, books, and exercises</h3>
+          <p class="text-slate-600" data-lang-es="Busca por título, tema o categoría. El Libro encabeza la lista; los demás materiales van de lo más antiguo a lo más reciente para mostrar la evolución del proyecto. Cada recurso se puede abrir o descargar." data-lang-en="Search by title, topic, or category. The Book heads the list; the remaining materials run from oldest to newest to show the evolution of the project. Each resource can be opened or downloaded.">Search by title, topic, or category. The Book heads the list; the remaining materials run from oldest to newest to show the evolution of the project. Each resource can be opened or downloaded.</p>
+        </div>
+
+        <div class="grid gap-4 mb-6">
+          <div class="relative">
+            <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500"></i>
+            <input id="resourceSearch" type="search" class="w-full rounded-xl border border-slate-300 bg-white/80 py-3 pl-12 pr-4 text-slate-900" placeholder="Buscar por título o tema" data-placeholder-es="Buscar por título o tema" data-placeholder-en="Search by title or topic">
+          </div>
+          <div class="flex flex-wrap justify-center gap-2" aria-label="Library filters" data-aria-label-es="Filtros de biblioteca" data-aria-label-en="Library filters">
+            <button type="button" class="filter-button active" aria-pressed="true" data-filter="all" data-lang-es="Todo" data-lang-en="All">All</button>
+            <button type="button" class="filter-button" aria-pressed="false" data-filter="book" data-lang-es="Libro" data-lang-en="Book">Book</button>
+            <button type="button" class="filter-button" aria-pressed="false" data-filter="qft" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</button>
+            <button type="button" class="filter-button" aria-pressed="false" data-filter="gauge" data-lang-es="Teoría gauge" data-lang-en="Gauge theory">Gauge theory</button>
+            <button type="button" class="filter-button" aria-pressed="false" data-filter="relativity" data-lang-es="Relatividad" data-lang-en="Relativity">Relativity</button>
+            <button type="button" class="filter-button" aria-pressed="false" data-filter="geometry" data-lang-es="Geometría" data-lang-en="Geometry">Geometry</button>
+            <button type="button" class="filter-button" aria-pressed="false" data-filter="algebra" data-lang-es="Álgebra" data-lang-en="Algebra">Algebra</button>
+            <button type="button" class="filter-button" aria-pressed="false" data-filter="operator-algebras" data-lang-es="Álgebras de operadores" data-lang-en="Operator algebras">Operator algebras</button>
+            <button type="button" class="filter-button" aria-pressed="false" data-filter="lie-algebras" data-lang-es="Álgebras de Lie" data-lang-en="Lie algebras">Lie algebras</button>
+            <button type="button" class="filter-button" aria-pressed="false" data-filter="classical" data-lang-es="Mecánica clásica" data-lang-en="Classical mechanics">Classical mechanics</button>
+          </div>
+        </div>
+
+        <p id="emptyResources" class="hidden text-center text-slate-600 py-8" data-lang-es="No encontré recursos con esa búsqueda." data-lang-en="No resources matched that search.">No resources matched that search.</p>
+
+        <h4 id="materialHeading" class="resource-section-title" data-lang-es="Material" data-lang-en="Material">Material</h4>
+        <div id="resourceGrid" class="resource-grid">
+<article class="resource-card" data-category="qft" data-search="lambda phi4 feynman reglas rules position space wick dyson gell mann low interaction picture symmetry factors burbujas vacio"><div><span class="resource-pill" data-lang-es="Teoría cuántica de campos" data-lang-en="Quantum field theory">Quantum field theory</span><h4 class="text-xl font-bold mt-3" data-lang-es="Teoría λφ⁴ y reglas de Feynman en espacio de posiciones" data-lang-en="λφ⁴ Theory and Feynman Rules in Position Space">λφ⁴ Theory and Feynman Rules in Position Space</h4><p class="resource-note mt-2" data-lang-es="Derivación de las reglas de Feynman desde las imágenes dinámicas, Gell-Mann–Low, Dyson y Wick. Incluye el correlador de dos puntos hasta segundo orden, cancelación de burbujas de vacío y factores de simetría." data-lang-en="Derivation of Feynman rules from dynamical pictures, Gell-Mann–Low, Dyson, and Wick. Includes the two-point correlator through second order, vacuum-bubble cancellation, and symmetry factors.">Derivation of Feynman rules from dynamical pictures, Gell-Mann–Low, Dyson, and Wick. Includes the two-point correlator through second order, vacuum-bubble cancellation, and symmetry factors.</p></div><div class="flex gap-4"><a href="qft_notes_78_80_english.pdf" data-pdf-es="notas_qft_78_80_con_dibujo_definiciones.pdf" data-pdf-en="qft_notes_78_80_english.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="qft_notes_78_80_english.pdf" data-pdf-es="notas_qft_78_80_con_dibujo_definiciones.pdf" data-pdf-en="qft_notes_78_80_english.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div></article>
+
+          <article class="resource-card" data-category="algebra" data-topics="lie-algebras" data-search="algebras lie algebra envolvente universal lie groups grupos de lie infinitesimal rotations rotaciones infinitesimales universal enveloping algebra">
+            <div><div class="flex flex-wrap gap-2"><span class="resource-pill" data-lang-es="Álgebra" data-lang-en="Algebra">Algebra</span><span class="resource-pill" data-lang-es="Álgebras de Lie" data-lang-en="Lie algebras">Lie algebras</span></div><h4 class="text-xl font-bold mt-3" data-lang-es="De grupos de Lie al álgebra envolvente universal" data-lang-en="From Lie Groups to the Universal Enveloping Algebra">From Lie Groups to the Universal Enveloping Algebra</h4><p class="resource-note mt-2" data-lang-es="Notas sobre rotaciones infinitesimales, el álgebra de Lie asociada y la construcción del álgebra envolvente universal." data-lang-en="Notes on infinitesimal rotations, the associated Lie algebra, and the construction of the universal enveloping algebra.">Notes on infinitesimal rotations, the associated Lie algebra, and the construction of the universal enveloping algebra.</p></div>
+            <div class="flex gap-4"><a href="notas_algebras_lie_envolvente_universal.pdf" data-pdf-es="notas_algebras_lie_envolvente_universal.pdf" data-pdf-en="notes_lie_algebras_universal_enveloping_algebra.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="notas_algebras_lie_envolvente_universal.pdf" data-pdf-es="notas_algebras_lie_envolvente_universal.pdf" data-pdf-en="notes_lie_algebras_universal_enveloping_algebra.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="algebra" data-topics="operator-algebras" data-search="c star algebra c estrella c dagger daga bounded operators hilbert adjoint operator norm dirac notation pauli matrices bloch sphere unbounded operators quantum mechanics operadores acotados adjunto notacion dirac matrices pauli esfera bloch">
+            <div><div class="flex flex-wrap gap-2"><span class="resource-pill" data-lang-es="Álgebra" data-lang-en="Algebra">Algebra</span><span class="resource-pill" data-lang-es="Álgebras de operadores" data-lang-en="Operator algebras">Operator algebras</span></div><h4 class="text-xl font-bold mt-3" data-lang-es="C*-álgebras y notación daga" data-lang-en="C*-Algebras and Dagger Notation">C*-Algebras and Dagger Notation</h4><p class="resource-note mt-2" data-lang-es="Notas autocontenidas sobre C*-álgebras, operadores acotados, adjuntos de Hilbert, notación de Dirac, matrices de Pauli, esfera de Bloch y operadores no acotados." data-lang-en="Self-contained notes on C*-algebras, bounded operators, Hilbert adjoints, Dirac notation, Pauli matrices, the Bloch sphere, and unbounded operators.">Self-contained notes on C*-algebras, bounded operators, Hilbert adjoints, Dirac notation, Pauli matrices, the Bloch sphere, and unbounded operators.</p></div>
+            <div class="flex gap-4"><a href="Algebras_C_estrella_y_Notacion_Daga_ES.pdf" data-pdf-es="Algebras_C_estrella_y_Notacion_Daga_ES.pdf" data-pdf-en="C_star_Algebras_and_Dagger_Notation_EN.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Algebras_C_estrella_y_Notacion_Daga_ES.pdf" data-pdf-es="Algebras_C_estrella_y_Notacion_Daga_ES.pdf" data-pdf-en="C_star_Algebras_and_Dagger_Notation_EN.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="algebra" data-search="algebra homologica homological algebra category modules chain complexes projective injective resolutions derived functors ext tor categoria modulos complejos cadenas resoluciones proyectivas inyectivas funtores derivados">
+            <div><span class="resource-pill" data-lang-es="Álgebra" data-lang-en="Algebra">Algebra</span><h4 class="text-xl font-bold mt-3" data-lang-es="Álgebra Homológica en la Categoría de Módulos" data-lang-en="Homological Algebra in the Category of Modules">Homological Algebra in the Category of Modules</h4><p class="resource-note mt-2" data-lang-es="Notas sobre complejos de cadenas, homotopía, resoluciones proyectivas e inyectivas, funtores derivados, Ext y Tor." data-lang-en="Notes on chain complexes, homotopy, projective and injective resolutions, derived functors, Ext, and Tor.">Notes on chain complexes, homotopy, projective and injective resolutions, derived functors, Ext, and Tor.</p></div>
+            <div class="flex gap-4"><a href="Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf" data-pdf-es="Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf" data-pdf-en="Homological_Algebra_in_the_Category_of_Modules_EN.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf" data-pdf-es="Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf" data-pdf-en="Homological_Algebra_in_the_Category_of_Modules_EN.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-topics="gauge" data-search="gauge transformations global local u1 covariant derivative gauge field transformaciones gauge globales locales derivada covariante campo gauge">
+            <div><div class="flex flex-wrap gap-2"><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span><span class="resource-pill" data-lang-es="Teoría gauge" data-lang-en="Gauge theory">Gauge theory</span></div><h4 class="text-xl font-bold mt-3" data-lang-es="Transformaciones gauge globales y locales" data-lang-en="Global and Local Gauge Transformations">Transformaciones gauge globales y locales</h4><p class="resource-note mt-2" data-lang-es="Notas sobre la diferencia entre una transformación global y una transformación gauge local, con el caso U(1), el campo gauge y la derivada covariante." data-lang-en="Notes on the difference between a global transformation and a local gauge transformation, with the U(1) case, the gauge field, and the covariant derivative.">Notas sobre la diferencia entre una transformación global y una transformación gauge local, con el caso U(1), el campo gauge y la derivada covariante.</p></div>
+            <div class="flex gap-4"><a href="Transformaciones_Gauge_Globales_y_Locales_ES.pdf" data-pdf-es="Transformaciones_Gauge_Globales_y_Locales_ES.pdf" data-pdf-en="Global_and_Local_Gauge_Transformations_EN.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Abrir</a><a href="Transformaciones_Gauge_Globales_y_Locales_ES.pdf" data-pdf-es="Transformaciones_Gauge_Globales_y_Locales_ES.pdf" data-pdf-en="Global_and_Local_Gauge_Transformations_EN.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Descargar</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="feynman prescription residues real poles principal value i epsilon regularization quantum field theory prescripcion residuos polos reales valor principal">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span><h4 class="text-xl font-bold mt-3" data-lang-es="Prescripción de Feynman, residuos y regularización de polos reales" data-lang-en="Feynman Prescription, Residues, and Regularization of Real Poles">Feynman Prescription, Residues, and Regularization of Real Poles</h4><p class="resource-note mt-2" data-lang-es="Notas autocontenidas sobre serie de Laurent, residuos, valor principal y la prescripción +iε." data-lang-en="Self-contained notes on Laurent series, residues, principal value, and the +iε prescription.">Self-contained notes on Laurent series, residues, principal value, and the +iε prescription.</p></div>
+            <div class="flex gap-4"><a href="Feynman_Prescription_Residues_and_Real_Poles_ES.pdf" data-pdf-es="Feynman_Prescription_Residues_and_Real_Poles_ES.pdf" data-pdf-en="Feynman_Prescription_Residues_and_Real_Poles_EN.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Feynman_Prescription_Residues_and_Real_Poles_ES.pdf" data-pdf-es="Feynman_Prescription_Residues_and_Real_Poles_ES.pdf" data-pdf-en="Feynman_Prescription_Residues_and_Real_Poles_EN.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="expansion perturbativa diagramas feynman modelo lambda phi4 dimension cero zero dimensional quantum field theory">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span><h4 class="text-xl font-bold mt-3" data-lang-es="Expansión Perturbativa y Diagramas de Feynman en el Modelo λϕ4 de Dimensión Cero" data-lang-en="Perturbative Expansion and Feynman Diagrams in the Zero-Dimensional λϕ4 Model">Perturbative Expansion and Feynman Diagrams in the Zero-Dimensional λϕ4 Model</h4><p class="resource-note mt-2" data-lang-es="Notas sobre el modelo λϕ4 de dimensión cero, expansión perturbativa y estructura diagramática." data-lang-en="Notes on the zero-dimensional λϕ4 model, perturbative expansion, and diagrammatic structure.">Notes on the zero-dimensional λϕ4 model, perturbative expansion, and diagrammatic structure.</p></div>
+            <div class="flex gap-4"><a href="Expansion_Perturbativa_y_Diagramas_de_Feynman_en_el_Modelo_lambda_phi4_de_Dimension_Cero.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Expansion_Perturbativa_y_Diagramas_de_Feynman_en_el_Modelo_lambda_phi4_de_Dimension_Cero.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="klein gordon lorentz invariance action scalar field lagrangian d'alembertian relativistic quantum field theory">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span><h4 class="text-xl font-bold mt-3" data-lang-es="Invariancia de Lorentz del campo y la acción de Klein-Gordon" data-lang-en="Lorentz Invariance of the Klein-Gordon Field and Action">Lorentz Invariance of the Klein-Gordon Field and Action</h4><p class="resource-note mt-2" data-lang-es="Nota sobre la ecuación de Klein-Gordon, la invariancia del d'Alembertiano y la acción lagrangiana de un campo escalar real." data-lang-en="Note on the Klein-Gordon equation, invariance of the d'Alembertian, and the Lagrangian action of a real scalar field.">Note on the Klein-Gordon equation, invariance of the d'Alembertian, and the Lagrangian action of a real scalar field.</p></div>
+            <div class="flex gap-4"><a href="Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="book" data-search="libro book texto principal project">
+            <div><span class="resource-pill" data-lang-es="Libro" data-lang-en="Book">Book</span><h4 class="text-xl font-bold mt-3" data-lang-es="El Libro" data-lang-en="The Book">The Book</h4><p class="resource-note mt-2" data-lang-es="Texto principal del proyecto con una presentación amplia del material." data-lang-en="Main project text with a broad presentation of the material.">Main project text with a broad presentation of the material.</p></div>
+            <div class="flex gap-4"><a href="Libro.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Libro.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-topics="gauge" data-search="gauge faddeev popov integral de camino quantum field theory">
+            <div><div class="flex flex-wrap gap-2"><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span><span class="resource-pill" data-lang-es="Teoría gauge" data-lang-en="Gauge theory">Gauge theory</span></div><h4 class="text-xl font-bold mt-3" data-lang-es="Fijación Gauge y Determinante de Faddeev-Popov" data-lang-en="Gauge Fixing and Faddeev-Popov Determinant">Gauge Fixing and Faddeev-Popov Determinant</h4><p class="resource-note mt-2" data-lang-es="Notas sobre fijación gauge en la integral de camino y su estructura matemática." data-lang-en="Notes on gauge fixing in the path integral and its mathematical structure.">Notes on gauge fixing in the path integral and its mathematical structure.</p></div>
+            <div class="flex gap-4"><a href="Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="relativity" data-search="einbein sistemas relativistas relativity">
+            <div><span class="resource-pill" data-lang-es="Relatividad" data-lang-en="Relativity">Relativity</span><h4 class="text-xl font-bold mt-3" data-lang-es="The Einbein" data-lang-en="The Einbein">The Einbein</h4><p class="resource-note mt-2" data-lang-es="Apunte breve sobre el formalismo del einbein en sistemas relativistas." data-lang-en="Short note on the einbein formalism in relativistic systems.">Short note on the einbein formalism in relativistic systems.</p></div>
+            <div class="flex gap-4"><a href="The Einbein.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="The Einbein.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="dirac ecuacion heuristic quantum mechanics algebra">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span><h4 class="text-xl font-bold mt-3" data-lang-es="Forma Heurística de la Ecuación de Dirac" data-lang-en="Heuristic Form of the Dirac Equation">Heuristic Form of the Dirac Equation</h4><p class="resource-note mt-2" data-lang-es="Introducción intuitiva a la estructura física y algebraica de la ecuación de Dirac." data-lang-en="Intuitive introduction to the physical and algebraic structure of the Dirac equation.">Intuitive introduction to the physical and algebraic structure of the Dirac equation.</p></div>
+            <div class="flex gap-4"><a href="Forma Heurística de la Ecuación de Dirac.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Forma Heurística de la Ecuación de Dirac.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="geometry" data-topics="lie-algebras" data-search="su2 lie group vision fisica geometry quantum">
+            <div><div class="flex flex-wrap gap-2"><span class="resource-pill" data-lang-es="Geometría" data-lang-en="Geometry">Geometry</span><span class="resource-pill" data-lang-es="Álgebras de Lie" data-lang-en="Lie algebras">Lie algebras</span></div><h4 class="text-xl font-bold mt-3" data-lang-es="El grupo SU(2) como grupo de Lie y Visión Física" data-lang-en="The group SU(2) as a Lie group and Physical Perspective">The group SU(2) as a Lie group and Physical Perspective</h4><p class="resource-note mt-2" data-lang-es="Visión geométrica y física del grupo SU(2) y sus aplicaciones." data-lang-en="Geometric and physical view of the group SU(2) and its applications.">Geometric and physical view of the group SU(2) and its applications.</p></div>
+            <div class="flex gap-4"><a href="El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="algebraic quantum field theory regiones acausalmente desconectadas causal">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span><h4 class="text-xl font-bold mt-3" data-lang-es="Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica" data-lang-en="Acausally Disconnected Regions in Algebraic Quantum Field Theory">Acausally Disconnected Regions in Algebraic Quantum Field Theory</h4><p class="resource-note mt-2" data-lang-es="Exploración conceptual de separación causal en teoría cuántica de campos algebraica." data-lang-en="Conceptual exploration of causal separation in algebraic quantum field theory.">Conceptual exploration of causal separation in algebraic quantum field theory.</p></div>
+            <div class="flex gap-4"><a href="a.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="a.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="functional derivative scalar field action global functional">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span><h4 class="text-xl font-bold mt-3" data-lang-es="On the Functional Derivative of the Scalar Field Action" data-lang-en="On the Functional Derivative of the Scalar Field Action">On the Functional Derivative of the Scalar Field Action</h4><p class="resource-note mt-2" data-lang-es="Nota técnica sobre derivadas funcionales en la acción de campos escalares." data-lang-en="Technical note on functional derivatives in the scalar field action.">Technical note on functional derivatives in the scalar field action.</p></div>
+            <div class="flex gap-4"><a href="On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="classical" data-search="lagrangian simple pendulum pendulo mecanica clasica">
+            <div><span class="resource-pill" data-lang-es="Mecánica clásica" data-lang-en="Classical mechanics">Classical mechanics</span><h4 class="text-xl font-bold mt-3" data-lang-es="The Lagrangian Formulation of the Simple Pendulum" data-lang-en="The Lagrangian Formulation of the Simple Pendulum">The Lagrangian Formulation of the Simple Pendulum</h4><p class="resource-note mt-2" data-lang-es="Ejemplo clásico del formalismo lagrangiano aplicado al péndulo simple." data-lang-en="Classical example of the Lagrangian formalism applied to the simple pendulum.">Classical example of the Lagrangian formalism applied to the simple pendulum.</p></div>
+            <div class="flex gap-4"><a href="b.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="b.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="composite quantum systems wave functions tensorial mecanica cuantica">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span><h4 class="text-xl font-bold mt-3" data-lang-es="Sistemas Cuánticos Compuestos y sus Funciones de Onda" data-lang-en="Composite Quantum Systems and Their Wave Functions">Composite Quantum Systems and Their Wave Functions</h4><p class="resource-note mt-2" data-lang-es="Discusión de estados compuestos y estructura tensorial en mecánica cuántica." data-lang-en="Discussion of composite states and tensor structure in quantum mechanics.">Discussion of composite states and tensor structure in quantum mechanics.</p></div>
+            <div class="flex gap-4"><a href="Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="heisenberg schrodinger dirac pictures quantum mechanics">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span><h4 class="text-xl font-bold mt-3" data-lang-es="Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac" data-lang-en="Mathematical Formulation of the Heisenberg, Schrödinger and Dirac Pictures">Mathematical Formulation of the Heisenberg, Schrödinger and Dirac Pictures</h4><p class="resource-note mt-2" data-lang-es="Comparación matemática entre las distintas imágenes de la mecánica cuántica." data-lang-en="Mathematical comparison of the different pictures of quantum mechanics.">Mathematical comparison of the different pictures of quantum mechanics.</p></div>
+            <div class="flex gap-4"><a href="Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="relativity" data-search="adm hamiltonian equations general relativity relatividad">
+            <div><span class="resource-pill" data-lang-es="Relatividad" data-lang-en="Relativity">Relativity</span><h4 class="text-xl font-bold mt-3" data-lang-es="ε-Ecuaciones Hamiltonianas de ADM de la Relatividad General" data-lang-en="ε-Hamiltonian ADM Equations of General Relativity">ε-Hamiltonian ADM Equations of General Relativity</h4><p class="resource-note mt-2" data-lang-es="Apunte sobre la formulación hamiltoniana ADM en relatividad general." data-lang-en="Note on the ADM Hamiltonian formulation in general relativity.">Note on the ADM Hamiltonian formulation in general relativity.</p></div>
+            <div class="flex gap-4"><a href="epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="classical" data-search="braquistocrona brachistochrone calculus of variations">
+            <div><span class="resource-pill" data-lang-es="Mecánica clásica" data-lang-en="Classical mechanics">Classical mechanics</span><h4 class="text-xl font-bold mt-3" data-lang-es="El Problema de la Braquistócrona" data-lang-en="The Brachistochrone Problem">The Brachistochrone Problem</h4><p class="resource-note mt-2" data-lang-es="Aplicación del cálculo de variaciones a uno de los problemas clásicos más famosos." data-lang-en="Application of the calculus of variations to one of the most famous classical problems.">Application of the calculus of variations to one of the most famous classical problems.</p></div>
+            <div class="flex gap-4"><a href="The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="geometry" data-search="field variations vector bundles connection active passive geometry">
+            <div><span class="resource-pill" data-lang-es="Geometría" data-lang-en="Geometry">Geometry</span><h4 class="text-xl font-bold mt-3" data-lang-es="Variaciones de Campos en Haces Vectoriales con Conexión" data-lang-en="Field Variations on Vector Bundles with Connection">Field Variations on Vector Bundles with Connection</h4><p class="resource-note mt-2" data-lang-es="Estudio geométrico de variaciones de campos sobre haces vectoriales con conexión." data-lang-en="Geometric study of field variations on vector bundles with connection.">Geometric study of field variations on vector bundles with connection.</p></div>
+            <div class="flex gap-4"><a href="Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="qft" data-search="vacio libre interactuante serie dyson funciones correlacion">
+            <div><span class="resource-pill" data-lang-es="Teoría cuántica" data-lang-en="Quantum theory">Quantum theory</span><h4 class="text-xl font-bold mt-3" data-lang-es="Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación" data-lang-en="Free Vacuum, Interacting Vacuum, Dyson Series and Correlation Functions">Free Vacuum, Interacting Vacuum, Dyson Series and Correlation Functions</h4><p class="resource-note mt-2" data-lang-es="Notas sobre la relación entre el vacío libre y el vacío interactuante y el cálculo perturbativo." data-lang-en="Notes on free and interacting vacua and perturbative computation.">Notes on free and interacting vacua and perturbative computation.</p></div>
+            <div class="flex gap-4"><a href="Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="exercises" class="py-8">
+      <div class="glass-card max-w-6xl mx-auto p-8 rounded-[28px]">
+        <div class="text-center max-w-3xl mx-auto mb-6">
+          <p class="text-xs font-semibold tracking-[0.28em] uppercase text-slate-500 mb-2" data-lang-es="Práctica" data-lang-en="Practice">Practice</p>
+          <h3 id="exerciseHeading" class="text-3xl font-bold mb-3" data-lang-es="Ejercicios" data-lang-en="Exercises">Exercises</h3>
+          <p class="text-slate-600" data-lang-es="Colecciones de problemas separadas del material principal. Haz click directamente en el nombre para abrir el PDF." data-lang-en="Problem sets separated from the main material. Click directly on the name to open the PDF.">Problem sets separated from the main material. Click directly on the name to open the PDF.</p>
+        </div>
+        <div id="exerciseGrid" class="resource-grid">
+          <article class="resource-card" data-category="exercises" data-search="calculo multivariable ejercicios calculus exercises">
+            <div><span class="resource-pill" data-lang-es="Ejercicios" data-lang-en="Exercises">Exercises</span><h4 class="text-xl font-bold mt-3" data-lang-es="Ejercicios de Cálculo Multivariable" data-lang-en="Multivariable Calculus Exercises">Multivariable Calculus Exercises</h4><p class="resource-note mt-2" data-lang-es="Colección de problemas para practicar cálculo en varias variables." data-lang-en="Problem collection for practicing multivariable calculus.">Problem collection for practicing multivariable calculus.</p></div>
+            <div class="flex gap-4"><a href="Calculus_excercises.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Calculus_excercises.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="exercises" data-search="algebra lineal ejercicios linear algebra matrices">
+            <div><span class="resource-pill" data-lang-es="Ejercicios" data-lang-en="Exercises">Exercises</span><h4 class="text-xl font-bold mt-3" data-lang-es="Ejercicios de Álgebra Lineal" data-lang-en="Linear Algebra Exercises">Linear Algebra Exercises</h4><p class="resource-note mt-2" data-lang-es="Serie de ejercicios sobre espacios vectoriales, matrices y transformaciones lineales." data-lang-en="Exercise set on vector spaces, matrices, and linear transformations.">Exercise set on vector spaces, matrices, and linear transformations.</p></div>
+            <div class="flex gap-4"><a href="Linear_Algebra_Exercises.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Linear_Algebra_Exercises.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="exercises" data-search="ecuaciones diferenciales differential equations ejercicios">
+            <div><span class="resource-pill" data-lang-es="Ejercicios" data-lang-en="Exercises">Exercises</span><h4 class="text-xl font-bold mt-3" data-lang-es="Ejercicios de Ecuaciones Diferenciales" data-lang-en="Differential Equations Exercises">Differential Equations Exercises</h4><p class="resource-note mt-2" data-lang-es="Problemas para reforzar métodos clásicos de ecuaciones diferenciales." data-lang-en="Problems to strengthen classical methods in differential equations.">Problems to strengthen classical methods in differential equations.</p></div>
+            <div class="flex gap-4"><a href="Differential_Equations_Exercises.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Differential_Equations_Exercises.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+          <article class="resource-card" data-category="exercises" data-search="teoria de control control theory ejercicios systems stability optimal">
+            <div><span class="resource-pill" data-lang-es="Ejercicios" data-lang-en="Exercises">Exercises</span><h4 class="text-xl font-bold mt-3" data-lang-es="Ejercicios de Teoría de Control" data-lang-en="Control Theory Exercises">Control Theory Exercises</h4><p class="resource-note mt-2" data-lang-es="Colección de problemas sobre sistemas dinámicos, estabilidad, control clásico y control óptimo." data-lang-en="Problem collection on dynamical systems, stability, classical control, and optimal control.">Problem collection on dynamical systems, stability, classical control, and optimal control.</p></div>
+            <div class="flex gap-4"><a href="Control_Theory_Excercises.pdf" target="_blank" rel="noopener noreferrer" class="font-bold no-underline text-blue-700" data-lang-es="Abrir" data-lang-en="Open">Open</a><a href="Control_Theory_Excercises.pdf" download class="font-bold no-underline text-slate-700" data-lang-es="Descargar" data-lang-en="Download">Download</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="curriculum" class="py-8">
+      <div class="glass-card max-w-5xl mx-auto p-8 rounded-[28px]">
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-6">
+          <div>
+            <h3 class="text-3xl font-bold" data-lang-es="Currículum" data-lang-en="Curriculum">Curriculum</h3>
+            <p class="text-slate-600 mt-2"
+               data-lang-es="Aquí puedes consultar mi currículum directamente en la página o abrirlo en una pestaña nueva."
+               data-lang-en="Here you can view my curriculum directly on the page or open it in a new tab.">
+            Here you can view my curriculum directly on the page or open it in a new tab.
+          </p>
+          </div>
+          <div class="flex gap-3">
+            <a href="Omar_Corona_Tejeda_CV.pdf?v=20261016" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-slate-900 text-white font-semibold no-underline"
+               data-lang-es="Abrir PDF" data-lang-en="Open PDF">Open PDF</a>
+            <a href="Omar_Corona_Tejeda_CV.pdf?v=20261016" download class="curriculum-download px-5 py-3 rounded-xl font-semibold no-underline transition"
+               data-lang-es="Descargar" data-lang-en="Download">Download</a>
+          </div>
+        </div>
+        <iframe class="curriculum-frame" src="Omar_Corona_Tejeda_CV.pdf?v=20261016#view=FitH" title="Curriculum Vitae"></iframe>
+        <div class="mobile-curriculum-pages" aria-label="Curriculum Vitae">
+          <a href="Omar_Corona_Tejeda_CV.pdf?v=20261016" target="_blank" rel="noopener noreferrer">
+            <img src="assets/omar-corona-tejeda-cv-1.png?v=20261016" alt="Curriculum Vitae - page 1">
+          </a>
+          <a href="Omar_Corona_Tejeda_CV.pdf?v=20261016" target="_blank" rel="noopener noreferrer">
+            <img src="assets/omar-corona-tejeda-cv-2.png?v=20261016" alt="Curriculum Vitae - page 2">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-8"><div class="glass-card about-profile"><p class="eyebrow" data-lang-es="EL TRABAJO DETRÁS DEL PROYECTO" data-lang-en="THE WORK BEHIND THE PROJECT">EL TRABAJO DETRÁS DEL PROYECTO</p><h3 data-lang-es="Acerca de mí" data-lang-en="About me">Acerca de mí</h3><h4 class="about-name">Omar Corona Tejeda</h4><p data-lang-es="Soy Omar Corona Tejeda. Trabajo en el desarrollo y la mejora de sistemas de inteligencia artificial mediante el aseguramiento de la calidad de datos, la anotación y la evaluación de respuestas de modelos. Mi práctica combina razonamiento matemático, análisis crítico y comunicación técnica para revisar la precisión, la coherencia y la utilidad de los resultados." data-lang-en="I am Omar Corona Tejeda. I work on developing and improving artificial intelligence systems through data quality assurance, annotation, and model response evaluation. My practice combines mathematical reasoning, critical analysis, and technical communication to assess the accuracy, consistency, and usefulness of model outputs.">Soy Omar Corona Tejeda. Trabajo en el desarrollo y la mejora de sistemas de inteligencia artificial mediante el aseguramiento de la calidad de datos, la anotación y la evaluación de respuestas de modelos. Mi práctica combina razonamiento matemático, análisis crítico y comunicación técnica para revisar la precisión, la coherencia y la utilidad de los resultados.</p><p data-lang-es="Este trabajo abarca datos multimodales, transcripción, prompts hablados y evaluación de conversaciones de voz, así como el desarrollo y la revisión de problemas matemáticos, rúbricas y soluciones de referencia. Con Lean 4 y Mathlib, también formalizo argumentos y reviso las hipótesis y dependencias de las demostraciones." data-lang-en="This work spans multimodal data, transcription, spoken prompts, and voice conversation evaluation, as well as the development and review of mathematical problems, rubrics, and reference solutions. With Lean 4 and Mathlib, I also formalize arguments and inspect proof assumptions and dependencies.">Este trabajo abarca datos multimodales, transcripción, prompts hablados y evaluación de conversaciones de voz, así como el desarrollo y la revisión de problemas matemáticos, rúbricas y soluciones de referencia. Con Lean 4 y Mathlib, también formalizo argumentos y reviso las hipótesis y dependencias de las demostraciones.</p><p data-lang-es="The Mathematical Physics Project reúne el trabajo que he venido construyendo entre matemáticas, física, docencia y computación: notas, ejercicios y desarrollos que buscan hacer explícitas las ideas y los pasos de cada argumento. Hoy amplío esa práctica hacia demostraciones formales, código reproducible y animaciones interactivas, conectando la intuición con la verificación y la exploración." data-lang-en="The Mathematical Physics Project brings together the work I have been building across mathematics, physics, teaching, and computation: notes, exercises, and developments that make ideas and the steps of each argument explicit. I am now extending this practice toward formal proofs, reproducible code, and interactive animations, connecting intuition with verification and exploration.">The Mathematical Physics Project reúne el trabajo que he venido construyendo entre matemáticas, física, docencia y computación: notas, ejercicios y desarrollos que buscan hacer explícitas las ideas y los pasos de cada argumento. Hoy amplío esa práctica hacia demostraciones formales, código reproducible y animaciones interactivas, conectando la intuición con la verificación y la exploración.</p><p data-lang-es="Mi trayectoria incluye docencia universitaria de matemáticas y física, en la Facultad de Ciencias de la UNAM y en cursos en línea para Tiffin University, Southern New Hampshire University y Saint Leo University. Esa experiencia orienta mi manera de crear recursos: partir de una pregunta, desarrollar el razonamiento y ofrecer herramientas para que otras personas puedan estudiar y comprobar lo aprendido." data-lang-en="My background includes university-level teaching in mathematics and physics, at UNAM’s Faculty of Sciences and in online courses for Tiffin University, Southern New Hampshire University, and Saint Leo University. That experience shapes how I create resources: start with a question, develop the reasoning, and provide tools that others can use to study and check their understanding.">Mi trayectoria incluye docencia universitaria de matemáticas y física, en la Facultad de Ciencias de la UNAM y en cursos en línea para Tiffin University, Southern New Hampshire University y Saint Leo University. Esa experiencia orienta mi manera de crear recursos: partir de una pregunta, desarrollar el razonamiento y ofrecer herramientas para que otras personas puedan estudiar y comprobar lo aprendido.</p><p class="academic-background" data-lang-es="Como base académica, cuento con licenciatura y maestría en Ciencias Matemáticas por la UNAM; continúo mi formación con el doctorado en Ciencias Matemáticas y la licenciatura en Física, ambos en curso." data-lang-en="My academic foundation includes bachelor’s and master’s degrees in Mathematical Sciences from UNAM. I continue my studies through a PhD in Mathematical Sciences and a bachelor’s degree in Physics, both in progress.">Como base académica, cuento con licenciatura y maestría en Ciencias Matemáticas por la UNAM; continúo mi formación con el doctorado en Ciencias Matemáticas y la licenciatura en Física, ambos en curso.</p><div class="about-links"><a href="#computation" data-lang-es="Explorar formalización y código →" data-lang-en="Explore formalization and code →">Explorar formalización y código →</a><a href="#curriculum" data-lang-es="Ver trayectoria y currículum →" data-lang-en="View background and CV →">Ver trayectoria y currículum →</a></div></div></section>
+<section id="sesiones-particulares" class="py-8">
+      <div class="glass-card max-w-4xl mx-auto p-8 rounded-[28px]">
+        <h3 class="text-3xl font-bold text-center mb-6" data-lang-es="Sesiones particulares" data-lang-en="Private Sessions">Private Sessions</h3>
+        <p class="text-lg leading-relaxed mb-6 text-center"
+           data-lang-es="Ofrezco sesiones particulares personalizadas, orientadas a fortalecer la comprensión conceptual y técnica de los temas, así como a resolver dudas específicas y desarrollar herramientas de trabajo sólidas."
+           data-lang-en="I offer personalized private sessions aimed at strengthening conceptual and technical understanding, resolving specific questions, and developing solid working tools.">
+        I offer personalized private sessions aimed at strengthening conceptual and technical understanding, resolving specific questions, and developing solid working tools.
+      </p>
+        <ul class="max-w-2xl mx-auto space-y-3 text-lg">
+          <li><span data-lang-es="Matemáticas (cálculo, álgebra lineal, ecuaciones diferenciales)" data-lang-en="Mathematics (calculus, linear algebra, differential equations)">Mathematics (calculus, linear algebra, differential equations)</span></li>
+          <li><span data-lang-es="Física y Matemáticas" data-lang-en="Physics and Mathematics">Physics and Mathematics</span></li>
+          <li><span data-lang-es="Apoyo en cursos universitarios y de posgrado" data-lang-en="Support for undergraduate and graduate courses">Support for undergraduate and graduate courses</span></li>
+          <li><span data-lang-es="Preparación para exámenes y revisión de tareas o proyectos" data-lang-en="Exam preparation and review of assignments or projects">Exam preparation and review of assignments or projects</span></li>
+          <li><span data-lang-es="Modalidad en línea" data-lang-en="Online sessions">Online sessions</span></li>
+        </ul>
+        <p class="text-lg leading-relaxed text-center mt-6"
+           data-lang-es="Para más información sobre disponibilidad, horarios y costos, contáctame directamente."
+           data-lang-en="For more information about availability, schedules, and fees, please contact me directly.">
+        For more information about availability, schedules, and fees, please contact me directly.
+      </p>
+      </div>
+    </section>
+
+    <section id="citation" class="py-8">
+      <div class="glass-card max-w-4xl mx-auto p-8 rounded-[28px]">
+        <h3 class="text-3xl font-bold text-center mb-6" data-lang-es="Cómo citar y usar el material" data-lang-en="How to cite and use the material">How to cite and use the material</h3>
+        <div class="grid gap-5 md:grid-cols-2">
+          <div class="p-5 rounded-lg bg-white/60 border border-slate-200">
+            <h4 class="font-bold mb-2" data-lang-es="Cita sugerida" data-lang-en="Suggested citation">Suggested citation</h4>
+            <p class="text-slate-700 leading-relaxed" data-lang-es="Corona Tejeda, Omar. The Mathematical Physics Project. Biblioteca digital de notas y ejercicios de física matemática." data-lang-en="Corona Tejeda, Omar. The Mathematical Physics Project. Digital library of mathematical physics notes and exercises.">Corona Tejeda, Omar. The Mathematical Physics Project. Digital library of mathematical physics notes and exercises.</p>
+          </div>
+          <div class="p-5 rounded-lg bg-white/60 border border-slate-200">
+            <h4 class="font-bold mb-2" data-lang-es="Uso académico" data-lang-en="Academic use">Academic use</h4>
+            <p class="text-slate-700 leading-relaxed" data-lang-es="Puedes usar estos materiales como apoyo de estudio, docencia o investigación, citando el proyecto y el documento correspondiente." data-lang-en="You may use these materials for study, teaching, or research support by citing the project and the corresponding document.">You may use these materials for study, teaching, or research support by citing the project and the corresponding document.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="py-8">
+      <div class="glass-card max-w-2xl mx-auto p-8 rounded-[28px]">
+        <h3 class="text-3xl font-bold mb-4 text-center" data-lang-es="Contacto" data-lang-en="Contact">Contact</h3>
+        <p class="text-slate-600 mb-6 text-center"
+           data-lang-es="¿Tienes alguna duda, comentario o te gustaría trabajar conmigo? Envíame un mensaje y te responderé lo antes posible."
+           data-lang-en="Do you have any questions, comments, or would you like to work with me? Send me a message and I will reply as soon as possible.">
+        Do you have any questions, comments, or would you like to work with me? Send me a message and I will reply as soon as possible.
+      </p>
+        <form id="contactForm" action="https://formspree.io/f/xjknoqwl" method="POST" class="grid gap-4">
+          <input type="text" name="name" placeholder="Tu nombre" class="p-3 rounded-lg border border-gray-300 text-gray-900" required data-placeholder-es="Tu nombre" data-placeholder-en="Your name">
+          <input type="email" name="email" placeholder="Tu correo" class="p-3 rounded-lg border border-gray-300 text-gray-900" required data-placeholder-es="Tu correo" data-placeholder-en="Your email">
+          <textarea name="message" placeholder="Escribe tu mensaje" class="p-3 rounded-lg border border-gray-300 text-gray-900 h-36" required data-placeholder-es="Escribe tu mensaje" data-placeholder-en="Write your message"></textarea>
+          <button type="submit" class="px-5 py-3 bg-indigo-600 text-white rounded-lg font-semibold shadow-md hover:opacity-90" data-lang-es="Enviar mensaje" data-lang-en="Send message">Send message</button>
+        </form>
+        <p id="successMsg" class="text-green-600 mt-4 text-center hidden" data-lang-es="¡Gracias! Tu mensaje ha sido enviado." data-lang-en="Thank you! Your message has been sent.">Thank you! Your message has been sent.</p>
+      </div>
+    </section>
+
+    <section id="donaciones" class="py-8">
+      <div class="glass-card max-w-3xl mx-auto p-8 rounded-[28px]">
+        <h3 class="text-3xl font-bold mb-8 text-center" data-lang-es="Donaciones" data-lang-en="Support">Support</h3>
+        <p class="text-slate-600 text-center text-lg leading-relaxed"
+           data-lang-es="Si deseas apoyar el proyecto de Física-Matemáticas, puedes hacerlo mediante la siguiente opción."
+           data-lang-en="If you wish to support the Mathematical Physics Project, you can do so using the following option.">
+        If you wish to support the Mathematical Physics Project, you can do so using the following option.
+      </p>
+        <div class="p-6 bg-white/60 rounded-2xl border border-gray-200 mt-6">
+          <h4 class="font-semibold mb-3 text-center" data-lang-es="QR" data-lang-en="QR">QR</h4>
+          <img src="qr-code.png" alt="QR de acceso" class="w-32 h-32 mx-auto rounded-lg shadow-sm"/>
+          <p class="text-xs text-gray-500 mt-2 text-center" data-lang-es="Escanéalo con tu teléfono" data-lang-en="Scan it with your phone">Scan it with your phone</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="newsletter" class="py-8">
+      <div class="glass-card max-w-3xl mx-auto p-8 rounded-[28px] text-center">
+        <h3 class="text-3xl font-bold mb-4" data-lang-es="Suscríbete a las noticias" data-lang-en="Subscribe for updates">Subscribe for updates</h3>
+        <p class="text-slate-700 mb-6 text-lg"
+           data-lang-es="Recibe notificaciones cuando publique nuevos PDFs, notas o actualizaciones del proyecto."
+           data-lang-en="Get notified when I upload new PDFs, notes, or project updates.">
+        Get notified when I upload new PDFs, notes, or project updates.
+      </p>
+        <form id="newsletterForm" action="https://formspree.io/f/xdkqlrkn" method="POST" class="flex flex-col md:flex-row gap-4 justify-center">
+          <input type="email" name="email" placeholder="Tu correo electrónico" class="p-3 rounded-lg border border-gray-300 text-gray-900 w-full md:w-2/3" required data-placeholder-es="Tu correo electrónico" data-placeholder-en="Your email address">
+          <button type="submit" class="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md font-semibold hover:opacity-90 transition" data-lang-es="Suscribirme" data-lang-en="Subscribe">Subscribe</button>
+        </form>
+        <p id="newsletter-success" class="text-green-600 mt-4 hidden" data-lang-es="¡Gracias! Te has suscrito correctamente." data-lang-en="Thank you! You are now subscribed.">Thank you! You are now subscribed.</p>
+      </div>
+    </section>
+
+    <section id="contacto-redes" class="py-8 pb-16">
+      <div class="glass-card max-w-3xl mx-auto p-8 rounded-[28px] text-center">
+        <h3 class="text-3xl font-bold mb-6" data-lang-es="Sígueme" data-lang-en="Follow Me">Follow Me</h3>
+        <p class="text-slate-600 mb-6" data-lang-es="Conéctate conmigo a través de estas plataformas:" data-lang-en="Connect with me through these platforms:">Connect with me through these platforms:</p>
+        <div class="flex justify-center gap-4 flex-wrap">
+          <a href="https://wa.me/522722839135" target="_blank" rel="noopener noreferrer" class="icon-link flex items-center gap-2 px-5 py-3 bg-green-500 text-white rounded-xl shadow-md no-underline hover:opacity-90"><img class="brand-icon" src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" aria-hidden="true"><span>WhatsApp</span></a>
+          <a href="https://www.facebook.com/fortin.corona" target="_blank" rel="noopener noreferrer" class="icon-link flex items-center gap-2 px-5 py-3 bg-blue-600 text-white rounded-xl shadow-md no-underline hover:opacity-90"><img class="brand-icon" src="https://cdn.simpleicons.org/facebook/ffffff" alt="" aria-hidden="true"><span>Facebook</span></a>
+          <a href="https://www.linkedin.com/in/omar-corona-tejeda-717b51284" target="_blank" rel="noopener noreferrer" class="icon-link flex items-center gap-2 px-5 py-3 bg-blue-700 text-white rounded-xl shadow-md no-underline hover:opacity-90"><svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zM6.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg><span>LinkedIn</span></a>
+          <a href="https://www.instagram.com/fortin_omar/" target="_blank" rel="noopener noreferrer" class="icon-link flex items-center gap-2 px-5 py-3 bg-pink-500 text-white rounded-xl shadow-md no-underline hover:opacity-90"><img class="brand-icon" src="https://cdn.simpleicons.org/instagram/ffffff" alt="" aria-hidden="true"><span>Instagram</span></a>
+          <a href="https://www.youtube.com/@omarct1989" target="_blank" rel="noopener noreferrer" class="icon-link flex items-center gap-2 px-5 py-3 bg-red-600 text-white rounded-xl shadow-md no-underline hover:opacity-90"><img class="brand-icon" src="https://cdn.simpleicons.org/youtube/ffffff" alt="" aria-hidden="true"><span data-lang-es="Canal de YouTube" data-lang-en="YouTube Channel">YouTube Channel</span></a>
+          <a href="https://github.com/artinnether/the_mathematical_physics_project" target="_blank" rel="noopener noreferrer" class="icon-link flex items-center gap-2 px-5 py-3 bg-slate-900 text-white rounded-xl shadow-md no-underline hover:opacity-90"><img class="brand-icon" src="https://cdn.simpleicons.org/github/ffffff" alt="" aria-hidden="true"><span>GitHub</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-10 text-center text-sm text-slate-600">
+    <span data-lang-es="© 2026 Omar Corona Tejeda. Todos los derechos reservados." data-lang-en="© 2026 Omar Corona Tejeda. All rights reserved.">© 2026 Omar Corona Tejeda. All rights reserved.</span>
+  </footer>
+
+  <script>
+    const overlay = document.getElementById('language-overlay');
+    const toggleBtn = document.getElementById('toggleLang');
+    const storedLang = localStorage.getItem('tmpp-lang');
+    const resourceSearch = document.getElementById('resourceSearch');
+    const resourceGrid = document.getElementById('resourceGrid');
+    const exerciseGrid = document.getElementById('exerciseGrid');
+    const materialHeading = document.getElementById('materialHeading');
+    const exerciseHeading = document.getElementById('exerciseHeading');
+    const exerciseSection = document.getElementById('exercises');
+    const latestCards = Array.from(document.querySelectorAll('#latest .resource-card'));
+    const resourceCards = Array.from(document.querySelectorAll('.resource-card[data-category]'));
+    const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
+    const emptyResources = document.getElementById('emptyResources');
+    const resourceDates = {
+      'notas_qft_78_80_con_dibujo_definiciones.pdf': '2026-09-30T00:00:00',
+      'qft_notes_78_80_english.pdf': '2026-09-30T00:00:00',
+      'notas_algebras_lie_envolvente_universal.pdf': '2026-09-02T23:25:35Z',
+      'notes_lie_algebras_universal_enveloping_algebra.pdf': '2026-09-02T23:25:35Z',
+      'Algebras_C_estrella_y_Notacion_Daga_ES.pdf': '2026-07-16T00:00:00',
+      'C_star_Algebras_and_Dagger_Notation_EN.pdf': '2026-07-16T00:00:00',
+      'Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf': '2026-07-06T09:26:00',
+      'Homological_Algebra_in_the_Category_of_Modules_EN.pdf': '2026-07-06T09:26:00',
+      'Transformaciones_Gauge_Globales_y_Locales_ES.pdf': '2026-07-04T12:05:00',
+      'Global_and_Local_Gauge_Transformations_EN.pdf': '2026-07-04T12:05:00',
+      'Feynman_Prescription_Residues_and_Real_Poles_ES.pdf': '2026-06-17T11:45:00',
+      'Feynman_Prescription_Residues_and_Real_Poles_EN.pdf': '2026-06-17T11:45:00',
+      'Expansion_Perturbativa_y_Diagramas_de_Feynman_en_el_Modelo_lambda_phi4_de_Dimension_Cero.pdf': '2026-06-09T21:49:00',
+      'Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf': '2026-06-06T21:32:35',
+      'Libro.pdf': '2026-05-09T10:10:27',
+      'Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf': '2026-05-27T21:06:31',
+      'Control_Theory_Excercises.pdf': '2026-05-09T10:10:27',
+      'Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf': '2026-05-09T10:10:27',
+      'epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf': '2026-04-23T09:53:33',
+      'b.pdf': '2026-04-23T09:53:33',
+      'a.pdf': '2026-04-23T09:53:33',
+      'The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf': '2026-04-23T09:53:33',
+      'The Einbein.pdf': '2026-04-23T09:53:33',
+      'On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf': '2026-04-23T09:53:33',
+      'Linear_Algebra_Exercises.pdf': '2026-04-23T09:53:33',
+      'Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf': '2026-04-23T09:53:33',
+      'Forma Heurística de la Ecuación de Dirac.pdf': '2026-04-23T09:53:33',
+      'Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf': '2026-04-23T09:53:33',
+      'El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf': '2026-04-23T09:53:33',
+      'Differential_Equations_Exercises.pdf': '2026-04-23T09:53:33',
+      'Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf': '2026-04-23T09:53:33',
+      'Calculus_excercises.pdf': '2026-04-23T09:53:33'
+    };
+    let currentLang = storedLang || 'es';
+    let activeFilter = 'all';
+
+    function getLatestThumbPreset(card) {
+      const text = normalizeText(`${card.innerText} ${card.dataset.search || ''}`);
+      const category = normalizeText(card.querySelector('.resource-pill')?.textContent || '');
+
+      if (text.includes('feynman') || text.includes('residu') || text.includes('polo')) {
+        return { theme: 'feynman', equation: 'PV integral', symbol: '+iε' };
+      }
+
+      if (text.includes('phi4') || text.includes('lambda') || text.includes('diagram')) {
+        return { theme: 'phi4', equation: 'Z = integral exp(-S)', symbol: 'λϕ4' };
+      }
+
+      if (text.includes('klein') || text.includes('lorentz')) {
+        return { theme: 'klein', equation: '(box + m2)phi = 0', symbol: 'Λ' };
+      }
+
+      if (text.includes('dyson') || text.includes('vacio') || text.includes('correlacion')) {
+        return { theme: 'dyson', equation: 'T exp[-i integral H dt]', symbol: 'Ω' };
+      }
+
+      if (text.includes('haces') || text.includes('bundles') || category.includes('geometr')) {
+        return { theme: 'geometry', equation: 'nabla s + delta A', symbol: 'π:E→M' };
+      }
+
+      if (text.includes('adm') || category.includes('relativ')) {
+        return { theme: 'relativity', equation: 'H = N H + Ni Hi', symbol: 'ADM' };
+      }
+
+      return { theme: 'quantum', equation: 'notes / fields / symmetries', symbol: 'ψ' };
+    }
+
+    function generateLatestPaperThumbnails() {
+      latestCards.forEach((card) => {
+        if (card.querySelector('.paper-thumb')) return;
+
+        const content = card.querySelector('div');
+        const title = card.querySelector('h4');
+        const openLink = Array.from(card.querySelectorAll('a[href]')).find((link) => !link.classList.contains('paper-thumb'));
+
+        if (!content || !title || !openLink) return;
+
+        const preset = getLatestThumbPreset(card);
+        const thumb = document.createElement('a');
+        thumb.className = `paper-thumb paper-thumb--${preset.theme}`;
+        thumb.href = openLink.getAttribute('href');
+        thumb.target = '_blank';
+        thumb.rel = 'noopener noreferrer';
+        thumb.setAttribute('aria-label', `Abrir ${title.textContent.trim()}`);
+
+        if (openLink.dataset.pdfEs && openLink.dataset.pdfEn) {
+          thumb.setAttribute('data-pdf-es', openLink.dataset.pdfEs);
+          thumb.setAttribute('data-pdf-en', openLink.dataset.pdfEn);
+        }
+
+        thumb.innerHTML = `
+          <span class="thumb-equation"></span>
+          <span class="thumb-symbol"></span>
+          <span class="thumb-lines"><span></span><span></span><span></span></span>
+        `;
+        thumb.querySelector('.thumb-equation').textContent = preset.equation;
+        thumb.querySelector('.thumb-symbol').textContent = preset.symbol;
+        content.insertBefore(thumb, content.firstElementChild);
+      });
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('tmpp-lang', lang);
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-lang-es]').forEach((el) => {
+        el.textContent = lang === 'es' ? el.getAttribute('data-lang-es') : el.getAttribute('data-lang-en');
+      });
+
+      document.querySelectorAll('[data-placeholder-es]').forEach((el) => {
+        el.placeholder = lang === 'es' ? el.getAttribute('data-placeholder-es') : el.getAttribute('data-placeholder-en');
+      });
+
+      toggleBtn.textContent = lang === 'es' ? 'ES / EN' : 'EN / ES';
+      overlay.classList.add('hidden');
+      updateLocalizedPdfLinks();
+      updateLocalizedImages();
+      makeResourceTitlesClickable();
+      renderResourceFilters();
+    }
+
+    function updateLocalizedPdfLinks() {
+      const lang = currentLang || 'en';
+
+      document.querySelectorAll('[data-pdf-es][data-pdf-en]').forEach((link) => {
+        const href = lang === 'es' ? link.getAttribute('data-pdf-es') : link.getAttribute('data-pdf-en');
+        link.setAttribute('href', href);
+
+        if (link.hasAttribute('download')) {
+          link.setAttribute('download', href);
+        }
+      });
+    }
+
+    function updateLocalizedImages() {
+      const lang = currentLang || 'en';
+
+      document.querySelectorAll('img[data-src-es][data-src-en]').forEach((img) => {
+        img.setAttribute('src', img.getAttribute(`data-src-${lang}`));
+        img.setAttribute('alt', img.getAttribute(`data-alt-${lang}`));
+      });
+
+      document.querySelectorAll('[data-aria-label-es][data-aria-label-en]').forEach((el) => {
+        el.setAttribute('aria-label', el.getAttribute(`data-aria-label-${lang}`));
+      });
+    }
+
+    function normalizeText(value) {
+      return value
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function renderResourceFilters() {
+      const query = normalizeText(resourceSearch.value.trim());
+      let visibleCount = 0;
+      let visibleMaterialCount = 0;
+      let visibleExerciseCount = 0;
+
+      resourceCards.forEach((card) => {
+        const topics = [card.dataset.category, ...(card.dataset.topics || '').split(/\s+/)];
+        const matchesCategory = activeFilter === 'all' || topics.includes(activeFilter);
+        const translations = Array.from(card.querySelectorAll('[data-lang-es]'))
+          .map((el) => `${el.dataset.langEs} ${el.dataset.langEn}`).join(' ');
+        const searchableText = normalizeText(`${translations} ${card.dataset.search || ''}`);
+        const matchesQuery = !query || searchableText.includes(query);
+        const isVisible = matchesCategory && matchesQuery;
+
+        card.hidden = !isVisible;
+        if (isVisible) {
+          visibleCount += 1;
+          if (card.dataset.category === 'exercises') {
+            visibleExerciseCount += 1;
+          } else {
+            visibleMaterialCount += 1;
+          }
+        }
+      });
+
+      emptyResources.classList.toggle('hidden', visibleCount > 0);
+      materialHeading.hidden = visibleMaterialCount === 0;
+      exerciseHeading.hidden = visibleExerciseCount === 0;
+      exerciseSection.hidden = visibleExerciseCount === 0;
+    }
+
+    function getResourceTimestamp(card) {
+      const link = card.querySelector('a[href]');
+      const href = link?.getAttribute('data-pdf-es') || link?.getAttribute('href');
+      return new Date(resourceDates[href] || '1970-01-01T00:00:00').getTime();
+    }
+
+    function getResourceHref(card) {
+      return card.querySelector('a[href]')?.getAttribute('href') || '';
+    }
+
+    function makeResourceTitlesClickable() {
+      resourceCards.forEach((card) => {
+        const title = card.querySelector('h4');
+        const openLink = card.querySelector('a[href]');
+
+        if (!title || !openLink || title.querySelector('a')) return;
+
+        const titleLink = document.createElement('a');
+        titleLink.href = openLink.getAttribute('href');
+        titleLink.target = '_blank';
+        titleLink.rel = 'noopener noreferrer';
+        titleLink.textContent = title.textContent;
+        titleLink.setAttribute('data-lang-es', title.getAttribute('data-lang-es'));
+        titleLink.setAttribute('data-lang-en', title.getAttribute('data-lang-en'));
+
+        if (openLink.dataset.pdfEs && openLink.dataset.pdfEn) {
+          titleLink.setAttribute('data-pdf-es', openLink.dataset.pdfEs);
+          titleLink.setAttribute('data-pdf-en', openLink.dataset.pdfEn);
+        }
+
+        title.textContent = '';
+        title.appendChild(titleLink);
+      });
+    }
+
+    function sortResourcesChronologically() {
+      resourceCards
+        .filter((card) => card.dataset.category !== 'exercises')
+        .sort((a, b) => {
+          const aIsBook = getResourceHref(a) === 'Libro.pdf';
+          const bIsBook = getResourceHref(b) === 'Libro.pdf';
+          return Number(bIsBook) - Number(aIsBook) || getResourceTimestamp(a) - getResourceTimestamp(b);
+        })
+        .forEach((card) => resourceGrid.appendChild(card));
+
+      resourceCards
+        .filter((card) => card.dataset.category === 'exercises')
+        .sort((a, b) => getResourceTimestamp(b) - getResourceTimestamp(a))
+        .forEach((card) => exerciseGrid.appendChild(card));
+    }
+
+    generateLatestPaperThumbnails();
+    updateLocalizedPdfLinks();
+    makeResourceTitlesClickable();
+    sortResourcesChronologically();
+
+    setLanguage(currentLang);
+
+    document.querySelectorAll('[data-select-lang]').forEach((button) => {
+      button.addEventListener('click', () => setLanguage(button.getAttribute('data-select-lang')));
+    });
+
+    toggleBtn.addEventListener('click', () => {
+      if (!currentLang) {
+        overlay.classList.remove('hidden');
+        return;
+      }
+      setLanguage(currentLang === 'es' ? 'en' : 'es');
+    });
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeFilter = button.dataset.filter;
+        filterButtons.forEach((item) => {
+          item.classList.toggle('active', item === button);
+          item.setAttribute('aria-pressed', String(item === button));
+        });
+        renderResourceFilters();
+      });
+    });
+
+    resourceSearch.addEventListener('input', renderResourceFilters);
+    renderResourceFilters();
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
+    const contactForm = document.getElementById('contactForm');
+    const contactMsg = document.getElementById('successMsg');
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      alert(currentLang === 'es' ? 'Vista local: el envío está desactivado.' : 'Local preview: sending is disabled.'); return;
+      const response = await fetch(contactForm.action, {
+        method: contactForm.method,
+        body: new FormData(contactForm),
+        headers: { Accept: 'application/json' }
+      });
+
+      if (response.ok) {
+        contactMsg.classList.remove('hidden');
+        contactForm.reset();
+      } else {
+        alert(currentLang === 'en' ? 'An error occurred. Please try again.' : 'Hubo un error. Intenta de nuevo.');
+      }
+    });
+
+    const newsletterForm = document.getElementById('newsletterForm');
+    const newsletterMsg = document.getElementById('newsletter-success');
+    newsletterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      alert(currentLang === 'es' ? 'Vista local: la suscripción está desactivada.' : 'Local preview: subscription is disabled.'); return;
+      const response = await fetch(newsletterForm.action, {
+        method: newsletterForm.method,
+        body: new FormData(newsletterForm),
+        headers: { Accept: 'application/json' }
+      });
+
+      if (response.ok) {
+        newsletterMsg.classList.remove('hidden');
+        newsletterForm.reset();
+      } else {
+        alert(currentLang === 'en' ? 'An error occurred. Please try again.' : 'Hubo un error. Intenta de nuevo.');
+      }
+    });
+  </script>
+<script>document.querySelectorAll('[data-topic]').forEach(a=>a.addEventListener('click',()=>{const b=document.querySelector('[data-filter="'+a.dataset.topic+'"]');resourceSearch.value='';if(b)b.click()}));</script><script>
+(()=>{const a=document.getElementById('potential-a'),l=document.getElementById('potential-lambda');const svgNS='http://www.w3.org/2000/svg';const sx=x=>45+(x+2.4)/4.8*530,sy=y=>320-(y+2)/10*300;const grid=document.getElementById('potential-grid');for(let x=-2;x<=2;x++){const e=document.createElementNS(svgNS,'line');Object.entries({x1:sx(x),x2:sx(x),y1:20,y2:320,stroke:x===0?'#a49e94':'#e3ded4'}).forEach(([k,v])=>e.setAttribute(k,v));grid.append(e)}for(let y=-2;y<=8;y+=2){const e=document.createElementNS(svgNS,'line');Object.entries({x1:45,x2:575,y1:sy(y),y2:sy(y),stroke:y===0?'#a49e94':'#e3ded4'}).forEach(([k,v])=>e.setAttribute(k,v));grid.append(e)}
+function draw(){const av=Number(a.value),lv=Number(l.value);document.getElementById('a-value').textContent=av.toFixed(1);document.getElementById('lambda-value').textContent=lv.toFixed(1);let d='';for(let i=0;i<=240;i++){const x=-2.4+i*.02,y=av*x*x/2+lv*x*x*x*x/4;d+=(i?'L':'M')+sx(x).toFixed(2)+','+sy(y).toFixed(2)}document.getElementById('potential-curve').setAttribute('d',d);const m=document.getElementById('potential-minima');m.replaceChildren();for(const x of av<0?[-Math.sqrt(-av/lv),Math.sqrt(-av/lv)]:[0]){const c=document.createElementNS(svgNS,'circle');c.setAttribute('cx',sx(x));c.setAttribute('cy',sy(av*x*x/2+lv*x**4/4));c.setAttribute('r',4);c.setAttribute('fill','#233d54');m.append(c)}const es=document.documentElement.lang==='es';document.getElementById('potential-description').textContent=av<0?(es?'Dos mínimos simétricos en φ = ±':'Two symmetric minima at φ = ±')+Math.sqrt(-av/lv).toFixed(2):(es?'Un mínimo en φ = 0.':'One minimum at φ = 0.');}
+a.addEventListener('input',draw);l.addEventListener('input',draw);document.getElementById('toggleLang').addEventListener('click',draw);draw();})();</script></body>
+</html>
+

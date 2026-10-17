@@ -23,7 +23,7 @@
 
       body {
         margin: 0;
-        min-height: 100vh;
+        min-height: 0;
         padding: 24px;
         color: var(--ink);
         font-family: "SF Pro Rounded", "Segoe UI", sans-serif;
@@ -170,7 +170,7 @@
         }
       }
     </style>
-  <style>:root{--foreground:#e5e5e5;--muted-foreground:#999;--border:#353535;--viz-series-1:#6b9ee8}body{background:#191919!important;color:#ddd!important}h1,h3,p,label,span{color:inherit}h1,h3{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:19px;font-weight:550}svg{background:#191919!important}button{background:#292929!important;border:1px solid #454545!important;color:#eee!important}.back{display:none}.note{border-color:#353535!important;color:#aaa!important}input{accent-color:#6b9ee8!important}</style><style>html[data-theme=light] body{background:#faf8f3!important;color:#243247!important}html[data-theme=light]{--foreground:#243247;--muted-foreground:#73757a;--border:#d8d0c5;--viz-series-1:#985338}html[data-theme=light] svg{background:#faf8f3!important}html[data-theme=light] button{background:#e9e4db!important;border-color:#bfb5a5!important;color:#243247!important}html[data-theme=light] .note{color:#69717b!important;border-color:#d8d0c5!important}html[data-theme=light] input{accent-color:#985338!important}html[data-theme=light] .panel{background:#f3f0e8!important;color:#243247!important;border-color:#ccc!important}html[data-theme=light] .intro,html[data-theme=light] .label-row,html[data-theme=light] .energy-label{color:#586573!important}</style><link rel="stylesheet" href="../assets/fonts/computer-modern.css"></head>
+  <style>:root{--foreground:#e5e5e5;--muted-foreground:#999;--border:#353535;--viz-series-1:#6b9ee8}body{background:#191919!important;color:#ddd!important}h1,h3,p,label,span{color:inherit}h1,h3{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:19px;font-weight:550}svg{background:#191919!important}button{background:#292929!important;border:1px solid #454545!important;color:#eee!important}.back{display:none}.note{border-color:#353535!important;color:#aaa!important}input{accent-color:#6b9ee8!important}</style><style>html[data-theme=light] body{background:#faf8f3!important;color:#243247!important}html[data-theme=light]{--foreground:#243247;--muted-foreground:#73757a;--border:#d8d0c5;--viz-series-1:#985338}html[data-theme=light] svg{background:#faf8f3!important}html[data-theme=light] button{background:#e9e4db!important;border-color:#bfb5a5!important;color:#243247!important}html[data-theme=light] .note{color:#69717b!important;border-color:#d8d0c5!important}html[data-theme=light] input{accent-color:#985338!important}html[data-theme=light] .panel{background:#f3f0e8!important;color:#243247!important;border-color:#ccc!important}html[data-theme=light] .intro,html[data-theme=light] .label-row,html[data-theme=light] .energy-label{color:#586573!important}</style><link rel="stylesheet" href="../assets/fonts/computer-modern.css"><style>.layout{display:grid;grid-template-columns:minmax(230px,300px) minmax(0,1fr);max-width:1100px;gap:20px;align-items:start}.panel{width:auto;min-width:0;background:var(--panel);color:var(--ink)}.canvas-shell{width:100%;min-width:0;padding:10px;position:sticky;top:12px}canvas{width:100%!important;height:auto!important;aspect-ratio:1;max-width:100%}.panel .toggle{color:var(--ink)}html[data-theme=dark] .panel{--panel:#252b34;--ink:#e3e9f1;--muted:#afbdce;--accent:#9cc7ef;--line:#475569}html[data-theme=dark] .panel .label-row{color:#cfdae8}html[data-theme=dark] .energy-card{background:#172332;border-color:#475569}body{padding:20px}.panel h1{font-size:26px}@media(max-width:620px){.layout{grid-template-columns:minmax(0,1fr)}.canvas-shell{grid-row:1;position:static;max-width:600px;margin:auto}.panel{width:100%}}</style></head>
   <body><a href="../index.html#animations" style="position:absolute;top:10px;left:20px;color:#9bc7e9;z-index:10">← Volver a animaciones</a>
     <div class="layout">
       <section class="panel">
@@ -276,8 +276,8 @@
         const ratio = window.devicePixelRatio || 1;
         canvas.width = SIZE * ratio;
         canvas.height = SIZE * ratio;
-        canvas.style.width = `${SIZE}px`;
-        canvas.style.height = `${SIZE}px`;
+        canvas.style.width = "100%";
+        canvas.style.height = "auto";
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
       }
 
@@ -506,5 +506,5 @@
         }
       });
     </script>
-  <script>function applyTmppTheme(t){document.documentElement.dataset.theme=t;const img=document.querySelector('.welcome-figure img');if(img)img.src=t==='light'?'assets/editorial-surface.svg':'assets/editorial-surface-dark.svg'}window.addEventListener('message',e=>{if(e.origin===location.origin&&e.source===parent&&e.data?.type==='tmpp-theme')applyTmppTheme(e.data.theme)});applyTmppTheme(document.documentElement.dataset.theme);</script></body>
+  <script>function applyTmppTheme(t){document.documentElement.dataset.theme=t;const img=document.querySelector('.welcome-figure img');if(img)img.src=t==='light'?'assets/editorial-surface.svg':'assets/editorial-surface-dark.svg'}window.addEventListener('message',e=>{if(e.origin===location.origin&&e.source===parent&&e.data?.type==='tmpp-theme')applyTmppTheme(e.data.theme)});applyTmppTheme(document.documentElement.dataset.theme);</script><script>(()=>{function report(){if(parent!==window)parent.postMessage({type:'tmpp-animation-height',height:Math.ceil(document.documentElement.getBoundingClientRect().height)},location.origin)}new ResizeObserver(report).observe(document.body);window.addEventListener('load',report);report()})();</script></body>
 </html>

@@ -23,7 +23,7 @@
 
       body {
         margin: 0;
-        min-height: 100vh;
+        min-height: 0;
         padding: 24px;
         color: var(--ink);
         font-family: "SF Pro Rounded", "Segoe UI", sans-serif;
@@ -170,7 +170,7 @@
         }
       }
     </style>
-  <link rel="stylesheet" href="../assets/fonts/computer-modern.css"></head>
+  <link rel="stylesheet" href="../assets/fonts/computer-modern.css"><style>.layout{display:grid;grid-template-columns:minmax(230px,300px) minmax(0,1fr);max-width:1100px;gap:20px;align-items:start}.panel{width:auto;min-width:0;background:var(--panel);color:var(--ink)}.canvas-shell{width:100%;min-width:0;padding:10px;position:sticky;top:12px}canvas{width:100%!important;height:auto!important;aspect-ratio:1;max-width:100%}.panel .toggle{color:var(--ink)}html[data-theme=dark] .panel{--panel:#252b34;--ink:#e3e9f1;--muted:#afbdce;--accent:#9cc7ef;--line:#475569}html[data-theme=dark] .panel .label-row{color:#cfdae8}html[data-theme=dark] .energy-card{background:#172332;border-color:#475569}body{padding:20px}.panel h1{font-size:26px}@media(max-width:620px){.layout{grid-template-columns:minmax(0,1fr)}.canvas-shell{grid-row:1;position:static;max-width:600px;margin:auto}.panel{width:100%}}</style></head>
   <body><a href="../index.html#animations" style="position:absolute;top:10px;left:20px;color:#9bc7e9;z-index:10">← Volver a animaciones</a>
     <div class="layout">
       <section class="panel">
@@ -276,8 +276,8 @@
         const ratio = window.devicePixelRatio || 1;
         canvas.width = SIZE * ratio;
         canvas.height = SIZE * ratio;
-        canvas.style.width = `${SIZE}px`;
-        canvas.style.height = `${SIZE}px`;
+        canvas.style.width = "100%";
+        canvas.style.height = "auto";
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
       }
 
@@ -506,5 +506,5 @@
         }
       });
     </script>
-  </body>
+  <script>(()=>{function report(){if(parent!==window)parent.postMessage({type:'tmpp-animation-height',height:Math.ceil(document.documentElement.getBoundingClientRect().height)},location.origin)}new ResizeObserver(report).observe(document.body);window.addEventListener('load',report);report()})();</script></body>
 </html>

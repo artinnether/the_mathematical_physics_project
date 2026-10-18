@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded',()=>{setHoloLanguage(initialParams.ge
  el('rect',{x:initial[0]-42,y:initial[1]-49,width:84,height:98,rx:4,fill:'none',stroke:'var(--blue)','stroke-dasharray':'3 4'});
  line(initial[0],initial[1],initial[0]+32,initial[1],{stroke:'var(--initial)','stroke-width':3,'marker-end':'url(#initial-arrow)'});
  point(...initial,'var(--initial)',3);
- el('text',{x:initial[0],y:initial[1]+65,'text-anchor':'middle',style:'fill:var(--initial)'},holoText('Inicial: v(0)'));
+ el('text',{x:initial[0],y:initial[1]-65,'text-anchor':'middle',style:'fill:var(--initial)'},holoText('Inicial: v(0)'));
  if(s>=.999){line(initial[0],initial[1],initial[0]+32*Math.cos(theta),initial[1]-37*Math.sin(theta),{stroke:'var(--gold)','stroke-width':3,'marker-end':'url(#arrow)'})}
  el('text',{x:45,y:34},holoText("Transporte en el fibrado"));
  el('text',{x:45,y:65},holoText("Cada ventana muestra un plano de fase interno, distinto del espacio tangente de la base."));

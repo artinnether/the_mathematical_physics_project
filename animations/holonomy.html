@@ -16,6 +16,10 @@ holoEnglish[100]="The preceding equations describe the full vector v(s). In inte
 holoEnglish[101]="Here μ = 0, 1, 2, 3 is a spacetime index and is summed when repeated. The internal index a is free: the equation holds for each of the four components. The internal connection acts as A<sub>μ</sub>δ<sup>a</sup><sub>b</sub>, so U(1) transport does not mix components and applies the same phase to all of them. In the following formulas, v again denotes the full vector.";
 holoEnglish[12]="U(1) acts on the fiber S<sub>x(s)</sub> ≃ ℂ⁴ by scalar multiplication v ↦ e<sup>iθ</sup>v. For a nonzero vector, this action stays in a complex line L<sub>s</sub> = ℂ v(s), viewed as the real plane spanned by v(s) and iv(s). Each translucent plane represents this phase plane inside the fiber, not all of ℂ⁴ or a tangent plane to the base. The arrow preserves its norm and traces a circle within it.";
 holoEnglish[13]="The arrow represents an internal phase, not a particle’s spatial orientation. <strong>A phase common to the entire quantum state does not change measurement probabilities:</strong> if ψ ↦ e<sup>iα</sup>ψ, then |e<sup>iα</sup>ψ|² = |ψ|². By contrast, when two contributions following different paths are combined, their relative phase can change the result: |ψ₁ + e<sup>iδ</sup>ψ₂|² generally depends on δ. The contributions can reinforce or cancel each other: this is interference. Comparing the initial and final arrows illustrates mathematical transport; physically observing the phase requires a reference, such as another contribution transported along a different path. <strong>This animation shows the transported vector’s phase change without simulating that interference experiment.</strong>";
+holoLabels["Plano translúcido = plano de fase"]="Translucent plane = phase plane";
+holoLabels["Una recta compleja: 2 dimensiones reales."]="A complex line: 2 real dimensions.";
+holoLabels["U(1) gira la fase dentro de este plano."]="U(1) rotates the phase within this plane.";
+holoLabels["El círculo conserva la norma del vector."]="The circle preserves the vector norm.";
 function holoText(t){return document.documentElement.lang==='en'?(holoLabels[t]||t):t}
 const holoOriginal=new Map();
 function setHoloLanguage(lang){document.documentElement.lang=lang==='en'?'en':'es';document.querySelectorAll('[data-holo-i]').forEach(e=>{if(!holoOriginal.has(e))holoOriginal.set(e,e.innerHTML);e.innerHTML=lang==='en'?holoEnglish[e.dataset.holoI]:holoOriginal.get(e)});document.querySelectorAll('[data-es]').forEach(e=>e.textContent=e.dataset[lang==='en'?'en':'es']);document.title=lang==='en'?'U(1) holonomy · A closed loop, a different phase':'Holonomía U(1) · Un lazo, otra fase';window.dispatchEvent(new Event('holo-language'));window.dispatchEvent(new Event('tmpp-entry-change'))}
@@ -72,6 +76,13 @@ window.addEventListener('DOMContentLoaded',()=>{setHoloLanguage(initialParams.ge
  el('text',{x:740,y:195},holoText("No es tangente a la base"));
  el('text',{x:740,y:215,style:'fill:var(--tangent)'},holoText("Verde: tangente a la base"));
  el('text',{x:740,y:242},holoText("Comparación en la fibra inicial"));
+ el('text',{x:740,y:470},holoText('Plano translúcido = plano de fase'));
+ const phaseLine=el('text',{x:740,y:497},'L');
+ const phaseSub=document.createElementNS(ns,'tspan');phaseSub.setAttribute('baseline-shift','sub');phaseSub.setAttribute('font-size','11');phaseSub.textContent='s';phaseLine.appendChild(phaseSub);
+ const phaseRest=document.createElementNS(ns,'tspan');phaseRest.textContent=' = ℂ v(s)';phaseLine.appendChild(phaseRest);
+ el('text',{x:740,y:524},holoText('Una recta compleja: 2 dimensiones reales.'));
+ el('text',{x:740,y:550},holoText('U(1) gira la fase dentro de este plano.'));
+ el('text',{x:740,y:576},holoText('El círculo conserva la norma del vector.'));
  const ccx=830,ccy=311,rr=53;
  el('ellipse',{cx:ccx,cy:ccy,rx:rr,ry:rr,fill:'var(--blue)','fill-opacity':.06,stroke:'var(--line)'});
  line(ccx,ccy,ccx+rr,ccy,{stroke:'var(--initial)','stroke-width':3,'marker-end':'url(#initial-arrow)'});

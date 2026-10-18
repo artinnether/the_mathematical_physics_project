@@ -16,9 +16,9 @@ holoEnglish[100]="The preceding equations describe the full vector v(s). In inte
 holoEnglish[101]="Here μ = 0, 1, 2, 3 is a spacetime index and is summed when repeated. The internal index a is free: the equation holds for each of the four components. The internal connection acts as A<sub>μ</sub>δ<sup>a</sup><sub>b</sub>, so U(1) transport does not mix components and applies the same phase to all of them. In the following formulas, v again denotes the full vector.";
 holoEnglish[12]="U(1) acts on the fiber S<sub>x(s)</sub> ≃ ℂ⁴ by scalar multiplication v ↦ e<sup>iθ</sup>v. For a nonzero vector, this action stays in a complex line L<sub>s</sub> = ℂ v(s), viewed as the real plane spanned by v(s) and iv(s). Each translucent plane represents this phase plane inside the fiber, not all of ℂ⁴ or a tangent plane to the base. The arrow preserves its norm and traces a circle within it.";
 holoEnglish[13]="The arrow represents an internal phase, not a particle’s spatial orientation. <strong>A phase common to the entire quantum state does not change measurement probabilities:</strong> if ψ ↦ e<sup>iα</sup>ψ, then |e<sup>iα</sup>ψ|² = |ψ|². By contrast, when two contributions following different paths are combined, their relative phase can change the result: |ψ₁ + e<sup>iδ</sup>ψ₂|² generally depends on δ. The contributions can reinforce or cancel each other: this is interference. Comparing the initial and final arrows illustrates mathematical transport; physically observing the phase requires a reference, such as another contribution transported along a different path. <strong>This animation shows the transported vector’s phase change without simulating that interference experiment.</strong>";
-holoLabels["Plano translúcido = plano de fase"]="Translucent plane = phase plane";
+holoLabels["Plano translúcido: fase"]="Translucent plane: phase";
 holoLabels["Recta compleja · plano real 2D"]="Complex line · real 2D plane";
-holoLabels["U(1) gira la fase dentro de este plano."]="U(1) rotates the phase within this plane.";
+holoLabels["U(1): giro de fase en este plano."]="U(1): phase rotation in this plane.";
 holoLabels["Círculo: norma constante."]="Circle: constant norm.";
 function holoText(t){return document.documentElement.lang==='en'?(holoLabels[t]||t):t}
 const holoOriginal=new Map();
@@ -76,12 +76,12 @@ window.addEventListener('DOMContentLoaded',()=>{setHoloLanguage(initialParams.ge
  el('text',{x:740,y:195},holoText("No es tangente a la base"));
  el('text',{x:740,y:215,style:'fill:var(--tangent)'},holoText("Verde: tangente a la base"));
  el('text',{x:740,y:242},holoText("Comparación en la fibra inicial"));
- el('text',{x:740,y:470},holoText('Plano translúcido = plano de fase'));
+ el('text',{x:740,y:470},holoText('Plano translúcido: fase'));
  const phaseLine=el('text',{x:740,y:497},'L');
  const phaseSub=document.createElementNS(ns,'tspan');phaseSub.setAttribute('baseline-shift','sub');phaseSub.setAttribute('font-size','11');phaseSub.textContent='s';phaseLine.appendChild(phaseSub);
  const phaseRest=document.createElementNS(ns,'tspan');phaseRest.textContent=' = ℂ v(s)';phaseLine.appendChild(phaseRest);
  el('text',{x:740,y:524},holoText('Recta compleja · plano real 2D'));
- el('text',{x:740,y:550},holoText('U(1) gira la fase dentro de este plano.'));
+ el('text',{x:740,y:550},holoText('U(1): giro de fase en este plano.'));
  el('text',{x:740,y:576},holoText('Círculo: norma constante.'));
  const ccx=830,ccy=311,rr=53;
  el('ellipse',{cx:ccx,cy:ccy,rx:rr,ry:rr,fill:'var(--blue)','fill-opacity':.06,stroke:'var(--line)'});
@@ -90,6 +90,11 @@ window.addEventListener('DOMContentLoaded',()=>{setHoloLanguage(initialParams.ge
  if(compare)line(ccx,ccy,ccx+rr*Math.cos(full),ccy-rr*Math.sin(full),{stroke:'var(--final)','stroke-width':4,'marker-end':'url(#final-arrow)'});
  el('text',{x:740,y:391},compare?holoText("Violeta: inicial · rosa: final"):holoText("Violeta: vector interno inicial"));
  el('text',{x:740,y:422},compare?(Math.abs(Math.sin(full/2))<1e-8?holoText("Mismo vector: U(C) = 1"):holoText("Otra fase: U(C) ≠ 1")):holoText("Completa el recorrido para comparar"));
+ for(const label of scene.querySelectorAll('text[x="740"]')){
+ label.setAttribute('font-size','14');
+ const width=label.getComputedTextLength();
+ if(width>235){label.setAttribute('textLength','235');label.setAttribute('lengthAdjust','spacingAndGlyphs')}
+ }
  $('theme').textContent=document.documentElement.lang==='en'?(document.documentElement.dataset.theme==='light'?'Dark theme':'Light theme'):(document.documentElement.dataset.theme==='light'?'Tema oscuro':'Tema claro');$('bv').textContent=B.toFixed(2);$('rv').textContent=R.toFixed(2);$('qv').textContent=q.toFixed(1);$('sv').textContent=s.toFixed(2);$('progress').value=s;$('angle').textContent=(theta/pi).toFixed(3)+'π';$('flux').textContent=(flux/pi).toFixed(3)+'π';$('holonomy').textContent=Math.cos(full).toFixed(3)+(Math.sin(full)<0?' − ':' + ')+Math.abs(Math.sin(full)).toFixed(3)+'i';$('play').textContent=running?holoText("Pausar"):s>=1?holoText("Repetir"):holoText("Reproducir");
  const state=s>=1?2:s>0?1:0;if(state!==announced){$('status').textContent=state===2?(Math.abs(Math.sin(full/2))<1e-8?holoText("La base volvió al mismo punto y el vector interno coincide con el inicial: U(C) = 1."):holoText("La base volvió al mismo punto, pero el vector interno tiene otra fase en la misma fibra: el levantamiento no cierra para v(0) ≠ 0.")):holoText("La fase se acumula mientras recorremos el lazo. La holonomía indicada es el resultado del recorrido completo.");announced=state}}
  for(const id of ['b','r','q','orientation'])$(id).addEventListener('input',()=>{running=false;s=0;announced=-1;draw()});$('compare-final').onchange=draw;$('progress').oninput=()=>{s=+$('progress').value;running=false;draw()};$('play').onclick=()=>{if(s>=1)s=0;running=!running;last=0;draw()};$('reset').onclick=()=>{s=0;running=false;draw()};$('trivial').onclick=()=>{$('b').value=2;$('r').value=1;$('q').value=1;s=0;running=false;announced=-1;draw()};$('theme').onclick=()=>{const light=document.documentElement.dataset.theme!=='light';document.documentElement.dataset.theme=light?'light':'dark';$('theme').textContent=document.documentElement.lang==='en'?(light?'Dark theme':'Light theme'):(light?'Tema oscuro':'Tema claro');draw()};window.addEventListener('message',e=>{if(e.origin===location.origin&&e.source===parent&&e.data?.type==='tmpp-theme'){document.documentElement.dataset.theme=e.data.theme;draw()}});function frame(now){if(running&&last){s=Math.min(1,s+(now-last)/14000);if(s>=1)running=false;draw()}last=now;requestAnimationFrame(frame)}window.addEventListener('holo-language',()=>{announced=-1;draw()});draw();requestAnimationFrame(frame)})();

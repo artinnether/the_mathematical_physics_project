@@ -44,7 +44,8 @@ window.addEventListener('DOMContentLoaded',()=>{setHoloLanguage(initialParams.ge
  point(...initialBase,'var(--blue)',5);point(...p,'var(--blue)',7);
  phaseWindow(a,theta);point(...v,'var(--gold)',4);
  // The internal vector sits inside its phase window, separate from the base tangent.
- el('text',{x:v[0]-110,y:v[1]-73,fill:'var(--gold)'},'v(s) ∈ Sₓ₍ₛ₎');
+ const fiberLabel=el('text',{x:v[0]-125,y:v[1]-92,style:'fill:var(--fg);font-size:17px'},'v(s) ∈ S');
+ const fiberIndex=document.createElementNS('http://www.w3.org/2000/svg','tspan');fiberIndex.setAttribute('baseline-shift','sub');fiberIndex.setAttribute('font-size','12');fiberIndex.textContent='x(s)';fiberLabel.appendChild(fiberIndex);
  line(v[0]-30,v[1]-62,v[0]-15,v[1]-38,{stroke:'var(--gold)',opacity:.8});
  const tangentLength=36,tx=-Math.sin(a),ty=Math.cos(a),tlen=Math.hypot(tx+.44*ty,-.38*ty);
  line(p[0],p[1],p[0]+eps*tangentLength*(tx+.44*ty)/tlen,p[1]+eps*tangentLength*(-.38*ty)/tlen,{stroke:'var(--tangent)','stroke-width':2,'stroke-linecap':'round','marker-end':'url(#base-arrow)'});

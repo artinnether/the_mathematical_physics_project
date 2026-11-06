@@ -7,6 +7,19 @@ ROOT = Path(__file__).resolve().parents[1]
 PAPERS_DIR = ROOT / "papers"
 
 PAPERS = [
+    {
+        'slug': 'fiber-bundle-construction-quantum-electrodynamics',
+        'title': 'Fiber Bundle Construction of Quantum Electrodynamics',
+        'spanish_title': 'Construcción de la electrodinámica cuántica mediante haces fibrados',
+        'pdf': 'fiber_bundle_construction_of_quantum_electrodynamics.pdf',
+        'pdf_alt': 'construccion_electrodinamica_cuantica_mediante_haces_fibrados.pdf',
+        'category': 'Quantum field theory · Gauge theory · Geometry · Algebra · Lie algebras · Relativity · Electromagnetism',
+        'description': 'Starting from Clifford algebra and the Spin group, we build the spinor bundle and the U(1) gauge connection. We derive the coupled Dirac–Maxwell equations, study two electrostatic examples, and calculate the t-channel contribution to electron–electron scattering.',
+        'keywords': 'quantum electrodynamics, Clifford algebra and Spin groups, spinor bundles and differential geometry, gauge theory and holonomy, relativistic Dirac equation, Maxwell equations and electrostatics, Feynman diagrams, electron scattering, perturbation theory',
+        'cover': 'assets/qed-feynman-diagram.png',
+        'cover_alt': 'Figure 17: Feynman diagram for t-channel electron–electron scattering via one-photon exchange.',
+        'lastmod': '2026-11-05',
+    },
     {'slug': 'phi4-feynman-rules-position-space', 'title': 'λφ⁴ Theory and Feynman Rules in Position Space', 'spanish_title': 'Teoría λφ⁴ y reglas de Feynman en espacio de posiciones', 'pdf': 'qft_notes_78_80_english.pdf', 'pdf_alt': 'notas_qft_78_80_con_dibujo_definiciones.pdf', 'category': 'Quantum Field Theory', 'description': 'Derivation of Feynman rules from dynamical pictures, Gell-Mann–Low, Dyson, and Wick. Includes the two-point correlator through second order, vacuum-bubble cancellation, and symmetry factors.', 'keywords': 'quantum field theory, lambda phi4, Feynman rules, position space, interaction picture, Dyson series, Wick theorem, vacuum bubbles, symmetry factors', 'lastmod': '2026-09-30'},
     {
         "slug": "lie-groups-universal-enveloping-algebra",
@@ -117,6 +130,8 @@ PAPERS = [
 ]
 
 SITEMAP_PDFS = [
+    ("fiber_bundle_construction_of_quantum_electrodynamics.pdf", "2026-11-05", "0.9"),
+    ("construccion_electrodinamica_cuantica_mediante_haces_fibrados.pdf", "2026-11-05", "0.9"),
     ('qft_notes_78_80_english.pdf', "2026-09-30", "0.8"),
     ('notas_qft_78_80_con_dibujo_definiciones.pdf', "2026-09-30", "0.8"),
     ("notas_algebras_lie_envolvente_universal.pdf", "2026-09-02", "0.9"),
@@ -160,6 +175,19 @@ def render_paper(paper):
     if pdf_alt:
         alt_link = f'<a href="../{enc(pdf_alt)}" class="secondary-action">Spanish PDF</a>'
 
+    cover = paper.get("cover")
+    preview_image = enc(cover or "tmpp_logo.png")
+    cover_figure = ""
+    if cover:
+        cover_alt = escape(paper["cover_alt"])
+        cover_figure = (
+            '<figure style="margin:0;max-width:620px">'
+            f'<img src="../{preview_image}" alt="{cover_alt}" width="1200" height="630" '
+            'style="display:block;width:100%;height:auto;border-radius:10px" />'
+            f'<figcaption style="margin-top:8px;color:var(--muted)">{cover_alt}</figcaption>'
+            '</figure>'
+        )
+
     share_text = quote(f"{paper['title']} - The Mathematical Physics Project")
     share_url = quote(url, safe="")
 
@@ -181,11 +209,11 @@ def render_paper(paper):
   <meta property="og:description" content="{escape(paper['description'])}" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="{url}" />
-  <meta property="og:image" content="{BASE_URL}tmpp_logo.png" />
+  <meta property="og:image" content="{BASE_URL}{preview_image}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{escape(paper['title'])}" />
   <meta name="twitter:description" content="{escape(paper['description'])}" />
-  <meta name="twitter:image" content="{BASE_URL}tmpp_logo.png" />
+  <meta name="twitter:image" content="{BASE_URL}{preview_image}" />
   <script type="application/ld+json">
     {{
       "@context": "https://schema.org",
@@ -386,7 +414,7 @@ def render_paper(paper):
       <p class="eyebrow">{escape(paper['category'])}</p>
       <h1>{escape(paper['title'])}</h1>
       <p class="summary">{escape(paper['description'])}</p>
-      <div class="actions">
+{f"      {cover_figure}" + chr(10) if cover_figure else ""}      <div class="actions">
         <a href="../{enc(paper['pdf'])}" class="primary-action" target="_blank" rel="noopener noreferrer">Read PDF</a>
         <a href="../{enc(paper['pdf'])}" class="secondary-action" download>Download PDF</a>
         {alt_link}

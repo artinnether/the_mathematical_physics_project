@@ -7,6 +7,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/fiber-bundle-construction-quantum-electrodynamics.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/phi4-feynman-rules-position-space.html</loc>
     <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -75,6 +81,18 @@
   <url>
     <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/the-einbein-relativistic-systems.html</loc>
     <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/fiber_bundle_construction_of_quantum_electrodynamics.pdf</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/construccion_electrodinamica_cuantica_mediante_haces_fibrados.pdf</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

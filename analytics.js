@@ -36,6 +36,24 @@
   const data=paperEvent(anchor);if(!data)return;
   if(embedded)window.parent.postMessage({type:'tmpp-paper-event',...data},location.origin);else record(data);
  },true);
+ // Record deliberate interactions, never control values or free text.
+ const animation=location.pathname.match(/\/animations\/([a-z0-9-]+)\.html$/i)?.[1];
+ function interaction(event){
+  const control=event.target.closest?.('button[id], input[id], select[id]');
+  if(!control || (event.type==='click')!==(control.tagName==='BUTTON'))return;
+  const experiment=control.id==='potential-a'||control.id==='potential-lambda';
+  if(!animation&&!experiment)return;
+  if(!/^[a-zA-Z0-9_-]{1,64}$/.test(control.id))return;
+  if(control.tagName==='INPUT'&&!['range','checkbox'].includes(control.type))return;
+  const data={type:'tmpp-interaction',experience:animation||'quartic-potential',control_id:control.id};
+  if(embedded)window.parent.postMessage(data,location.origin);else recordInteraction(data);
+ }
+ function recordInteraction(data){
+  if(!/^[a-z0-9-]{1,64}$/.test(data.experience)||!/^[a-zA-Z0-9_-]{1,64}$/.test(data.control_id))return;
+  window.gtag('event','interactive_control',{experience:data.experience,control_id:data.control_id,section_id:location.hash.slice(1)||data.experience});
+ }
+ document.addEventListener('click',interaction,true);
+ document.addEventListener('change',interaction,true);
  if(embedded)return;
  const id='G-Y31PJBLYDM';
  window.dataLayer=window.dataLayer||[];
@@ -55,9 +73,9 @@
  }
  const tag=document.createElement('script');tag.async=true;tag.src='https://www.googletagmanager.com/gtag/js?id='+id;document.head.appendChild(tag);
  window.addEventListener('message',event=>{
-  if(event.origin!==location.origin||event.data?.type!=='tmpp-paper-event')return;
+  if(event.origin!==location.origin||!['tmpp-paper-event','tmpp-interaction'].includes(event.data?.type))return;
   if(!Array.from(document.querySelectorAll('iframe')).some(frame=>frame.contentWindow===event.source))return;
-  record(event.data);
+  if(event.data.type==='tmpp-interaction')recordInteraction(event.data);else record(event.data);
  });
  let previous;
  window.tmppTrackSection=(section,title)=>{

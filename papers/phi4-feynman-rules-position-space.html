@@ -9,44 +9,54 @@
   <meta name="author" content="Omar Corona Tejeda" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://artinnether.github.io/the_mathematical_physics_project/papers/phi4-feynman-rules-position-space.html" />
+  <link rel="alternate" hreflang="en" href="https://artinnether.github.io/the_mathematical_physics_project/papers/phi4-feynman-rules-position-space.html" />
+  <link rel="alternate" hreflang="es" href="https://artinnether.github.io/the_mathematical_physics_project/papers/phi4-feynman-rules-position-space-es.html" />
   <link rel="icon" href="../tmpp_logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="../tmpp_logo.png" />
   <meta property="og:site_name" content="The Mathematical Physics Project" />
   <meta property="og:title" content="λφ⁴ Theory and Feynman Rules in Position Space" />
   <meta property="og:description" content="Derivation of Feynman rules from dynamical pictures, Gell-Mann–Low, Dyson, and Wick. Includes the two-point correlator through second order, vacuum-bubble cancellation, and symmetry factors." />
   <meta property="og:type" content="article" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="es_MX" />
   <meta property="og:url" content="https://artinnether.github.io/the_mathematical_physics_project/papers/phi4-feynman-rules-position-space.html" />
-  <meta property="og:image" content="https://artinnether.github.io/the_mathematical_physics_project/tmpp_logo.png" />
+  <meta property="og:image" content="https://artinnether.github.io/the_mathematical_physics_project/assets/paper-covers/field-evolution-en.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Field evolution from an initial spatial profile" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="λφ⁴ Theory and Feynman Rules in Position Space" />
   <meta name="twitter:description" content="Derivation of Feynman rules from dynamical pictures, Gell-Mann–Low, Dyson, and Wick. Includes the two-point correlator through second order, vacuum-bubble cancellation, and symmetry factors." />
-  <meta name="twitter:image" content="https://artinnether.github.io/the_mathematical_physics_project/tmpp_logo.png" />
+  <meta name="twitter:image" content="https://artinnether.github.io/the_mathematical_physics_project/assets/paper-covers/field-evolution-en.png" />
+  <meta name="twitter:image:alt" content="Field evolution from an initial spatial profile" />
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ScholarlyArticle",
-      "headline": "λφ⁴ Theory and Feynman Rules in Position Space",
-      "alternativeHeadline": "Teoría λφ⁴ y reglas de Feynman en espacio de posiciones",
-      "description": "Derivation of Feynman rules from dynamical pictures, Gell-Mann–Low, Dyson, and Wick. Includes the two-point correlator through second order, vacuum-bubble cancellation, and symmetry factors.",
-      "url": "https://artinnether.github.io/the_mathematical_physics_project/papers/phi4-feynman-rules-position-space.html",
-      "encoding": {
-        "@type": "MediaObject",
-        "contentUrl": "https://artinnether.github.io/the_mathematical_physics_project/qft_notes_78_80_english.pdf",
-        "encodingFormat": "application/pdf"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Omar Corona Tejeda",
-        "url": "https://artinnether.github.io/the_mathematical_physics_project/"
-      },
-      "isPartOf": {
-        "@type": "CollectionPage",
-        "name": "The Mathematical Physics Project",
-        "url": "https://artinnether.github.io/the_mathematical_physics_project/"
-      },
-      "about": "Quantum Field Theory",
-      "inLanguage": "en"
-    }
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "λφ⁴ Theory and Feynman Rules in Position Space",
+  "alternativeHeadline": "Teoría λφ⁴ y reglas de Feynman en espacio de posiciones",
+  "description": "Derivation of Feynman rules from dynamical pictures, Gell-Mann–Low, Dyson, and Wick. Includes the two-point correlator through second order, vacuum-bubble cancellation, and symmetry factors.",
+  "url": "https://artinnether.github.io/the_mathematical_physics_project/papers/phi4-feynman-rules-position-space.html",
+  "image": "https://artinnether.github.io/the_mathematical_physics_project/assets/paper-covers/field-evolution-en.png",
+  "encoding": {
+    "@type": "MediaObject",
+    "contentUrl": "https://artinnether.github.io/the_mathematical_physics_project/qft_notes_78_80_english.pdf",
+    "encodingFormat": "application/pdf",
+    "inLanguage": "en"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Omar Corona Tejeda",
+    "url": "https://artinnether.github.io/the_mathematical_physics_project/"
+  },
+  "isPartOf": {
+    "@type": "CollectionPage",
+    "name": "The Mathematical Physics Project",
+    "url": "https://artinnether.github.io/the_mathematical_physics_project/"
+  },
+  "about": "Quantum field theory",
+  "inLanguage": "en"
+}
   </script>
   <style>
     :root {
@@ -162,13 +172,11 @@
     .share a { background: #2563eb; }
     .share a:nth-child(2) { background: #111827; }
     .share a:nth-child(3) { background: #16a34a; }
-    .details {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 18px;
-    }
+    .cover { margin: 0; max-width: 620px; }
+    .cover img { display: block; width: 100%; height: auto; border-radius: 10px; }
+    .cover figcaption { margin-top: 8px; color: var(--muted); }
     .panel {
+      margin-top: 18px;
       padding: 22px;
       border: 1px solid rgba(31, 42, 48, 0.12);
       border-radius: 12px;
@@ -197,7 +205,6 @@
       nav { align-items: flex-start; flex-direction: column; padding: 18px 0; }
       .nav-links { justify-content: flex-start; }
       .hero { padding: 24px; }
-      .details { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -213,36 +220,32 @@
         <a href="../#pdfs">Library</a>
         <a href="../#newsletter">Subscribe</a>
         <a href="../#contacto">Contact</a>
+        <a href="../papers/phi4-feynman-rules-position-space-es.html" lang="es" hreflang="es">Español</a>
       </div>
     </nav>
   </header>
   <main>
     <article class="hero">
-      <p class="eyebrow">Quantum Field Theory</p>
+      <p class="eyebrow">Quantum field theory</p>
       <h1>λφ⁴ Theory and Feynman Rules in Position Space</h1>
       <p class="summary">Derivation of Feynman rules from dynamical pictures, Gell-Mann–Low, Dyson, and Wick. Includes the two-point correlator through second order, vacuum-bubble cancellation, and symmetry factors.</p>
       <div class="actions">
-        <a href="../qft_notes_78_80_english.pdf" class="primary-action" target="_blank" rel="noopener noreferrer">Read PDF</a>
+        <a href="../qft_notes_78_80_english.pdf" class="primary-action" target="_blank" rel="noopener noreferrer">Read PDF (English)</a>
         <a href="../qft_notes_78_80_english.pdf" class="secondary-action" download>Download PDF</a>
-        <a href="../notas_qft_78_80_con_dibujo_definiciones.pdf" class="secondary-action">Spanish PDF</a>
+        <a href="../notas_qft_78_80_con_dibujo_definiciones.pdf" class="secondary-action">Read PDF (Spanish)</a>
       </div>
-      <div class="share" aria-label="Share this paper">
+      <figure class="cover">
+        <img src="../assets/paper-covers/field-evolution-en.png" alt="Field evolution from an initial spatial profile" width="1200" height="630" />
+      </figure>
+      <div class="share" aria-label="Share this article">
         <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fartinnether.github.io%2Fthe_mathematical_physics_project%2Fpapers%2Fphi4-feynman-rules-position-space.html" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fartinnether.github.io%2Fthe_mathematical_physics_project%2Fpapers%2Fphi4-feynman-rules-position-space.html&text=%CE%BB%CF%86%E2%81%B4%20Theory%20and%20Feynman%20Rules%20in%20Position%20Space%20-%20The%20Mathematical%20Physics%20Project" target="_blank" rel="noopener noreferrer">X</a>
         <a href="https://api.whatsapp.com/send?text=%CE%BB%CF%86%E2%81%B4%20Theory%20and%20Feynman%20Rules%20in%20Position%20Space%20-%20The%20Mathematical%20Physics%20Project%20https%3A%2F%2Fartinnether.github.io%2Fthe_mathematical_physics_project%2Fpapers%2Fphi4-feynman-rules-position-space.html" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       </div>
     </article>
-    <section class="details" aria-label="Paper details">
-      <div class="panel">
-        <h2>Why this page exists</h2>
-        <p>This page gives the PDF a searchable public home with a clear title, summary, metadata, and share links. It helps students, teachers, and researchers discover the resource before opening the document.</p>
-      </div>
-      <div class="panel">
-        <h2>Related search topics</h2>
-        <ul>
-          <li>quantum field theory</li><li>lambda phi4</li><li>Feynman rules</li><li>position space</li><li>interaction picture</li><li>Dyson series</li>
-        </ul>
-      </div>
+    <section class="panel" aria-label="Article details">
+      <h2>Related topics</h2>
+      <ul><li>quantum field theory</li><li>lambda phi4</li><li>Feynman rules</li><li>position space</li><li>interaction picture</li><li>Dyson series</li></ul>
     </section>
   </main>
   <footer>

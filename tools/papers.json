@@ -1,0 +1,603 @@
+[
+  {
+    "slug": "fiber-bundle-construction-quantum-electrodynamics",
+    "lastmod": "2026-11-05",
+    "pdfs": {
+      "es": "construccion_electrodinamica_cuantica_mediante_haces_fibrados.pdf",
+      "en": "fiber_bundle_construction_of_quantum_electrodynamics.pdf"
+    },
+    "en": {
+      "title": "Fiber Bundle Construction of Quantum Electrodynamics",
+      "description": "Starting from Clifford algebra and the Spin group, we build the spinor bundle and the U(1) gauge connection. We derive the coupled Dirac–Maxwell equations, study two electrostatic examples, and calculate the t-channel contribution to electron–electron scattering.",
+      "category": "Quantum field theory · Gauge theory · Geometry · Algebra · Lie algebras · Relativity · Electromagnetism",
+      "keywords": "quantum electrodynamics, Clifford algebra and Spin groups, spinor bundles and differential geometry, gauge theory and holonomy, relativistic Dirac equation, Maxwell equations and electrostatics, Feynman diagrams, electron scattering, perturbation theory",
+      "cover": {
+        "file": "assets/qed-feynman-diagram.png",
+        "alt": "Figure 17: Feynman diagram for t-channel electron–electron scattering via one-photon exchange."
+      }
+    },
+    "es": {
+      "title": "Construcción de la electrodinámica cuántica mediante haces fibrados",
+      "description": "A partir del álgebra de Clifford y el grupo Spin, construimos el fibrado de espinores y la conexión gauge U(1). Derivamos las ecuaciones acopladas de Dirac y Maxwell, estudiamos dos ejemplos electrostáticos y calculamos la contribución del canal t a la dispersión electrón–electrón.",
+      "category": "Teoría cuántica de campos · Teoría gauge · Geometría · Álgebra · Álgebras de Lie · Relatividad · Electromagnetismo",
+      "keywords": "electrodinámica cuántica, álgebra de Clifford y grupo Spin, fibrados de espinores, teoría gauge y holonomía, ecuación de Dirac, ecuaciones de Maxwell y electrostática",
+      "cover": {
+        "file": "assets/qed-feynman-diagram.png",
+        "alt": "Figura 17: diagrama de Feynman del canal t de la dispersión entre dos electrones por intercambio de un fotón."
+      }
+    }
+  },
+  {
+    "slug": "phi4-feynman-rules-position-space",
+    "lastmod": "2026-09-30",
+    "pdfs": {
+      "es": "notas_qft_78_80_con_dibujo_definiciones.pdf",
+      "en": "qft_notes_78_80_english.pdf"
+    },
+    "en": {
+      "title": "λφ⁴ Theory and Feynman Rules in Position Space",
+      "description": "Derivation of Feynman rules from dynamical pictures, Gell-Mann–Low, Dyson, and Wick. Includes the two-point correlator through second order, vacuum-bubble cancellation, and symmetry factors.",
+      "category": "Quantum field theory",
+      "keywords": "quantum field theory, lambda phi4, Feynman rules, position space, interaction picture, Dyson series, Wick theorem, vacuum bubbles, symmetry factors",
+      "cover": {
+        "file": "assets/paper-covers/field-evolution-en.png",
+        "alt": "Field evolution from an initial spatial profile"
+      }
+    },
+    "es": {
+      "title": "Teoría λφ⁴ y reglas de Feynman en espacio de posiciones",
+      "description": "Derivación de las reglas de Feynman desde las imágenes dinámicas, Gell-Mann–Low, Dyson y Wick. Incluye el correlador de dos puntos hasta segundo orden, cancelación de burbujas de vacío y factores de simetría.",
+      "category": "Teoría cuántica de campos",
+      "keywords": "teoría λφ⁴, reglas de Feynman, espacio de posiciones, serie de Dyson, teorema de Wick, factores de simetría",
+      "cover": {
+        "file": "assets/paper-covers/field-evolution-es.png",
+        "alt": "Evolución del campo a partir de un perfil espacial inicial"
+      }
+    }
+  },
+  {
+    "slug": "lie-groups-universal-enveloping-algebra",
+    "lastmod": "2026-09-02",
+    "pdfs": {
+      "es": "notas_algebras_lie_envolvente_universal.pdf",
+      "en": "notes_lie_algebras_universal_enveloping_algebra.pdf"
+    },
+    "en": {
+      "title": "From Lie Groups to the Universal Enveloping Algebra",
+      "description": "Notes on infinitesimal rotations, the associated Lie algebra, and the construction of the universal enveloping algebra.",
+      "category": "Algebra · Lie algebras",
+      "keywords": "Lie groups, Lie algebras, infinitesimal rotations, universal enveloping algebra, generators, commutators, mathematical physics",
+      "cover": {
+        "file": "assets/paper-covers/lie-rotations-en.png",
+        "alt": "Small rotations accumulating into a finite rotation"
+      }
+    },
+    "es": {
+      "title": "De grupos de Lie al álgebra envolvente universal",
+      "description": "Notas sobre rotaciones infinitesimales, el álgebra de Lie asociada y la construcción del álgebra envolvente universal.",
+      "category": "Álgebra · Álgebras de Lie",
+      "keywords": "grupos de Lie, álgebras de Lie, generadores infinitesimales, álgebra envolvente universal",
+      "cover": {
+        "file": "assets/paper-covers/lie-rotations-es.png",
+        "alt": "Giros pequeños que se acumulan en una rotación finita"
+      }
+    }
+  },
+  {
+    "slug": "c-star-algebras-dagger-notation",
+    "lastmod": "2026-07-16",
+    "pdfs": {
+      "es": "Algebras_C_estrella_y_Notacion_Daga_ES.pdf",
+      "en": "C_star_Algebras_and_Dagger_Notation_EN.pdf"
+    },
+    "en": {
+      "title": "C*-Algebras and Dagger Notation",
+      "description": "Self-contained notes on C*-algebras, bounded operators, Hilbert adjoints, Dirac notation, Pauli matrices, the Bloch sphere, and unbounded operators.",
+      "category": "Algebra · Operator algebras",
+      "keywords": "C-star algebra, C dagger algebra, bounded operators, Hilbert adjoint, operator norm, Dirac notation, Pauli matrices, Bloch sphere, unbounded operators, quantum mechanics",
+      "cover": {
+        "file": "assets/paper-covers/c-star-map-en.png",
+        "alt": "Map of a Banach algebra, the involution, and the C* identity"
+      }
+    },
+    "es": {
+      "title": "C*-álgebras y notación daga",
+      "description": "Notas autocontenidas sobre C*-álgebras, operadores acotados, adjuntos de Hilbert, notación de Dirac, matrices de Pauli, esfera de Bloch y operadores no acotados.",
+      "category": "Álgebra · Álgebras de operadores",
+      "keywords": "C*-álgebras, operadores acotados, adjuntos de Hilbert, notación de Dirac, matrices de Pauli, esfera de Bloch",
+      "cover": {
+        "file": "assets/paper-covers/c-star-map-es.png",
+        "alt": "Mapa de un álgebra de Banach, la involución y la identidad C*"
+      }
+    }
+  },
+  {
+    "slug": "homological-algebra-category-modules",
+    "lastmod": "2026-07-06",
+    "pdfs": {
+      "es": "Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf",
+      "en": "Homological_Algebra_in_the_Category_of_Modules_EN.pdf"
+    },
+    "en": {
+      "title": "Homological Algebra in the Category of Modules",
+      "description": "Notes on chain complexes, homotopy, projective and injective resolutions, derived functors, Ext, and Tor.",
+      "category": "Algebra",
+      "keywords": "homological algebra, category of modules, chain complexes, projective resolutions, injective resolutions, derived functors, Ext, Tor, algebra",
+      "cover": {
+        "file": "assets/paper-covers/homological-diagram-en.png",
+        "alt": "Commutative diagram of an exact sequence of chain complexes"
+      }
+    },
+    "es": {
+      "title": "Álgebra Homológica en la Categoría de Módulos",
+      "description": "Notas sobre complejos de cadenas, homotopía, resoluciones proyectivas e inyectivas, funtores derivados, Ext y Tor.",
+      "category": "Álgebra",
+      "keywords": "álgebra homológica, complejos de cadenas, resoluciones, funtores derivados, Ext, Tor",
+      "cover": {
+        "file": "assets/paper-covers/homological-diagram-es.png",
+        "alt": "Diagrama conmutativo de una sucesión exacta de complejos de cadenas"
+      }
+    }
+  },
+  {
+    "slug": "global-local-gauge-transformations",
+    "lastmod": "2026-07-04",
+    "pdfs": {
+      "es": "Transformaciones_Gauge_Globales_y_Locales_ES.pdf",
+      "en": "Global_and_Local_Gauge_Transformations_EN.pdf"
+    },
+    "en": {
+      "title": "Global and Local Gauge Transformations",
+      "description": "Notes on the difference between a global transformation and a local gauge transformation, with the U(1) case, the gauge field, and the covariant derivative.",
+      "category": "Quantum theory · Gauge theory",
+      "keywords": "Global and Local Gauge Transformations",
+      "cover": {
+        "file": "assets/paper-covers/gauge-transformations-en.png",
+        "alt": "Global and local U(1) transformations extracted from the document"
+      }
+    },
+    "es": {
+      "title": "Transformaciones gauge globales y locales",
+      "description": "Notas sobre la diferencia entre una transformación global y una transformación gauge local, con el caso U(1), el campo gauge y la derivada covariante.",
+      "category": "Teoría cuántica · Teoría gauge",
+      "keywords": "simetrías globales y locales, grupo U(1), derivada covariante, campo gauge",
+      "cover": {
+        "file": "assets/paper-covers/gauge-transformations-es.png",
+        "alt": "Transformaciones U(1) globales y locales extraídas del documento"
+      }
+    }
+  },
+  {
+    "slug": "feynman-prescription-residues-real-poles",
+    "lastmod": "2026-06-17",
+    "pdfs": {
+      "es": "Feynman_Prescription_Residues_and_Real_Poles_ES.pdf",
+      "en": "Feynman_Prescription_Residues_and_Real_Poles_EN.pdf"
+    },
+    "en": {
+      "title": "Feynman Prescription, Residues, and Regularization of Real Poles",
+      "description": "Self-contained notes on Laurent series, residues, principal value, and the +iε prescription.",
+      "category": "Quantum theory",
+      "keywords": "Feynman prescription, residues, real poles, principal value, quantum field theory, i epsilon, mathematical physics",
+      "cover": {
+        "file": "assets/paper-covers/feynman-poles-en.png",
+        "alt": "Displacement of the poles in the Feynman prescription"
+      }
+    },
+    "es": {
+      "title": "Prescripción de Feynman, residuos y regularización de polos reales",
+      "description": "Notas autocontenidas sobre serie de Laurent, residuos, valor principal y la prescripción +iε.",
+      "category": "Teoría cuántica",
+      "keywords": "prescripción de Feynman, residuos, valor principal, polos reales",
+      "cover": {
+        "file": "assets/paper-covers/feynman-poles-es.png",
+        "alt": "Desplazamiento de los polos en la prescripción de Feynman"
+      }
+    }
+  },
+  {
+    "slug": "lambda-phi4-zero-dimensional-feynman-diagrams",
+    "lastmod": "2026-06-09",
+    "pdfs": {
+      "es": "Expansion_Perturbativa_y_Diagramas_de_Feynman_en_el_Modelo_lambda_phi4_de_Dimension_Cero.pdf"
+    },
+    "en": {
+      "title": "Perturbative Expansion and Feynman Diagrams in the Zero-Dimensional λϕ4 Model",
+      "description": "Notes on the zero-dimensional λϕ4 model, perturbative expansion, and diagrammatic structure.",
+      "category": "Quantum theory",
+      "keywords": "lambda phi four, Feynman diagrams, perturbative expansion, zero dimensional field theory, quantum field theory",
+      "cover": {
+        "file": "assets/paper-covers/phi4-diagrams-shared.png",
+        "alt": "Feynman diagrams and their factors in the zero-dimensional model"
+      }
+    },
+    "es": {
+      "title": "Expansión Perturbativa y Diagramas de Feynman en el Modelo λϕ4 de Dimensión Cero",
+      "description": "Notas sobre el modelo λϕ4 de dimensión cero, expansión perturbativa y estructura diagramática.",
+      "category": "Teoría cuántica",
+      "keywords": "modelo de dimensión cero, expansión perturbativa, diagramas de Feynman",
+      "cover": {
+        "file": "assets/paper-covers/phi4-diagrams-shared.png",
+        "alt": "Diagramas de Feynman y sus factores en el modelo de dimensión cero"
+      }
+    }
+  },
+  {
+    "slug": "lorentz-invariance-klein-gordon-field-action",
+    "lastmod": "2026-06-06",
+    "pdfs": {
+      "en": "Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf"
+    },
+    "en": {
+      "title": "Lorentz Invariance of the Klein-Gordon Field and Action",
+      "description": "Note on the Klein-Gordon equation, invariance of the d'Alembertian, and the Lagrangian action of a real scalar field.",
+      "category": "Quantum theory",
+      "keywords": "Klein-Gordon equation, Lorentz invariance, scalar field, Lagrangian action, relativistic quantum field theory",
+      "cover": {
+        "file": "assets/paper-covers/klein-gordon-equation-shared.png",
+        "alt": "Klein-Gordon equation for the scalar field"
+      }
+    },
+    "es": {
+      "title": "Invariancia de Lorentz del campo y la acción de Klein-Gordon",
+      "description": "Nota sobre la ecuación de Klein-Gordon, la invariancia del d'Alembertiano y la acción lagrangiana de un campo escalar real.",
+      "category": "Teoría cuántica",
+      "keywords": "ecuación de Klein–Gordon, invariancia de Lorentz, campo escalar",
+      "cover": {
+        "file": "assets/paper-covers/klein-gordon-equation-shared.png",
+        "alt": "Ecuación de Klein-Gordon para el campo escalar"
+      }
+    }
+  },
+  {
+    "slug": "gauge-fixing-faddeev-popov",
+    "lastmod": "2026-04-23",
+    "pdfs": {
+      "es": "Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf"
+    },
+    "en": {
+      "title": "Gauge Fixing and Faddeev-Popov Determinant",
+      "description": "Notes on gauge fixing in the path integral and its mathematical structure.",
+      "category": "Quantum theory · Gauge theory",
+      "keywords": "Gauge Fixing and Faddeev-Popov Determinant",
+      "cover": {
+        "file": "assets/paper-covers/gauge-fixing-faddeev-popov.png",
+        "alt": "First page of Gauge Fixing and Faddeev-Popov Determinant"
+      }
+    },
+    "es": {
+      "title": "Fijación Gauge y Determinante de Faddeev-Popov",
+      "description": "Notas sobre fijación gauge en la integral de camino y su estructura matemática.",
+      "category": "Teoría cuántica · Teoría gauge",
+      "keywords": "fijación gauge, integral de camino, determinante de Faddeev–Popov",
+      "cover": {
+        "file": "assets/paper-covers/gauge-fixing-faddeev-popov.png",
+        "alt": "Primera página de Fijación Gauge y Determinante de Faddeev-Popov"
+      }
+    }
+  },
+  {
+    "slug": "the-einbein-relativistic-systems",
+    "lastmod": "2026-04-23",
+    "pdfs": {
+      "en": "The Einbein.pdf"
+    },
+    "en": {
+      "title": "The Einbein",
+      "description": "Short note on the einbein formalism in relativistic systems.",
+      "category": "Relativity",
+      "keywords": "einbein, relativistic systems, reparametrization invariance, relativistic action, mathematical physics",
+      "cover": {
+        "file": "assets/paper-covers/the-einbein-relativistic-systems.png",
+        "alt": "First page of The Einbein"
+      }
+    },
+    "es": {
+      "title": "The Einbein",
+      "description": "Apunte breve sobre el formalismo del einbein en sistemas relativistas.",
+      "category": "Relatividad",
+      "keywords": "einbein, sistemas relativistas, invariancia bajo reparametrizaciones",
+      "cover": {
+        "file": "assets/paper-covers/the-einbein-relativistic-systems.png",
+        "alt": "Primera página de The Einbein"
+      }
+    }
+  },
+  {
+    "slug": "heuristic-dirac-equation",
+    "lastmod": "2026-04-23",
+    "pdfs": {
+      "es": "Forma Heurística de la Ecuación de Dirac.pdf"
+    },
+    "en": {
+      "title": "Heuristic Form of the Dirac Equation",
+      "description": "Intuitive introduction to the physical and algebraic structure of the Dirac equation.",
+      "category": "Quantum theory",
+      "keywords": "Heuristic Form of the Dirac Equation",
+      "cover": {
+        "file": "assets/paper-covers/heuristic-dirac-equation.png",
+        "alt": "First page of Heuristic Form of the Dirac Equation"
+      }
+    },
+    "es": {
+      "title": "Forma Heurística de la Ecuación de Dirac",
+      "description": "Introducción intuitiva a la estructura física y algebraica de la ecuación de Dirac.",
+      "category": "Teoría cuántica",
+      "keywords": "ecuación de Dirac, relatividad especial, espinores",
+      "cover": {
+        "file": "assets/paper-covers/heuristic-dirac-equation.png",
+        "alt": "Primera página de Forma Heurística de la Ecuación de Dirac"
+      }
+    }
+  },
+  {
+    "slug": "su2-lie-group",
+    "lastmod": "2026-04-23",
+    "pdfs": {
+      "es": "El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf"
+    },
+    "en": {
+      "title": "The group SU(2) as a Lie group and Physical Perspective",
+      "description": "Geometric and physical view of the group SU(2) and its applications.",
+      "category": "Geometry · Lie algebras",
+      "keywords": "The group SU(2) as a Lie group and Physical Perspective",
+      "cover": {
+        "file": "assets/paper-covers/su2-lie-group.png",
+        "alt": "First page of The group SU(2) as a Lie group and Physical Perspective"
+      }
+    },
+    "es": {
+      "title": "El grupo SU(2) como grupo de Lie y Visión Física",
+      "description": "Visión geométrica y física del grupo SU(2) y sus aplicaciones.",
+      "category": "Geometría · Álgebras de Lie",
+      "keywords": "grupo SU(2), grupos de Lie, espín",
+      "cover": {
+        "file": "assets/paper-covers/su2-lie-group.png",
+        "alt": "Primera página de El grupo SU(2) como grupo de Lie y Visión Física"
+      }
+    }
+  },
+  {
+    "slug": "acausally-disconnected-regions-aqft",
+    "lastmod": "2026-04-23",
+    "pdfs": {
+      "es": "a.pdf"
+    },
+    "en": {
+      "title": "Acausally Disconnected Regions in Algebraic Quantum Field Theory",
+      "description": "Conceptual exploration of causal separation in algebraic quantum field theory.",
+      "category": "Quantum theory",
+      "keywords": "Acausally Disconnected Regions in Algebraic Quantum Field Theory",
+      "cover": {
+        "file": "assets/paper-covers/acausally-disconnected-regions-aqft.png",
+        "alt": "First page of Acausally Disconnected Regions in Algebraic Quantum Field Theory"
+      }
+    },
+    "es": {
+      "title": "Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica",
+      "description": "Exploración conceptual de separación causal en teoría cuántica de campos algebraica.",
+      "category": "Teoría cuántica",
+      "keywords": "teoría cuántica de campos algebraica, causalidad, observables",
+      "cover": {
+        "file": "assets/paper-covers/acausally-disconnected-regions-aqft.png",
+        "alt": "Primera página de Regiones Acausalmente Desconectadas en Teoría Cuántica de Campos Algebraica"
+      }
+    }
+  },
+  {
+    "slug": "functional-derivative-scalar-field-action",
+    "lastmod": "2026-04-23",
+    "pdfs": {
+      "en": "On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf"
+    },
+    "en": {
+      "title": "On the Functional Derivative of the Scalar Field Action",
+      "description": "Technical note on functional derivatives in the scalar field action.",
+      "category": "Quantum theory",
+      "keywords": "On the Functional Derivative of the Scalar Field Action",
+      "cover": {
+        "file": "assets/paper-covers/functional-derivative-scalar-field-action.png",
+        "alt": "First page of On the Functional Derivative of the Scalar Field Action"
+      }
+    },
+    "es": {
+      "title": "On the Functional Derivative of the Scalar Field Action",
+      "description": "Nota técnica sobre derivadas funcionales en la acción de campos escalares.",
+      "category": "Teoría cuántica",
+      "keywords": "derivada funcional, acción, campos escalares",
+      "cover": {
+        "file": "assets/paper-covers/functional-derivative-scalar-field-action.png",
+        "alt": "Primera página de On the Functional Derivative of the Scalar Field Action"
+      }
+    }
+  },
+  {
+    "slug": "lagrangian-simple-pendulum",
+    "lastmod": "2026-04-23",
+    "pdfs": {
+      "en": "b.pdf"
+    },
+    "en": {
+      "title": "The Lagrangian Formulation of the Simple Pendulum",
+      "description": "Classical example of the Lagrangian formalism applied to the simple pendulum.",
+      "category": "Classical mechanics",
+      "keywords": "The Lagrangian Formulation of the Simple Pendulum",
+      "cover": {
+        "file": "assets/paper-covers/lagrangian-simple-pendulum.png",
+        "alt": "First page of The Lagrangian Formulation of the Simple Pendulum"
+      }
+    },
+    "es": {
+      "title": "The Lagrangian Formulation of the Simple Pendulum",
+      "description": "Ejemplo clásico del formalismo lagrangiano aplicado al péndulo simple.",
+      "category": "Mecánica clásica",
+      "keywords": "péndulo simple, lagrangiano, ecuación de movimiento",
+      "cover": {
+        "file": "assets/paper-covers/lagrangian-simple-pendulum.png",
+        "alt": "Primera página de The Lagrangian Formulation of the Simple Pendulum"
+      }
+    }
+  },
+  {
+    "slug": "composite-quantum-systems-wave-functions",
+    "lastmod": "2026-04-23",
+    "pdfs": {
+      "en": "Composite_Quantum_Systems_and_Their_Wave_Functions-3.pdf"
+    },
+    "en": {
+      "title": "Composite Quantum Systems and Their Wave Functions",
+      "description": "Discussion of composite states and tensor structure in quantum mechanics.",
+      "category": "Quantum theory",
+      "keywords": "Composite Quantum Systems and Their Wave Functions",
+      "cover": {
+        "file": "assets/paper-covers/composite-quantum-systems-wave-functions.png",
+        "alt": "First page of Composite Quantum Systems and Their Wave Functions"
+      }
+    },
+    "es": {
+      "title": "Sistemas Cuánticos Compuestos y sus Funciones de Onda",
+      "description": "Discusión de estados compuestos y estructura tensorial en mecánica cuántica.",
+      "category": "Teoría cuántica",
+      "keywords": "sistemas cuánticos compuestos, producto tensorial, funciones de onda",
+      "cover": {
+        "file": "assets/paper-covers/composite-quantum-systems-wave-functions.png",
+        "alt": "Primera página de Sistemas Cuánticos Compuestos y sus Funciones de Onda"
+      }
+    }
+  },
+  {
+    "slug": "heisenberg-schrodinger-dirac-pictures",
+    "lastmod": "2026-04-23",
+    "pdfs": {
+      "es": "Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf"
+    },
+    "en": {
+      "title": "Mathematical Formulation of the Heisenberg, Schrödinger and Dirac Pictures",
+      "description": "Mathematical comparison of the different pictures of quantum mechanics.",
+      "category": "Quantum theory",
+      "keywords": "Mathematical Formulation of the Heisenberg, Schrödinger and Dirac Pictures",
+      "cover": {
+        "file": "assets/paper-covers/heisenberg-schrodinger-dirac-pictures.png",
+        "alt": "First page of Mathematical Formulation of the Heisenberg, Schrödinger and Dirac Pictures"
+      }
+    },
+    "es": {
+      "title": "Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac",
+      "description": "Comparación matemática entre las distintas imágenes de la mecánica cuántica.",
+      "category": "Teoría cuántica",
+      "keywords": "imágenes de Heisenberg, Schrödinger y Dirac, evolución temporal, mecánica cuántica",
+      "cover": {
+        "file": "assets/paper-covers/heisenberg-schrodinger-dirac-pictures.png",
+        "alt": "Primera página de Formulación Matemática de las Imágenes de Heisenberg, Schrödinger y Dirac"
+      }
+    }
+  },
+  {
+    "slug": "adm-hamiltonian-equations-general-relativity",
+    "lastmod": "2026-04-23",
+    "pdfs": {
+      "es": "epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf"
+    },
+    "en": {
+      "title": "ε-Hamiltonian ADM Equations of General Relativity",
+      "description": "Note on the ADM Hamiltonian formulation in general relativity.",
+      "category": "Relativity",
+      "keywords": "ADM formalism, Hamiltonian equations, general relativity, mathematical relativity, canonical gravity",
+      "cover": {
+        "file": "assets/paper-covers/adm-foliation-shared.png",
+        "alt": "Line-element decomposition between spacetime hypersurfaces"
+      }
+    },
+    "es": {
+      "title": "ε-Ecuaciones Hamiltonianas de ADM de la Relatividad General",
+      "description": "Apunte sobre la formulación hamiltoniana ADM en relatividad general.",
+      "category": "Relatividad",
+      "keywords": "formulación ADM, ecuaciones hamiltonianas, relatividad general",
+      "cover": {
+        "file": "assets/paper-covers/adm-foliation-shared.png",
+        "alt": "Descomposición del elemento de línea entre hipersuperficies del espacio-tiempo"
+      }
+    }
+  },
+  {
+    "slug": "brachistochrone-problem-calculus-of-variations",
+    "lastmod": "2026-04-23",
+    "pdfs": {
+      "en": "The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf"
+    },
+    "en": {
+      "title": "The Brachistochrone Problem",
+      "description": "Application of the calculus of variations to one of the most famous classical problems.",
+      "category": "Classical mechanics",
+      "keywords": "brachistochrone problem, calculus of variations, classical mechanics, Euler-Lagrange equation, variational methods",
+      "cover": {
+        "file": "assets/paper-covers/brachistochrone-problem-calculus-of-variations.png",
+        "alt": "First page of The Brachistochrone Problem"
+      }
+    },
+    "es": {
+      "title": "El Problema de la Braquistócrona",
+      "description": "Aplicación del cálculo de variaciones a uno de los problemas clásicos más famosos.",
+      "category": "Mecánica clásica",
+      "keywords": "braquistócrona, cálculo de variaciones, ecuación de Euler–Lagrange",
+      "cover": {
+        "file": "assets/paper-covers/brachistochrone-problem-calculus-of-variations.png",
+        "alt": "Primera página de El Problema de la Braquistócrona"
+      }
+    }
+  },
+  {
+    "slug": "field-variations-vector-bundles-connection",
+    "lastmod": "2026-05-09",
+    "pdfs": {
+      "en": "Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf"
+    },
+    "en": {
+      "title": "Field Variations on Vector Bundles with Connection",
+      "description": "Geometric study of field variations on vector bundles with connection.",
+      "category": "Geometry",
+      "keywords": "vector bundles, connection, field variations, differential geometry, gauge geometry, mathematical physics",
+      "cover": {
+        "file": "assets/paper-covers/field-reference-frames-fly.png",
+        "alt": "Two reference frames describing the same event, illustrated by a fly"
+      }
+    },
+    "es": {
+      "title": "Variaciones de Campos en Haces Vectoriales con Conexión",
+      "description": "Estudio geométrico de variaciones de campos sobre haces vectoriales con conexión.",
+      "category": "Geometría",
+      "keywords": "haces vectoriales, conexiones, variaciones activas y pasivas",
+      "cover": {
+        "file": "assets/paper-covers/field-reference-frames-fly.png",
+        "alt": "Dos sistemas de referencia describen el mismo evento, representado por una mosca"
+      }
+    }
+  },
+  {
+    "slug": "dyson-series-vacuum-correlation-functions",
+    "lastmod": "2026-05-27",
+    "pdfs": {
+      "es": "Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf"
+    },
+    "en": {
+      "title": "Free Vacuum, Interacting Vacuum, Dyson Series and Correlation Functions",
+      "description": "Notes on free and interacting vacua and perturbative computation.",
+      "category": "Quantum theory",
+      "keywords": "Dyson series, interacting vacuum, free vacuum, correlation functions, perturbation theory, quantum field theory",
+      "cover": {
+        "file": "assets/paper-covers/dyson-ordering-shared.png",
+        "alt": "Integration region for two time-ordered operators"
+      }
+    },
+    "es": {
+      "title": "Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación",
+      "description": "Notas sobre la relación entre el vacío libre y el vacío interactuante y el cálculo perturbativo.",
+      "category": "Teoría cuántica",
+      "keywords": "vacío libre e interactuante, serie de Dyson, funciones de correlación",
+      "cover": {
+        "file": "assets/paper-covers/dyson-ordering-shared.png",
+        "alt": "Región de integración para dos operadores ordenados temporalmente"
+      }
+    }
+  }
+]

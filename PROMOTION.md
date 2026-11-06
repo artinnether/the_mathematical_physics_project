@@ -5,9 +5,9 @@ Use this checklist every time a new PDF, note, or exercise set is added.
 ## Publish Checklist
 
 1. Add the PDF to the site and make sure it appears in Latest publications.
-2. Add a topic entry to `tools/generate_topic_pages.py`.
+2. Add an entry to `tools/papers.json` with both languages' metadata, cover images, and the available PDF editions.
 3. Run `python3 tools/generate_topic_pages.py` so the topic page and `sitemap.xml` stay in sync.
-4. Link the new topic page from the homepage when the topic is important enough to promote.
+4. Link the resource card title to both generated topic pages using `data-href-en` and `data-href-es`. Use the topic page link when sharing a preview.
 5. Write a 2-3 sentence summary using searchable terms: topic, course level, and what problem it helps solve.
 6. Share the update on LinkedIn, Facebook, WhatsApp groups, Instagram stories, YouTube Community, and relevant academic circles.
 7. Ask one concrete question in the post to invite replies.

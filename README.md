@@ -46,7 +46,8 @@ This is a static GitHub Pages site. Main files:
 - `sitemap.xml`: search engine discovery map.
 - `robots.txt`: search engine crawl instructions.
 - `PROMOTION.md`: reusable launch and sharing checklist for new PDFs.
-- `tools/generate_topic_pages.py`: generator for searchable paper pages and sitemap entries.
+- `tools/papers.json`: bilingual article metadata, cover images, and available PDF editions.
+- `tools/generate_topic_pages.py`: generator for shareable paper pages and sitemap entries.
 - `tools/paper_thumbnails.json`: source PDF, page, crop coordinates, and language for each featured figure.
 - `tools/extract_paper_thumbnails.py`: reproduces the original PDF crops in `assets/` (requires `pdfplumber` and `Pillow`). Run `python3 tools/extract_paper_thumbnails.py` from the repository root.
 

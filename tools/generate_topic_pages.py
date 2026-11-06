@@ -1,4 +1,5 @@
 from html import escape
+import json
 from pathlib import Path
 from urllib.parse import quote
 
@@ -6,128 +7,25 @@ BASE_URL = "https://artinnether.github.io/the_mathematical_physics_project/"
 ROOT = Path(__file__).resolve().parents[1]
 PAPERS_DIR = ROOT / "papers"
 
-PAPERS = [
-    {
-        'slug': 'fiber-bundle-construction-quantum-electrodynamics',
-        'title': 'Fiber Bundle Construction of Quantum Electrodynamics',
-        'spanish_title': 'Construcción de la electrodinámica cuántica mediante haces fibrados',
-        'pdf': 'fiber_bundle_construction_of_quantum_electrodynamics.pdf',
-        'pdf_alt': 'construccion_electrodinamica_cuantica_mediante_haces_fibrados.pdf',
-        'category': 'Quantum field theory · Gauge theory · Geometry · Algebra · Lie algebras · Relativity · Electromagnetism',
-        'description': 'Starting from Clifford algebra and the Spin group, we build the spinor bundle and the U(1) gauge connection. We derive the coupled Dirac–Maxwell equations, study two electrostatic examples, and calculate the t-channel contribution to electron–electron scattering.',
-        'keywords': 'quantum electrodynamics, Clifford algebra and Spin groups, spinor bundles and differential geometry, gauge theory and holonomy, relativistic Dirac equation, Maxwell equations and electrostatics, Feynman diagrams, electron scattering, perturbation theory',
-        'cover': 'assets/qed-feynman-diagram.png',
-        'cover_alt': 'Figure 17: Feynman diagram for t-channel electron–electron scattering via one-photon exchange.',
-        'lastmod': '2026-11-05',
+PAPERS = json.loads(Path(__file__).with_name("papers.json").read_text(encoding="utf-8"))
+
+LANGUAGE_NAMES = {"en": "English", "es": "Español"}
+LABELS = {
+    "en": {
+        "locale": "en_US", "navigation": "Site navigation", "latest": "Latest",
+        "library": "Library", "subscribe": "Subscribe", "contact": "Contact",
+        "read": "Read PDF", "download": "Download PDF", "share": "Share this article",
+        "details": "Article details", "topics": "Related topics",
+        "pdf_languages": {"en": "English", "es": "Spanish"},
     },
-    {'slug': 'phi4-feynman-rules-position-space', 'title': 'λφ⁴ Theory and Feynman Rules in Position Space', 'spanish_title': 'Teoría λφ⁴ y reglas de Feynman en espacio de posiciones', 'pdf': 'qft_notes_78_80_english.pdf', 'pdf_alt': 'notas_qft_78_80_con_dibujo_definiciones.pdf', 'category': 'Quantum Field Theory', 'description': 'Derivation of Feynman rules from dynamical pictures, Gell-Mann–Low, Dyson, and Wick. Includes the two-point correlator through second order, vacuum-bubble cancellation, and symmetry factors.', 'keywords': 'quantum field theory, lambda phi4, Feynman rules, position space, interaction picture, Dyson series, Wick theorem, vacuum bubbles, symmetry factors', 'lastmod': '2026-09-30'},
-    {
-        "slug": "lie-groups-universal-enveloping-algebra",
-        "title": "From Lie Groups to the Universal Enveloping Algebra",
-        "spanish_title": "De grupos de Lie al álgebra envolvente universal",
-        "pdf": "notes_lie_algebras_universal_enveloping_algebra.pdf",
-        "pdf_alt": "notas_algebras_lie_envolvente_universal.pdf",
-        "category": "Lie Algebras",
-        "description": "Notes on infinitesimal rotations, the Lie algebra associated with a Lie group, and the construction of the universal enveloping algebra.",
-        "keywords": "Lie groups, Lie algebras, infinitesimal rotations, universal enveloping algebra, generators, commutators, mathematical physics",
-        "lastmod": "2026-09-02",
+    "es": {
+        "locale": "es_MX", "navigation": "Navegación del sitio", "latest": "Publicaciones",
+        "library": "Biblioteca", "subscribe": "Suscripción", "contact": "Contacto",
+        "read": "Leer PDF", "download": "Descargar PDF", "share": "Compartir este artículo",
+        "details": "Detalles del artículo", "topics": "Temas relacionados",
+        "pdf_languages": {"en": "inglés", "es": "español"},
     },
-    {
-        "slug": "c-star-algebras-dagger-notation",
-        "title": "On C*-Algebras and the Dagger Notation",
-        "spanish_title": "Sobre C*-álgebras y la notación daga",
-        "pdf": "C_star_Algebras_and_Dagger_Notation_EN.pdf",
-        "pdf_alt": "Algebras_C_estrella_y_Notacion_Daga_ES.pdf",
-        "category": "Operator Algebras",
-        "description": "Self-contained notes on C*-algebras, bounded operators, Hilbert adjoints, Dirac notation, Pauli matrices, the Bloch sphere, and unbounded operators.",
-        "keywords": "C-star algebra, C dagger algebra, bounded operators, Hilbert adjoint, operator norm, Dirac notation, Pauli matrices, Bloch sphere, unbounded operators, quantum mechanics",
-        "lastmod": "2026-07-16",
-    },
-    {
-        "slug": "homological-algebra-category-modules",
-        "title": "Homological Algebra in the Category of Modules",
-        "spanish_title": "Álgebra Homológica en la Categoría de Módulos",
-        "pdf": "Homological_Algebra_in_the_Category_of_Modules_EN.pdf",
-        "pdf_alt": "Algebra_Homologica_en_la_Categoria_de_Modulos_ES.pdf",
-        "category": "Homological Algebra",
-        "description": "Notes on chain complexes, chain homotopy, projective and injective resolutions, derived functors, Ext, and Tor in the category of modules.",
-        "keywords": "homological algebra, category of modules, chain complexes, projective resolutions, injective resolutions, derived functors, Ext, Tor, algebra",
-        "lastmod": "2026-07-06",
-    },
-    {
-        "slug": "feynman-prescription-residues-real-poles",
-        "title": "Feynman Prescription, Residues, and Regularization of Real Poles",
-        "spanish_title": "Prescripción de Feynman, residuos y regularización de polos reales",
-        "pdf": "Feynman_Prescription_Residues_and_Real_Poles_EN.pdf",
-        "pdf_alt": "Feynman_Prescription_Residues_and_Real_Poles_ES.pdf",
-        "category": "Quantum Field Theory",
-        "description": "Self-contained notes on Laurent series, residues, principal value, and the +i epsilon Feynman prescription for real poles.",
-        "keywords": "Feynman prescription, residues, real poles, principal value, quantum field theory, i epsilon, mathematical physics",
-    },
-    {
-        "slug": "lambda-phi4-zero-dimensional-feynman-diagrams",
-        "title": "Perturbative Expansion and Feynman Diagrams in the Zero-Dimensional Lambda Phi Four Model",
-        "spanish_title": "Expansión perturbativa y diagramas de Feynman en el modelo lambda phi cuatro de dimensión cero",
-        "pdf": "Expansion_Perturbativa_y_Diagramas_de_Feynman_en_el_Modelo_lambda_phi4_de_Dimension_Cero.pdf",
-        "category": "Quantum Field Theory",
-        "description": "Notes on the zero-dimensional lambda phi four model, perturbative expansions, generating functions, and Feynman diagram structure.",
-        "keywords": "lambda phi four, Feynman diagrams, perturbative expansion, zero dimensional field theory, quantum field theory",
-    },
-    {
-        "slug": "lorentz-invariance-klein-gordon-field-action",
-        "title": "Lorentz Invariance of the Klein-Gordon Field and Action",
-        "spanish_title": "Invariancia de Lorentz del campo y la acción de Klein-Gordon",
-        "pdf": "Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf",
-        "category": "Relativistic Field Theory",
-        "description": "A note on the Klein-Gordon equation, Lorentz invariance of the d'Alembertian, and the Lagrangian action for a real scalar field.",
-        "keywords": "Klein-Gordon equation, Lorentz invariance, scalar field, Lagrangian action, relativistic quantum field theory",
-    },
-    {
-        "slug": "dyson-series-vacuum-correlation-functions",
-        "title": "Free Vacuum, Interacting Vacuum, Dyson Series and Correlation Functions",
-        "spanish_title": "Vacío libre, vacío interactuante, serie de Dyson y funciones de correlación",
-        "pdf": "Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf",
-        "category": "Quantum Field Theory",
-        "description": "Notes on free and interacting vacua, the Dyson series, perturbative computation, and correlation functions in quantum field theory.",
-        "keywords": "Dyson series, interacting vacuum, free vacuum, correlation functions, perturbation theory, quantum field theory",
-    },
-    {
-        "slug": "adm-hamiltonian-equations-general-relativity",
-        "title": "Hamiltonian ADM Equations of General Relativity",
-        "spanish_title": "Ecuaciones Hamiltonianas de ADM de la Relatividad General",
-        "pdf": "epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf",
-        "category": "General Relativity",
-        "description": "A mathematical physics note on the ADM Hamiltonian formulation of general relativity and the structure of its equations.",
-        "keywords": "ADM formalism, Hamiltonian equations, general relativity, mathematical relativity, canonical gravity",
-    },
-    {
-        "slug": "field-variations-vector-bundles-connection",
-        "title": "Field Variations on Vector Bundles with Connection",
-        "spanish_title": "Variaciones de campos en haces vectoriales con conexión",
-        "pdf": "Field Variations on Vector Bundles with Connection A Unified Active and Passive Interpretation.pdf",
-        "category": "Differential Geometry",
-        "description": "A geometric study of field variations on vector bundles with connection, including active and passive interpretations.",
-        "keywords": "vector bundles, connection, field variations, differential geometry, gauge geometry, mathematical physics",
-    },
-    {
-        "slug": "brachistochrone-problem-calculus-of-variations",
-        "title": "The Brachistochrone Problem via Calculus of Variations",
-        "spanish_title": "El problema de la braquistócrona mediante cálculo de variaciones",
-        "pdf": "The_Brachistochrone_Problem__Time_Minimization_via_Calculus_of_Variations-Corona.pdf",
-        "category": "Classical Mechanics",
-        "description": "A derivation of the brachistochrone curve as a time-minimization problem using the calculus of variations.",
-        "keywords": "brachistochrone problem, calculus of variations, classical mechanics, Euler-Lagrange equation, variational methods",
-    },
-    {
-        "slug": "the-einbein-relativistic-systems",
-        "title": "The Einbein in Relativistic Systems",
-        "spanish_title": "El einbein en sistemas relativistas",
-        "pdf": "The Einbein.pdf",
-        "category": "Relativity",
-        "description": "A short note on the einbein formalism and its role in relativistic systems and reparametrization-invariant actions.",
-        "keywords": "einbein, relativistic systems, reparametrization invariance, relativistic action, mathematical physics",
-    },
-]
+}
 
 SITEMAP_PDFS = [
     ("fiber_bundle_construction_of_quantum_electrodynamics.pdf", "2026-11-05", "0.9"),
@@ -167,79 +65,92 @@ def enc(path):
     return quote(path, safe="/:")
 
 
-def render_paper(paper):
-    url = f"{BASE_URL}papers/{paper['slug']}.html"
-    pdf_url = f"{BASE_URL}{enc(paper['pdf'])}"
-    pdf_alt = paper.get("pdf_alt")
+def paper_path(slug, lang):
+    suffix = "-es" if lang == "es" else ""
+    return f"papers/{slug}{suffix}.html"
+
+
+def render_paper(paper, lang):
+    labels = LABELS[lang]
+    other_lang = "en" if lang == "es" else "es"
+    page = paper[lang]
+    url = BASE_URL + paper_path(paper["slug"], lang)
+    other_path = paper_path(paper["slug"], other_lang)
+    other_url = BASE_URL + other_path
+    pdfs = paper["pdfs"]
+    pdf_lang = lang if lang in pdfs else other_lang
+    pdf = enc(pdfs[pdf_lang])
+    pdf_language = labels["pdf_languages"][pdf_lang]
     alt_link = ""
-    if pdf_alt:
-        alt_link = f'<a href="../{enc(pdf_alt)}" class="secondary-action">Spanish PDF</a>'
+    if other_lang in pdfs and other_lang != pdf_lang:
+        alt_pdf = enc(pdfs[other_lang])
+        alt_language = labels["pdf_languages"][other_lang]
+        alt_link = f'        <a href="../{alt_pdf}" class="secondary-action">{labels["read"]} ({alt_language})</a>'
 
-    cover = paper.get("cover")
-    preview_image = enc(cover or "tmpp_logo.png")
-    cover_figure = ""
-    if cover:
-        cover_alt = escape(paper["cover_alt"])
-        cover_figure = (
-            '<figure style="margin:0;max-width:620px">'
-            f'<img src="../{preview_image}" alt="{cover_alt}" width="1200" height="630" '
-            'style="display:block;width:100%;height:auto;border-radius:10px" />'
-            f'<figcaption style="margin-top:8px;color:var(--muted)">{cover_alt}</figcaption>'
-            '</figure>'
-        )
-
-    share_text = quote(f"{paper['title']} - The Mathematical Physics Project")
+    cover = page["cover"]
+    preview_image = enc(cover["file"])
+    cover_alt = escape(cover["alt"])
+    metadata = {
+        "@context": "https://schema.org",
+        "@type": "ScholarlyArticle",
+        "headline": page["title"],
+        "alternativeHeadline": paper[other_lang]["title"],
+        "description": page["description"],
+        "url": url,
+        "image": BASE_URL + preview_image,
+        "encoding": {
+            "@type": "MediaObject", "contentUrl": BASE_URL + pdf,
+            "encodingFormat": "application/pdf", "inLanguage": pdf_lang,
+        },
+        "author": {"@type": "Person", "name": "Omar Corona Tejeda", "url": BASE_URL},
+        "isPartOf": {"@type": "CollectionPage", "name": "The Mathematical Physics Project", "url": BASE_URL},
+        "about": page["category"],
+        "inLanguage": lang,
+    }
+    structured_data = json.dumps(metadata, ensure_ascii=False, indent=2).replace("<", "\\u003c")
+    share_text = quote(f"{page['title']} - The Mathematical Physics Project")
     share_url = quote(url, safe="")
+    topics = "".join(f"<li>{escape(topic.strip())}</li>" for topic in page["keywords"].split(",")[:6])
+    topics_panel = ""
+    if page["keywords"] != page["title"]:
+        topics_panel = f'''    <section class="panel" aria-label="{labels['details']}">
+      <h2>{labels['topics']}</h2>
+      <ul>{topics}</ul>
+    </section>'''
 
     return f"""<!doctype html>
-<html lang="en">
+<html lang="{lang}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>{escape(paper['title'])} | The Mathematical Physics Project</title>
-  <meta name="description" content="{escape(paper['description'])}" />
-  <meta name="keywords" content="{escape(paper['keywords'])}" />
+  <title>{escape(page['title'])} | The Mathematical Physics Project</title>
+  <meta name="description" content="{escape(page['description'])}" />
+  <meta name="keywords" content="{escape(page['keywords'])}" />
   <meta name="author" content="Omar Corona Tejeda" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="{url}" />
+  <link rel="alternate" hreflang="{lang}" href="{url}" />
+  <link rel="alternate" hreflang="{other_lang}" href="{other_url}" />
   <link rel="icon" href="../tmpp_logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="../tmpp_logo.png" />
   <meta property="og:site_name" content="The Mathematical Physics Project" />
-  <meta property="og:title" content="{escape(paper['title'])}" />
-  <meta property="og:description" content="{escape(paper['description'])}" />
+  <meta property="og:title" content="{escape(page['title'])}" />
+  <meta property="og:description" content="{escape(page['description'])}" />
   <meta property="og:type" content="article" />
+  <meta property="og:locale" content="{labels['locale']}" />
+  <meta property="og:locale:alternate" content="{LABELS[other_lang]['locale']}" />
   <meta property="og:url" content="{url}" />
   <meta property="og:image" content="{BASE_URL}{preview_image}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="{cover_alt}" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{escape(paper['title'])}" />
-  <meta name="twitter:description" content="{escape(paper['description'])}" />
+  <meta name="twitter:title" content="{escape(page['title'])}" />
+  <meta name="twitter:description" content="{escape(page['description'])}" />
   <meta name="twitter:image" content="{BASE_URL}{preview_image}" />
+  <meta name="twitter:image:alt" content="{cover_alt}" />
   <script type="application/ld+json">
-    {{
-      "@context": "https://schema.org",
-      "@type": "ScholarlyArticle",
-      "headline": "{escape(paper['title'])}",
-      "alternativeHeadline": "{escape(paper['spanish_title'])}",
-      "description": "{escape(paper['description'])}",
-      "url": "{url}",
-      "encoding": {{
-        "@type": "MediaObject",
-        "contentUrl": "{pdf_url}",
-        "encodingFormat": "application/pdf"
-      }},
-      "author": {{
-        "@type": "Person",
-        "name": "Omar Corona Tejeda",
-        "url": "{BASE_URL}"
-      }},
-      "isPartOf": {{
-        "@type": "CollectionPage",
-        "name": "The Mathematical Physics Project",
-        "url": "{BASE_URL}"
-      }},
-      "about": "{escape(paper['category'])}",
-      "inLanguage": "en"
-    }}
+{structured_data}
   </script>
   <style>
     :root {{
@@ -355,13 +266,11 @@ def render_paper(paper):
     .share a {{ background: #2563eb; }}
     .share a:nth-child(2) {{ background: #111827; }}
     .share a:nth-child(3) {{ background: #16a34a; }}
-    .details {{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 18px;
-    }}
+    .cover {{ margin: 0; max-width: 620px; }}
+    .cover img {{ display: block; width: 100%; height: auto; border-radius: 10px; }}
+    .cover figcaption {{ margin-top: 8px; color: var(--muted); }}
     .panel {{
+      margin-top: 18px;
       padding: 22px;
       border: 1px solid rgba(31, 42, 48, 0.12);
       border-radius: 12px;
@@ -390,53 +299,45 @@ def render_paper(paper):
       nav {{ align-items: flex-start; flex-direction: column; padding: 18px 0; }}
       .nav-links {{ justify-content: flex-start; }}
       .hero {{ padding: 24px; }}
-      .details {{ grid-template-columns: 1fr; }}
     }}
   </style>
 </head>
 <body>
   <header>
-    <nav aria-label="Site navigation">
+    <nav aria-label="{labels['navigation']}">
       <a class="brand" href="../">
         <img src="../tmpp_logo.png" alt="" />
         <span>The Mathematical Physics Project</span>
       </a>
       <div class="nav-links">
-        <a href="../#latest">Latest</a>
-        <a href="../#pdfs">Library</a>
-        <a href="../#newsletter">Subscribe</a>
-        <a href="../#contacto">Contact</a>
+        <a href="../#latest">{labels['latest']}</a>
+        <a href="../#pdfs">{labels['library']}</a>
+        <a href="../#newsletter">{labels['subscribe']}</a>
+        <a href="../#contacto">{labels['contact']}</a>
+        <a href="../{other_path}" lang="{other_lang}" hreflang="{other_lang}">{LANGUAGE_NAMES[other_lang]}</a>
       </div>
     </nav>
   </header>
   <main>
     <article class="hero">
-      <p class="eyebrow">{escape(paper['category'])}</p>
-      <h1>{escape(paper['title'])}</h1>
-      <p class="summary">{escape(paper['description'])}</p>
-{f"      {cover_figure}" + chr(10) if cover_figure else ""}      <div class="actions">
-        <a href="../{enc(paper['pdf'])}" class="primary-action" target="_blank" rel="noopener noreferrer">Read PDF</a>
-        <a href="../{enc(paper['pdf'])}" class="secondary-action" download>Download PDF</a>
-        {alt_link}
+      <p class="eyebrow">{escape(page['category'])}</p>
+      <h1>{escape(page['title'])}</h1>
+      <p class="summary">{escape(page['description'])}</p>
+      <div class="actions">
+        <a href="../{pdf}" class="primary-action" target="_blank" rel="noopener noreferrer">{labels['read']} ({pdf_language})</a>
+        <a href="../{pdf}" class="secondary-action" download>{labels['download']}</a>
+{alt_link}
       </div>
-      <div class="share" aria-label="Share this paper">
+      <figure class="cover">
+        <img src="../{preview_image}" alt="{cover_alt}" width="1200" height="630" />
+      </figure>
+      <div class="share" aria-label="{labels['share']}">
         <a href="https://www.linkedin.com/sharing/share-offsite/?url={share_url}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://twitter.com/intent/tweet?url={share_url}&text={share_text}" target="_blank" rel="noopener noreferrer">X</a>
         <a href="https://api.whatsapp.com/send?text={share_text}%20{share_url}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       </div>
     </article>
-    <section class="details" aria-label="Paper details">
-      <div class="panel">
-        <h2>Why this page exists</h2>
-        <p>This page gives the PDF a searchable public home with a clear title, summary, metadata, and share links. It helps students, teachers, and researchers discover the resource before opening the document.</p>
-      </div>
-      <div class="panel">
-        <h2>Related search topics</h2>
-        <ul>
-          {''.join(f'<li>{escape(item.strip())}</li>' for item in paper['keywords'].split(',')[:6])}
-        </ul>
-      </div>
-    </section>
+{topics_panel}
   </main>
   <footer>
     <p>Omar Corona Tejeda - The Mathematical Physics Project</p>
@@ -450,7 +351,11 @@ def write_sitemap():
     entries = [
         ("", "2026-06-27", "weekly", "1.0"),
     ]
-    entries += [(f"papers/{paper['slug']}.html", paper.get("lastmod", "2026-06-27"), "monthly", "0.9") for paper in PAPERS]
+    entries += [
+        (paper_path(paper["slug"], lang), paper["lastmod"], "monthly", "0.9")
+        for paper in PAPERS
+        for lang in LABELS
+    ]
     entries += [(pdf, date, "monthly", priority) for pdf, date, priority in SITEMAP_PDFS]
     body = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for loc, lastmod, changefreq, priority in entries:
@@ -470,7 +375,8 @@ def write_sitemap():
 def main():
     PAPERS_DIR.mkdir(exist_ok=True)
     for paper in PAPERS:
-        (PAPERS_DIR / f"{paper['slug']}.html").write_text(render_paper(paper), encoding="utf-8")
+        for lang in LABELS:
+            (ROOT / paper_path(paper["slug"], lang)).write_text(render_paper(paper, lang), encoding="utf-8")
     write_sitemap()
 
 

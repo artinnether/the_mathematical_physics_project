@@ -13,7 +13,19 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/fiber-bundle-construction-quantum-electrodynamics-es.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/phi4-feynman-rules-position-space.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/phi4-feynman-rules-position-space-es.html</loc>
     <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -25,7 +37,19 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/lie-groups-universal-enveloping-algebra-es.html</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/c-star-algebras-dagger-notation.html</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/c-star-algebras-dagger-notation-es.html</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -37,50 +61,212 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/homological-algebra-category-modules-es.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/global-local-gauge-transformations.html</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/global-local-gauge-transformations-es.html</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/feynman-prescription-residues-real-poles.html</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/feynman-prescription-residues-real-poles-es.html</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/lambda-phi4-zero-dimensional-feynman-diagrams.html</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/lambda-phi4-zero-dimensional-feynman-diagrams-es.html</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/lorentz-invariance-klein-gordon-field-action.html</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/dyson-series-vacuum-correlation-functions.html</loc>
-    <lastmod>2026-06-27</lastmod>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/lorentz-invariance-klein-gordon-field-action-es.html</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/adm-hamiltonian-equations-general-relativity.html</loc>
-    <lastmod>2026-06-27</lastmod>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/gauge-fixing-faddeev-popov.html</loc>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/field-variations-vector-bundles-connection.html</loc>
-    <lastmod>2026-06-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/brachistochrone-problem-calculus-of-variations.html</loc>
-    <lastmod>2026-06-27</lastmod>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/gauge-fixing-faddeev-popov-es.html</loc>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/the-einbein-relativistic-systems.html</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/the-einbein-relativistic-systems-es.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/heuristic-dirac-equation.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/heuristic-dirac-equation-es.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/su2-lie-group.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/su2-lie-group-es.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/acausally-disconnected-regions-aqft.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/acausally-disconnected-regions-aqft-es.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/functional-derivative-scalar-field-action.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/functional-derivative-scalar-field-action-es.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/lagrangian-simple-pendulum.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/lagrangian-simple-pendulum-es.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/composite-quantum-systems-wave-functions.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/composite-quantum-systems-wave-functions-es.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/heisenberg-schrodinger-dirac-pictures.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/heisenberg-schrodinger-dirac-pictures-es.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/adm-hamiltonian-equations-general-relativity.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/adm-hamiltonian-equations-general-relativity-es.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/brachistochrone-problem-calculus-of-variations.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/brachistochrone-problem-calculus-of-variations-es.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/field-variations-vector-bundles-connection.html</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/field-variations-vector-bundles-connection-es.html</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/dyson-series-vacuum-correlation-functions.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://artinnether.github.io/the_mathematical_physics_project/papers/dyson-series-vacuum-correlation-functions-es.html</loc>
+    <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

@@ -59,7 +59,30 @@
 }
   </script>
   <script>
-    window.location.replace("../On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf");
+    (() => {
+      const pdf = "../On_the_Functional_Derivative_of_the_Scalar_Field_Action_and__the_Associated_Global_Functional.pdf";
+      let opened = false;
+      const openPdf = () => {
+        if (opened) return;
+        opened = true;
+        window.clearTimeout(fallback);
+        window.location.replace(pdf);
+      };
+      const fallback = window.setTimeout(openPdf, 1200);
+      const analytics = document.createElement('script');
+      analytics.src = '../analytics.js?v=20261105-share-tracking';
+      analytics.setAttribute('data-shared-paper', '');
+      analytics.onload = () => {
+        if (opened) return;
+        if (typeof window.tmppTrackSharedPaper === 'function') {
+          window.tmppTrackSharedPaper(pdf, openPdf);
+        } else {
+          openPdf();
+        }
+      };
+      analytics.onerror = openPdf;
+      document.head.appendChild(analytics);
+    })();
   </script>
   <style>
     :root {

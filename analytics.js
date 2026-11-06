@@ -10,12 +10,25 @@
   let filename;try{filename=decodeURIComponent(url.pathname)}catch{filename=url.pathname}
   return {event:anchor.hasAttribute('download')?'paper_download':'paper_open',file_name:filename,file_extension:'pdf',link_url:url.origin+url.pathname,document_title:title.slice(0,100),language:document.documentElement.lang||'es'};
  }
- function record(data){
+ function record(data, onComplete){
   if(!['paper_open','paper_download'].includes(data?.event)||typeof data.link_url!=='string')return;
   let url;try{url=new URL(data.link_url)}catch{return}
   if(url.origin!==location.origin||!url.pathname.toLowerCase().endsWith('.pdf'))return;
   let filename;try{filename=decodeURIComponent(url.pathname)}catch{filename=url.pathname}
-  window.gtag('event',data.event,{file_name:filename,file_extension:'pdf',link_url:url.origin+url.pathname,document_title:String(data.document_title||'').slice(0,100),language:data.language==='en'?'en':'es',section_id:location.hash.slice(1)||'home',transport_type:'beacon'});
+  const parameters={
+   file_name:filename,
+   file_extension:'pdf',
+   link_url:url.origin+url.pathname,
+   document_title:String(data.document_title||'').slice(0,100),
+   language:data.language==='en'?'en':'es',
+   section_id:onComplete?'shared_link':location.hash.slice(1)||'home',
+   transport_type:'beacon'
+  };
+  if(onComplete){
+   parameters.event_callback=onComplete;
+   parameters.event_timeout=1000;
+  }
+  window.gtag('event',data.event,parameters);
  }
  document.addEventListener('click',event=>{
   if(event.button!==0)return;
@@ -28,7 +41,18 @@
  window.dataLayer=window.dataLayer||[];
  window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
  window.gtag('js',new Date());
- window.gtag('config',id);
+ const sharedPaper=document.currentScript?.hasAttribute('data-shared-paper');
+ if(sharedPaper){
+  window.gtag('config',id,{send_page_view:false});
+  window.tmppTrackSharedPaper=(pdf,onComplete)=>record({
+   event:'paper_open',
+   link_url:new URL(pdf,location.href).href,
+   document_title:document.querySelector('meta[property="og:title"]')?.content||document.title,
+   language:document.documentElement.lang
+  },onComplete);
+ }else{
+  window.gtag('config',id);
+ }
  const tag=document.createElement('script');tag.async=true;tag.src='https://www.googletagmanager.com/gtag/js?id='+id;document.head.appendChild(tag);
  window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.data?.type!=='tmpp-paper-event')return;

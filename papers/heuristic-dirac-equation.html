@@ -59,7 +59,30 @@
 }
   </script>
   <script>
-    window.location.replace("../Forma%20Heur%C3%ADstica%20de%20la%20Ecuaci%C3%B3n%20de%20Dirac.pdf");
+    (() => {
+      const pdf = "../Forma%20Heur%C3%ADstica%20de%20la%20Ecuaci%C3%B3n%20de%20Dirac.pdf";
+      let opened = false;
+      const openPdf = () => {
+        if (opened) return;
+        opened = true;
+        window.clearTimeout(fallback);
+        window.location.replace(pdf);
+      };
+      const fallback = window.setTimeout(openPdf, 1200);
+      const analytics = document.createElement('script');
+      analytics.src = '../analytics.js?v=20261105-share-tracking';
+      analytics.setAttribute('data-shared-paper', '');
+      analytics.onload = () => {
+        if (opened) return;
+        if (typeof window.tmppTrackSharedPaper === 'function') {
+          window.tmppTrackSharedPaper(pdf, openPdf);
+        } else {
+          openPdf();
+        }
+      };
+      analytics.onerror = openPdf;
+      document.head.appendChild(analytics);
+    })();
   </script>
   <style>
     :root {

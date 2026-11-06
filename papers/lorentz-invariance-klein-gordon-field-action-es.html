@@ -59,7 +59,30 @@
 }
   </script>
   <script>
-    window.location.replace("../Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf");
+    (() => {
+      const pdf = "../Lorentz_Invariance_of_the_Klein_Gordon_Field_and_Action.pdf";
+      let opened = false;
+      const openPdf = () => {
+        if (opened) return;
+        opened = true;
+        window.clearTimeout(fallback);
+        window.location.replace(pdf);
+      };
+      const fallback = window.setTimeout(openPdf, 1200);
+      const analytics = document.createElement('script');
+      analytics.src = '../analytics.js?v=20261105-share-tracking';
+      analytics.setAttribute('data-shared-paper', '');
+      analytics.onload = () => {
+        if (opened) return;
+        if (typeof window.tmppTrackSharedPaper === 'function') {
+          window.tmppTrackSharedPaper(pdf, openPdf);
+        } else {
+          openPdf();
+        }
+      };
+      analytics.onerror = openPdf;
+      document.head.appendChild(analytics);
+    })();
   </script>
   <style>
     :root {

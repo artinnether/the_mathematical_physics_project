@@ -59,7 +59,30 @@
 }
   </script>
   <script>
-    window.location.replace("../fiber_bundle_construction_of_quantum_electrodynamics.pdf");
+    (() => {
+      const pdf = "../fiber_bundle_construction_of_quantum_electrodynamics.pdf";
+      let opened = false;
+      const openPdf = () => {
+        if (opened) return;
+        opened = true;
+        window.clearTimeout(fallback);
+        window.location.replace(pdf);
+      };
+      const fallback = window.setTimeout(openPdf, 1200);
+      const analytics = document.createElement('script');
+      analytics.src = '../analytics.js?v=20261105-share-tracking';
+      analytics.setAttribute('data-shared-paper', '');
+      analytics.onload = () => {
+        if (opened) return;
+        if (typeof window.tmppTrackSharedPaper === 'function') {
+          window.tmppTrackSharedPaper(pdf, openPdf);
+        } else {
+          openPdf();
+        }
+      };
+      analytics.onerror = openPdf;
+      document.head.appendChild(analytics);
+    })();
   </script>
   <style>
     :root {

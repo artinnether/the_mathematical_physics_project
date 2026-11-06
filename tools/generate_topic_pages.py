@@ -80,6 +80,7 @@ def render_paper(paper, lang):
     pdfs = paper["pdfs"]
     pdf_lang = lang if lang in pdfs else other_lang
     pdf = enc(pdfs[pdf_lang])
+    pdf_redirect = json.dumps("../" + pdf)
     pdf_language = labels["pdf_languages"][pdf_lang]
     alt_link = ""
     if other_lang in pdfs and other_lang != pdf_lang:
@@ -151,6 +152,9 @@ def render_paper(paper, lang):
   <meta name="twitter:image:alt" content="{cover_alt}" />
   <script type="application/ld+json">
 {structured_data}
+  </script>
+  <script>
+    window.location.replace({pdf_redirect});
   </script>
   <style>
     :root {{

@@ -1,0 +1,58 @@
+.newsletter-card {
+  --newsletter-button: #243b52;
+  --newsletter-button-text: #fff;
+  --newsletter-success: #176443;
+  --newsletter-error: #a02929;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  border-radius: 1rem;
+}
+
+html[data-theme="dark"] .newsletter-card {
+  --newsletter-button: #b2c9e7;
+  --newsletter-button-text: #172a40;
+  --newsletter-success: #92dbb6;
+  --newsletter-error: #ffb4b4;
+}
+
+.newsletter-card h3 { margin: 0 0 .5rem; }
+.newsletter-card > p { margin: 0 0 1.25rem; }
+.newsletter-card label { display: block; margin-bottom: .4rem; font-weight: 600; }
+
+.newsletter-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+
+.newsletter-fields input {
+  flex: 1 1 14rem;
+  min-width: 0;
+  margin: 0;
+  padding: .7rem .85rem;
+  border: 1px solid #8491a0;
+  border-radius: .5rem;
+  background: #fff;
+  color: #172a40;
+}
+
+.newsletter-fields button {
+  min-height: 2.75rem;
+  padding: .65rem 1.1rem;
+  border-radius: .5rem;
+  background: var(--newsletter-button);
+  color: var(--newsletter-button-text);
+  font-weight: 600;
+}
+
+.newsletter-fields button:not(:disabled):hover { filter: brightness(1.12); }
+.newsletter-fields button:disabled { cursor: wait; opacity: .7; }
+.newsletter-fields :focus-visible { outline: 2px solid #718db2; outline-offset: 3px; }
+.newsletter-status:not(:empty) { margin: .75rem 0 0; }
+.newsletter-status[data-state="success"] { color: var(--newsletter-success); }
+.newsletter-status[data-state="error"] { color: var(--newsletter-error); }
+
+@media (max-width: 480px) {
+  .newsletter-fields button { flex: 1 1 100%; }
+}

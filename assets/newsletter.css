@@ -1,3 +1,56 @@
+.subscribe-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  align-self: center;
+  min-height: 2.5rem;
+  padding: .45rem 1rem;
+  border: 1px solid transparent;
+  border-radius: .55rem;
+  background: #17674f;
+  color: #fff;
+  font: 700 .875rem/1.25 system-ui, sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+html[data-theme="dark"] .subscribe-cta {
+  background: #92ddbd;
+  color: #12382d;
+}
+
+.subscribe-cta:hover { filter: brightness(1.12); }
+.subscribe-cta:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+.topbar-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topbar .top-actions { flex: none; }
+
+@media (max-width: 520px) {
+  header.topbar {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: .45rem .65rem;
+    height: auto;
+    padding-block: .6rem;
+  }
+
+  .topbar .top-actions {
+    grid-row: 2;
+    grid-column: 2 / -1;
+    justify-content: flex-end;
+  }
+
+  .topbar .subscribe-cta { grid-row: 1; grid-column: 3; }
+}
+
 .newsletter-card {
   --newsletter-button: #243b52;
   --newsletter-button-text: #fff;

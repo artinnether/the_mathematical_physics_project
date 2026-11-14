@@ -41,8 +41,11 @@
 .life-badge{border:1px solid var(--lilac);border-radius:999px;background:#352b49;color:var(--ink);padding:4px 10px;font-size:14px;font-weight:750}
 .life-badge[data-empty="true"]{border-color:var(--line);background:transparent;color:var(--muted)}
 #levelHelp{border-top:0;margin-top:10px;padding-top:0}
+header{flex-wrap:wrap}
+.project-home{color:var(--ink);border:1px solid var(--line);border-radius:9px;padding:8px 12px;text-decoration:none}
+.project-home:hover,.project-home:focus-visible{border-color:var(--lilac);color:var(--mint)}
 </style>
-<header><div class="brand">◈ Laboratorio de pruebas</div><button id="language" type="button"></button><span class="badge">LEAN 4</span></header>
+<header><a class="project-home" href="../#home" id="projectHome" data-en="← Back to project home">← Volver al inicio del proyecto</a><div class="brand">◈ Laboratorio de pruebas</div><button id="language" type="button"></button><span class="badge">LEAN 4</span></header>
 <main class="layout">
 <aside><div class="eyebrow" id="world"></div><h2 id="worldTitle"></h2><div class="progress"><div id="bar"></div></div><p class="small" id="progress"></p><nav class="levels" id="levels" aria-label="Niveles" data-en-aria-label="Levels"></nav><button class="next-level" id="switchWorld" hidden></button><button class="next-level" id="forwardWorld" hidden></button><details class="tactics" open><summary><span data-en="Tactic notebook">Cuaderno de tácticas</span></summary><p class="small" id="notebookEmpty"><span data-en="Tactics appear here as you encounter them in the lessons.">Aquí se guardan las tácticas a medida que aparecen en las minilecciones.</span></p><dl id="notebook"></dl></details></aside>
 <section>
@@ -85,6 +88,12 @@ for (const node of document.querySelectorAll('[data-en], [data-en-aria-label], [
   if (language === 'en' && node.dataset.enAriaLabel) node.setAttribute('aria-label', node.dataset.enAriaLabel);
   if (language === 'en' && node.dataset.enPlaceholder) node.placeholder = node.dataset.enPlaceholder;
 }
+el('projectHome').addEventListener('click', () => {
+  try {
+    localStorage.setItem('tmpp-workspace-lang', language);
+    localStorage.setItem('tmpp-language-chosen', '1');
+  } catch {}
+});
 el('language').textContent = t('English', 'Español');
 el('language').onclick = () => {
   const url = new URL(location.href);

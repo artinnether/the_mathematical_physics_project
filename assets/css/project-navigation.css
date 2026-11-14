@@ -1,0 +1,58 @@
+.project-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: .5rem 1rem;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.project-navigation .project-language,
+.project-navigation .project-home-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .45rem .75rem;
+  border-radius: .4rem;
+  line-height: 1.35;
+  text-align: left;
+  text-decoration: none;
+}
+
+.project-navigation .project-language {
+  border: 1px solid #d1ccc2;
+  background: #eeebe4;
+  color: #3d4958;
+  font-size: .75rem;
+  white-space: nowrap;
+}
+
+.project-navigation .project-home-link {
+  border: 1px solid currentColor;
+  color: #24635c;
+  font-size: .875rem;
+  font-weight: 600;
+}
+
+:is(.lean-navigation, .animation-navigation, .reader-navigation) .project-language {
+  border-color: #444;
+  background: #272727;
+  color: #bbb;
+}
+
+:is(.lean-navigation, .animation-navigation, .reader-navigation) .project-home-link {
+  color: #89d0c1;
+}
+
+.project-navigation :is(.project-language, .project-home-link):hover {
+  text-decoration: underline;
+}
+
+.project-navigation :is(.project-language, .project-home-link):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.embedded-reader .reader-navigation .project-home-link {
+  display: none;
+}

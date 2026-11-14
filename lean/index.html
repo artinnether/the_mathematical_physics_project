@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratorio de pruebas · Lean 4</title>
+<style>
+:root{color-scheme:dark;--bg:#111419;--panel:#191e26;--line:#303947;--ink:#edf1f8;--muted:#a5b0c1;--mint:#9be8c5;--lilac:#bfaff8}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#29213e 0,transparent 44%),var(--bg);color:var(--ink);font:16px/1.55 system-ui,sans-serif}header,main{max-width:1260px;margin:auto;padding:20px 32px}header{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);align-items:center;gap:12px}.brand{font-weight:750}.badge,.eyebrow{color:var(--mint);font:600 12px/1.5 ui-monospace,monospace;letter-spacing:.12em}.layout{display:grid;grid-template-columns:245px minmax(0,1fr);gap:30px;margin-top:20px}aside,.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}aside{align-self:start}h1{font:400 clamp(32px,5vw,54px)/1.1 Georgia,serif;margin:10px 0}h2{font-size:16px;margin:0 0 12px}p{color:var(--muted)}.progress{height:5px;background:#303947;border-radius:10px;margin:16px 0}.progress div{height:100%;background:var(--mint);border-radius:10px}.levels{display:grid;gap:7px}button{font:inherit;color:inherit;background:#272e39;border:1px solid var(--line);border-radius:9px;padding:8px 12px;cursor:pointer}button:focus-visible,textarea:focus-visible{outline:2px solid var(--lilac);outline-offset:3px}button:disabled{opacity:.48;cursor:default}.level{text-align:left;font-size:14px}.level[aria-current=true]{border-color:var(--lilac);background:#352b49}.workspace{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px;margin-top:24px}.panel{min-width:0}pre,textarea{font:14px/1.65 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere}pre{color:var(--lilac);margin:0 0 12px}textarea{width:100%;min-height:190px;background:#11151b;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px;resize:vertical}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.primary{background:var(--mint);color:#12251d;border-color:var(--mint);font-weight:700}.goal{color:var(--mint)}.hint{margin-top:14px;border-left:3px solid var(--lilac);padding-left:12px;color:var(--ink)}.small{font-size:13px;color:var(--muted)}.tactics{border-top:1px solid var(--line);margin-top:18px;padding-top:14px}.tactics summary{cursor:pointer;font-weight:650}.tactics dt{color:var(--mint);margin-top:12px}.tactics dd{margin:4px 0 0;color:var(--muted);font-size:14px}.error{color:#ffb2a9}[hidden]{display:none!important}@media(max-width:850px){.layout,.workspace{grid-template-columns:1fr}header,main{padding:15px}.levels{grid-template-columns:repeat(auto-fit,minmax(135px,1fr))}}
+.next-level {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-color: var(--lilac);
+  background: #352b49;
+  color: var(--ink);
+  font-weight: 700;
+}
+.next-level:hover { background: #46385f; }
+.next-level span { color: var(--lilac); font-size: 1.25em; }
+.world-break{padding:clamp(24px,6vw,72px);margin-top:24px;background:linear-gradient(135deg,#29213e,var(--panel))}
+.lesson{margin-top:20px;border-left:3px solid var(--lilac)}
+.lesson dl{margin:0}
+.lesson dt{color:var(--mint);margin-top:10px}
+.lesson dd{margin:4px 0 0;color:var(--muted)}
+.lesson dd p{margin:6px 0 0}
+.lesson dd code,.tactics dd code{
+  background:var(--bg);
+  color:var(--mint);
+  font-family:ui-monospace,monospace;
+  border-radius:4px;
+  padding:.1em .3em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.help-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.help-heading h2{margin:0}
+.life-badge{border:1px solid var(--lilac);border-radius:999px;background:#352b49;color:var(--ink);padding:4px 10px;font-size:14px;font-weight:750}
+.life-badge[data-empty="true"]{border-color:var(--line);background:transparent;color:var(--muted)}
+#levelHelp{border-top:0;margin-top:10px;padding-top:0}
+</style>
+<header><div class="brand">◈ Laboratorio de pruebas</div><button id="language" type="button"></button><span class="badge">LEAN 4</span></header>
+<main class="layout">
+<aside><div class="eyebrow" id="world"></div><h2 id="worldTitle"></h2><div class="progress"><div id="bar"></div></div><p class="small" id="progress"></p><nav class="levels" id="levels" aria-label="Niveles" data-en-aria-label="Levels"></nav><button class="next-level" id="switchWorld" hidden></button><button class="next-level" id="forwardWorld" hidden></button><details class="tactics" open><summary><span data-en="Tactic notebook">Cuaderno de tácticas</span></summary><p class="small" id="notebookEmpty"><span data-en="Tactics appear here as you encounter them in the lessons.">Aquí se guardan las tácticas a medida que aparecen en las minilecciones.</span></p><dl id="notebook"></dl></details></aside>
+<section>
+<div id="exercise">
+<div class="eyebrow" id="chapter">Mundo 01 · Lógica</div><h1 id="title"><span data-en="Loading levels…">Cargando niveles…</span></h1><p id="intro"></p>
+<section class="panel lesson" id="lesson" aria-labelledby="lessonTitle" hidden>
+<h2 id="lessonTitle"><span data-en="Before the challenge">Antes del reto</span></h2>
+<dl id="newTactics"></dl>
+</section>
+<div class="workspace">
+<section class="panel"><h2><span data-en="Your proof">Tu demostración</span></h2><pre id="statement"></pre><textarea id="proof" aria-label="Tácticas Lean" data-en-aria-label="Lean tactics" spellcheck="false" autocapitalize="off" placeholder="Escribe una táctica por línea…" data-en-placeholder="Enter one tactic per line…"></textarea>
+<div class="actions"><button class="primary" id="verify"><span data-en="Open in Lean Web ↗">Abrir en Lean Web ↗</span></button><button id="markComplete"><span data-en="Mark complete">Marcar como completado</span></button><button id="hintButton" aria-expanded="false" aria-controls="hint" hidden><span data-en="Show hint">Pedir pista</span></button></div><button class="next-level" id="next" hidden>Siguiente nivel <span aria-hidden="true">→</span></button><p class="small"><span data-en="⌘ / Ctrl + Enter to open Lean Web">⌘ / Ctrl + Enter para abrir Lean Web</span></p><p class="hint" id="hint" hidden></p></section>
+<section class="panel"><h2><span data-en="Proof status">Estado de la prueba</span></h2><p id="status" role="status"><span data-en="Loading…">Conectando con Lean…</span></p><pre id="goals" class="goal"></pre><section class="tactics" id="levelAssistance" aria-labelledby="levelAssistanceTitle" hidden>
+<div class="help-heading"><h2 id="levelAssistanceTitle"><span data-en="Tactics for this level">Tácticas de este nivel</span></h2><span class="life-badge" id="lives" role="status"></span></div>
+<div id="tacticsLocked" hidden>
+<p class="small" id="lifeMessage"></p>
+<button id="spendLife" aria-describedby="lifeMessage"><span data-en="Spend 1 life">Usar 1 vida</span></button>
+</div>
+<details class="tactics" id="levelHelp" hidden><summary><span data-en="View unlocked tactics">Ver tácticas desbloqueadas</span></summary><dl id="tactics"></dl></details></section></section>
+</div>
+</div>
+<section class="panel world-break" id="transition" aria-labelledby="transitionTitle" hidden>
+<p class="eyebrow" id="transitionBadge"></p>
+<h1 id="transitionTitle" tabindex="-1"></h1>
+<p id="transitionIntro"></p>
+<div class="actions"><button id="backToProof"><span data-en="Back to proof">Volver a la prueba</span></button></div>
+<button class="next-level" id="startWorld">Empezar <span aria-hidden="true">→</span></button>
+</section>
+</section></main>
+<script src="course.js"></script>
+<script>
+const el = id => document.getElementById(id);
+const requestedLanguage = new URLSearchParams(location.search).get('lang');
+const language = requestedLanguage === 'es' ? 'es' : 'en';
+const t = (es, en) => language === 'es' ? es : en;
+document.documentElement.lang = language;
+document.title = t('Laboratorio de pruebas · Lean 4', 'Lean Proof Lab · Lean 4');
+for (const node of document.querySelectorAll('[data-en], [data-en-aria-label], [data-en-placeholder]')) {
+  if (language === 'en' && node.dataset.en) node.textContent = node.dataset.en;
+  if (language === 'en' && node.dataset.enAriaLabel) node.setAttribute('aria-label', node.dataset.enAriaLabel);
+  if (language === 'en' && node.dataset.enPlaceholder) node.placeholder = node.dataset.enPlaceholder;
+}
+el('language').textContent = t('English', 'Español');
+el('language').onclick = () => {
+  const url = new URL(location.href);
+  url.searchParams.set('lang', t('en', 'es'));
+  location.href = url.href;
+};
+const explanations = t([
+  'La hipótesis h ya contiene una prueba de P. El reto es entregarla a Lean.',
+  'Para probar una implicación, supone la premisa y demuestra la conclusión.',
+  'Una conjunción contiene dos pruebas. Recupera la primera.',
+  'Para demostrar P ∧ Q necesitas demostrar cada parte.',
+  'Una equivalencia pide dos implicaciones. En ambas, intercambia las componentes.',
+  'Para demostrar P ∨ Q basta demostrar uno de sus lados. Aquí ya tienes P.',
+  'Esta vez tienes Q. Elige el lado que puedes demostrar.',
+  'Si sabes que P ∨ P, considera cada posibilidad por separado.',
+  'En cada caso, elige el lado correspondiente de Q ∨ P.',
+
+], ["The hypothesis h already proves P. Give that proof to Lean.", "To prove an implication, assume its premise and prove its conclusion.", "A conjunction contains two proofs. Retrieve the first.", "To prove P ∧ Q, prove both parts.", "An equivalence requires two implications. Swap the components in both directions.", "To prove P ∨ Q, prove either side. Here you have P.", "This time you have Q. Choose the side you can prove.", "Given P ∨ P, consider each possibility separately.", "In each case, choose the corresponding side of Q ∨ P."]);
+const tactics = t({
+
+  exact: ['exact h', 'Cierra la meta con una prueba que ya tienes. Si `h : P` y la meta es `P`, escribe `exact h`.'],
+  intro: ['intro h', 'Para una meta `P → Q`, introduce `h : P` y deja `Q` como nueva meta.'],
+  parts: ['h.1 y h.2', 'Si `h : P ∧ Q`, `h.1` demuestra `P` y `h.2` demuestra `Q`. Úsalas con `exact` cuando correspondan a la meta.'],
+  constructor: ['constructor', 'Para `P ∧ Q`, abre una meta por cada parte. Para `P ↔ Q`, abre una meta por cada dirección.'],
+  pair: ['⟨a, b⟩', 'Si `a` demuestra `P` y `b` demuestra `Q`, el par `⟨a, b⟩` demuestra `P ∧ Q`. Puedes entregarlo con `exact`.'],
+  left: ['left', 'Para una meta `P ∨ Q`, elige la izquierda y deja `P` como meta.'],
+  right: ['right', 'Para una meta `P ∨ Q`, elige la derecha y deja `Q` como meta.'],
+  cases: ['cases h', 'Si `h : P ∨ Q`, abre dos casos. El primero supone `P` y el segundo supone `Q`.'],
+  rename: ['rename_i hp', 'El símbolo `✝` en un nombre como `h✝` indica que Lean muestra una hipótesis cuyo nombre es inaccesible en el código. Usa `rename_i hp` para darle un nombre que puedas usar en el caso actual.']
+}, {"exact": ["exact h", "Close the goal with a proof you already have. If `h : P` and the goal is `P`, write `exact h`."], "intro": ["intro h", "For a goal `P → Q`, introduce `h : P` and leave `Q` as the new goal."], "parts": ["h.1 / h.2", "If `h : P ∧ Q`, then `h.1` proves `P` and `h.2` proves `Q`."], "constructor": ["constructor", "For `P ∧ Q`, create one goal for each part. For `P ↔ Q`, create one goal for each direction."], "pair": ["⟨a, b⟩", "If `a` proves `P` and `b` proves `Q`, then `⟨a, b⟩` proves `P ∧ Q`."], "left": ["left", "For `P ∨ Q`, choose the left side and leave `P` as the goal."], "right": ["right", "For `P ∨ Q`, choose the right side and leave `Q` as the goal."], "cases": ["cases h", "If `h : P ∨ Q`, split into one case with a proof of `P` and another with a proof of `Q`."], "rename": ["rename_i hp", "Lean displays `✝` on inaccessible names such as `h✝`. Use `rename_i hp` to name the hypothesis in the current case."]});
+const levelTactics = [
+  ['exact'], ['intro', 'exact'], ['intro', 'parts', 'exact'],
+  ['intro', 'constructor', 'exact'], ['constructor', 'intro', 'parts', 'pair', 'exact'],
+  ['intro', 'left', 'exact'], ['intro', 'right', 'exact'],
+  ['intro', 'cases', 'rename', 'exact'], ['intro', 'cases', 'rename', 'left', 'right', 'exact'],
+];
+// Introduce each tactic where it first appears in the course.
+const newTactics = levelTactics.map((names, index) =>
+  names.filter(name => !levelTactics.slice(0, index).some(earlier => earlier.includes(name)))
+);
+const lessonExamples = t({
+
+  exact: 'Si tienes `dato : R` y la meta es `R`, escribe `exact dato`.',
+  intro: 'Con la meta `R → S`, `intro premisa` añade `premisa : R` y deja `S` como meta.',
+  parts: 'Si tienes `datos : R ∧ S`, `datos.2` es una prueba de `S`.',
+  constructor: 'Con la meta `R ∧ S`, `constructor` abre una meta para `R` y otra para `S`.',
+  pair: 'Con pruebas `hr : R` y `hs : S`, `⟨hr, hs⟩` tiene tipo `R ∧ S`.',
+  left: 'Con la meta `R ∨ S`, `left` deja `R` como meta.',
+  right: 'Con la meta `R ∨ S`, `right` deja `S` como meta.',
+  cases: 'Si tienes una hipótesis `h : R ∨ S` y tu meta es `T`, `cases h` abre dos casos. En el primero tienes una prueba de `R` y en el segundo una de `S`. La meta sigue siendo `T` en ambos.',
+  rename: 'Si ves `a✝ : R`, escribe `rename_i prueba`. Ahora puedes usar `prueba` donde necesites una demostración de `R`.'
+}, {"exact": "With `datum : R` and goal `R`, write `exact datum`.", "intro": "For goal `R → S`, `intro premise` adds `premise : R` and leaves `S` as the goal.", "parts": "With `parts : R ∧ S`, `parts.2` proves `S`.", "constructor": "On `R ∧ S`, `constructor` creates goals `R` and `S`.", "pair": "With `hr : R` and `hs : S`, `⟨hr, hs⟩` has type `R ∧ S`.", "left": "On `R ∨ S`, `left` leaves `R`.", "right": "On `R ∨ S`, `right` leaves `S`.", "cases": "Given `h : R ∨ S` and goal `T`, `cases h` leaves `T` as the goal in both cases.", "rename": "If you see `a✝ : R`, write `rename_i proof` to refer to it as `proof`."});
+function appendWithInlineCode(element, text) {
+  text.split('`').forEach((part, index) => {
+    if (index % 2 === 0) {
+      element.append(part);
+    } else {
+      const code = document.createElement('code');
+      code.textContent = part;
+      element.append(code);
+    }
+  });
+}
+function drawTactics(target, names, examples = false) {
+  el(target).replaceChildren(...names.flatMap(name => {
+    const [example, explanation] = tactics[name];
+    const term = document.createElement('dt');
+    const code = document.createElement('code');
+    code.textContent = example;
+    term.append(code);
+    const description = document.createElement('dd');
+    appendWithInlineCode(description, explanation);
+    if (examples) {
+      const exampleText = document.createElement('p');
+      appendWithInlineCode(exampleText, lessonExamples[name]);
+      description.append(exampleText);
+    }
+    return [term, description];
+  }));
+}
+const key = 'tmpp-lean-fundamentals-v1';
+let saved;
+try { saved = JSON.parse(localStorage.getItem(key)) || {}; } catch { saved = {}; }
+const drafts = saved.drafts || {};
+const completed = new Set(saved.completed || []);
+const visited = new Set(saved.visited || []);
+const livesPerWorld = 3;
+const worlds = [
+  {start: 0, title: t('Lógica proposicional', 'Propositional logic')},
+  {start: 5, title: t('Disyunciones y casos', 'Disjunctions and cases'), intro: t('Aprenderás a construir disyunciones y a usar una disyunción como hipótesis razonando por casos.', 'Learn to build disjunctions and reason by cases from a disjunctive hypothesis.')},
+];
+const worldIndex = level => worlds.findLastIndex(world => world.start <= level);
+const worldStart = level => worlds[worldIndex(level)].start;
+const worldEnd = level => worlds[worldIndex(level) + 1]?.start ?? levels.length;
+const revealedLevels = new Set(saved.revealedLevels || []);
+
+
+function remainingLives(index) {
+  const spent = [...revealedLevels].filter(level => worldStart(level) === worldStart(index)).length;
+  return Math.max(0, livesPerWorld - spent);
+}
+
+function drawLevelHelp(open = false) {
+  const revealed = revealedLevels.has(current);
+  const lives = remainingLives(current);
+  el('levelAssistance').hidden = false;
+  el('lives').textContent = lives + t(' de ', ' of ') + livesPerWorld + t(' vidas', ' lives');
+  el('lives').dataset.empty = String(lives === 0);
+  el('tacticsLocked').hidden = revealed;
+  el('spendLife').disabled = lives === 0;
+  el('lifeMessage').textContent = lives === 0
+    ? 'Agotaste las vidas de este mundo. Puedes seguir intentando el reto.'
+    : t('Las vidas se comparten entre los niveles de este mundo. Usa una para ver las tácticas y la pista de este nivel.', 'Lives are shared across this world. Spend one to reveal the tactics and hint for this level.');
+  el('levelHelp').hidden = !revealed;
+  el('levelHelp').open = revealed && open;
+  el('hintButton').hidden = !revealed;
+  el('hint').textContent = revealed ? levels[current].hint : '';
+  drawTactics('tactics', revealed ? levelTactics[current] : []);
+}
+
+let levels = [], current = 0;
+function save() { localStorage.setItem(key, JSON.stringify({drafts, completed:[...completed], visited:[...visited], revealedLevels:[...revealedLevels], current})); }
+function unlocked(i) { return i === 0 || completed.has(i-1) || completed.has(i); }
+function drawLevels() {
+  const start = worldStart(current);
+  const end = worldEnd(current);
+  const count = levels.slice(start, end).filter((_, index) => completed.has(start + index)).length;
+  const index = worldIndex(current);
+  const next = worlds[index + 1];
+  const switchWorld = el('switchWorld');
+  switchWorld.hidden = index === 0 && !(next && unlocked(next.start));
+  switchWorld.textContent = index > 0 ? t('Volver al Mundo ', 'Back to World ') + index : t('Ir al Mundo 2 →', 'Go to World 2 →');
+  const forward = el('forwardWorld');
+  forward.hidden = index === 0 || !next || !unlocked(next.start);
+  forward.textContent = t('Ir al Mundo ', 'Go to World ') + (index + 2) + ' →';
+  el('levels').replaceChildren(...levels.slice(start, end).map((level,index) => {
+    const i = start + index;
+    const button = document.createElement('button');
+    button.className = 'level';
+    button.textContent = (completed.has(i) ? '✓' : String(index+1).padStart(2,'0')) + '  ' + level.title;
+    button.disabled = !unlocked(i);
+    button.setAttribute('aria-current',i === current);
+    button.onclick = () => openLevel(i);
+    return button;
+  }));
+  const collected = newTactics.flatMap((names, i) => visited.has(i) || completed.has(i) ? names : []);
+  drawTactics('notebook', collected);
+  el('notebookEmpty').hidden = collected.length > 0;
+  el('progress').textContent = count + t(' de ', ' of ') + (end - start) + t(' niveles completados', ' levels complete');
+  el('bar').style.width = (100 * count / (end - start)) + '%';
+}
+function openLevel(i) {
+  el('transition').hidden = true;
+  el('exercise').hidden = false;
+  current = i;
+  visited.add(i);
+  const index = worldIndex(i);
+  const world = t('Mundo ', 'World ') + String(index + 1).padStart(2, '0');
+  el('world').textContent = world;
+  el('worldTitle').textContent = worlds[index].title;
+  el('chapter').textContent = world + t(' · Nivel ', ' · Level ') + (i - worlds[index].start + 1);
+  el('title').textContent = levels[i].title;
+  el('intro').textContent = explanations[i];
+  el('statement').textContent = 'example ' + levels[i].statement + ' := by';
+  el('proof').value = drafts[i] || '';
+  el('lesson').hidden = newTactics[i].length === 0;
+  drawTactics('newTactics', newTactics[i], true);
+  drawLevelHelp();
+  el('hint').hidden = true;
+  el('hintButton').setAttribute('aria-expanded','false');
+  drawLevels();
+  save();
+  showProgress();
+}
+function verify() {
+  const proof = el('proof').value;
+  const body = proof.trim() ? proof.split('\n').map(line => '  ' + line).join('\n') : '  skip';
+  const code = 'set_option autoImplicit false\nset_option warningAsError true\nexample ' + levels[current].statement + ' := by\n' + body + '\n';
+  window.open('https://live.lean-lang.org/#code=' + encodeURIComponent(code), '_blank', 'noopener');
+}
+el('markComplete').onclick = () => {
+  completed.add(current);
+  save();
+  drawLevels();
+  showProgress();
+};
+function showProgress() {
+  el('next').hidden = !completed.has(current) || current + 1 >= levels.length;
+  el('next').firstChild.textContent = current + 1 === worldEnd(current)
+    ? t('Continuar al Mundo 2 ', 'Continue to World 2 ')
+    : t('Siguiente nivel ', 'Next level ');
+  el('markComplete').hidden = completed.has(current);
+  el('status').textContent = completed.has(current)
+    ? t('Marcado como completado.', 'Marked complete.')
+    : t('Abre tu prueba en Lean Web y comprueba que no tenga errores ni metas pendientes antes de marcar el reto como completado.', 'Open your proof in Lean Web and check that it has no errors or remaining goals before marking the challenge complete.');
+}
+el('proof').addEventListener('input',() => {
+  drafts[current] = el('proof').value;
+  save();
+
+});
+el('proof').addEventListener('keydown',event => {
+  if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {event.preventDefault();verify();}
+});
+el('verify').onclick = verify;
+function showWorldTransition() {
+  const index = worldIndex(current);
+  const next = worlds[index + 1];
+  el('transitionBadge').textContent = t('✓ MUNDO ', '✓ WORLD ') + String(index + 1).padStart(2, '0') + t(' COMPLETADO', ' COMPLETE');
+  el('transitionTitle').textContent = next.title;
+  el('transitionIntro').textContent = next.intro;
+  el('startWorld').firstChild.textContent = t('Empezar Mundo ', 'Start World ') + (index + 2) + ' ';
+  el('exercise').hidden = true;
+  el('transition').hidden = false;
+  el('transitionTitle').focus();
+}
+el('next').onclick = () => {
+  if (current + 1 === worldEnd(current)) return showWorldTransition();
+  openLevel(current + 1);
+  el('proof').focus();
+};
+el('switchWorld').onclick = () => {
+  if (worldIndex(current) === 0) return showWorldTransition();
+  openLevel(worldStart(current) - 1);
+  el('proof').focus();
+};
+el('forwardWorld').onclick = showWorldTransition;
+el('backToProof').onclick = () => {
+  openLevel(current);
+  el('proof').focus();
+};
+el('startWorld').onclick = () => {
+  const start = worldEnd(current);
+  const end = worldEnd(start);
+  const next = levels.findIndex((_, index) => index >= start && index < end && unlocked(index) && !completed.has(index));
+  openLevel(next === -1 ? start : next);
+  el('proof').focus();
+};
+el('spendLife').onclick = () => {
+  if (revealedLevels.has(current) || remainingLives(current) === 0) return;
+  revealedLevels.add(current);
+  save();
+  drawLevelHelp(true);
+  el('levelHelp').querySelector('summary').focus();
+};
+el('hintButton').onclick = () => {
+  el('hint').hidden = !el('hint').hidden;
+  el('hintButton').setAttribute('aria-expanded',!el('hint').hidden);
+};
+levels = course[language].levels;
+openLevel(levels[saved.current] && unlocked(saved.current) ? saved.current : 0);
+</script>
+</html>

@@ -5,10 +5,13 @@
 }
 
 .section-filters {
-  --section-filter-accent: #b5cee9;
+  --section-filter-background: #303030;
+  --section-filter-border: #444;
+  --section-filter-selected: #e4edf7;
+  --section-filter-selected-ink: #1d3047;
   display: flex;
   flex: none;
-  gap: .25rem;
+  gap: .5rem;
   padding: .4rem clamp(.75rem, 3vw, 1.875rem);
   overflow-x: auto;
   scrollbar-width: thin;
@@ -16,29 +19,33 @@
 }
 
 html[data-theme="light"] .section-filters {
-  --section-filter-accent: #284665;
+  --section-filter-background: #ede8df;
+  --section-filter-border: #dbd4c7;
+  --section-filter-selected: #284665;
+  --section-filter-selected-ink: #fff;
 }
 
 .section-filters button {
   flex: none;
   min-height: 36px;
-  padding: .2rem .65rem;
+  padding: .2rem .75rem;
   color: inherit;
   font-size: .9375rem;
   white-space: nowrap;
-  background: transparent;
-  border: 0;
-  border-radius: .3rem;
+  background: var(--section-filter-background);
+  border: 1px solid var(--section-filter-border);
+  border-radius: .5rem;
 }
 
 .section-filters button:focus-visible {
-  outline: 2px solid var(--section-filter-accent);
+  outline: 2px solid currentColor;
   outline-offset: -2px;
 }
 
 .section-filters button[aria-pressed="true"] {
-  color: var(--section-filter-accent);
-  background: color-mix(in srgb, var(--section-filter-accent) 12%, transparent);
+  color: var(--section-filter-selected-ink);
+  background: var(--section-filter-selected);
+  border-color: transparent;
   font-weight: 700;
 }
 

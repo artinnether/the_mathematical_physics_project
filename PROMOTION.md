@@ -4,7 +4,7 @@ Use this checklist every time a new PDF, note, or exercise set is added.
 
 ## Publish Checklist
 
-1. Add the PDF to the site and make sure it appears in Latest publications.
+1. Add the PDF to the site and include it in the library.
 2. Add an entry to `tools/papers.json` with both languages' metadata, cover images, and the available PDF editions.
 3. Run `python3 tools/generate_topic_pages.py` so the topic page and `sitemap.xml` stay in sync.
 4. Link the resource card title to both generated topic pages using `data-href-en` and `data-href-es`. Use the topic page link when sharing a preview.

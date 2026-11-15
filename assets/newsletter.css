@@ -8,16 +8,11 @@
   padding: .45rem 1rem;
   border: 1px solid transparent;
   border-radius: .55rem;
-  background: #17674f;
-  color: #fff;
+  background: var(--project-green);
+  color: var(--project-on-green);
   font: 700 .875rem/1.25 system-ui, sans-serif;
   text-decoration: none;
   white-space: nowrap;
-}
-
-html[data-theme="dark"] .subscribe-cta {
-  background: #92ddbd;
-  color: #12382d;
 }
 
 .subscribe-cta:hover { filter: brightness(1.12); }
@@ -52,9 +47,6 @@ html[data-theme="dark"] .subscribe-cta {
 }
 
 .newsletter-card {
-  --newsletter-button: #243b52;
-  --newsletter-button-text: #fff;
-  --newsletter-success: #176443;
   --newsletter-error: #a02929;
   max-width: 44rem;
   margin: 0 auto;
@@ -63,9 +55,6 @@ html[data-theme="dark"] .subscribe-cta {
 }
 
 html[data-theme="dark"] .newsletter-card {
-  --newsletter-button: #b2c9e7;
-  --newsletter-button-text: #172a40;
-  --newsletter-success: #92dbb6;
   --newsletter-error: #ffb4b4;
 }
 
@@ -94,8 +83,8 @@ html[data-theme="dark"] .newsletter-card {
   min-height: 2.75rem;
   padding: .65rem 1.1rem;
   border-radius: .5rem;
-  background: var(--newsletter-button);
-  color: var(--newsletter-button-text);
+  background: var(--project-green);
+  color: var(--project-on-green);
   font-weight: 600;
 }
 
@@ -103,7 +92,7 @@ html[data-theme="dark"] .newsletter-card {
 .newsletter-fields button:disabled { cursor: wait; opacity: .7; }
 .newsletter-fields :focus-visible { outline: 2px solid #718db2; outline-offset: 3px; }
 .newsletter-status:not(:empty) { margin: .75rem 0 0; }
-.newsletter-status[data-state="success"] { color: var(--newsletter-success); }
+.newsletter-status[data-state="success"] { color: var(--project-green); }
 .newsletter-status[data-state="error"] { color: var(--newsletter-error); }
 
 @media (max-width: 480px) {

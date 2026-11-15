@@ -1,0 +1,54 @@
+#computation .proof-panel {
+  --proof-inset: clamp(16px, 3vw, 30px);
+  --proof-border: #728faa4d;
+  background: #242a31;
+  border: 1px solid var(--proof-border);
+  border-radius: 12px;
+  box-shadow: 0 10px 24px #07131f21;
+}
+
+html[data-theme=light] #computation .proof-panel {
+  background: #213343;
+}
+
+#computation .proof-code {
+  background: transparent;
+  padding: var(--proof-inset);
+  margin: 0;
+}
+
+#computation .proof-code .lean-top {
+  color: #ead0ac;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+#computation .proof-code pre {
+  margin: 16px 0 0;
+  padding: clamp(14px, 2.1vw, 22px);
+  font-size: clamp(.8rem, 1.35vw, .95rem);
+  line-height: 1.65;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+#computation .proof-actions {
+  margin-top: clamp(12px, 2vw, 20px);
+}
+
+#computation .proof-link {
+  color: #b9d9fc;
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+
+html[data-theme=light] #computation .proof-link {
+  color: #274765;
+}
+
+#computation .proof-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}

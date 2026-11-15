@@ -1,3 +1,14 @@
+:root {
+  --project-mint: #92ddbd;
+  --project-green: #17674f;
+  --project-on-green: #fff;
+}
+
+html[data-theme="dark"] {
+  --project-green: var(--project-mint);
+  --project-on-green: #12382d;
+}
+
 .project-navigation {
   display: flex;
   flex-wrap: wrap;
@@ -29,7 +40,7 @@
 
 .project-navigation .project-home-link {
   border: 1px solid currentColor;
-  color: #24635c;
+  color: var(--project-green);
   font-size: .875rem;
   font-weight: 600;
 }
@@ -38,10 +49,6 @@
   border-color: #444;
   background: #272727;
   color: #bbb;
-}
-
-:is(.lean-navigation, .animation-navigation, .reader-navigation) .project-home-link {
-  color: #89d0c1;
 }
 
 .project-navigation :is(.project-language, .project-home-link):hover {

@@ -1,0 +1,110 @@
+.section-filter-bar {
+  position: relative;
+  flex: none;
+  min-width: 0;
+}
+
+.section-filters {
+  --section-filter-accent: #b5cee9;
+  display: flex;
+  flex: none;
+  gap: .25rem;
+  padding: .4rem clamp(.75rem, 3vw, 1.875rem);
+  overflow-x: auto;
+  scrollbar-width: thin;
+  border-bottom: 1px solid #8884;
+}
+
+html[data-theme="light"] .section-filters {
+  --section-filter-accent: #284665;
+}
+
+.section-filters button {
+  flex: none;
+  min-height: 36px;
+  padding: .2rem .65rem;
+  color: inherit;
+  font-size: .9375rem;
+  white-space: nowrap;
+  background: transparent;
+  border: 0;
+  border-radius: .3rem;
+}
+
+.section-filters button:focus-visible {
+  outline: 2px solid var(--section-filter-accent);
+  outline-offset: -2px;
+}
+
+.section-filters button[aria-pressed="true"] {
+  color: var(--section-filter-accent);
+  background: color-mix(in srgb, var(--section-filter-accent) 12%, transparent);
+  font-weight: 700;
+}
+
+.filter-scroll {
+  position: absolute;
+  inset-block: 0;
+  display: grid;
+  place-items: center;
+  width: 2.15rem;
+  border: 0;
+  color: inherit;
+  background: #191919;
+  font-size: 1.35rem;
+}
+
+.filter-scroll[data-filter-scroll="-1"] {
+  inset-inline-start: 0;
+  box-shadow: 5px 0 8px #191919bd;
+}
+
+.filter-scroll[data-filter-scroll="1"] {
+  inset-inline-end: 0;
+  box-shadow: -5px 0 8px #191919bd;
+}
+
+html[data-theme="light"] .filter-scroll {
+  background: #faf8f3;
+}
+
+html[data-theme="light"] .filter-scroll[data-filter-scroll="-1"] {
+  box-shadow: 5px 0 8px #faf8f3bd;
+}
+
+html[data-theme="light"] .filter-scroll[data-filter-scroll="1"] {
+  box-shadow: -5px 0 8px #faf8f3bd;
+}
+
+body.welcome-active main > section[data-filtered-out],
+body.welcome-active .embed-welcome[data-filtered-out] {
+  display: none !important;
+}
+
+body.welcome-active main > section[data-flow-start] {
+  margin-top: 0 !important;
+  padding-top: 24px !important;
+  border-top: 0 !important;
+}
+
+body.welcome-active #curriculum .curriculum-frame {
+  display: block;
+  height: clamp(24rem, 75vh, 62.5rem);
+  min-height: 0;
+}
+
+@media (max-width: 768px) {
+  body.welcome-active #curriculum .curriculum-frame {
+    display: none !important;
+  }
+
+  body.welcome-active #curriculum .mobile-curriculum-pages {
+    display: block !important;
+  }
+
+  #curriculum .mobile-curriculum-pages img {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}

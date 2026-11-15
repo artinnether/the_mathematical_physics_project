@@ -199,7 +199,8 @@
     "slug": "lambda-phi4-zero-dimensional-feynman-diagrams",
     "lastmod": "2026-06-09",
     "pdfs": {
-      "es": "Expansion_Perturbativa_y_Diagramas_de_Feynman_en_el_Modelo_lambda_phi4_de_Dimension_Cero.pdf"
+      "es": "Expansion_Perturbativa_y_Diagramas_de_Feynman_en_el_Modelo_lambda_phi4_de_Dimension_Cero.pdf",
+      "en": "Zero_Dimensional_Lambda_Phi4_Perturbative_Expansion_and_Feynman_Diagrams_EN.pdf"
     },
     "en": {
       "title": "Perturbative Expansion and Feynman Diagrams in the Zero-Dimensional λϕ4 Model",
@@ -253,7 +254,8 @@
     "slug": "gauge-fixing-faddeev-popov",
     "lastmod": "2026-04-23",
     "pdfs": {
-      "es": "Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf"
+      "es": "Fijación_Gauge_en_la_Integral_de_Camino_y_el_Determinante_de_Faddeev_Popov.pdf",
+      "en": "Gauge_Fixing_and_the_Faddeev_Popov_Determinant_EN.pdf"
     },
     "en": {
       "title": "Gauge Fixing and Faddeev-Popov Determinant",
@@ -307,7 +309,8 @@
     "slug": "heuristic-dirac-equation",
     "lastmod": "2026-04-23",
     "pdfs": {
-      "es": "Forma Heurística de la Ecuación de Dirac.pdf"
+      "es": "Forma Heurística de la Ecuación de Dirac.pdf",
+      "en": "Heuristic_Form_of_the_Dirac_Equation_EN.pdf"
     },
     "en": {
       "title": "Heuristic Form of the Dirac Equation",
@@ -334,7 +337,8 @@
     "slug": "su2-lie-group",
     "lastmod": "2026-04-23",
     "pdfs": {
-      "es": "El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf"
+      "es": "El_grupo_SU2_como_grupo_de_Lie_y_Vision_Fisica.pdf",
+      "en": "The_Group_SU2_as_a_Lie_Group_EN.pdf"
     },
     "en": {
       "title": "The group SU(2) as a Lie group and Physical Perspective",
@@ -361,7 +365,8 @@
     "slug": "acausally-disconnected-regions-aqft",
     "lastmod": "2026-04-23",
     "pdfs": {
-      "es": "a.pdf"
+      "es": "a.pdf",
+      "en": "Acausally_Disconnected_Regions_in_Algebraic_Quantum_Field_Theory_EN.pdf"
     },
     "en": {
       "title": "Acausally Disconnected Regions in Algebraic Quantum Field Theory",
@@ -469,7 +474,8 @@
     "slug": "heisenberg-schrodinger-dirac-pictures",
     "lastmod": "2026-04-23",
     "pdfs": {
-      "es": "Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf"
+      "es": "Formulacion Matematica de las Imagenes de Heisenberg, Schrodinger y Dirac.pdf",
+      "en": "Mathematical_Formulation_of_the_Heisenberg_Schrodinger_and_Dirac_Pictures_EN.pdf"
     },
     "en": {
       "title": "Mathematical Formulation of the Heisenberg, Schrödinger and Dirac Pictures",
@@ -496,7 +502,8 @@
     "slug": "adm-hamiltonian-equations-general-relativity",
     "lastmod": "2026-04-23",
     "pdfs": {
-      "es": "epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf"
+      "es": "epsilon-Ecuaciones Hamiltonianas de ADM de la Relatividad General.pdf",
+      "en": "Epsilon_ADM_Hamiltonian_Equations_of_General_Relativity_EN.pdf"
     },
     "en": {
       "title": "ε-Hamiltonian ADM Equations of General Relativity",
@@ -577,7 +584,8 @@
     "slug": "dyson-series-vacuum-correlation-functions",
     "lastmod": "2026-05-27",
     "pdfs": {
-      "es": "Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf"
+      "es": "Relacion entre el Vacio Libre, el Vacio Interactuante, Serie de Dyson y las Funciones de Correlacion.pdf",
+      "en": "Free_and_Interacting_Vacua_Dyson_Series_and_Correlation_Functions_EN.pdf"
     },
     "en": {
       "title": "Free Vacuum, Interacting Vacuum, Dyson Series and Correlation Functions",

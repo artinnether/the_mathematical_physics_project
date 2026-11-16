@@ -94,6 +94,18 @@ body.welcome-active main > section[data-flow-start] {
   border-top: 0 !important;
 }
 
+#pdfs .library-thumb,
+#pdfs:not([data-flow-start]) #resourceGrid .resource-pill,
+#pdfs:not([data-flow-start]) #resourceGrid .resource-card > div:last-child {
+  display: none;
+}
+
+#pdfs[data-flow-start] .library-thumb {
+  display: block;
+  width: min(100%, 30rem);
+  margin: .85rem 0 .65rem;
+}
+
 body.welcome-active #curriculum .curriculum-frame {
   display: block;
   height: clamp(24rem, 75vh, 62.5rem);

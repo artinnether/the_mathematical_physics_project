@@ -177,7 +177,10 @@ animation.addEventListener('load', () => {
 history.scrollRestoration = 'manual';
 reader.hidden = false;
 for (const link of links) {
-  link.addEventListener('click', event => goTo(link.dataset.route, 'push', event.detail === 0));
+  link.addEventListener('click', event => {
+    const route = link.dataset.route;
+    goTo(route, 'push', event.detail === 0, route === 'pdfs' ? 'pdfs' : category);
+  });
 }
 for (const button of filterButtons) {
   button.addEventListener('click', () => {
@@ -249,7 +252,7 @@ function start() {
   document.documentElement.removeAttribute('data-language-pending');
   setLang();
   applyLocation();
-  reader.src = 'reader.html?v=stable-hover&lang=' + lang;
+  reader.src = 'reader.html?v=library-figures&lang=' + lang;
 }
 for (const button of document.querySelectorAll('[data-entry-language]')) {
   button.addEventListener('click', () => {

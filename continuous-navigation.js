@@ -252,7 +252,7 @@ function start() {
   document.documentElement.removeAttribute('data-language-pending');
   setLang();
   applyLocation();
-  reader.src = 'reader.html?v=library-figures&lang=' + lang;
+  reader.src = 'reader.html?v=library-figures-all&lang=' + lang;
 }
 for (const button of document.querySelectorAll('[data-entry-language]')) {
   button.addEventListener('click', () => {

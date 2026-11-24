@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gaussian integrals with squared tangent poles · Lean 4 | The Mathematical Physics Project</title>
+<meta name="description" content="An advanced Lean 4 formalization by Omar Corona Tejeda: Hadamard finite parts, Feynman boundary values, and Abel regularization of Gaussian integrals with double poles. Complete source and reproducible verification.">
+<link rel="canonical" href="https://artinnether.github.io/the_mathematical_physics_project/formalizations/gaussian-tangent-squared/">
+<link rel="stylesheet" href="../../assets/fonts/computer-modern.css"><link rel="stylesheet" href="case-study.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']},chtml:{matchFontHeight:false}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+</head><body><header class="site-header"><a class="project-home-button" href="../../#computation">The Mathematical Physics Project</a><button id="language" type="button" aria-label="Change language">English</button></header>
+<main><div class="intro"><p class="eyebrow" data-es="FORMALIZACIÓN · ANÁLISIS MATEMÁTICO" data-en="FORMALIZATION · MATHEMATICAL ANALYSIS">FORMALIZACIÓN · ANÁLISIS MATEMÁTICO</p>
+<h1 data-es="Integrales gaussianas con polos dobles de la tangente" data-en="Gaussian integrals with squared tangent poles">Integrales gaussianas con polos dobles de la tangente</h1>
+<p class="lead" data-es="Un caso completo de formalización en Lean 4: del enunciado informal a la parte finita de Hadamard, el límite de Feynman y la regularización de Abel." data-en="A complete Lean 4 formalization: from an informal statement to the Hadamard finite part, the Feynman boundary value, and Abel regularization.">Un caso completo de formalización en Lean 4: del enunciado informal a la parte finita de Hadamard, el límite de Feynman y la regularización de Abel.</p>
+<p class="author">Omar Corona Tejeda <span>·</span> Lean 4 + Mathlib</p>
+<div class="actions"><a class="primary" href="GaussianTangentSquaredGolden.zip" download data-es="Descargar proyecto completo" data-en="Download complete project">Descargar proyecto completo</a><a href="#statement" data-es="Leer el enunciado matemático" data-en="Read the mathematical statement">Leer el enunciado matemático</a></div></div>
+<section id="statement" class="mathematical-statement" aria-labelledby="statement-title">
+<p class="eyebrow" data-es="EL PROBLEMA" data-en="THE PROBLEM">EL PROBLEMA</p>
+<h2 id="statement-title" data-es="Enunciado matemático" data-en="Mathematical statement">Enunciado matemático</h2>
+<p data-es="El objetivo es construir y evaluar una parte finita para integrales gaussianas con polos dobles, y relacionarla con dos regularizaciones de las integrales originales." data-en="The objective is to construct and evaluate a finite part for Gaussian integrals with double poles, and relate it to two regularizations of the original integrals.">El objetivo es construir y evaluar una parte finita para integrales gaussianas con polos dobles, y relacionarla con dos regularizaciones de las integrales originales.</p>
+<h3 data-es="Hipótesis y definiciones" data-en="Assumptions and definitions">Hipótesis y definiciones</h3>
+<p data-es="Sean \(\alpha&gt;0\) y \(b&gt;0\) números reales. Fijemos estos parámetros y definamos" data-en="Let \(\alpha&gt;0\) and \(b&gt;0\) be real numbers. Fix these parameters and define">Sean \(\alpha&gt;0\) y \(b&gt;0\) números reales. Fijemos estos parámetros y definamos</p>
+<div class="statement-equation">\[\theta=\arctan b,\qquad D=1+b^2,\qquad w_\alpha(x)=e^{-\alpha x^2},\]</div>
+<div class="statement-equation">\[q_b(x)=\frac{\cos^4 x}{\bigl(\sin^2 x-b^2\cos^2 x\bigr)^2}.\]</div>
+<p data-es="Cuando la tangente está definida y fuera de los polos, \(q_b(x)=1/(\tan^2 x-b^2)^2\). La expresión anterior se extiende por cero en las asíntotas de la tangente. Sus polos dobles están en \(k\pi\pm\theta\), con \(k\in\mathbb Z\); los valores asignados en los polos no afectan las integrales truncadas siguientes." data-en="Where the tangent is defined and away from the poles, \(q_b(x)=1/(\tan^2 x-b^2)^2\). The expression above extends by zero across the tangent asymptotes. Its double poles lie at \(k\pi\pm\theta\), with \(k\in\mathbb Z\); values assigned at the poles do not affect the following truncated integrals.">Cuando la tangente está definida y fuera de los polos, \(q_b(x)=1/(\tan^2 x-b^2)^2\). La expresión anterior se extiende por cero en las asíntotas de la tangente. Sus polos dobles están en \(k\pi\pm\theta\), con \(k\in\mathbb Z\); los valores asignados en los polos no afectan las integrales truncadas siguientes.</p>
+<p data-es="Para \(0&lt;\delta&lt;\min\{\theta,\pi/2-\theta\}\) y \(k\in\mathbb Z\), definamos" data-en="For \(0&lt;\delta&lt;\min\{\theta,\pi/2-\theta\}\) and \(k\in\mathbb Z\), define">Para \(0&lt;\delta&lt;\min\{\theta,\pi/2-\theta\}\) y \(k\in\mathbb Z\), definamos</p>
+<div class="statement-equation">\[\begin{aligned}
+C_k(\delta)={}&amp;\int_{-\pi/2}^{-\theta-\delta}w_\alpha(k\pi+t)q_b(k\pi+t)\,dt\\
+&amp;+\int_{-\theta+\delta}^{\theta-\delta}w_\alpha(k\pi+t)q_b(k\pi+t)\,dt\\
+&amp;+\int_{\theta+\delta}^{\pi/2}w_\alpha(k\pi+t)q_b(k\pi+t)\,dt,
+\end{aligned}\]</div>
+<div class="statement-equation">\[J_N(\delta)=\sum_{k=-N}^{N}C_k(\delta),\qquad N\in\mathbb N,\]</div>
+<div class="statement-equation">\[M_\alpha(b)=\sum_{k\in\mathbb Z}\bigl[w_\alpha(k\pi+\theta)+w_\alpha(k\pi-\theta)\bigr],\]</div>
+<div class="statement-equation">\[\begin{aligned}
+L_\alpha(b)=\frac1D\sum_{k\in\mathbb Z}\bigl[&amp;-2\alpha(k\pi+\theta)w_\alpha(k\pi+\theta)\\
+&amp;+2\alpha(k\pi-\theta)w_\alpha(k\pi-\theta)\bigr],
+\end{aligned}\]</div>
+<div class="statement-equation">\[c_n(b)=\frac{1+3b^2}{b^3}\sin(2n\theta)-\frac{2n}{b^2}\cos(2n\theta),\qquad n\ge1.\]</div>
+<p class="statement-instruction" data-es="Demuestre los cuatro apartados siguientes." data-en="Prove the following four parts.">Demuestre los cuatro apartados siguientes.</p>
+<div class="statement-part" id="statement-a">
+<h3 data-es="(a) Existencia de la parte finita y comportamiento asintótico" data-en="(a) Existence of the finite part and asymptotic behavior">(a) Existencia de la parte finita y comportamiento asintótico</h3>
+<p data-es="Demuestre que la serie que define \(M_\alpha(b)\) converge absolutamente y que \(M_\alpha(b)&gt;0\). Para cada \(\delta\) admisible, demuestre que existe un valor real finito \(J(\delta)\) tal que" data-en="Prove that the series defining \(M_\alpha(b)\) converges absolutely and that \(M_\alpha(b)&gt;0\). For every admissible \(\delta\), prove that there is a finite real value \(J(\delta)\) such that">Demuestre que la serie que define \(M_\alpha(b)\) converge absolutamente y que \(M_\alpha(b)&gt;0\). Para cada \(\delta\) admisible, demuestre que existe un valor real finito \(J(\delta)\) tal que</p>
+<div class="statement-equation">\[\lim_{N\to\infty}J_N(\delta)=J(\delta).\]</div>
+<p data-es="Demuestre que existe la parte finita de Hadamard, definida por el límite lateral derecho de las integrales truncadas originales," data-en="Prove existence of the Hadamard finite part, defined by the right-sided limit of the original truncated integrals,">Demuestre que existe la parte finita de Hadamard, definida por el límite lateral derecho de las integrales truncadas originales,</p>
+<div class="statement-equation">\[H_\alpha(b)=\lim_{\delta\to0^+}\left[J(\delta)-\frac{M_\alpha(b)}{2b^2D^2\delta}\right].\]</div>
+<p data-es="Demuestre también" data-en="Also prove">Demuestre también</p>
+<div class="statement-equation">\[\lim_{\delta\to0^+}J(\delta)=+\infty,\qquad\lim_{\delta\to0^+}\delta J(\delta)=\frac{M_\alpha(b)}{2b^2D^2}.\]</div>
+</div>
+<div class="statement-part" id="statement-b">
+<h3 data-es="(b) Evaluación espectral y derivadas respecto del parámetro" data-en="(b) Spectral evaluation and parameter derivatives">(b) Evaluación espectral y derivadas respecto del parámetro</h3>
+<p data-es="Demuestre la convergencia absoluta de la serie espectral gaussiana y evalúe la misma parte finita del apartado (a):" data-en="Prove absolute convergence of the Gaussian spectral series and evaluate the same finite part from part (a):">Demuestre la convergencia absoluta de la serie espectral gaussiana y evalúe la misma parte finita del apartado (a):</p>
+<div class="statement-equation">\[H_\alpha(b)=\frac{\sqrt{\pi/\alpha}}{D^2}\left[1+\sum_{n=1}^{\infty}c_n(b)e^{-n^2/\alpha}\right].\]</div>
+<p data-es="Para \(\alpha&gt;0\) fijo y \(y&gt;0\), definamos" data-en="For fixed \(\alpha&gt;0\) and \(y&gt;0\), define">Para \(\alpha&gt;0\) fijo y \(y&gt;0\), definamos</p>
+<div class="statement-equation">\[P_\alpha(y)=-\frac{\sqrt{\pi/\alpha}}{1+y^2}\left[1+\frac2y\sum_{n=1}^{\infty}\sin(2n\arctan y)e^{-n^2/\alpha}\right].\]</div>
+<p data-es="Demuestre la convergencia absoluta de la serie que define \(L_\alpha(b)\) y las identidades" data-en="Prove absolute convergence of the series defining \(L_\alpha(b)\) and the identities">Demuestre la convergencia absoluta de la serie que define \(L_\alpha(b)\) y las identidades</p>
+<div class="statement-equation">\[P_\alpha^{\prime}(b)=2bH_\alpha(b),\qquad M_\alpha^{\prime}(b)=L_\alpha(b).\]</div>
+</div>
+<div class="statement-part" id="statement-c">
+<h3 data-es="(c) Integral compleja y límite de Feynman" data-en="(c) Complex integral and Feynman boundary value">(c) Integral compleja y límite de Feynman</h3>
+<p data-es="Para \(\varepsilon&gt;0\), sea la integral compleja de Lebesgue sobre toda la recta real" data-en="For \(\varepsilon&gt;0\), let the complex Lebesgue integral over the whole real line be">Para \(\varepsilon&gt;0\), sea la integral compleja de Lebesgue sobre toda la recta real</p>
+<div class="statement-equation">\[F_{\alpha,b}(\varepsilon)=\int_{\mathbb R}\frac{w_\alpha(x)\cos^4 x}{\bigl[\sin^2 x-b^2\cos^2 x+i\varepsilon\cos^2 x\bigr]^2}\,dx,\qquad i^2=-1.\]</div>
+<p data-es="Demuestre la integrabilidad absoluta para todo \(\varepsilon&gt;0\) y el límite" data-en="Prove absolute integrability for every \(\varepsilon&gt;0\) and the limit">Demuestre la integrabilidad absoluta para todo \(\varepsilon&gt;0\) y el límite</p>
+<div class="statement-equation">\[\lim_{\varepsilon\to0^+}F_{\alpha,b}(\varepsilon)=H_\alpha(b)+iQ_\alpha(b),\]</div>
+<p data-es="donde la parte real se interpreta como un número complejo y" data-en="where the real part is viewed as a complex number and">donde la parte real se interpreta como un número complejo y</p>
+<div class="statement-equation">\[Q_\alpha(b)=\frac{\pi(1+3b^2)M_\alpha(b)}{4b^3D^2}-\frac{\pi L_\alpha(b)}{4b^2D}.\]</div>
+</div>
+<div class="statement-part" id="statement-d">
+<h3 data-es="(d) Regularización de Abel" data-en="(d) Abel regularization">(d) Regularización de Abel</h3>
+<p data-es="Para \(0&lt;r&lt;1\), definamos" data-en="For \(0&lt;r&lt;1\), define">Para \(0&lt;r&lt;1\), definamos</p>
+<div class="statement-equation">\[K_{b,r}(x)=\frac1{D^2}\left[1+\sum_{n=1}^{\infty}r^nc_n(b)\cos(2nx)\right],\]</div>
+<div class="statement-equation">\[B_{\alpha,b}(r)=\int_{\mathbb R}w_\alpha(x)K_{b,r}(x)\,dx.\]</div>
+<p data-es="Demuestre la integrabilidad absoluta para todo \(0&lt;r&lt;1\), la evaluación exacta" data-en="Prove absolute integrability for every \(0&lt;r&lt;1\), the exact evaluation">Demuestre la integrabilidad absoluta para todo \(0&lt;r&lt;1\), la evaluación exacta</p>
+<div class="statement-equation">\[B_{\alpha,b}(r)=\frac{\sqrt{\pi/\alpha}}{D^2}\left[1+\sum_{n=1}^{\infty}r^nc_n(b)e^{-n^2/\alpha}\right],\]</div>
+<p data-es="y la convergencia a la misma parte finita obtenida en (a):" data-en="and convergence to the same finite part established in (a):">y la convergencia a la misma parte finita obtenida en (a):</p>
+<div class="statement-equation">\[\lim_{r\to1^-}B_{\alpha,b}(r)=H_\alpha(b).\]</div>
+</div>
+<div class="statement-requirement">
+<h3 data-es="Condición común a los cuatro apartados" data-en="A condition shared by all four parts">Condición común a los cuatro apartados</h3>
+<p data-es="Use los mismos testigos \(J\) y \(H_\alpha(b)\) en todo el argumento. Las convergencias e identificaciones deben demostrarse para las integrales originales, sin asignarles por definición los valores deseados ni introducir las conclusiones como hipótesis adicionales. Se permiten definiciones equivalentes y cambios de variable justificados. En los coeficientes, los índices naturales se interpretan como números reales." data-en="Use the same witnesses \(J\) and \(H_\alpha(b)\) throughout. Convergence and identification must be proved for the original integrals, without assigning them the desired values by definition or introducing conclusions as additional hypotheses. Equivalent definitions and justified changes of variable are allowed. Natural indices in the coefficients are interpreted as real numbers.">Use los mismos testigos \(J\) y \(H_\alpha(b)\) en todo el argumento. Las convergencias e identificaciones deben demostrarse para las integrales originales, sin asignarles por definición los valores deseados ni introducir las conclusiones como hipótesis adicionales. Se permiten definiciones equivalentes y cambios de variable justificados. En los coeficientes, los índices naturales se interpretan como números reales.</p>
+</div>
+<div class="source-links"><a href="source/Prompt.txt" data-es="Leer el enunciado original (inglés)" data-en="Read the original statement (English)">Leer el enunciado original (inglés)</a>
+<a href="source/TangentSquared/Specification.lean" data-es="Consultar el enunciado formal en Lean" data-en="Read the formal Lean specification">Consultar el enunciado formal en Lean</a>
+</div>
+</section>
+<section aria-labelledby="results"><h2 id="results" data-es="Qué demuestra el proyecto" data-en="What the project proves">Qué demuestra el proyecto</h2><div class="results">
+<article><h3 data-es="Parte finita de Hadamard" data-en="Hadamard finite part">Parte finita de Hadamard</h3><p data-es="Existencia del límite de las integrales truncadas, sustracción explícita de la divergencia y evaluación mediante una serie espectral gaussiana." data-en="Existence of the truncated-integral limit, explicit subtraction of the divergence, and evaluation through a Gaussian spectral series.">Existencia del límite de las integrales truncadas, sustracción explícita de la divergencia y evaluación mediante una serie espectral gaussiana.</p></article>
+<article><h3 data-es="Límite de Feynman" data-en="Feynman boundary value">Límite de Feynman</h3><p data-es="Integrabilidad absoluta para cada regulador positivo y límite complejo de las integrales originales, con identificación de sus partes real e imaginaria." data-en="Absolute integrability for every positive regulator and the complex boundary value of the original integrals, identifying both real and imaginary parts.">Integrabilidad absoluta para cada regulador positivo y límite complejo de las integrales originales, con identificación de sus partes real e imaginaria.</p></article>
+<article><h3 data-es="Regularización de Abel" data-en="Abel regularization">Regularización de Abel</h3><p data-es="Evaluación exacta para 0 &lt; r &lt; 1 y convergencia a la misma parte finita. Incluye convergencia de series, asíntotas y derivadas respecto de los parámetros." data-en="Exact evaluation for 0 &lt; r &lt; 1 and convergence to the same finite part, including series convergence, asymptotics, and parameter derivatives.">Evaluación exacta para 0 &lt; r &lt; 1 y convergencia a la misma parte finita. Incluye convergencia de series, asíntotas y derivadas respecto de los parámetros.</p></article></div></section>
+<section aria-labelledby="proof"><h2 id="proof" data-es="Cómo está organizada la demostración" data-en="How the proof is organized">Cómo está organizada la demostración</h2>
+<ol class="steps"><li data-es="Definir el núcleo, los cortes alrededor de los polos y las integrales originales; fijar el enunciado completo." data-en="Define the kernel, cutoffs around the poles, and original integrals; fix the full specification.">Definir el núcleo, los cortes alrededor de los polos y las integrales originales; fijar el enunciado completo.</li><li data-es="Descomponer el núcleo, controlar las sumas gaussianas y construir los límites mediante estimaciones y convergencia dominada." data-en="Decompose the kernel, control Gaussian sums, and construct the limits using estimates and dominated convergence.">Descomponer el núcleo, controlar las sumas gaussianas y construir los límites mediante estimaciones y convergencia dominada.</li><li data-es="Identificar la serie espectral, demostrar las derivadas y reunir todos los resultados en el teorema final." data-en="Identify the spectral series, prove the derivative identities, and assemble all results in the final theorem.">Identificar la serie espectral, demostrar las derivadas y reunir todos los resultados en el teorema final.</li><li data-es="Compilar el proyecto y auditar los axiomas transitivos del teorema final y de los principales resultados intermedios." data-en="Compile the project and audit the transitive axioms of the final theorem and principal intermediate results.">Compilar el proyecto y auditar los axiomas transitivos del teorema final y de los principales resultados intermedios.</li></ol>
+<p><a href="source/Walkthrough.txt" data-es="Leer la explicación paso a paso (inglés)" data-en="Read the step-by-step proof walkthrough">Leer la explicación paso a paso (inglés)</a></p>
+<details><summary data-es="Ver el teorema final en Lean" data-en="View the final Lean theorem">Ver el teorema final en Lean</summary><pre><code>import TangentSquared.Specification
+import TangentSquared.Outer
+import TangentSquared.Asymptotics
+import TangentSquared.Abel
+import TangentSquared.BoundaryEvaluation
+
+namespace TangentSquaredTask
+
+theorem gaussian_tangent_squared_poles (α b : ℝ) (hα : 0 &lt; α) (hb : 0 &lt; b) :
+    SquaredPoleClaim α b := by
+  refine ⟨outerValue α b,finitePartValue α b,poleMass_summable α b hα hb,
+    poleMass_pos α b hα hb,?_,hadamard_tendsto α b hα hb,
+    outerValue_tendsto_atTop α b hα hb,outerValue_scaled_tendsto α b hα hb,
+    spectral_summable α b hα,rfl,principalValue_hasDerivAt α b hα hb,
+    massDerivative_summable α b hα hb,poleMass_hasDerivAt α b hα hb,
+    (fun ε hε =&gt; feynman_integrable α b ε hα hε),feynman_tendsto_value α b hα hb,
+    (fun r hr hr1 =&gt; abel_integrable α b r hα hr hr1),
+    (fun r hr hr1 =&gt; abelIntegral_eq α b r hα hr hr1),abel_tendsto α b hα⟩
+  intro δ hδ hd
+  exact truncation_tendsto α b δ hα hb hδ (lt_min_iff.mp hd).1 (lt_min_iff.mp hd).2
+
+end TangentSquaredTask
+</code></pre></details>
+<div class="source-links"><a href="source/TangentSquared/Specification.lean" data-es="Enunciado formal" data-en="Formal specification">Enunciado formal</a><a href="source/TangentSquared/Final.lean" data-es="Teorema final" data-en="Final theorem">Teorema final</a><a href="source/Audit.lean" data-es="Auditoría de axiomas" data-en="Axiom audit">Auditoría de axiomas</a><a href="https://github.com/artinnether/the_mathematical_physics_project/tree/main/formalizations/gaussian-tangent-squared/source" data-es="Explorar los 87 archivos Lean" data-en="Browse all 87 Lean source files">Explorar los 87 archivos Lean</a></div></section>
+<section aria-labelledby="verification"><h2 id="verification" data-es="Verificación y reproducción" data-en="Verification and reproduction">Verificación y reproducción</h2>
+<p data-es="El proyecto incluye el enunciado, las fuentes, ocho criterios de evaluación, la explicación y los registros de compilación y auditoría. Mathlib es una dependencia externa; el ZIP no incluye sus archivos compilados." data-en="The project includes the statement, sources, eight evaluation criteria, walkthrough, and build and audit logs. Mathlib is an external dependency; its compiled files are not included in the ZIP.">El proyecto incluye el enunciado, las fuentes, ocho criterios de evaluación, la explicación y los registros de compilación y auditoría. Mathlib es una dependencia externa; el ZIP no incluye sus archivos compilados.</p>
+<dl><dt>Lean</dt><dd>v4.33.0-rc1</dd><dt>Mathlib</dt><dd class="revision">9944fe2973b8dc0b86949101ed98232c07cd54a0</dd><dt data-es="Axiomas auditados" data-en="Audited axioms">Axiomas auditados</dt><dd>propext · Classical.choice · Quot.sound</dd></dl>
+<p data-es="Con una instalación de Lean y un paquete de Mathlib de la revisión indicada, ejecuta desde la carpeta del proyecto:" data-en="With Lean installed and a Mathlib bundle of the indicated revision, run from the project directory:">Con una instalación de Lean y un paquete de Mathlib de la revisión indicada, ejecuta desde la carpeta del proyecto:</p>
+<pre><code>python3 configure_mathlib.py --mathlib /path/to/mathlib4
+lake --wfail build TangentSquared
+lake env lean -DwarningAsError=true TangentSquared/Final.lean
+lake env lean -DwarningAsError=true Audit.lean</code></pre>
+<p class="note" data-es="La verificación registrada utiliza un paquete local de Mathlib sin metadatos Git; el informe documenta esta limitación de procedencia. Los registros publicados sustituyen únicamente las rutas locales de la máquina por marcadores." data-en="The recorded verification uses a local Mathlib bundle without Git metadata; the report documents this provenance limitation. Published logs replace only machine-local paths with placeholders.">La verificación registrada utiliza un paquete local de Mathlib sin metadatos Git; el informe documenta esta limitación de procedencia. Los registros publicados sustituyen únicamente las rutas locales de la máquina por marcadores.</p>
+<div class="source-links"><a href="source/README.md">README</a><a href="source/Verification.json" data-es="Informe de verificación" data-en="Verification report">Informe de verificación</a><a href="source/clean-build.log" data-es="Registro de compilación" data-en="Build log">Registro de compilación</a><a href="source/clean-audit.log" data-es="Registro de axiomas" data-en="Axiom log">Registro de axiomas</a></div></section>
+</main><footer><a href="../../#computation" data-es="Volver a Formalización y código" data-en="Back to Formalization & code">Volver a Formalización y código</a><p>Omar Corona Tejeda · The Mathematical Physics Project</p></footer>
+<script>const qs=new URLSearchParams(location.search);function setLanguage(lang){document.documentElement.lang=lang;localStorage.setItem('tmpp-workspace-lang',lang);localStorage.setItem('tmpp-lang',lang);const translated=Array.from(document.querySelectorAll('[data-es]'));if(window.MathJax?.typesetClear)window.MathJax.typesetClear(translated);translated.forEach(el=>{el.textContent=el.dataset[lang]});if(window.MathJax?.typesetPromise)window.MathJax.typesetPromise(translated).catch(console.error);document.getElementById('language').textContent=lang==='es'?'English':'Español';qs.set('lang',lang);history.replaceState(null,'','?'+qs.toString()+location.hash)}document.getElementById('language').addEventListener('click',()=>setLanguage(document.documentElement.lang==='es'?'en':'es'));setLanguage(qs.get('lang')==='en'?'en':'es');</script></body></html>

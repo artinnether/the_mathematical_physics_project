@@ -1,0 +1,5 @@
+Bundle has no Git metadata; confirm externally that its revision is 9944fe2973b8dc0b86949101ed98232c07cd54a0
+Configured Mathlib: <installed-pinned-mathlib-bundle>
+Pinned revision: 9944fe2973b8dc0b86949101ed98232c07cd54a0
+Toolchain: leanprover/lean4:v4.33.0-rc1
+Dependency cache: <installed-pinned-mathlib-bundle>/.lake/packages

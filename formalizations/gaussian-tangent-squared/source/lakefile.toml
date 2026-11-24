@@ -1,0 +1,14 @@
+name = "gaussian_tangent_squared_poles"
+version = "0.1.0"
+defaultTargets = ["TangentSquared"]
+[[lean_lib]]
+name = "TuringTask"
+[[lean_lib]]
+name = "SimpleTangent"
+[[lean_lib]]
+name = "ShiftedCosine"
+[[lean_lib]]
+name = "TangentSquared"
+[[require]]
+name = "mathlib"
+path = "/opt/mathlib4"

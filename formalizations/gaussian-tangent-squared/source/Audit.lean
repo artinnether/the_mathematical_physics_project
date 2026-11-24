@@ -1,0 +1,7 @@
+import TangentSquared.Final
+#print axioms TangentSquaredTask.gaussian_tangent_squared_poles
+#print axioms TangentSquaredTask.hadamard_tendsto
+#print axioms TangentSquaredTask.principalValue_hasDerivAt
+#print axioms TangentSquaredTask.poleMass_hasDerivAt
+#print axioms TangentSquaredTask.feynman_tendsto_value
+#print axioms TangentSquaredTask.abel_tendsto

@@ -1,0 +1,7 @@
+import SimpleTangent.FeynmanLimit
+import SimpleTangent.SimpleCosine
+#print axioms TangentShiftTask.kernel_fourier
+#print axioms TangentShiftTask.feynmanIntegral_eq
+#print axioms TangentShiftTask.feynman_tendsto_boundary
+#print axioms ShiftedCosineTask.simple_cut_tendsto_value
+#print axioms ShiftedCosineTask.simple_regulated_integral_tendsto

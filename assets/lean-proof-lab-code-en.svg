@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+<title id="title">Lean code: a standalone arithmetic example</title><desc id="desc">A syntax-highlighted Lean proof and its tactic goals on a dark background.</desc>
+<rect width="960" height="540" fill="#14191f"/>
+<g font-family="ui-monospace,SFMono-Regular,Consolas,monospace">
+<text x="55" y="59" fill="#a9d9c1" font-size="23" letter-spacing="2.5">LEAN 4 / PROOF LAB</text>
+<path d="M55 86H905" stroke="#303b47" stroke-width="1"/>
+<path d="M659 124V413" stroke="#303b47" stroke-width="1"/>
+<g fill="#657180" font-size="19"><text x="29" y="164">1</text><text x="29" y="210">2</text><text x="29" y="270">3</text><text x="29" y="323">4</text><text x="29" y="376">5</text></g>
+<g font-size="28" fill="#dce5ef" xml:space="preserve">
+<text x="65" y="164"><tspan fill="#bfaff8">example</tspan> (a b : <tspan fill="#bfaff8">Nat</tspan>) :</text>
+<text x="65" y="210">  (a + b) + 0 = b + a := <tspan fill="#bfaff8">by</tspan></text>
+<text x="65" y="270">  <tspan fill="#8db6e3">have</tspan> h := Nat.add_comm a b</text>
+<text x="65" y="323">  <tspan fill="#8db6e3">rw</tspan> [Nat.add_zero]</text>
+<text x="65" y="376">  <tspan fill="#a9d9c1">exact</tspan> h</text>
+</g>
+<path d="M100 395H247" stroke="#a9d9c1" stroke-width="2" opacity=".55"/>
+<rect x="254" y="353" width="13" height="27" fill="#bfaff8" opacity=".85"/>
+<text x="694" y="146" fill="#8d9bab" font-size="19" letter-spacing="2">GOALS</text>
+<text x="694" y="181" fill="#dce5ef" font-size="22">a b : Nat</text>
+<text x="694" y="213" fill="#bfaff8" font-size="16">rw [Nat.add_zero]</text>
+<path d="M694 235H905" stroke="#303b47"/>
+<g fill="#a9d9c1" font-size="25"><text x="694" y="279">⊢ a + b</text><text x="694" y="314" xml:space="preserve">  = b + a</text></g>
+<text x="694" y="350" fill="#8d9bab" font-size="18">↓ exact h</text>
+<text x="694" y="390" fill="#a9d9c1" font-size="19">0 goals remaining</text>
+<path d="M55 445H905" stroke="#303b47"/>
+<g font-size="22"><text x="65" y="491" fill="#8db6e3">have</text><text x="184" y="491" fill="#62758a">→</text><text x="235" y="491" fill="#8db6e3">rw</text><text x="461" y="491" fill="#62758a">→</text><text x="512" y="491" fill="#a9d9c1">exact</text></g>
+</g></svg>

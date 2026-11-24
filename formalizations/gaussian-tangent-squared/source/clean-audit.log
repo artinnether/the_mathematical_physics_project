@@ -1,0 +1,6 @@
+'TangentSquaredTask.gaussian_tangent_squared_poles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TangentSquaredTask.hadamard_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TangentSquaredTask.principalValue_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TangentSquaredTask.poleMass_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TangentSquaredTask.feynman_tendsto_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TangentSquaredTask.abel_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]

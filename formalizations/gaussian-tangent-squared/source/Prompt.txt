@@ -1,0 +1,65 @@
+Gaussian integrals with squared shifted tangent poles
+
+Let α>0 and b>0 be real numbers, set θ=arctan(b), D=1+b² and wα(x)=exp(−αx²), and define
+
+q_b(x)=cos⁴(x)/(sin²(x)−b²cos²(x))².
+
+Away from its poles this is 1/(tan²(x)−b²)², extended by zero across the tangent asymptotes; its double poles are kπ±θ for k∈ℤ, and arbitrary values at these poles do not affect the truncated integrals below.
+
+For 0<δ<min(θ,π/2−θ), define
+
+C_k(δ)=∫_{−π/2}^{−θ−δ} wα(kπ+t)q_b(kπ+t) dt
+       +∫_{−θ+δ}^{θ−δ} wα(kπ+t)q_b(kπ+t) dt
+       +∫_{θ+δ}^{π/2} wα(kπ+t)q_b(kπ+t) dt,
+
+J_N(δ)=Σ_{k=−N}^{N}C_k(δ),
+
+Mα(b)=Σ_{k∈ℤ}[wα(kπ+θ)+wα(kπ−θ)],
+
+Lα(b)=Σ_{k∈ℤ}[−2α(kπ+θ)wα(kπ+θ)+2α(kπ−θ)wα(kπ−θ)]/D,
+
+c_n(b)=(1+3b²)sin(2nθ)/b³−2n cos(2nθ)/b²   (n≥1).
+
+Prove the following four parts in Lean.
+
+(a) Prove absolute convergence of the series defining Mα(b) and Mα(b)>0; prove that J_N(δ) tends to a finite real value J(δ) as N→∞ for every admissible δ, and prove existence of the actual right-sided Hadamard finite-part limit
+
+Hα(b)=lim_{δ→0+}[J(δ)−Mα(b)/(2b²D²δ)].
+
+Prove also J(δ)→+∞ and δJ(δ)→Mα(b)/(2b²D²) as δ→0+.
+
+(b) Prove absolute convergence of the Gaussian spectral series and evaluate the same finite part from (a):
+
+Hα(b)=√(π/α)/D² [1+Σ_{n=1}^{∞}c_n(b)exp(−n²/α)].
+
+For fixed α>0 define, for y>0,
+
+Pα(y)=−√(π/α)/(1+y²) [1+(2/y)Σ_{n=1}^{∞}sin(2n arctan y)exp(−n²/α)].
+
+Prove Pα′(b)=2bHα(b), prove absolute convergence of the series defining Lα(b), and prove Mα′(b)=Lα(b).
+
+(c) For ε>0 define the actual whole-line complex Lebesgue integral
+
+Fα,b(ε)=∫_ℝ wα(x)cos⁴(x)/[sin²(x)−b²cos²(x)+iεcos²(x)]² dx,
+
+where i²=−1; prove absolute Lebesgue integrability for every ε>0 and prove
+
+lim_{ε→0+}Fα,b(ε)=(Hα(b):ℂ)+iQα(b),
+
+Qα(b)=π(1+3b²)Mα(b)/(4b³D²)−πLα(b)/(4b²D).
+
+(d) For 0<r<1 define
+
+K_b,r(x)=[1+Σ_{n=1}^{∞}rⁿc_n(b)cos(2nx)]/D²,
+
+Bα,b(r)=∫_ℝ wα(x)K_b,r(x) dx.
+
+Prove absolute Lebesgue integrability for every 0<r<1, prove the exact finite-r evaluation
+
+Bα,b(r)=√(π/α)/D² [1+Σ_{n=1}^{∞}rⁿc_n(b)exp(−n²/α)],
+
+and prove lim_{r→1−}Bα,b(r)=Hα(b) for the same actual finite part established in (a).
+
+Use common witnesses J and H throughout; the convergence and identification claims must hold for the original integrals above, not quantities assigned the desired values by definition, and no required conclusion may be supplied as an additional hypothesis. Equivalent definitions and justified changes of variable are acceptable. Use real arithmetic in the coefficients, converting natural indices to ℝ before operations; indexing n≥1 by m+1 with m∈ℕ is acceptable.
+
+Use Lean v4.33.0-rc1 and Mathlib revision 9944fe2973b8dc0b86949101ed98232c07cd54a0. Use an existing installed pinned Mathlib bundle, including /opt/mathlib4 when supplied, and document the configuration used. Submit a single ZIP containing the complete project sources, lakefile, manifest, toolchain, a step-by-step explanation and actual local verification logs. All mathematical claims must be proved without sorry, admit, sorryAx, native_decide or added analytic axioms; the permitted foundational axioms are propext, Classical.choice and Quot.sound. Include an audit of the final theorem's axioms and report the verification commands actually run.

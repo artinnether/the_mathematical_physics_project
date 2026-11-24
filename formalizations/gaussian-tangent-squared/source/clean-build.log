@@ -1,0 +1,83 @@
+✔ [3106/3170] Built TuringTask.Basic (14s)
+ℹ [3107/3170] Built TuringTask.Series (3.9s)
+info: TuringTask/Series.lean:29:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [3108/3170] Built TuringTask.GaussianFourier (4.1s)
+✔ [3109/3170] Built TuringTask.CotangentBoundary (4.3s)
+✔ [3110/3170] Built TuringTask.PoleOrientation (4.1s)
+✔ [3111/3170] Built SimpleTangent.Basic (4.1s)
+✔ [3112/3170] Built ShiftedCosine.Basic (4.1s)
+ℹ [3113/3170] Built TuringTask.OuterTruncation (5.1s)
+info: TuringTask/OuterTruncation.lean:72:99: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: TuringTask/OuterTruncation.lean:86:99: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [3114/3170] Built SimpleTangent.Series (3.6s)
+✔ [3115/3170] Built SimpleTangent.ComplexSeries (3.7s)
+✔ [3116/3170] Built TuringTask.Periodization (3.5s)
+✔ [3117/3170] Built SimpleTangent.Abel (3.6s)
+✔ [3118/3170] Built SimpleTangent.Mass (3.6s)
+✔ [3119/3170] Built TuringTask.PeriodizationSmooth (4.3s)
+✔ [3120/3170] Built ShiftedCosine.Series (3.9s)
+✔ [3121/3170] Built TuringTask.HadamardRemainder (4.3s)
+✔ [3122/3170] Built ShiftedCosine.Mass (3.9s)
+✔ [3123/3170] Built ShiftedCosine.Abel (4.0s)
+✔ [3124/3170] Built ShiftedCosine.Outer (4.2s)
+✔ [3125/3170] Built ShiftedCosine.ComplexSeries (3.7s)
+✔ [3126/3170] Built ShiftedCosine.CutPrimitives (4.2s)
+✔ [3127/3170] Built ShiftedCosine.Poisson (5.7s)
+✔ [3128/3170] Built ShiftedCosine.ComplexGeometric (4.2s)
+✔ [3129/3170] Built ShiftedCosine.TaylorRemainder (4.2s)
+✔ [3130/3170] Built ShiftedCosine.RegulatorParameters (4.5s)
+✔ [3131/3170] Built SimpleTangent.Regulator (4.7s)
+✔ [3132/3170] Built ShiftedCosine.CosineBounds (5.0s)
+✔ [3133/3170] Built ShiftedCosine.FeynmanEvaluation (3.8s)
+✔ [3134/3170] Built ShiftedCosine.RemainderIntegrability (3.0s)
+✔ [3135/3170] Built ShiftedCosine.FeynmanLimit (4.2s)
+✔ [3136/3170] Built ShiftedCosine.CutPeriodization (4.0s)
+✔ [3137/3170] Built SimpleTangent.FeynmanSeries (4.6s)
+✔ [3138/3170] Built ShiftedCosine.RegulatedCells (4.6s)
+✔ [3139/3170] Built ShiftedCosine.HadamardConstruction (4.6s)
+✔ [3140/3170] Built SimpleTangent.FeynmanLimit (4.7s)
+✔ [3141/3170] Built ShiftedCosine.RegulatedPeriodization (4.8s)
+✔ [3142/3170] Built SimpleTangent.Trigonometry (30s)
+✔ [3143/3170] Built ShiftedCosine.HadamardEvaluation (28s)
+✔ [3144/3170] Built SimpleTangent.SimpleCosine (4.9s)
+✔ [3145/3170] Built SimpleTangent.BoundaryEvaluation (6.9s)
+✔ [3146/3170] Built SimpleTangent.GenericFold (4.6s)
+✔ [3147/3170] Built SimpleTangent.MassFourier (4.5s)
+✔ [3148/3170] Built SimpleTangent.CutFold (3.8s)
+✔ [3149/3170] Built SimpleTangent.SimpleEvaluation (3.9s)
+✔ [3150/3170] Built SimpleTangent.Transformed (3.8s)
+✔ [3151/3170] Built SimpleTangent.Outer (4.2s)
+✔ [3152/3170] Built SimpleTangent.PrincipalValue (4.2s)
+✔ [3153/3170] Built TangentSquared.Basic (4.0s)
+✔ [3154/3170] Built TangentSquared.Transformed (4.1s)
+✔ [3155/3170] Built TangentSquared.Specification (4.1s)
+✔ [3156/3170] Built TangentSquared.Series (4.2s)
+✔ [3157/3170] Built TangentSquared.FeynmanKernel (4.5s)
+✔ [3158/3170] Built TangentSquared.MassDerivative (4.0s)
+✔ [3159/3170] Built TangentSquared.Abel (4.2s)
+✔ [3160/3170] Built TangentSquared.Outer (4.4s)
+✔ [3161/3170] Built TangentSquared.FeynmanEvaluation (4.2s)
+✔ [3162/3170] Built TangentSquared.Hadamard (5.2s)
+✔ [3163/3170] Built TangentSquared.Evaluation (3.7s)
+✔ [3164/3170] Built TangentSquared.Asymptotics (3.7s)
+✔ [3165/3170] Built TangentSquared.Parameter (3.8s)
+✔ [3166/3170] Built TangentSquared.MassFourierDerivative (3.9s)
+✔ [3167/3170] Built TangentSquared.BoundaryEvaluation (5.2s)
+✔ [3168/3170] Built TangentSquared.Final (28s)
+✔ [3169/3170] Built TangentSquared (4.5s)
+Build completed successfully (3170 jobs).

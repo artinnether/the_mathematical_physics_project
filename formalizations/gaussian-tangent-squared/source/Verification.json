@@ -1,0 +1,39 @@
+{
+  "status": "ready_locally",
+  "verified_at_utc": "2026-11-24T13:27:40.671524+00:00",
+  "lean_toolchain": "leanprover/lean4:v4.33.0-rc1",
+  "mathlib_revision": "9944fe2973b8dc0b86949101ed98232c07cd54a0",
+  "mathlib_revision_provenance": "Existing pinned local bundle; no Git metadata is present in the bundle, as recorded by configure.log.",
+  "mathlib_shipped": false,
+  "mathlib_platform_default": "/opt/mathlib4",
+  "source_files": 87,
+  "rubric_items": 8,
+  "rubric_weights": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "fresh_extraction_build": true,
+  "final_theorem_check": true,
+  "transitive_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "placeholder_scan": "passed",
+  "project_import_closure": "passed",
+  "problem_numbering_in_delivery_texts": false,
+  "commands": [
+    "python3 configure_mathlib.py --mathlib <installed pinned local bundle>",
+    "lake --wfail build TangentSquared",
+    "lake env lean -DwarningAsError=true TangentSquared/Final.lean",
+    "lake env lean -DwarningAsError=true Audit.lean"
+  ],
+  "warnings": 0,
+  "verification_mode": "Strict build from a fresh extraction, final theorem check and six transitive axiom audits; published Lean sources are byte-identical to the verified sources"
+}

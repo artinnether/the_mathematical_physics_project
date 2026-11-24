@@ -1,0 +1,68 @@
+Gaussian integrals with squared shifted tangent poles — proof walkthrough
+
+The project proves the complete fixed statement SquaredPoleClaim for every α>0 and b>0; the final theorem is TangentSquaredTask.gaussian_tangent_squared_poles in TangentSquared/Final.lean, and no conclusion is an extra hypothesis.
+
+1. Definitions and the original regulator (Basic.lean and Specification.lean).
+The weight is exp(−αx²), the angle is arctan b, and the denominator is sin² x−b²cos² x. The real integrand is the Gaussian times cos⁴ x divided by the square of this denominator. The three integrals defining each cell use exactly the original coordinate and the equal-radius cuts about both poles. The truncation sums these cells over the integer interval [−N,N]. The pole mass is the Gaussian lattice sum at kπ±arctan b, and the subtraction is exactly this mass divided by 2b²(1+b²)²δ. The candidate finite part is the explicit Gaussian spectral series in the prompt. The mass derivative is defined by its actual Gaussian derivative lattice series. The Feynman integral is the whole-line complex Lebesgue integral of the original regulated integrand, and the Abel integral is the whole-line real Lebesgue integral of the exact cosine series. feynman_integrable proves that the regulated denominator never vanishes and bounds the integrand's norm by exp(−αx²)/ε²; Gaussian integrability then proves absolute integrability.
+
+2. Change of variables and pole decomposition (Transformed.lean).
+The change of variable x=kπ+t/2 doubles the cell coordinate and produces the exact one-half Jacobian. The Gaussian becomes exp(−(α/4)(2kπ+t)²). Writing D=1+b² and z=cos t−cos(2 arctan b), the transformed squared tangent kernel is
+
+1/D²+4/(D³z)+4/(D⁴z²).
+
+transformed_point and cell_eq_transformed prove equality with the original integrands and integrals. transformed_kernel_decomposition proves this algebraic decomposition away from the excluded poles.
+
+3. Existence of the outer limit (Outer.lean and Series.lean).
+The clipped tangent kernel is continuous and uniformly bounded on each retained central-period region. Its square is bounded by the squared clipping bound. Gaussian summable lattice majorants justify exchanging the cell integrals and the integer sum. cell_summable_and_folded proves absolute summability of the original cells and their equality with the folded periodized integral. outerValue is their actual sum, and truncation_tendsto proves that the symmetric integer truncations converge to that sum. poleMass_summable and poleMass_pos establish absolute convergence and strict positivity of the actual pole mass. coefficient_bound bounds the spectral coefficient by a constant plus a multiple of n; Gaussian decay yields the needed summability of the final spectral series.
+
+4. Hadamard limit of the actual cut integrals (Hadamard.lean).
+The folded integral is decomposed into the constant, simple cosine-pole and double cosine-pole integrals from the exact transformed identity. The reused support proofs establish their actual cutoff limits. The constant integral tends to the Gaussian mass. The simple-pole term has its principal-value limit. The double-pole term has a Hadamard limit after its explicit pole-mass subtraction. poleMass_transformed identifies its mass with the original tangent mass, and subtraction_transformed matches the cutoff 2δ and the Jacobian with the required M/[2b²D²δ]. hadamard_tendsto_decomposed therefore proves the actual cutoff limit before assigning it a spectral formula.
+
+5. Spectral evaluation and asymptotics (Evaluation.lean and Asymptotics.lean).
+The rescaled Gaussian Fourier coefficient is exp(−n²/α). coefficient_decomposition combines the transformed simple- and double-pole coefficients into
+
+(1+3b²)sin(2n arctan b)/b³−2n cos(2n arctan b)/b².
+
+The summability results justify splitting and recombining the sums. decomposedValue_eq identifies the already established limit with finitePartValue, and hadamard_tendsto proves the requested original finite-part formula. Multiplying the convergent finite remainder by δ gives the scaled limit δJ(δ)→M/[2b²D²]. Strict positivity of that coefficient and convergence of the finite remainder prove J(δ)→+∞.
+
+6. Abel regularization (Abel.lean).
+The coefficient bound gives summable geometric majorants of the form (A+Cn)rⁿ for every 0<r<1. These prove continuity of the cosine series and Gaussian integrability of the actual Abel integrand. The Gaussian cosine transform evaluates each harmonic, and a justified sum–integral interchange gives abelIntegral_eq, the exact finite-r expression. A summable Gaussian majorant independent of r near one allows dominated convergence for the spectral sums, proving abel_tendsto for the original integrals with the same finitePartValue as the Hadamard theorem.
+
+7. Parameter derivatives (MassDerivative.lean and Parameter.lean).
+The mass is expressed as the periodized Gaussian at the positive and negative pole angles. Differentiating those actual periodized functions and applying d(arctan b)/db=1/(1+b²) gives exactly the lattice series Lα(b). Gaussian derivative majorants prove its absolute convergence. poleMass_hasDerivAt proves the requested mass derivative. For Pα, the derivative of each sine spectral term has absolute value bounded by 2n exp(−n²/α), uniformly for positive b. Smooth-series differentiation therefore applies. spectralSum_derivative_identity and algebra identify the resulting derivative with 2b finitePartValue. principalValue_hasDerivAt proves the derivative of the explicit Pα function defined in the prompt.
+
+8. Finite-regulator Feynman series (FeynmanKernel.lean).
+Use the verified regulator root s with s²=−b²+iε and positive real part. The ratio q=(1−s)/(1+s) has norm less than one. Geometric and weighted geometric cosine sums give an exact decomposition of the squared regulated kernel into a constant and two cosine series. The coefficients are
+
+A(s)=(1+2s)/[2s³(1+s)²],
+B(s)=(1−3s²)/[s³(1−s²)²],
+C(s)=2/[s²(1−s²)²].
+
+kernel_fourier proves the exact equality with the original regulated kernel; no distributional formula or analytic axiom is introduced.
+
+9. Actual Feynman limit (FeynmanEvaluation.lean).
+Gaussian integrability of the geometric series justifies integrating the exact decomposition. feynmanIntegral_eq_series evaluates the actual integral as
+
+√(π/α)[A(s)+B(s)Σ_{n≥1}qⁿexp(−n²/α)+C(s)Σ_{n≥1}nqⁿexp(−n²/α)].
+
+As ε→0+, s→ib and q→exp(−2i arctan b). Gaussian majorants bound both sums even as the ratio reaches the unit circle. Continuity of the nonvanishing rational coefficient denominators and dominated convergence prove feynman_tendsto_boundary.
+
+10. Identification of the imaginary part (MassFourierDerivative.lean and BoundaryEvaluation.lean).
+The mass Fourier formula is differentiated using the same uniform Gaussian derivative bound. This identifies the actual mass derivative with its sine Fourier expression. At s=ib, the three rational coefficients become
+
+A=1/D²+i(1+3b²)/(2b³D²),
+B=i(1+3b²)/(b³D²),
+C=−2/(b²D²).
+
+The unweighted and weighted boundary series are split into their real and imaginary trigonometric sums. complexBoundaryValue_eq proves that the real part is the same finitePartValue and that the imaginary part is
+
+Q=π(1+3b²)M/(4b³D²)−πL/(4b²D).
+
+feynman_tendsto_value is consequently the requested right-sided limit of the actual whole-line complex integrals.
+
+11. Final assembly and audit (Final.lean and Audit.lean).
+The final theorem supplies J=outerValue and H=finitePartValue together with all the proofs above. Defining these witnesses does not substitute for the convergence proofs: the final claim includes the actual outer, Hadamard, Feynman and Abel limits, both parameter derivative identities, all requested integrability and summability statements, and the cutoff asymptotics. The audit prints the transitive axioms of the final theorem and the principal limit and derivative theorems.
+
+Verification uses Lean v4.33.0-rc1 and Mathlib revision 9944fe2973b8dc0b86949101ed98232c07cd54a0. The original project passed lake build TangentSquared, lake env lean TangentSquared/Final.lean and lake env lean Audit.lean. The final and audited intermediate theorems use only propext, Classical.choice and Quot.sound. The ZIP includes all project sources and these actual logs; Mathlib and its compiled dependencies are external and are selected offline by configure_mathlib.py, with /opt/mathlib4 as the default platform path.
+
+The project was also extracted into a fresh verification directory with no compiled project cache; after offline Mathlib configuration, lake build TangentSquared, lake env lean TangentSquared/Final.lean and lake env lean Audit.lean all passed there. The final theorem and the audited intermediate results again use only propext, Classical.choice and Quot.sound. The actual clean extraction output is included as clean-build.log, clean-final.log, clean-audit.log and configure.log.
